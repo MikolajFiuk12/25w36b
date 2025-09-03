@@ -8,7 +8,15 @@ Struż
 Struż z Skina dowolnwgo gracza
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
 
+
+mojang studio
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Notch"}}
+
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "gnembon"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "LadyAgnes"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "jeb_"}}
 
 
 

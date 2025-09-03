@@ -24,6 +24,9 @@ Struż z elytrom
 
 /summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{chest:{id:"elytra"}}}
 
+items
+/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:compass",Count:1b}}}
+
 bes kapelusza
 /summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/zombie/zombie",cape:"block/dirt",model:"slim",hidden_layers:['hat','jacket','left_sleeve'],main_hand:"left"}}
 

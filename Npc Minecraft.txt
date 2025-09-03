@@ -1,4 +1,4 @@
-===================================
+=========================================================================================
 https://www.minecraft.net/pl-pl/article/minecraft-snapshot-25w36a
 https://mikolajfiuk12.github.io/25w36b
 
@@ -17,8 +17,6 @@ mojang studio
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "LadyAgnes"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "jeb_"}}
-
-
 
 
 ======================================================================================================
@@ -42,6 +40,8 @@ Obrut
 do zabawy
 /summon minecraft:mannequin ~ ~ ~ {profile:"MikiYT1",hidden_layers:['hat','left_sleeve','right_sleeve'],main_hand:"left"}
 
+Invulnerable
+/summon minecraft:mannequin ~ ~ ~ { Invulnerable:1b,profile: {name: "Notch"}}
 
 
 Zmiana nazwy pszy pomocom- nazywacza 
@@ -61,8 +61,7 @@ ukryj nazwy
 pokasz Nazwy
 /team modify Miki nametagVisibility always
 
-Pokloruj nazwe 
-/team modify Miki color gold
+
 
 holorgram
 /kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
@@ -84,10 +83,7 @@ particle
 
 
 
-
-
-
-=======================
+================================================================================================
 iterakcja z npc
 /particle minecraft:happy_villager 13 66 54 0.5 1 0.5 0.1 50
 
@@ -100,5 +96,34 @@ iterakcja z npc
 give @p minecraft:apple
 
 =================================================================================================================
+Team
+
+/team add npcTeam
+
+/team remove npcTeam
+
+/team join npcTeam JulekGeralt
+/team leave JulekGeralt
+
+dodawnje npc do drużyny
+/team join npcTeam @e[type=minecraft:mannequin,limit=1,sort=nearest]
+
+/team leave @e
 
 
+collisionRule
+/team modify npcTeam collisionRule never
+/team modify npcTeam collisionRule always
+
+/team modify npcTeam color gold
+
+
+Glowing
+/effect give @e[type=minecraft:mannequin,limit=1,sort=nearest] minecraft:glowing 999999 0 true
+
+/effect clear @e[type=minecraft:mannequin,limit=1,sort=nearest] 
+
+/team modify npcTeam color green
+
+/execute as @e[team=npcTeam] run say Jestem nieśmiertelny!
+========================================================================================================

@@ -70,6 +70,18 @@ powiększenie
 particle
 /particle minecraft:happy_villager ~ ~1 ~ 0.5 1 0.5 0.1 50
 
+
+Rozmowa
+/particle minecraft:happy_villager 13 66 54 0.5 1 0.5 0.1 50
+
+/title @p title {"text":"Witaj"}
+
+/title @p title {"text":"fajnie rze jesteś :)"}
+
+/title @p title {"text":"masz tu upominek :)"}
+
+give @p minecraft:diamond_axe
+
 =================================================================================================================
 
 

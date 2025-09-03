@@ -1,0 +1,75 @@
+===================================
+https://www.minecraft.net/pl-pl/article/minecraft-snapshot-25w36a
+https://mikolajfiuk12.github.io/25w36b
+
+Struż
+/summon minecraft:mannequin
+
+Struż z Skina dowolnwgo gracza
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "gnembon"}}
+
+Struż z elytrom
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{chest:{id:"elytra"}}}
+
+bes kapelusza
+/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/zombie/zombie",cape:"block/dirt",model:"slim",hidden_layers:['hat','jacket','left_sleeve'],main_hand:"left"}}
+
+
+Struż z nawom
+/summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
+
+/summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
+
+
+Obrut 
+/summon minecraft:mannequin ~ ~1 ~ {Rotation: [70,0 f, 8,0 f]}
+
+do zabawy
+/summon minecraft:mannequin ~ ~ ~ {profile:"MikiYT1",hidden_layers:['hat','left_sleeve','right_sleeve'],main_hand:"left"}
+
+
+
+Zmiana nazwy pszy pomocom- nazywacza 
+
+
+po prostu DoctorNok
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "DoctorNok"}}
+
+
+ukryj nazwy
+/team add Miki Miki
+
+/team join Miki @e[type=minecraft:mannequin]
+
+/team modify Miki nametagVisibility never
+
+pokasz Nazwy
+/team modify Miki nametagVisibility always
+
+Pokloruj nazwe 
+/team modify Miki color gold
+
+holorgram
+/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
+
+1 usunoć
+/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b},limit=1]
+
+
+/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"MikiYT1","color":"yellow"},Small:1b}
+
+
+powiększenie
+/attribute 6238c3cf-23e1-42bf-9b8b-951d6e197ad4 minecraft:scale base set 5
+
+/attribute MikiYT1 minecraft:scale base set 1
+
+particle
+/particle minecraft:happy_villager ~ ~1 ~ 0.5 1 0.5 0.1 50
+
+=================================================================================================================
+
+

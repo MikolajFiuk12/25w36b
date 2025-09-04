@@ -3,6 +3,153 @@ https://www.minecraft.net/pl-pl/article/minecraft-snapshot-25w36a
 https://mikolajfiuk12.github.io/25w36b
 https://mikolajfiuk12.github.io/25w36b/Npc%20Minecraft.txt
 ===========================================================
+
+
+Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności od wersji gry (Java vs Bedrock), ale mogę wymienić Ci te najważniejsze i najczęściej używane. Podzielę je na kategorie, żeby było łatwiej się w tym odnaleźć.
+---
+
+### **1. Komendy podstawowe**
+
+* `/help [strona]` – wyświetla listę dostępnych komend.
+* `/me <tekst>` – pokazuje wiadomość w formacie „\[Twoja nazwa] <tekst>”.
+* `/say <tekst>` – wysyła wiadomość do wszystkich graczy.
+
+---
+
+### **2. Zarządzanie światem i graczami**
+
+* `/gamemode <tryb> [gracz]` – zmienia tryb gry (`survival`, `creative`, `adventure`, `spectator`).
+* `/difficulty <poziom>` – zmienia trudność (`peaceful`, `easy`, `normal`, `hard`).
+* `/spawnpoint [gracz] [x] [y] [z]` – ustawia punkt respawnu.
+* `/setworldspawn [x] [y] [z]` – ustawia światowy punkt respawnu.
+* `/tp <cel> [cel2]` – teleportuje gracza do innego gracza lub współrzędnych.
+* `/kill [gracz]` – zabija gracza lub moby.
+
+---
+
+### **3. Zarządzanie przedmiotami**
+
+* `/give <gracz> <przedmiot> [ilość]` – daje graczowi przedmiot.
+* `/clear [gracz] [przedmiot] [dane]` – usuwa przedmioty z ekwipunku.
+* `/enchant <gracz> <zaklęcie> [poziom]` – zaklina przedmiot gracza.
+* `/effect <gracz> <efekt> [czas] [poziom]` – daje efekt statusu.
+
+---
+
+### **4. Bloki i konstrukcje**
+
+* `/setblock <x> <y> <z> <blok>` – ustawia blok w określonych współrzędnych.
+* `/fill <x1> <y1> <z1> <x2> <y2> <z2> <blok>` – wypełnia obszar blokami.
+* `/clone <x1> <y1> <z1> <x2> <y2> <z2> <x> <y> <z>` – kopiuje i wkleja obszar bloków.
+* `/summon <mob> [x] [y] [z] [dane]` – przywołuje moby.
+
+---
+
+### **5. Komendy czasu i pogody**
+
+* `/time set <czas>` – ustawia czas (`day`, `night`, liczba w tickach).
+* `/time add <ilość>` – dodaje czas w tickach.
+* `/weather <typ>` – zmienia pogodę (`clear`, `rain`, `thunder`).
+
+---
+
+### **6. Komendy logiki i redstone**
+
+* `/scoreboard` – zarządza punktami graczy i celami.
+* `/execute <gracz> <polecenie>` – wykonuje komendę w imieniu gracza lub warunkach.
+* `/testfor <gracz> [warunki]` – sprawdza gracza (częściej w Java).
+
+---
+
+### **7. Komendy teleportacji i struktury**
+
+* `/locate <typ>` – znajduje najbliższą strukturę (`village`, `stronghold`, `mineshaft`).
+* `/spreadplayers <x> <z> <odległość_min> <odległość_max> <gracze>` – rozrzuca graczy po świecie.
+
+---
+
+### **8. Inne przydatne**
+
+* `/gamerule <reguła> [wartość]` – zmienia reguły gry (`doDaylightCycle`, `keepInventory`, `mobGriefing`).
+* `/title <gracz> <akcja> <tekst>` – pokazuje tekst na środku ekranu.
+* `/tell <gracz> <wiadomość>` – wysyła prywatną wiadomość.
+* `/op <gracz>` – nadaje uprawnienia operatora.
+* `/deop <gracz>` – odbiera uprawnienia operatora.
+
+---
+
+
+---
+
+### **1. Tryb gry i zasoby**
+
+* `/gamemode creative` – włączasz tryb kreatywny.
+* `/gamemode survival` – włączasz tryb przetrwania.
+* `/give <gracz> <przedmiot> [ilość]` – dodajesz sobie dowolny przedmiot.
+* `/effect <gracz> <efekt> [czas] [poziom]` – np. nieśmiertelność, szybkość.
+* `/enchant <gracz> <zaklęcie> [poziom]` – zaklinasz przedmiot.
+
+---
+
+### **2. Teleportacja i miejsce respawnu**
+
+* `/tp <x> <y> <z>` – teleportujesz się do współrzędnych.
+* `/spawnpoint` – ustawiasz punkt respawnu dla siebie.
+* `/setworldspawn` – ustawiasz punkt startowy całego świata.
+
+---
+
+### **3. Bloki i konstrukcje**
+
+* `/setblock <x> <y> <z> <blok>` – stawiasz blok w określonym miejscu.
+* `/fill <x1> <y1> <z1> <x2> <y2> <z2> <blok>` – wypełniasz obszar blokami.
+* `/clone <x1> <y1> <z1> <x2> <y2> <z2> <x> <y> <z>` – kopiujesz obszar i wklejasz go gdzie indziej.
+
+---
+
+### **4. Mobowie i walka**
+
+* `/summon <mob> [x] [y] [z]` – przywołujesz moby.
+* `/kill @e[type=<mob>]` – zabijasz wszystkie moby danego typu.
+* `/effect <gracz> minecraft:strength 1000 255` – możesz się wzmocnić na max.
+
+---
+
+### **5. Pogoda i czas**
+
+* `/time set day` – ustawia dzień.
+* `/time set night` – ustawia noc.
+* `/weather clear` – pogoda słoneczna.
+* `/weather rain` – deszcz.
+* `/weather thunder` – burza.
+
+---
+
+### **6. Inne przydatne**
+
+* `/gamerule keepInventory true` – po śmierci nie tracisz przedmiotów.
+* `/gamerule mobGriefing false` – moby nie niszczą bloków.
+* `/tp <gracz>` – teleportujesz się do siebie (np. jeśli grasz w świecie z trybem wielu graczy w LAN).
+
+---
+
+💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
+
+---
+
+
+
+/gamerule enableCommandBlocks false
+/gamerule enableCommandBlocks true
+
+/gamerule enderPearlsVanishOnDeath false
+/gamerule enderPearlsVanishOnDeath true
+
+NPC Komendy
+
+
+
+======================================================
 RTP
 /execute at @p run spreadplayers 0 0 100 1000 false @p
 =========================================================

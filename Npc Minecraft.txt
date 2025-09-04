@@ -2,6 +2,9 @@
 https://www.minecraft.net/pl-pl/article/minecraft-snapshot-25w36a
 https://mikolajfiuk12.github.io/25w36b
 
+teleport
+/tp @e[type=minecraft:mannequin,limit=1,sort=nearest] MikiYT1
+
 Struż
 /summon minecraft:mannequin
 
@@ -26,6 +29,8 @@ Struż z elytrom
 
 items
 /summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:compass",Count:1b}}}
+
+/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:compass",Count:1b}  }}
 
 bes kapelusza
 /summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/zombie/zombie",cape:"block/dirt",model:"slim",hidden_layers:['hat','jacket','left_sleeve'],main_hand:"left"}}

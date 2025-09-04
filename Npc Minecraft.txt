@@ -1,19 +1,26 @@
 =========================================================================================
 https://www.minecraft.net/pl-pl/article/minecraft-snapshot-25w36a
 https://mikolajfiuk12.github.io/25w36b
+https://mikolajfiuk12.github.io/25w36b/Npc%20Minecraft.txt
+===========================================================
+RTP
+/execute at @p run spreadplayers 0 0 100 1000 false @p
+=========================================================
 
+
+============================================================================================
 teleport
 /tp @e[type=minecraft:mannequin,limit=1,sort=nearest] MikiYT1
 
-
-Podążanie wzrokiem
-/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
-
-wymagany commend block!
-/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
+/tp d07da099-5798-4e58-afae-323f26a1bf08 MikiYT1
+===========================================================================================
 
 
 
+
+
+
+===================================================================================================
 Struż
 /summon minecraft:mannequin
 
@@ -29,92 +36,18 @@ mojang studio
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "LadyAgnes"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "jeb_"}}
-
-
-======================================================================================================
-Struż z elytrom
-
-/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{chest:{id:"elytra"}}}
-
-items
-/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:compass",Count:1b}}}
-
-/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:compass",Count:1b}  }}
-
-bes kapelusza
-/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/zombie/zombie",cape:"block/dirt",model:"slim",hidden_layers:['hat','jacket','left_sleeve'],main_hand:"left"}}
-
-
-Struż z nawom
-/summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
-
-/summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
-
-
-Obrut 
-/summon minecraft:mannequin ~ ~1 ~ {Rotation: [70,0 f, 8,0 f]}
-
-do zabawy
-/summon minecraft:mannequin ~ ~ ~ {profile:"MikiYT1",hidden_layers:['hat','left_sleeve','right_sleeve'],main_hand:"left"}
-
-Invulnerable
-/summon minecraft:mannequin ~ ~ ~ { Invulnerable:1b,profile: {name: "Notch"}}
-
-
-Zmiana nazwy pszy pomocom- nazywacza 
-
-
-po prostu DoctorNok
-/summon minecraft:mannequin ~ ~ ~ {profile: {name: "DoctorNok"}}
-
-
-ukryj nazwy
-/team add Miki Miki
-
-/team join Miki @e[type=minecraft:mannequin]
-
-/team modify Miki nametagVisibility never
-
-pokasz Nazwy
-/team modify Miki nametagVisibility always
-
-
-
-holorgram
-/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
-
-1 usunoć
-/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b},limit=1]
-
-
-/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"MikiYT1","color":"yellow"},Small:1b}
-
-
-powiększenie
-/attribute 6238c3cf-23e1-42bf-9b8b-951d6e197ad4 minecraft:scale base set 5
-
-/attribute MikiYT1 minecraft:scale base set 1
-
-particle
-/particle minecraft:happy_villager ~ ~1 ~ 0.5 1 0.5 0.1 50
-
-
-
 ================================================================================================
-iterakcja z npc
-/particle minecraft:happy_villager 13 66 54 0.5 1 0.5 0.1 50
 
-/title @p title {"text":"Witaj"}
 
-/title @p title {"text":"fajnie rze jesteś :)"}
 
-/title @p title {"text":"masz tu upominek :)"}
 
-give @p minecraft:apple
 
-=================================================================================================================
+
+
+
+
 Team
-
+===============================================================
 /team add npcTeam
 
 /team remove npcTeam
@@ -133,8 +66,233 @@ collisionRule
 /team modify npcTeam collisionRule always
 
 /team modify npcTeam color gold
+==================================================================
 
 
+
+
+===========================================================================================================
+interakcja z npc 
+#1
+/summon minecraft:mannequin ~ ~ ~ {CustomName:'"TeleportManekin"'}
+
+/tag @e[type=mannequin,limit=1,sort=nearest] add teleport
+
+/execute as @a at @s if entity @e[type=mannequin,tag=teleport,distance=..1] run spreadplayers 0 0 100 1000 false @s
+
+#2
+/summon minecraft:mannequin ~ ~ ~ {CustomName:'"Survival"'}
+
+/tag @e[type=mannequin,limit=1,sort=nearest] add tpzone
+
+/execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run tp @s 64 85 -713
+==============================================================================================================
+
+
+
+
+
+
+
+=============================================================================================================
+GIVE
+/summon minecraft:mannequin ~ ~ ~ {CustomName:'"podaruje ci coś fajnego"'}
+
+/tag @e[type=mannequin,limit=1,sort=nearest] add kf
+
+/execute as @a at @s if entity @e[type=mannequin,tag=kf,distance=..1] run give @s minecraft:poppy 1
+=====================================================================================================================
+
+
+
+
+
+
+
+
+
+
+WymianaManekin
+=======================================================================================
+/summon minecraft:mannequin ~ ~ ~ {CustomName:'"WymianaManekin"'}
+
+/summon armor_stand ~ ~ ~ {CustomName:'"WymianaManekin"',NoGravity:1b,Marker:1b,Invisible:1b}
+
+/tag @e[type=armor_stand,limit=1,sort=nearest] add wymiana
+
+wymagany blok poleceń Repeat Always Active
+/execute as @a at @s if entity @e[type=armor_stand,tag=wymiana,distance=..2] if entity @s[nbt={SelectedItem:{id:"minecraft:diamond"}}] run give @s minecraft:poppy 1
+
+wymagany blok poleceń Repeat Always Active
+/execute as @a at @s if entity @e[type=armor_stand,tag=wymiana,distance=..2] if entity @s[nbt={SelectedItem:{id:"minecraft:diamond"}}] run clear @s minecraft:diamond 1
+
+/kill @e[type=armor_stand,limit=1,sort=nearest]
+=====================================================================================
+
+
+
+
+
+
+
+
+================================================================================
+effect
+/summon armor_stand ~ ~ ~ {CustomName:'"EfektStand"',NoGravity:1b,Marker:1b,Invisible:1b}
+
+/tag @e[type=armor_stand,limit=1,sort=nearest] add ef
+
+/execute as @a at @s if entity @e[type=armor_stand,tag=ef,distance=..2] run effect give @s minecraft:speed 10 1 true
+
+/scoreboard objectives add efOnce dummy
+
+/execute as @a[scores={efOnce=0}] at @s if entity @e[type=armor_stand,tag=ef,distance=..2] run effect give @s minecraft:speed 10 1 true
+
+/scoreboard players set @a[distance=..2,scores={efOnce=0}] efOnce 1
+=====================================================================================
+
+
+
+
+
+
+
+========================================================================================================================
+pvp
+/tag @e[type=mannequin,limit=1,sort=nearest] add killer
+
+wymagany blok poleceń
+/execute as @a at @s if entity @e[type=mannequin,tag=killer,distance=..2] run damage @s 2 minecraft:mob_attack
+==========================================================================================================================
+
+
+
+
+======================================================================================
+Invulnerable
+/summon minecraft:mannequin ~ ~ ~ { Invulnerable:1b,profile: {name: "Notch"}}
+
+/data merge entity @e[type=mannequin,limit=1,sort=nearest] {Invulnerable:1b}
+=========================================================================================
+
+
+
+
+
+==========================================================================================
+Podążanie wzrokiem
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
+
+wymagany blok poleceń Repeat Always Active
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
+================================================================================================
+
+
+
+
+======================================================================================================
+Struż z elytrom
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{chest:{id:"elytra"}}}
+
+items
+/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:compass",Count:1b}}}
+
+/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:compass",Count:1b}  }}
+
+bes kapelusza
+/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/zombie/zombie",cape:"block/dirt",model:"slim",hidden_layers:['hat','jacket','left_sleeve'],main_hand:"left"}}
+
+=================================================================================================
+
+
+
+=================================================================
+
+Struż z nawom
+/summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
+
+/summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
+==================================================================
+
+
+
+======================================================================================================================
+Obrut 
+/summon minecraft:mannequin ~ ~1 ~ {Rotation: [70,0 f, 8,0 f]}
+
+do zabawy
+/summon minecraft:mannequin ~ ~ ~ {profile:"MikiYT1",hidden_layers:['hat','left_sleeve','right_sleeve'],main_hand:"left"}
+====================================================================================================================
+
+
+
+Zmiana nazwy pszy pomocom- nazywacza 
+
+
+po prostu DoctorNok
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "DoctorNok"}}
+
+
+
+===================================================================
+ukryj nazwy
+/team add Miki Miki
+
+/team join Miki @e[type=minecraft:mannequin]
+
+/team modify Miki nametagVisibility never
+
+pokasz Nazwy
+/team modify Miki nametagVisibility always
+==================================================================
+
+
+
+
+
+================================================================================================================
+holorgram
+/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
+
+1 usunoć
+/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b},limit=1]
+
+
+/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"MikiYT1","color":"yellow"},Small:1b}
+=============================================================================================================
+
+
+
+===============================================================================
+
+powiększenie
+/attribute 6238c3cf-23e1-42bf-9b8b-951d6e197ad4 minecraft:scale base set 5
+
+/attribute MikiYT1 minecraft:scale base set 1
+
+particle
+/particle minecraft:happy_villager ~ ~1 ~ 0.5 1 0.5 0.1 50
+==============================================================================
+
+
+================================================================================================
+iterakcja z npc
+/particle minecraft:happy_villager 13 66 54 0.5 1 0.5 0.1 50
+
+/title @p title {"text":"Witaj"}
+
+/title @p title {"text":"fajnie rze jesteś :)"}
+
+/title @p title {"text":"masz tu upominek :)"}
+
+give @p minecraft:apple
+=================================================================================================
+
+
+
+
+=================================================================================================================
 Glowing
 /effect give @e[type=minecraft:mannequin,limit=1,sort=nearest] minecraft:glowing 999999 0 true
 

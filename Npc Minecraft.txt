@@ -9,6 +9,7 @@ teleport
 Podążanie wzrokiem
 /tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
 
+wymagany commend block!
 /execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
 
 

@@ -5,6 +5,14 @@ https://mikolajfiuk12.github.io/25w36b
 teleport
 /tp @e[type=minecraft:mannequin,limit=1,sort=nearest] MikiYT1
 
+
+Podążanie wzrokiem
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
+
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
+
+
+
 Struż
 /summon minecraft:mannequin
 

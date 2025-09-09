@@ -134,7 +134,7 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 ---
 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
-
+=================================================================================================================================
 Generator:
 /summon item ~ ~1 ~ {Item:{id:"minecraft:diamond",Count:1b}}
 
@@ -158,7 +158,7 @@ Gold Nugget
 
 a to todakowo
 /tag @e[type=armor_stand,limit=1,sort=nearest] add obracajacy
-
+==========================================================================================================================================================
 
 
 
@@ -185,6 +185,33 @@ teleport
 
 
 
+=======================================================================================
+jako
+/kill @e[type=minecraft:vex,sort=nearest,limit=1]
+
+/execute as @e[type=minecraft:vex,sort=nearest,limit=1] at @s run summon minecraft:mannequin
+
+give MikiYT1 minecraft:vex_spawn_egg
+=========================================================================================
+
+/advancement grant @p everything
+
+========================================================================================================================================
+Profil
+/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:paper",Count:1b}  }}
+
+
+/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
+
+1 usunoć
+/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b},limit=1]
+
+
+/summon minecraft:armor_stand ~ ~1.8 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil MikiYT1","color":"yellow"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.5 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"UUID: 5512c056-3738-4fe3-b406-2acd783959ea","color":"yellow"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"create konto:2019-07-06","color":"yellow"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"================================================","color":"yellow"},Small:1b}
+==========================================================================================================================================================================
 
 
 
@@ -344,7 +371,8 @@ Invulnerable
 =========================================================================================
 
 
-
+podorzanie za graczem 
+/execute at @e[type=minecraft:mannequin,limit=1] facing entity @p[distance=1..] feet run teleport @n[type=minecraft:mannequin,limit=1] ^ ^ ^0.8 facing entity @p feet
 
 
 ==========================================================================================
@@ -353,6 +381,9 @@ Podążanie wzrokiem
 
 wymagany blok poleceń Repeat Always Active
 /execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
+
+jedna komenda wystarczy
+/tp @n[type=mannequin,limit=1] ~ ~ ~ facing entity @p[sort=nearest] feet
 ================================================================================================
 
 
@@ -364,9 +395,9 @@ Struż z elytrom
 /summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{chest:{id:"elytra"}}}
 
 items
-/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:compass",Count:1b}}}
+/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:paper",Count:1b}}}
 
-/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:compass",Count:1b}  }}
+/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:paper",Count:1b}  }}
 
 bes kapelusza
 /summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/zombie/zombie",cape:"block/dirt",model:"slim",hidden_layers:['hat','jacket','left_sleeve'],main_hand:"left"}}
@@ -427,7 +458,7 @@ holorgram
 /kill @e[type=minecraft:armor_stand,nbt={Invisible:1b},limit=1]
 
 
-/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"MikiYT1","color":"yellow"},Small:1b}
+/summon minecraft:armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"MikiYT1","color":"yellow"},Small:1b}
 =============================================================================================================
 
 

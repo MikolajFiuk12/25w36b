@@ -134,6 +134,9 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 ---
 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
+
+
+
 =================================================================================================================================
 Generator:
 /summon item ~ ~1 ~ {Item:{id:"minecraft:diamond",Count:1b}}

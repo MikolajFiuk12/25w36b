@@ -135,7 +135,30 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
 
----
+Generator:
+/summon item ~ ~1 ~ {Item:{id:"minecraft:diamond",Count:1b}}
+
+Głowa
+komenda na obrananje
+/execute as @e[type=armor_stand,tag=obracajacy] at @s run tp @s ~ ~ ~ ~1 ~
+
+stojak
+/summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'Generator',CustomNameVisible:1b,Tags:["obracajacy"]}
+
+Diament
+/give @p minecraft:player_head[minecraft:custom_name={"text":"Diamond Block","color":"gold","underlined":true,"bold":true,"italic":false},minecraft:lore=[{"text":"Custom Head ID: 97","color":"gray","italic":false},{"text":"www.minecraft-heads.com","color":"blue","italic":false}],profile={id:[I;1026891468,601702558,-2134294593,201158332],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTYzMTU5N2RjZTRlNDA1MWU4ZDVhNTQzNjQxOTY2YWI1NGZiZjI1YTBlZDYwNDdmMTFlNjE0MGQ4OGJmNDhmIn19fQ=="}]}] 1
+
+Emerald Block
+/give @p minecraft:player_head[minecraft:custom_name={"text":"Emerald Block","color":"gold","underlined":true,"bold":true,"italic":false},minecraft:lore=[{"text":"Custom Head ID: 106777","color":"gray","italic":false},{"text":"www.minecraft-heads.com","color":"blue","italic":false}],profile={id:[I;-1750783633,1267747848,-1644367976,-633282032],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjQ2OGU3MDdlOTdmOGIxODAzZDllMWY3YzA3MzY3MTJjYjliODMzOWI3NTJkODllY2Y0ZTk5NGNkZWRhNjI0MiJ9fX0="}]}] 1
+
+Gold Nugget
+/give @p minecraft:player_head[minecraft:custom_name={"text":"Gold Nugget","color":"gold","underlined":true,"bold":true,"italic":false},minecraft:lore=[{"text":"Custom Head ID: 122187","color":"gray","italic":false},{"text":"www.minecraft-heads.com","color":"blue","italic":false}],profile={id:[I;918663204,73416913,-1280666128,-138363533],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYmU4NTQyZjgzMzU3YzUxMWE3OTEzYjc2YmE5YTM4N2JlNzg4NWRmMzNiYmVhMDA4NzBiZDQxYzFiMDBjMyJ9fX0="}]}] 1
+
+/execute at @e[type=armor_stand,limit=1,sort=nearest] run particle minecraft:happy_villager ~ ~1 ~ 0.5 0.5 0.5 0 5
+
+a to todakowo
+/tag @e[type=armor_stand,limit=1,sort=nearest] add obracajacy
+
 
 
 
@@ -146,8 +169,6 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 /gamerule enderPearlsVanishOnDeath true
 
 NPC Komendy
-
-
 
 ======================================================
 RTP

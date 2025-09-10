@@ -186,6 +186,18 @@ teleport
 /tp d07da099-5798-4e58-afae-323f26a1bf08 MikiYT1
 ===========================================================================================
 
+================================================================================
+Przedmiot w ręce manekina
+/execute as @e[type=minecraft:mannequin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
+
+do jednego
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add MojManekin
+
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
+
+Usuwanie przedmiotu z ręki
+/execute as @e[type=minecraft:mannequin] run data remove entity @s equipment.mainhand
+========================================================================================================
 
 
 =======================================================================================

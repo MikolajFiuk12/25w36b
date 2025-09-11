@@ -196,6 +196,9 @@ do jednego
 
 /execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
 
+zbroja equ
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment set from entity @p equipment
+
 Usuwanie przedmiotu z ręki
 /execute as @e[type=minecraft:mannequin] run data remove entity @s equipment.mainhand
 ========================================================================================================

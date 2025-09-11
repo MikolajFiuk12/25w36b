@@ -223,7 +223,7 @@ Profil
 /kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
 
 1 usunoć
-/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b},limit=1]
+/kill @e[type=armor_stand,limit=1,sort=nearest]
 
 
 /summon minecraft:armor_stand ~ ~1.8 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil MikiYT1","color":"yellow"},Small:1b}
@@ -474,7 +474,7 @@ holorgram
 /kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
 
 1 usunoć
-/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b},limit=1]
+/kill @e[type=armor_stand,limit=1,sort=nearest]
 
 
 /summon minecraft:armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"MikiYT1","color":"yellow"},Small:1b}

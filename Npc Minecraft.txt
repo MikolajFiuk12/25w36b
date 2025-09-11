@@ -185,6 +185,28 @@ a to todakowo
 /effect give MikiYT1 minecraft:glowing 999999 0 true
 =============================================================
 
+NPC na spacerek
+0
+/summon minecraft:mannequin -3721 64 1163 {profile: DadsrFunny, Rotation:[-90.0f, 0.0f], CustomName:"Dave", NoAI:true, Tags:["walk"]}
+
+
+1
+/execute at @e[type=minecraft:mannequin,tag=walk,limit=1] if block ~ ~-1 ~ minecraft:magenta_glazed_terracotta[facing=west] run execute as @e[type=minecraft:mannequin,limit=1,tag=walk] run tp @e[type=minecraft:mannequin,limit=1,tag=walk] ~.2 ~ ~ -90 0
+
+
+2
+/execute at @e[type=minecraft:mannequin,tag=walk,limit=1] if block ~ ~-1 ~ minecraft:magenta_glazed_terracotta[facing=north] run execute as @e[type=minecraft:mannequin,limit=1,tag=walk] run tp @e[type=minecraft:mannequin,limit=1,tag=walk] ~ ~ ~.2 0 0
+
+3
+/execute at @e[type=minecraft:mannequin,tag=walk,limit=1] if block ~ ~-.02 ~ minecraft:magenta_glazed_terracotta[facing=east] run execute as @e[type=minecraft:mannequin,limit=1,tag=walk] run tp @e[type=minecraft:mannequin,limit=1,tag=walk] ~-0.2 ~ ~ 90 0
+
+4
+/execute at @e[type=minecraft:mannequin,tag=walk,limit=1] if block ~ ~-.02 ~ minecraft:magenta_glazed_terracotta[facing=south] run execute as @e[type=minecraft:mannequin,limit=1,tag=walk] run tp @e[type=minecraft:mannequin,limit=1,tag=walk] ~ ~ ~-.2 180 0
+============================================================================================================
+
+
+
+
 /gamerule enableCommandBlocks false
 /gamerule enableCommandBlocks true
 
@@ -197,8 +219,7 @@ NPC Komendy
 RTP
 /execute at @p run spreadplayers 0 0 100 1000 false @p
 =========================================================
-
-
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
 ============================================================================================
 teleport
 /tp @e[type=minecraft:mannequin,limit=1,sort=nearest] MikiYT1

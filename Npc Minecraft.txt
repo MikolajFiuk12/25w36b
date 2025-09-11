@@ -165,6 +165,25 @@ a to todakowo
 ==========================================================================================================================================================
 
 
+==================================================
+/team add Owner
+
+/team add Admin
+
+/team join Owner MikiYT1
+
+/team join Owner JulekGeralt
+
+/team modify Owner color dark_red
+
+/team modify Admin color red
+
+/team modify Owner prefix "[Właściciel] "
+
+/team modify Admin prefix "[Admin] "
+
+/effect give MikiYT1 minecraft:glowing 999999 0 true
+=============================================================
 
 /gamerule enableCommandBlocks false
 /gamerule enableCommandBlocks true

@@ -162,6 +162,8 @@ Gold Nugget
 
 a to todakowo
 /tag @e[type=armor_stand,limit=1,sort=nearest] add obracajacy
+
+NPC KOMENDY
 ==========================================================================================================================================================
 
 
@@ -183,6 +185,12 @@ a to todakowo
 /team modify Admin prefix "[Admin] "
 
 /effect give MikiYT1 minecraft:glowing 999999 0 true
+==============================================================
+
+
+
+
+
 =============================================================
 
 NPC na spacerek
@@ -213,7 +221,9 @@ NPC na spacerek
 /gamerule enderPearlsVanishOnDeath false
 /gamerule enderPearlsVanishOnDeath true
 
-NPC Komendy
+
+
+
 
 ======================================================
 RTP
@@ -226,6 +236,13 @@ teleport
 
 /tp d07da099-5798-4e58-afae-323f26a1bf08 MikiYT1
 ===========================================================================================
+
+
+
+
+
+
+
 
 ================================================================================
 Przedmiot w ręce manekina
@@ -244,6 +261,11 @@ Usuwanie przedmiotu z ręki
 ========================================================================================================
 
 
+
+
+
+
+
 =======================================================================================
 jako
 /kill @e[type=minecraft:vex,sort=nearest,limit=1]
@@ -255,22 +277,47 @@ give MikiYT1 minecraft:vex_spawn_egg
 
 /advancement grant @p everything
 
+
+
+
+
+
+
+
+
 ========================================================================================================================================
-Profil
+
+
+Profil Gracza MikiYT1
 /summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:paper",Count:1b}  }}
 
 
-/kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
-
-1 usunoć
 /kill @e[type=armor_stand,limit=1,sort=nearest]
 
 
-/summon minecraft:armor_stand ~ ~1.8 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil MikiYT1","color":"yellow"},Small:1b}
-/summon minecraft:armor_stand ~ ~1.5 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"UUID: 5512c056-3738-4fe3-b406-2acd783959ea","color":"yellow"},Small:1b}
-/summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"create konto:2019-07-06","color":"yellow"},Small:1b}
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
+
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment set from entity @p equipment
+================================================================================================================================================================
+/summon minecraft:armor_stand ~ ~1.9 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil MikiYT1","color":"yellow"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.7 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"UUID: 5512c056-3738-4fe3-b406-2acd783959ea","color":"yellow"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.5 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"create konto:2019-07-06","color":"yellow"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"https://www.facebook.com/miki.null.395","color":"yellow"},Small:1b}
+
 /summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"================================================","color":"yellow"},Small:1b}
+
+
+
 ==========================================================================================================================================================================
+
+
+
+
+
+
 
 
 
@@ -291,6 +338,11 @@ mojang studio
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "jeb_"}}
 ================================================================================================
+
+
+
+
+
 
 
 
@@ -321,6 +373,14 @@ collisionRule
 
 /team modify npcTeam color gold
 ==================================================================
+
+
+
+
+
+
+
+
 
 
 
@@ -422,12 +482,24 @@ wymagany blok poleceń
 
 
 
+
+
+
+
+
 ======================================================================================
 Invulnerable
 /summon minecraft:mannequin ~ ~ ~ { Invulnerable:1b,profile: {name: "Notch"}}
 
 /data merge entity @e[type=mannequin,limit=1,sort=nearest] {Invulnerable:1b}
 =========================================================================================
+
+
+
+
+
+
+
 
 
 podorzanie za graczem 
@@ -444,6 +516,13 @@ wymagany blok poleceń Repeat Always Active
 jedna komenda wystarczy
 /tp @n[type=mannequin,limit=1] ~ ~ ~ facing entity @p[sort=nearest] feet
 ================================================================================================
+
+
+
+
+
+
+
 
 
 
@@ -465,6 +544,15 @@ bes kapelusza
 
 
 
+
+
+
+
+
+
+
+
+
 =================================================================
 
 Struż z nawom
@@ -472,6 +560,12 @@ Struż z nawom
 
 /summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
 ==================================================================
+
+
+
+
+
+
 
 
 
@@ -485,11 +579,21 @@ do zabawy
 
 
 
+
+
+
+==============================================================================
 Zmiana nazwy pszy pomocom- nazywacza 
 
 
 po prostu DoctorNok
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "DoctorNok"}}
+==========================================================================
+
+
+
+
+
 
 
 
@@ -509,6 +613,11 @@ pokasz Nazwy
 
 
 
+
+
+
+
+
 ================================================================================================================
 holorgram
 /kill @e[type=minecraft:armor_stand,nbt={Invisible:1b}]
@@ -519,6 +628,15 @@ holorgram
 
 /summon minecraft:armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"MikiYT1","color":"yellow"},Small:1b}
 =============================================================================================================
+
+
+
+
+
+
+
+
+
 
 
 
@@ -534,6 +652,12 @@ particle
 ==============================================================================
 
 
+
+
+
+
+
+
 ================================================================================================
 iterakcja z npc
 /particle minecraft:happy_villager 13 66 54 0.5 1 0.5 0.1 50
@@ -546,6 +670,14 @@ iterakcja z npc
 
 give @p minecraft:apple
 =================================================================================================
+
+
+
+
+
+
+
+
 
 
 

@@ -143,12 +143,20 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 Generator:
 /summon item ~ ~1 ~ {Item:{id:"minecraft:diamond",Count:1b}}
 
-Głowa
 komenda na obrananje
 /execute as @e[type=armor_stand,tag=obracajacy] at @s run tp @s ~ ~ ~ ~1 ~
 
+kolory
+/team add Diamond
+
+/team join Diamond afbfad13-b508-4eaf-9a02-4f700d21d188
+
+/team modify Diamond color aqua
+
 stojak
-/summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'Generator',CustomNameVisible:1b,Tags:["obracajacy"],ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}]}
+/summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'Diamond',CustomNameVisible:1b,Tags:["obracajacy"],ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}]}
+
+/summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'Emerald',CustomNameVisible:1b,Tags:["obracajacy"],ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}]}
 
 /item replace entity @e[type=armor_stand,tag=obracajacy,limit=1,sort=nearest] armor.head with minecraft:diamond_block
 

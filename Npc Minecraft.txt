@@ -3,6 +3,7 @@ https://www.minecraft.net/pl-pl/article/minecraft-snapshot-25w36a
 https://mikolajfiuk12.github.io/25w36b
 https://mikolajfiuk12.github.io/25w36b/Npc%20Minecraft.txt
 https://chromewebstore.google.com/detail/youtube-anti-translate/ndpmhjnlfkgfalaieeneneenijondgag?pli=1
+https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2FlbQIxMQABHugFPUwwbQbaw8pwiiuDDMwfkxKKc-It3d4H-VWd9Mw5ODbqOC7ldu6ThafU_aem_XUWnLNeCWBXQoGG8iq2zkg
 ===========================================================
 
 
@@ -222,8 +223,12 @@ NPC na spacerek
 /gamerule enderPearlsVanishOnDeath true
 
 
+========================================================================
+zabespieczenie spawn
+execute as @a[x=104,y=71,z=154,distance=..30] run gamemode adventure @s
 
-
+execute as @a[x=104,y=71,z=154,distance=..30] run gamemode survival @s
+===========================================================================
 
 ======================================================
 RTP
@@ -273,6 +278,10 @@ jako
 /execute as @e[type=minecraft:vex,sort=nearest,limit=1] at @s run summon minecraft:mannequin
 
 give MikiYT1 minecraft:vex_spawn_egg
+
+
+/give @p creeper_spawn_egg[entity_data={id:"mannequin",profile:{name:"42Richtofen42"}}]
+
 =========================================================================================
 
 /advancement grant @p everything
@@ -280,6 +289,10 @@ give MikiYT1 minecraft:vex_spawn_egg
 
 
 
+=========================================================================================
+NPC bje
+/damage @n[type=minecraft:creeper] 1 minecraft:arrow by @n[type=minecraft:mannequin]
+=========================================================================================
 
 
 

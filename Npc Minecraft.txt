@@ -164,8 +164,17 @@ Gold Nugget
 a to todakowo
 /tag @e[type=armor_stand,limit=1,sort=nearest] add obracajacy
 
-NPC KOMENDY
+NPC KOMENDY I NIE TYLKO
 ==========================================================================================================================================================
+Komendy:
+Tworzenie scoreboarda:
+/scoreboard objectives add punkty dummy "Mikołaj Fiuk"
+/scoreboard objectives setdisplay sidebar punkty
+/scoreboard objectives modify punkty numberformat fixed elo
+
+Usuwanie scoreboarda:
+/scoreboard objectives remove punkty
+=============================================================
 
 
 ==================================================

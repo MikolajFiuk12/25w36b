@@ -148,8 +148,15 @@ komenda na obrananje
 /execute as @e[type=armor_stand,tag=obracajacy] at @s run tp @s ~ ~ ~ ~1 ~
 
 stojak
-/summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'Generator',CustomNameVisible:1b,Tags:["obracajacy"]}
+/summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'Generator',CustomNameVisible:1b,Tags:["obracajacy"],ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}]}
 
+/item replace entity @e[type=armor_stand,tag=obracajacy,limit=1,sort=nearest] armor.head with minecraft:diamond_block
+
+/item replace entity @e[type=armor_stand,tag=obracajacy,limit=1,sort=nearest] armor.head with minecraft:emerald_block
+
+/item replace entity @e[type=armor_stand,tag=obracajacy,limit=1,sort=nearest] armor.head with minecraft:
+
+Głowy
 Diament
 /give @p minecraft:player_head[minecraft:custom_name={"text":"Diamond Block","color":"gold","underlined":true,"bold":true,"italic":false},minecraft:lore=[{"text":"Custom Head ID: 97","color":"gray","italic":false},{"text":"www.minecraft-heads.com","color":"blue","italic":false}],profile={id:[I;1026891468,601702558,-2134294593,201158332],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTYzMTU5N2RjZTRlNDA1MWU4ZDVhNTQzNjQxOTY2YWI1NGZiZjI1YTBlZDYwNDdmMTFlNjE0MGQ4OGJmNDhmIn19fQ=="}]}] 1
 

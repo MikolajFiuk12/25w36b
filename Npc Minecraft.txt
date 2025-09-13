@@ -532,8 +532,25 @@ podorzanie za graczem
 Podążanie wzrokiem
 /tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
 
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc2
+
 wymagany blok poleceń Repeat Always Active
 /execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
+
+z ogrniczeniem
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+pojawia śę
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..5] run tp @s 219 63 -321
+
+znika
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..50] run tp @s 215 200 -321
+
+/data modify entity @e[type=minecraft:mannequin,tag=npc,limit=1,sort=nearest] CustomStartPos set value [~0,~0,~0]
+
+wraca do swojej pozycji
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..5] run tp @s ~ ~ ~ facing 219 63 -321
+
 
 jedna komenda wystarczy
 /tp @n[type=mannequin,limit=1] ~ ~ ~ facing entity @p[sort=nearest] feet

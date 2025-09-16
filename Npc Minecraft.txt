@@ -251,8 +251,8 @@ NPC na spacerek
 
 
 
-/gamerule enableCommandBlocks false
-/gamerule enableCommandBlocks true
+/gamerule commandBlocksEnabled false
+/gamerule commandBlocksEnabled true
 
 /gamerule enderPearlsVanishOnDeath false
 /gamerule enderPearlsVanishOnDeath true
@@ -556,6 +556,9 @@ podorzanie za graczem
 
 ==========================================================================================
 Podążanie wzrokiem
+/execute as @e[type=minecraft:mannequin,] at @s run tp @s ~ ~ ~ facing entity @p feet
+
+
 /tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
 
 /tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc2

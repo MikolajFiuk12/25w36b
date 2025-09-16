@@ -5,7 +5,6 @@ https://mikolajfiuk12.github.io/25w36b/Npc%20Minecraft.txt
 https://chromewebstore.google.com/detail/youtube-anti-translate/ndpmhjnlfkgfalaieeneneenijondgag?pli=1
 https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2FlbQIxMQABHugFPUwwbQbaw8pwiiuDDMwfkxKKc-It3d4H-VWd9Mw5ODbqOC7ldu6ThafU_aem_XUWnLNeCWBXQoGG8iq2zkg
 ===========================================================
-/fetchprofile name MikiYT1
 
 Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności od wersji gry (Java vs Bedrock), ale mogę wymienić Ci te najważniejsze i najczęściej używane. Podzielę je na kategorie, żeby było łatwiej się w tym odnaleźć.
 ---
@@ -137,6 +136,134 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
 
+===================================================================================================
+Struż
+/summon minecraft:mannequin
+/fetchprofile name MikiYT1
+
+Struż z Skina dowolnwgo gracza
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT2"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT3"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "GamerFranYT"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Mikolais"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Jan1000"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "JulekGeralt"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "JurajskiStas"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "TIDZIMI"}}
+
+mojang studio
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Notch"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "gnembon"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "LadyAgnes"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "jeb_"}}
+================================================================================================
+
+
+============================================================================================
+teleport
+/tp @e[type=minecraft:mannequin,limit=1,sort=nearest] MikiYT1
+
+/tp d07da099-5798-4e58-afae-323f26a1bf08 MikiYT1
+===========================================================================================
+
+
+
+
+================================================================================
+Przedmiot w ręce manekina
+/execute as @e[type=minecraft:mannequin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
+
+do jednego
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add MojManekin
+
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
+
+zbroja equ
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment set from entity @p equipment
+
+Usuwanie przedmiotu z ręki
+/execute as @e[type=minecraft:mannequin] run data remove entity @s equipment.mainhand
+========================================================================================================
+
+
+
+
+
+==========================================================================================
+Podążanie wzrokiem
+/execute as @e[type=minecraft:mannequin,] at @s run tp @s ~ ~ ~ facing entity @p feet
+
+
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
+
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc2
+
+wymagany blok poleceń Repeat Always Active
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
+
+z ogrniczeniem
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+pojawia śę
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..5] run tp @s 219 63 -321
+
+znika
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..50] run tp @s 215 200 -321
+
+/data modify entity @e[type=minecraft:mannequin,tag=npc,limit=1,sort=nearest] CustomStartPos set value [~0,~0,~0]
+
+wraca do swojej pozycji
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..5] run tp @s ~ ~ ~ facing 219 63 -321
+
+
+jedna komenda wystarczy
+/tp @n[type=mannequin,limit=1] ~ ~ ~ facing entity @p[sort=nearest] feet
+================================================================================================
+
+
+========================================================================================================================================
+
+
+Profil Gracza MikiYT1
+/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:paper",Count:1b}  }}
+
+
+/kill @e[type=armor_stand,limit=1,sort=nearest]
+
+
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
+
+/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment set from entity @p equipment
+================================================================================================================================================================
+/summon minecraft:armor_stand ~ ~1.9 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil MikiYT1","color":"yellow"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.7 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"UUID: 5512c056-3738-4fe3-b406-2acd783959ea","color":"yellow"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.5 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"create konto:2019-07-06","color":"yellow"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"https://www.facebook.com/miki.null.395","color":"yellow"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"================================================","color":"yellow"},Small:1b}
+
+
+
+=======================================================================================================================================================================
+
+
+
+
 
 
 =================================================================================================================================
@@ -212,11 +339,18 @@ Usuwanie scoreboarda:
 /effect give MikiYT1 minecraft:glowing 999999 0 true
 ==============================================================
 
-/data modify entity 0beebf31-02d3-4f79-a9ab-675b4dcbd32a pose set value crouching
 
-/data modify entity 0beebf31-02d3-4f79-a9ab-675b4dcbd32a pose set value Standing
 
-/data modify entity 0beebf31-02d3-4f79-a9ab-675b4dcbd32a immovable set value true
+
+
+
+===========================================================================================================
+modifikacja
+/data modify entity <UUID_manekina> pose set value crouching
+
+/data modify entity <UUID_manekina> pose set value Standing
+
+/data modify entity <UUID_manekina> immovable set value true
 
 /summon minecraft:mannequin ~ ~1 ~ {profile:{name:"MikiYT1"},CustomName:"MikiYT1",pose:crouching}
 
@@ -225,7 +359,7 @@ Usuwanie scoreboarda:
 /summon minecraft:mannequin ~ ~1 ~ {profile:{name:"MikiYT1"},CustomName:"MikiYT1",pose:fall_flying}
 
 /summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},CustomName:'MikiYT1',Pose:"crouching",immovable:true}
-
+=====================================================================================================================
 
 =============================================================
 
@@ -270,39 +404,7 @@ RTP
 /execute at @p run spreadplayers 0 0 100 1000 false @p
 =========================================================
 /data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
-============================================================================================
-teleport
-/tp @e[type=minecraft:mannequin,limit=1,sort=nearest] MikiYT1
-
-/tp d07da099-5798-4e58-afae-323f26a1bf08 MikiYT1
-===========================================================================================
-
-
-
-
-
-
-
-
-================================================================================
-Przedmiot w ręce manekina
-/execute as @e[type=minecraft:mannequin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
-
-do jednego
-/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add MojManekin
-
-/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
-
-zbroja equ
-/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment set from entity @p equipment
-
-Usuwanie przedmiotu z ręki
-/execute as @e[type=minecraft:mannequin] run data remove entity @s equipment.mainhand
-========================================================================================================
-
-
-
-
+=================================================================================================
 
 
 
@@ -328,75 +430,6 @@ give MikiYT1 minecraft:vex_spawn_egg
 NPC bje
 /damage @n[type=minecraft:creeper] 1 minecraft:arrow by @n[type=minecraft:mannequin]
 =========================================================================================
-
-
-
-
-
-========================================================================================================================================
-
-
-Profil Gracza MikiYT1
-/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:paper",Count:1b}  }}
-
-
-/kill @e[type=armor_stand,limit=1,sort=nearest]
-
-
-/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
-
-/execute as @e[type=minecraft:mannequin,tag=MojManekin] run data modify entity @s equipment set from entity @p equipment
-================================================================================================================================================================
-/summon minecraft:armor_stand ~ ~1.9 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil MikiYT1","color":"yellow"},Small:1b}
-
-/summon minecraft:armor_stand ~ ~1.7 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"UUID: 5512c056-3738-4fe3-b406-2acd783959ea","color":"yellow"},Small:1b}
-
-/summon minecraft:armor_stand ~ ~1.5 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"create konto:2019-07-06","color":"yellow"},Small:1b}
-
-/summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"https://www.facebook.com/miki.null.395","color":"yellow"},Small:1b}
-
-/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"================================================","color":"yellow"},Small:1b}
-
-
-
-==========================================================================================================================================================================
-
-
-
-
-
-
-
-
-
-===================================================================================================
-Struż
-/summon minecraft:mannequin
-
-Struż z Skina dowolnwgo gracza
-/summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
-
-
-mojang studio
-/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Notch"}}
-
-/summon minecraft:mannequin ~ ~ ~ {profile: {name: "gnembon"}}
-
-/summon minecraft:mannequin ~ ~ ~ {profile: {name: "LadyAgnes"}}
-
-/summon minecraft:mannequin ~ ~ ~ {profile: {name: "jeb_"}}
-================================================================================================
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -554,45 +587,6 @@ podorzanie za graczem
 /execute at @e[type=minecraft:mannequin,limit=1] facing entity @p[distance=1..] feet run teleport @n[type=minecraft:mannequin,limit=1] ^ ^ ^0.8 facing entity @p feet
 
 
-==========================================================================================
-Podążanie wzrokiem
-/execute as @e[type=minecraft:mannequin,] at @s run tp @s ~ ~ ~ facing entity @p feet
-
-
-/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
-
-/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc2
-
-wymagany blok poleceń Repeat Always Active
-/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
-
-z ogrniczeniem
-/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
-
-pojawia śę
-/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..5] run tp @s 219 63 -321
-
-znika
-/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..50] run tp @s 215 200 -321
-
-/data modify entity @e[type=minecraft:mannequin,tag=npc,limit=1,sort=nearest] CustomStartPos set value [~0,~0,~0]
-
-wraca do swojej pozycji
-/execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..5] run tp @s ~ ~ ~ facing 219 63 -321
-
-
-jedna komenda wystarczy
-/tp @n[type=mannequin,limit=1] ~ ~ ~ facing entity @p[sort=nearest] feet
-================================================================================================
-
-
-
-
-
-
-
-
-
 
 
 ======================================================================================================
@@ -612,15 +606,6 @@ bes kapelusza
 
 
 
-
-
-
-
-
-
-
-
-
 =================================================================
 
 Struż z nawom
@@ -628,12 +613,6 @@ Struż z nawom
 
 /summon minecraft:mannequin ~ ~ ~ {CustomName:"Steve"}
 ==================================================================
-
-
-
-
-
-
 
 
 

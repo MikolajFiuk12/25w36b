@@ -5,7 +5,7 @@ https://mikolajfiuk12.github.io/25w36b/Npc%20Minecraft.txt
 https://chromewebstore.google.com/detail/youtube-anti-translate/ndpmhjnlfkgfalaieeneneenijondgag?pli=1
 https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2FlbQIxMQABHugFPUwwbQbaw8pwiiuDDMwfkxKKc-It3d4H-VWd9Mw5ODbqOC7ldu6ThafU_aem_XUWnLNeCWBXQoGG8iq2zkg
 ===========================================================
-
+/fetchprofile name MikiYT1
 
 Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności od wersji gry (Java vs Bedrock), ale mogę wymienić Ci te najważniejsze i najczęściej używane. Podzielę je na kategorie, żeby było łatwiej się w tym odnaleźć.
 ---
@@ -212,8 +212,19 @@ Usuwanie scoreboarda:
 /effect give MikiYT1 minecraft:glowing 999999 0 true
 ==============================================================
 
+/data modify entity 0beebf31-02d3-4f79-a9ab-675b4dcbd32a pose set value crouching
 
+/data modify entity 0beebf31-02d3-4f79-a9ab-675b4dcbd32a pose set value Standing
 
+/data modify entity 0beebf31-02d3-4f79-a9ab-675b4dcbd32a immovable set value true
+
+/summon minecraft:mannequin ~ ~1 ~ {profile:{name:"MikiYT1"},CustomName:"MikiYT1",pose:crouching}
+
+/summon minecraft:mannequin ~ ~1 ~ {profile:{name:"MikiYT1"},CustomName:"MikiYT1",pose:sleeping}
+
+/summon minecraft:mannequin ~ ~1 ~ {profile:{name:"MikiYT1"},CustomName:"MikiYT1",pose:fall_flying}
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},CustomName:'MikiYT1',Pose:"crouching",immovable:true}
 
 
 =============================================================

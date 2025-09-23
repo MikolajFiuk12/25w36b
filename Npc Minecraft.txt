@@ -203,6 +203,8 @@ Usuwanie przedmiotu z ręki
 
 ==========================================================================================
 Podążanie wzrokiem
+/execute at @e[type=minecraft:mannequin,limit=1] facing entity @p[distance=1..] feet run teleport @n[type=minecraft:mannequin,limit=1] ^ ^ ^0.8 facing entity @p feet
+
 /execute as @e[type=minecraft:mannequin,] at @s run tp @s ~ ~ ~ facing entity @p feet
 
 
@@ -231,11 +233,72 @@ wraca do swojej pozycji
 jedna komenda wystarczy
 /tp @n[type=mannequin,limit=1] ~ ~ ~ facing entity @p[sort=nearest] feet
 ================================================================================================
+lustro
+/execute as @e[type=minecraft:mannequin] run data modify entity @s Motion set from entity @p Motion
 
+/execute as @e[type=minecraft:mannequin] run data modify entity @s Rotation set from entity @p Rotation
 
 ========================================================================================================================================
+ LINKI
+/tellraw @a {"bold":true,"click_event":{"action":"open_url","url":"https://www.youtube.com/@MikoajFiuk"}
+,"color":"gold","hover_event":{"action":"show_text","value":[{"text":"Click me!","color":"gold","bold":true}]},"text":"Subscribe to our YouTube!","underlined":true}
+=======================================================================================================================
 
 
+
+=======================================================================================================================
+Dzwienk npc
+to som linki do jak to ma wyglądać :)
+cmd0 https://github.com/MikolajFiuk12/Backup/blob/main/2025-09-24_00.42.08.png?raw=true
+cmd1 https://github.com/MikolajFiuk12/Backup/blob/main/cmd1.png?raw=true
+cmd2 https://github.com/MikolajFiuk12/Backup/blob/main/cmd2.png?raw=true
+
+/tag @e[type=mannequin,limit=1,sort=nearest] add Worker
+
+0./summon minecraft:mannequin ~ ~ ~ {profile:LadyAgnes,Invulnerable:True,NoAI:true,Rotation:[90.0f, 0.0f], Tags:["Worker"]}
+
+=========================================================================================================
+1./ride @e[type=minecraft:text_display,limit=1,sort=nearest] mount @e[type=minecraft:mannequin,limit=1,sort=nearest,tag=Worker]
+==========================================================================================================
+
+
+====================================================================================
+2./execute at @e[tag=Worker] run tp @e[tag=Worker] ~ ~ ~ facing entity @p feet
+====================================================================================
+
+======================================================================================
+3./execute at @e[tag=Worker] run playsound minecraft:entity.villager.yes ambient @a
+=======================================================================================
+
+
+=============================================================================
+4.execute as @e[tag=Worker] at @s if entity @e[type=player,distance=..4]
+===============================================================================
+
+==========================================================
+5./tp @e[type=minecraft:text_display,limit=1] ~ ~1 ~
+===========================================================
+
+
+
+===========================================================================================================================
+6./summon minecraft:text_display ~ ~ ~ {text:"Good luck!",billboard:"center",transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0.2f,0f],scale:[1f,1f,1f]}}
+==========================================================================================================================
+
+
+
+======================================================================================================================
+7./ride @e[type=minecraft:text_display,limit=1,sort=nearest] mount @e[type=minecraft:mannequin,limit=1,sort=nearest]
+=======================================================================================================================
+
+8./kill @e[type=minecraft:mannequin,tag=Worker]
+================================================================
+
+
+
+
+
+=================================================================================
 Profil Gracza MikiYT1
 /summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:paper",Count:1b}  }}
 
@@ -390,6 +453,18 @@ NPC na spacerek
 
 /gamerule enderPearlsVanishOnDeath false
 /gamerule enderPearlsVanishOnDeath true
+
+/gamerule pvp false
+/gamerule pvp true
+
+/gamerule allowEnteringNetherUsingPortals false
+/gamerule allowEnteringNetherUsingPortals true
+
+/gamerule spawnMonsters false
+/gamerule spawnMonsters true
+
+/gamerule commandBlockOutput false
+
 
 
 ========================================================================

@@ -249,13 +249,17 @@ lustro
 =======================================================================================================================
 Dzwienk npc
 to som linki do jak to ma wyglądać :)
-cmd0 https://github.com/MikolajFiuk12/Backup/blob/main/2025-09-24_00.42.08.png?raw=true
-cmd1 https://github.com/MikolajFiuk12/Backup/blob/main/cmd1.png?raw=true
-cmd2 https://github.com/MikolajFiuk12/Backup/blob/main/cmd2.png?raw=true
+cmd0 https://github.com/MikolajFiuk12/25w36b/blob/main/cmd0.png?raw=true
+cmd1 https://github.com/MikolajFiuk12/25w36b/blob/main/cmd1.png?raw=true
+cmd2 https://github.com/MikolajFiuk12/25w36b/blob/main/cmd2.png?raw=true
 
 /tag @e[type=mannequin,limit=1,sort=nearest] add Worker
 
+======================================================================================================================
 0./summon minecraft:mannequin ~ ~ ~ {profile:LadyAgnes,Invulnerable:True,NoAI:true,Rotation:[90.0f, 0.0f], Tags:["Worker"]}
+=========================================================================================================================
+
+
 
 =========================================================================================================
 1./ride @e[type=minecraft:text_display,limit=1,sort=nearest] mount @e[type=minecraft:mannequin,limit=1,sort=nearest,tag=Worker]

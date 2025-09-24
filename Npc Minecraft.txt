@@ -175,6 +175,8 @@ mojang studio
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "LadyAgnes"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "jeb_"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: superman, Rotation:[180.0f, 0.0f]}
 ================================================================================================
 
 

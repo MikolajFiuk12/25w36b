@@ -139,6 +139,10 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 dźwięki
 /playsound minecraft:ambient.cave ambient @p 7 -59 -30
 
+/title @p title {"color":"dark_green","text":"Udało ci śę"}
+
+/playsound minecraft:entity.firework_rocket.twinkle ambient @a
+
 ===================================================================================================
 Struż
 /summon minecraft:mannequin

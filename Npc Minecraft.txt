@@ -249,6 +249,8 @@ lustro
  LINKI
 /tellraw @a {"bold":true,"click_event":{"action":"open_url","url":"https://www.youtube.com/@MikoajFiuk"}
 ,"color":"gold","hover_event":{"action":"show_text","value":[{"text":"Click me!","color":"gold","bold":true}]},"text":"Subscribe to our YouTube!","underlined":true}
+
+/playsound minecraft:entity.villager.yes ambient @a
 =======================================================================================================================
 
 

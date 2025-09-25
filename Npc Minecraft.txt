@@ -190,6 +190,73 @@ teleport
 
 
 
+
+============================================================================================
+NPC KOMENDY PSZYDATNE
+Skin
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "JustcallmeAnna86"}}
+/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót na spawn ✅"}
+/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót do LOBBY ✅"}
+/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót do Domu ✅"}
+
+/tag @e[type=mannequin,limit=1,sort=nearest] add npc
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
+lup to z pole widzenia
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+
+Dodaj cmd do npc
+/tag @e[type=mannequin,limit=1,sort=nearest] add tpzone
+
+/execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run tp @s 64 85 -713
+/execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run spreadplayers 0 0 100 1000 false @p
+/execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run give @p minecraft:diamond
+
+
+
+/team add npcTeam
+
+/team remove npcTeam
+
+/team join npcTeam JulekGeralt
+/team leave JulekGeralt
+
+dodawnje npc do drużyny
+/team join npcTeam @e[type=minecraft:mannequin,limit=1,sort=nearest]
+
+/team leave @e
+
+
+collisionRule
+/team modify npcTeam collisionRule never
+/team modify npcTeam collisionRule always
+
+/team modify npcTeam color gold
+
+
+Osłona
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
+
+/execute as @e[type=minecraft:mannequin] run data merge entity @s {Invulnerable:1b,NoGravity:1b}
+
+Sklepikasz
+/summon minecraft:wandering_trader ~ ~ ~ {CustomName:"\"Zenek\"",CustomNameVisible:1b,Silent:1b,NoAI:1b,Offers:{Recipes:[{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_sword",Count:1,tag:{Enchantments:[{id:"minecraft:sharpness",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fire_aspect",lvl:2},{id:"minecraft:looting",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_pickaxe",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fortune",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_axe",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:sharpness",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_shovel",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:diamond",Count:1},sell:{id:"minecraft:golden_apple",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:diamond",Count:1},sell:{id:"minecraft:enchanted_golden_apple",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:apple",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:bread",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_beef",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_chicken",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_cod",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_mutton",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_porkchop",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_rabbit",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_salmon",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:melon_slice",Count:5},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:carrot",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:potato",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:golden_carrot",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:sweet_berries",Count:5},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cherry",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:beetroot_soup",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:melon_smoothie",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:fish_stew",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:stone",Count:1},sell:{id:"minecraft:emerald",Count:1},maxUses:999999,rewardExp:1b}]}}
+
+
+
+
+/effect give @e[type=villager,limit=1,sort=nearest] minecraft:invisibility infinite 1 true
+/effect give @e[type=wandering_trader,limit=1,sort=nearest] minecraft:invisibility infinite 1 true
+
+/summon minecraft:mannequin ~ ~ ~ {profile:"SirJuicyThighs",CustomName:"Sklepikasz ✅"}
+
+
+============================================================================================================
+
+
+
+
+
 ================================================================================
 Przedmiot w ręce manekina
 /execute as @e[type=minecraft:mannequin] run data modify entity @s equipment.mainhand set from entity @p SelectedItem
@@ -493,7 +560,6 @@ execute as @a[x=104,y=71,z=154,distance=..30] run gamemode survival @s
 RTP
 /execute at @p run spreadplayers 0 0 100 1000 false @p
 =========================================================
-/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
 =================================================================================================
 
 
@@ -520,36 +586,6 @@ give MikiYT1 minecraft:vex_spawn_egg
 NPC bje
 /damage @n[type=minecraft:creeper] 1 minecraft:arrow by @n[type=minecraft:mannequin]
 =========================================================================================
-
-
-
-Team
-===============================================================
-/team add npcTeam
-
-/team remove npcTeam
-
-/team join npcTeam JulekGeralt
-/team leave JulekGeralt
-
-dodawnje npc do drużyny
-/team join npcTeam @e[type=minecraft:mannequin,limit=1,sort=nearest]
-
-/team leave @e
-
-
-collisionRule
-/team modify npcTeam collisionRule never
-/team modify npcTeam collisionRule always
-
-/team modify npcTeam color gold
-==================================================================
-
-
-
-
-
-
 
 
 

@@ -196,7 +196,7 @@ NPC KOMENDY PSZYDATNE
 Skin
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "JustcallmeAnna86"}}
 /summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót na spawn ✅"}
-/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót do LOBBY ✅"}
+/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót na LOBBY ✅"}
 /summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót do Domu ✅"}
 
 /tag @e[type=mannequin,limit=1,sort=nearest] add npc
@@ -211,6 +211,10 @@ Dodaj cmd do npc
 /execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run tp @s 64 85 -713
 /execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run spreadplayers 0 0 100 1000 false @p
 /execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run give @p minecraft:diamond
+/execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run tellraw @a {"bold":true,"click_event":{"action":"open_url","url":"https://www.youtube.com/@MikoajFiuk"}
+,"color":"gold","hover_event":{"action":"show_text","value":[{"text":"Click me!","color":"gold","bold":true}]},"text":"Subscribe to our YouTube!","underlined":true}
+/execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run playsound minecraft:entity.villager.yes ambient @a
+/execute as @a at @s if entity @e[type=mannequin,tag=tpzone,distance=..2] run playsound minecraft:entity.villager.no ambient @a
 
 
 
@@ -243,6 +247,44 @@ Sklepikasz
 /summon minecraft:wandering_trader ~ ~ ~ {CustomName:"\"Zenek\"",CustomNameVisible:1b,Silent:1b,NoAI:1b,Offers:{Recipes:[{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_sword",Count:1,tag:{Enchantments:[{id:"minecraft:sharpness",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fire_aspect",lvl:2},{id:"minecraft:looting",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_pickaxe",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fortune",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_axe",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:sharpness",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:diamond_shovel",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}],Unbreakable:1b}},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:diamond",Count:1},sell:{id:"minecraft:golden_apple",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:diamond",Count:1},sell:{id:"minecraft:enchanted_golden_apple",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:apple",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:bread",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_beef",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_chicken",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_cod",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_mutton",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_porkchop",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_rabbit",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cooked_salmon",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:melon_slice",Count:5},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:carrot",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:potato",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:golden_carrot",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:sweet_berries",Count:5},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:cherry",Count:3},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:beetroot_soup",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:melon_smoothie",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:fish_stew",Count:1},maxUses:999999,rewardExp:1b},{buy:{id:"minecraft:stone",Count:1},sell:{id:"minecraft:emerald",Count:1},maxUses:999999,rewardExp:1b}]}}
 
 
+2.
+/summon minecraft:wandering_trader ~ ~ ~ {
+    CustomName:"\"Zenek Kowal\"",
+    Silent:1b,
+    NoAI:1b,
+    Offers:{
+        Recipes:[
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_sword",Count:1,tag:{Enchantments:[{id:"minecraft:sharpness",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fire_aspect",lvl:2},{id:"minecraft:looting",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_pickaxe",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fortune",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_axe",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:sharpness",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_shovel",Count:1,tag:{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_helmet",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:respiration",lvl:3},{id:"minecraft:aqua_affinity",lvl:1},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_chestplate",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_leggings",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:diamond_boots",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:feather_falling",lvl:4},{id:"minecraft:depth_strider",lvl:3},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:melon_slice",Count:5}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:diamond",Count:1}, sell:{id:"minecraft:golden_apple",Count:1}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:diamond",Count:1}, sell:{id:"minecraft:enchanted_golden_apple",Count:1}, uses:0, maxUses:9999999},
+            {buy:{id:"minecraft:emerald",Count:1}, sell:{id:"minecraft:apple",Count:3}, uses:0, maxUses:9999999}
+        ]
+    },
+    ArmorItems:[
+        {id:"minecraft:diamond_boots",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:feather_falling",lvl:4},{id:"minecraft:depth_strider",lvl:3},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}},
+        {id:"minecraft:diamond_leggings",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}},
+        {id:"minecraft:diamond_chestplate",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}},
+        {id:"minecraft:diamond_helmet",Count:1,tag:{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:respiration",lvl:3},{id:"minecraft:aqua_affinity",lvl:1},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1}]}}
+    ]
+}
+
+
+
+
+3.
+/summon villager ~ ~ ~ {CustomName:'Zenek Kowal',VillagerData:{profession:weaponsmith,level:5,type:plains},NoAI:1b,Offers:{Recipes:[{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_chestplate",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_helmet",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_leggings",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_boots",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_sword",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_pickaxe",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_axe",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:netherite_shovel",Count:1},maxUses:999},{buy:{id:"minecraft:emerald",Count:1},sell:{id:"minecraft:experience_bottle",Count:1},maxUses:999}]}}
+
+
+
+
 
 /effect give @e[type=villager,limit=1,sort=nearest] minecraft:invisibility infinite 1 true
 /effect give @e[type=wandering_trader,limit=1,sort=nearest] minecraft:invisibility infinite 1 true
@@ -270,6 +312,8 @@ zbroja equ
 
 Usuwanie przedmiotu z ręki
 /execute as @e[type=minecraft:mannequin] run data remove entity @s equipment.mainhand
+
+/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:netherite_sword",count:1},offhand:{id:"minecraft:shield",count:1}}}
 ========================================================================================================
 
 
@@ -308,7 +352,25 @@ wraca do swojej pozycji
 jedna komenda wystarczy
 /tp @n[type=mannequin,limit=1] ~ ~ ~ facing entity @p[sort=nearest] feet
 ================================================================================================
-lustro
+LUSTRO
+/summon minecraft:mannequin ~ ~ ~ {Tags:["tda3"],CustomName:"Lustro",profile:MikiYT1}
+
+execute as @e[tag=tda3] at MikiYT1 run tp @e[tag=tda3] ~ ~ ~-3.5
+
+execute as @e[type=minecraft:mannequin,tag=target3] at @s run tp @s ~ ~ ~ facing entity @p feet
+
+execute as @e[tag=tda3] at @e[tag=tda3] run rotate @e[tag=tda3,limit=1] facing entity @e[tag=target3,limit=1] feet
+
+item replace entity @e[tag=tda3] weapon.mainhand from entity MikiYT1 weapon.mainhand
+
+item replace entity @e[tag=tda3] armor.chest from entity MikiYT1 armor.chest
+
+item replace entity @e[tag=tda3] armor.feet from entity MikiYT1 armor.feet
+
+item replace entity @e[tag=tda3] armor.legs from entity MikiYT1 armor.legs
+
+item replace entity @e[tag=tda3] armor.head from entity MikiYT1 armor.head
+
 /execute as @e[type=minecraft:mannequin] run data modify entity @s Motion set from entity @p Motion
 
 /execute as @e[type=minecraft:mannequin] run data modify entity @s Rotation set from entity @p Rotation

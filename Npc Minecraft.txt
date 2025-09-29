@@ -135,6 +135,33 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 ---
 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
+===============================================================================================================
+Mannequins
+25w36b
+Added a new type of technical entity called minecraft:mannequin which can only be spawned with summon commands.
+
+A Mannequin is a Player Avatar without a connected Player
+Mannequins always show an "NPC" text where a Player's below_score score would show
+Mannequins function as Living Entities - they can hold and wear equipment, have attributes & effects, take damage, etc
+Data Fields:
+
+profile - Which profile to show on the entity. This is either a Player profile (same format as a minecraft:profile component) or a Mannequin profile with the following fields:
+texture - Namespaced ID of the skin texture to use
+The skin is specified relative to the textures folder and with a .png suffix
+e.g. entity/player/wide/steve will use the default wide Steve skin
+cape - Optional namespaced ID of the cape texture to use
+When specified, uses the same format as the texture field
+Omitting this field means the Mannequin has no cape
+elytra - Optional namespaced ID of the elytra texture to use
+When specified, uses the same format as the texture field
+Omitting this field means the Mannequin uses the cape texture, or if that is also omitted, the default Elytra texture when wearing Elytra
+model - Optional model type, one of wide and slim
+If omitted, wide is used
+hidden_layers - List of outer skin layers to hide
+Valid entries: cape, jacket, left_sleeve, right_sleeve, left_pants_leg, right_pants_leg, hat
+main_hand - Which hand is the main hand of the Mannequn - one of left and right
+=====================================================================================================
+
 
 /tick freeze
 /tick unfreeze
@@ -151,7 +178,25 @@ dźwięki
 Struż
 /summon minecraft:mannequin
 /fetchprofile name MikiYT1
+=====================================================================================================
+modfikacje
+zmień skina 
+/data modify entity 1c2d9794-237c-417a-b460-50199d7405c2 profile set value 'MikiYT1'
 
+
+dodaj przedmiot
+/data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] equipment.mainhand set value {id:"minecraft:diamond",Count:1b}
+
+usuń przedmiot
+/data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] equipment.mainhand set value {id:"minecraft:air",Count:1b}
+
+dodaj tarcze
+/data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] equipment.offhand set value {id:"minecraft:shield",Count:1b}
+
+dodaj gracza z przedmiotmi
+/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:diamond_sword",Count:1b},offhand:{id:"minecraft:shield",Count:1b}},armor:{head:{id:"minecraft:diamond_helmet",Count:1b},chest:{id:"minecraft:diamond_chestplate",Count:1b},legs:{id:"minecraft:diamond_leggings",Count:1b},feet:{id:"minecraft:diamond_boots",Count:1b}}}
+
+=====================================================================================================
 Struż z Skina dowolnwgo gracza
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
 
@@ -447,8 +492,7 @@ cmd2 https://github.com/MikolajFiuk12/25w36b/blob/main/cmd2.png?raw=true
 
 =================================================================================
 Profil Gracza MikiYT1
-/summon minecraft:mannequin ~ ~ ~ {  profile: {name:"MikiYT1"},  equipment: {    mainhand: {id:"minecraft:paper",Count:1b}  }}
-
+/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:paper",Count:1b}}}
 
 /kill @e[type=armor_stand,limit=1,sort=nearest]
 
@@ -624,8 +668,13 @@ execute as @a[x=104,y=71,z=154,distance=..30] run gamemode survival @s
 ======================================================
 RTP
 /execute at @p run spreadplayers 0 0 100 1000 false @p
+
+/execute at MikiYT1 run spreadplayers 0 0 100 1000 false @p
+
+/execute at @p run spreadplayers 0 0 2000000 10000 false @p
 =========================================================
-=================================================================================================
+
+
 
 
 

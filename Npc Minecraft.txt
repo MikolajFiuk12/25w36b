@@ -135,6 +135,9 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 ---
 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
+
+
+
 ===============================================================================================================
 Mannequins
 25w36b
@@ -343,8 +346,12 @@ Sklepikasz
 
 ============================================================================================================
 
+editowenie
+/summon minecraft:mannequin ~ ~ ~ {profile:{model:"wide"}}
 
+/summon minecraft:mannequin ~ ~ ~ {profile:{main_hand:"left"}}
 
+/summon minecraft:mannequin ~ ~ ~ {immovable:"true"}
 
 
 ================================================================================
@@ -424,7 +431,52 @@ item replace entity @e[tag=tda3] armor.head from entity MikiYT1 armor.head
 
 /execute as @e[type=minecraft:mannequin] run data modify entity @s Rotation set from entity @p Rotation
 
-========================================================================================================================================
+======================
+Mirror World - Bansed
+https://drive.google.com/file/d/13Iuk2ghuJxmkH89XL8JnV_oJb1wsyRp7/view?usp=sharing
+
+1. load.mcfunction
+say datapack loaded
+
+scoreboard objectives add npc dummy
+scoreboard players set 5000 npc 5000
+scoreboard players set -1 npc -1
+
+
+2. main.mcfunction
+execute store result score distance npc run data get entity @p Pos[2] 10000
+scoreboard players operation distance npc -= 5000 npc
+scoreboard players operation distance npc *= -1 npc
+execute store result storage minecraft:npc distance double 0.0001 run scoreboard players get distance npc
+
+execute store result score rotation npc run data get entity @p Rotation[0] 10000
+scoreboard players operation rotation npc *= -1 npc
+execute store result storage minecraft:npc rotation double 0.0001 run scoreboard players get rotation npc
+
+
+function bansed:tp with storage minecraft:npc
+
+3. tp.mcfunction
+$execute as @p at @p positioned ~ ~ 0.5 rotated $(rotation) ~ run tp @e[type=minecraft:mannequin,sort=nearest,limit=1] ~ ~ ~$(distance) ~180 ~
+===================================================================
+
+
+==============================================
+particle
+/particle minecraft:glow -7757 70 -6722 10 2 10 0.5 50 force
+
+/particle minecraft:happy_villager -7757 70 -6722 10 2 10 0.5 50 force
+
+/particle minecraft:totem_of_undying -7757 70 -6722 10 2 10 0.5 50 force
+==============================================================================
+
+================================================================================
+/data modify entity @n[type=minecraft:mannequin] description set value "."
+/summon minecraft:mannequin ~ ~ ~ {pose:"crouching"}
+===========================================================================================================================
+
+
+=============
  LINKI
 /tellraw @a {"bold":true,"click_event":{"action":"open_url","url":"https://www.youtube.com/@MikoajFiuk"}
 ,"color":"gold","hover_event":{"action":"show_text","value":[{"text":"Click me!","color":"gold","bold":true}]},"text":"Subscribe to our YouTube!","underlined":true}

@@ -1,10 +1,675 @@
-=========================================================================================
+============================================================================================================================================================================================================================================
+https://www.minecraft.net/pl-pl/article/minecraft-java-edition-1-21-9
 https://www.minecraft.net/pl-pl/article/minecraft-snapshot-25w36a
 https://mikolajfiuk12.github.io/25w36b
 https://mikolajfiuk12.github.io/25w36b/Npc%20Minecraft.txt
 https://chromewebstore.google.com/detail/youtube-anti-translate/ndpmhjnlfkgfalaieeneneenijondgag?pli=1
 https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2FlbQIxMQABHugFPUwwbQbaw8pwiiuDDMwfkxKKc-It3d4H-VWd9Mw5ODbqOC7ldu6ThafU_aem_XUWnLNeCWBXQoGG8iq2zkg
-===========================================================
+============================================================================================================================================================================================================================================
+
+Jasne, Mikołaj! 😄 Skoro chcesz naprawdę głębokie wyjaśnienie, to opowiem Ci o **komendach w Minecraft**, **po co są**, **co dzięki nim możesz robić** i jak można je wykorzystać w praktyce, zarówno w normalnej grze, jak i w **command blockach**.
+
+---
+
+## **1. Co to są komendy w Minecraft?**
+
+Komendy w Minecraft to **specjalne polecenia wpisywane w grze**, które pozwalają Ci zmieniać świat, zarządzać graczami, mobami, blokami i innymi elementami gry w sposób natychmiastowy.
+Można je wpisywać w:
+
+* czacie (wpisujesz `/komenda`)
+* command blockach (blokach specjalnie do automatyzacji komend)
+
+Komendy pozwalają na **praktycznie wszystko**, od teleportacji, przez tworzenie struktur, po generowanie efektów specjalnych i niestandardowych mobów.
+
+---
+
+## **2. Po co używa się komend?**
+
+Komendy są użyteczne w wielu sytuacjach:
+
+1. **Dla gracza** – szybko zdobywasz przedmioty, zmieniasz pogodę, teleportujesz się lub ustawiasz punkt odrodzenia.
+2. **Dla map twórców i serwerów** – tworzenie przygodowych map, minigier, wyzwań i automatycznych systemów.
+3. **Dla command blocków** – można tworzyć automatyczne zdarzenia w grze, np.:
+
+   * teleportacja mobów w określone miejsce
+   * spawn lootu w chestach
+   * pokazywanie napisów i efektów wizualnych
+   * systemy punktów i nagród w minigrach
+4. **Dla eksperymentów** – testowanie funkcji, modyfikowanie świata bez granic, tworzenie machin redstone z automatyką
+
+---
+
+## **3. Przykłady, co możesz robić dzięki komendom**
+
+### **Teleportacja i ruch**
+
+* Teleportacja gracza lub mobów w dowolne miejsce:
+
+```
+/tp @p 100 64 -200
+```
+
+* Tworzenie „portali” lub automatycznych przesunięć graczy w mapach przygodowych.
+
+---
+
+### **Generowanie przedmiotów i mobów**
+
+* Daj graczowi dowolny przedmiot z enchantami i właściwościami:
+
+```
+/give @p minecraft:diamond_sword{Enchantments:[{id:"minecraft:sharpness",lvl:5}]}
+```
+
+* Przywołanie custom mobów:
+
+```
+/summon minecraft:zombie ~ ~ ~ {CustomName:"\"Strażnik\""}
+```
+
+* Możesz tworzyć bossy, niestandardowe moby, a nawet niewidzialne NPC do map przygodowych.
+
+---
+
+### **Zmiana świata**
+
+* Zmiana czasu i pogody:
+
+```
+/time set day
+/weather thunder
+```
+
+* Wypełnianie bloków i tworzenie struktur:
+
+```
+/fill ~ ~ ~ ~10 ~5 ~10 minecraft:stone
+```
+
+* Możesz szybko budować ogromne struktury lub niszczyć teren.
+
+---
+
+### **Efekty i wizualizacje**
+
+* Efekty wizualne, cząsteczki i dźwięki:
+
+```
+/particle minecraft:flame ~ ~1 ~
+/playsound minecraft:entity.ender_dragon.growl @a
+```
+
+* Możesz robić widowiskowe efekty w minigrach lub mapach przygodowych.
+
+---
+
+### **Scoreboard i punkty**
+
+* Tworzenie systemów punktów, nagród i rankingów:
+
+```
+/scoreboard objectives add Points dummy "Punkty"
+```
+
+* Możesz zrobić gry typu wyścigi, labirynty z punktami lub mini-questy.
+
+---
+
+### **Command block – automatyzacja**
+
+* Możesz łączyć komendy w **command blockach**, żeby tworzyć automatyczne systemy:
+
+  * teleportacja co tick mobów do arena
+  * automatyczne spawn lootu w chestach co X sekund
+  * wyświetlanie napisów, tytułów i efektów wizualnych w momencie zdarzenia
+  * tworzenie pułapek i wyzwań w mapach przygodowych
+
+---
+
+### **4. Dlaczego komendy są tak potężne?**
+
+* Pozwalają **łamać ograniczenia normalnej gry** – np. dać nieskończone przedmioty, teleportować się w powietrzu, czy modyfikować moby w nierealny sposób.
+* W command blockach można **łączyć komendy w logiczne systemy** – można praktycznie stworzyć własną mini grę w Minecraft bez żadnego moda.
+* Dzięki nim można też **uczyć się logiki programowania** – komendy typu `execute if`, `scoreboard` czy `tag` działają jak warunki, zmienne i funkcje w programowaniu.
+
+---
+
+Jeżeli chcesz, mogę teraz zrobić **mega przewodnik po wszystkich komendach z opisem**, który będzie tłumaczył **dokładnie każdą komendę i co dzięki niej można zrobić w grze i w command blockach**, praktycznie krok po kroku.
+
+Chcesz, żebym taką mega listę zrobił teraz?
+
+
+Super, Mikołaj! 😄 Skoro chcesz **jeszcze więcej szczegółowych opisów komend**, mogę przygotować wersję, w której każda komenda **będzie dokładnie opisana**: co robi, jakie ma argumenty, jakie są warianty, typowe przykłady użycia, a także specjalne tricki w command blockach.
+
+Poniżej przykład mega szczegółowego opisu kilku typowych komend – potem mogę kontynuować i zrobić to dla **wszystkich komend Minecraft Java Edition**:
+
+---
+
+## **Przykładowa szczegółowa lista komend z opisem**
+
+### 1. `/give`
+
+* **Opis:** Daje graczowi przedmiot w określonej ilości i z opcjonalnymi właściwościami NBT.
+* **Składnia:**
+
+```
+/give <gracz> <przedmiot> [ilość] [data] [NBT]
+```
+
+* **Argumenty:**
+
+  * `<gracz>` – nazwa gracza lub selector (`@p`, `@a`, `@r`, `@e`)
+  * `<przedmiot>` – np. `minecraft:diamond_sword`
+  * `[ilość]` – liczba przedmiotów (domyślnie 1)
+  * `[data]` – wariant przedmiotu (rzadko używane)
+  * `[NBT]` – właściwości przedmiotu, np. enchanty, nazwa, lore
+* **Przykład:**
+
+```
+/give @p minecraft:diamond_sword{Enchantments:[{id:"minecraft:sharpness",lvl:5}]} 1
+```
+
+Daje graczowi miecz diamentowy z Sharpness V.
+
+---
+
+### 2. `/tp`
+
+* **Opis:** Teleportuje gracza lub mob do innego gracza lub współrzędnych.
+* **Składnia:**
+
+```
+/tp <cel>  
+/tp <gracz> <cel>  
+/tp <gracz> <x> <y> <z> [yaw] [pitch]
+```
+
+* **Argumenty:**
+
+  * `<cel>` – gracz lub mob, do którego ma nastąpić teleportacja
+  * `<x y z>` – współrzędne docelowe
+  * `[yaw pitch]` – kierunek, w którym będzie patrzył gracz
+* **Przykład:**
+
+```
+/tp @p 100 64 -200 90 0
+```
+
+Teleportuje gracza do współrzędnych X=100, Y=64, Z=-200 i ustawia go w kierunku 90° yaw i 0° pitch.
+
+---
+
+### 3. `/summon`
+
+* **Opis:** Przywołuje moby lub custom entity w wybranym miejscu z opcjonalnymi właściwościami NBT.
+* **Składnia:**
+
+```
+/summon <mob> [x y z] [dataTag]
+```
+
+* **Argumenty:**
+
+  * `<mob>` – np. `minecraft:zombie`, `minecraft:armor_stand`
+  * `[x y z]` – współrzędne spawnienia
+  * `[dataTag]` – właściwości mobów, np. wygląd, enchanty, AI
+* **Przykład:**
+
+```
+/summon minecraft:armor_stand ~ ~ ~ {CustomName:"\"MójStojak\"",NoGravity:1b,Invisible:1b}
+```
+
+Tworzy niewidzialny armor stand z nazwą „MójStojak”, który nie spada.
+
+---
+
+### 4. `/execute`
+
+* **Opis:** Najpotężniejsza komenda do wykonywania złożonych akcji i warunków.
+* **Składnia:**
+
+```
+/execute [as <target>] [at <target>] [positioned <x y z>] [rotated <yaw pitch>] [if|unless <warunek>] run <komenda>
+```
+
+* **Przykład:**
+
+```
+/execute as @e[type=zombie] at @s if block ~ ~-1 ~ minecraft:grass_block run tp @s ~ ~10 ~
+```
+
+Każdy zombie stojący na trawie zostanie teleportowany 10 bloków w górę.
+
+---
+
+Jeżeli chcesz, mogę teraz zrobić **mega pełną listę wszystkich komend z opisami**, w formie gotowej do kopiowania, obejmując:
+
+* wszystkie komendy gracza
+* wszystkie command blockowe
+* wszystkie execute warianty
+* wszystkie NBT, loot, fill/clone, particle, scoreboard, tagi, worldborder, struktury, funkcje
+
+To będzie prawdziwy **„komplet komend Minecrafta z opisami i przykładami”**.
+
+Chcesz, żebym zrobił taką listę?
+
+
+Jasne, Mikołaj! 😎 Skoro chcesz **jeszcze więcej komend, w tym kompletnie wszystkie możliwe do użycia w Minecraft Java Edition i command blockach**, to mogę zrobić prawdziwie pełną listę, włączając wszystkie zaawansowane funkcje z NBT, execute, scoreboard, loot, struktury, particle, sound, worldborder, team i funkcje.
+
+Poniżej kolejna porcja mega szczegółowych komend:
+
+---
+
+## **20. Command block / execute – warunki i logika**
+
+* `/execute if entity <selector>` – wykonuje komendę jeśli istnieje entity
+* `/execute unless entity <selector>` – wykonuje jeśli nie istnieje entity
+* `/execute if block <x y z> <blok>` – jeśli blok na danych współrzędnych jest określonego typu
+* `/execute unless block <x y z> <blok>` – jeśli blok nie jest określonego typu
+* `/execute if score <gracz> <cel> matches <zakres>` – warunek na punkty w scoreboard
+* `/execute unless score <gracz> <cel> matches <zakres>` – warunek negatywny
+
+---
+
+## **21. Command block – teleportacja i ruch**
+
+* `/tp <cel>` – teleportacja do gracza/moba
+* `/tp <gracz> <cel>` – teleportacja gracza do innego gracza
+* `/tp <gracz> <x y z>` – teleportacja do współrzędnych
+* `/tp <gracz> <x y z> <yaw> <pitch>` – teleportacja i ustawienie kierunku
+* `/tp <target> <target2>` – teleportacja targetu do target2
+* `/execute positioned <x y z> run tp <target> <x y z>` – teleportacja w ramach execute
+
+---
+
+## **22. Command block – świat i granice**
+
+* `/time set <czas>` – ustawia czas w grze
+* `/time add <ilość>` – dodaje czas
+* `/weather clear|rain|thunder` – zmienia pogodę
+* `/gamerule <reguła> [wartość]` – ustawia reguły gry
+* `/worldborder set <rozmiar>` – ustawia granicę świata
+* `/worldborder add <ilość>` – zmienia rozmiar granicy
+* `/worldborder center <x z>` – ustawia centrum granicy
+* `/worldborder damage amount <wartość>` – ustawia obrażenia poza granicą
+* `/worldborder warning time <czas>` – ostrzeżenia czasowe
+* `/worldborder warning distance <odległość>` – ostrzeżenia dystansowe
+
+---
+
+## **23. Command block – moby i entity**
+
+* `/summon <mob> [x y z] [dataTag]` – przywołuje moby
+* `/kill [target]` – zabija moby lub graczy
+* `/effect give <gracz> <efekt> [czas] [poziom]` – daje efekt potion
+* `/effect clear <gracz> [efekt]` – usuwa efekty
+* `/ride <target> start|stop` – kontrola jazdy na mobach
+
+---
+
+## **24. Command block – bloki i struktury**
+
+* `/setblock <x y z> <blok> [dataTag]` – ustawia blok z właściwościami
+* `/fill <x1 y1 z1> <x2 y2 z2> <blok> [mode]` – wypełnia przestrzeń blokami
+* `/clone <x1 y1 z1> <x2 y2 z2> <x y z> [mode]` – kopiuje strukturę
+* `/data merge block <x y z> {dataTag}` – modyfikuje blok (np. chest, furnace)
+* `/data merge entity <target> {dataTag}` – modyfikuje moby lub graczy
+* `/data remove block <x y z> <path>` – usuwa właściwości bloku
+* `/data remove entity <target> <path>` – usuwa właściwości entity
+
+---
+
+## **25. Command block – loot, itemy i inventory**
+
+* `/give <gracz> <przedmiot> [ilość] [data]` – daje przedmiot
+* `/replaceitem entity <gracz> <slot> <przedmiot> [ilość] [data]` – zmienia przedmiot w ekwipunku
+* `/loot give <gracz> <lootTable>` – daje loot z tabeli loot
+* `/loot spawn <x y z> <lootTable>` – spawn loot w świecie
+
+---
+
+## **26. Command block – particle / sound / title / messages**
+
+* `/particle <efekt> <x y z> [dx dy dz] [speed] [count] [mode]` – cząsteczki
+* `/playsound <dźwięk> <gracz> [x y z] [volume] [pitch] [minVolume]` – dźwięki
+* `/stopsound <gracz> [dźwięk] [source]` – zatrzymuje dźwięki
+* `/title <gracz> title|subtitle|actionbar|clear|reset <tekst>` – napisy na ekranie
+* `/say <wiadomość>` – wysyła wiadomość do wszystkich
+* `/tell <gracz> <wiadomość>` – wysyła prywatną wiadomość
+* `/msg <gracz> <wiadomość>` – alternatywa dla /tell
+
+---
+
+Mikołaj, jeśli chcesz, mogę teraz zrobić **ogromną tabelę WSZYSTKICH komend command blockowych i zwykłych**, z opisem składni i przykładami użycia – w jednej mega „encyklopedii” do kopiowania do gry.
+
+Chcesz, żebym taką zrobił?
+
+
+Jasne, Mikołaj! 😎 Skoro chcesz naprawdę **wszystkie komendy blokowe i związane z command blockami**, to mogę zrobić mega szczegółową listę, która obejmuje **Java Edition 1.20+**, z podziałem na funkcje command blocków, execute, struktury, NBT, loot, scoreboard i inne zaawansowane rzeczy.
+
+Poniżej zaczynam mega szczegółową wersję:
+
+---
+
+## **Command block basics – podstawy**
+
+* `/give <gracz> command_block` – daje command block
+* `/setblock <x y z> minecraft:command_block` – ustawia command block w świecie
+* Typy command blocków:
+
+  * **Impulse (pomarańczowy)** – wykonuje komendę jeden raz po aktywacji
+  * **Repeat (fioletowy)** – wykonuje komendę co tick, dopóki jest aktywny
+  * **Chain (zielony)** – wykonuje komendę tylko po wykonaniu poprzedniego command blocka
+* **Conditional** – command block wykonuje komendę tylko jeśli poprzedni zakończył się sukcesem
+* **Unconditional** – command block wykonuje komendę zawsze
+* **Redstone** – command block wymaga sygnału redstone
+* **Always Active** – command block działa bez sygnału redstone
+
+---
+
+## **Command block / execute commands**
+
+Command blocky najczęściej używają **execute**, żeby robić zaawansowane akcje:
+
+* `/execute as <target>` – wykonuje komendę jako inny gracz/mob
+* `/execute at <target>` – wykonuje komendę w miejscu targetu
+* `/execute positioned <x y z>` – wykonuje komendę w określonych współrzędnych
+* `/execute rotated <yaw> <pitch>` – wykonuje komendę z określoną rotacją
+* `/execute facing <x y z|entity>` – wykonuje komendę w kierunku
+* `/execute if <warunek> run <komenda>` – wykonuje komendę jeśli warunek prawdziwy
+* `/execute unless <warunek> run <komenda>` – wykonuje jeśli warunek fałszywy
+* `/execute store result <target> <path> <typ>` – zapisuje wynik komendy do zmiennej NBT
+* `/execute store success <target> <path> <typ>` – zapisuje status powodzenia komendy
+
+---
+
+## **Command block – zaawansowane komendy**
+
+* `/summon <mob> [x y z] [dataTag]` – przywołuje moby z NBT
+* `/setblock <x y z> <blok> [dataTag]` – ustawia blok z właściwościami
+* `/fill <x1 y1 z1> <x2 y2 z2> <blok> [mode]` – wypełnia przestrzeń blokami (replace, destroy, keep, hollow, outline)
+* `/clone <x1 y1 z1> <x2 y2 z2> <x y z> [maskMode] [cloneMode]` – kopiuje strukturę bloków (masked, filtered, move, replace)
+* `/data merge block <x y z> {dataTag}` – modyfikuje blok w miejscu, np. chest, beacon, command block
+* `/data merge entity <target> {dataTag}` – modyfikuje moby lub graczy w command blocku
+* `/data remove block <x y z> <path>` – usuwa właściwości bloku
+* `/data remove entity <target> <path>` – usuwa właściwości entity
+
+---
+
+## **Command block – scoreboard / tag / player**
+
+* `/scoreboard objectives add <nazwa> <typ> [displayName]` – dodaje cel
+* `/scoreboard players set|add|remove <gracz> <cel> <wartość>` – zmienia punkty
+* `/scoreboard players reset <gracz> [cel]` – resetuje punkty
+* `/tag <target> add <tag>` – dodaje tag
+* `/tag <target> remove <tag>` – usuwa tag
+* `/tag <target> list` – lista tagów
+
+---
+
+## **Command block – loot, function, structure**
+
+* `/loot give <gracz> <lootTable>` – daje loot z tabeli
+* `/loot spawn <x y z> <lootTable>` – spawn loot w świecie
+* `/function <nazwa>` – uruchamia funkcję datapacka
+* `/schedule function <nazwa> <czas>` – uruchamia funkcję po określonym czasie
+* `/structure save <nazwa> <x1 y1 z1> <x2 y2 z2>` – zapisuje strukturę
+* `/structure load <nazwa> <x y z>` – wczytuje strukturę
+* `/structure delete <nazwa>` – usuwa strukturę
+
+---
+
+## **Command block – particle / sound / title**
+
+* `/particle <efekt> <x y z> [dx dy dz] [speed] [count] [mode]` – cząsteczki
+* `/playsound <dźwięk> <gracz> [x y z] [volume] [pitch] [minVolume]` – dźwięki
+* `/stopsound <gracz> [dźwięk] [source]` – zatrzymuje dźwięki
+* `/title <gracz> title|subtitle|actionbar|clear|reset <tekst>` – napisy na ekranie
+
+---
+
+Mikołaj, jeśli chcesz, mogę zrobić **mega-tabelę wszytkich command blockowych komend**, z dokładnymi przykładami użycia w grze, żebyś mógł **kopiować je do blocków i testować od razu**.
+
+Chcesz, żebym taką zrobił teraz?
+
+
+Jasne, Mikołaj! 😄 Skoro chcesz jeszcze więcej, mogę rozszerzyć listę o **praktycznie wszystkie komendy Minecraft Java Edition**, w tym te rzadko używane, eksperymentalne i związane z NBT, loot tables, struktury, funkcje i tagi. Poniżej masz naprawdę rozbudowaną listę.
+
+---
+
+## **14. Komendy związane z tagami i entity**
+
+* `/tag <gracz|entity> add <tag>` – dodaje tag do gracza/moba
+* `/tag <gracz|entity> remove <tag>` – usuwa tag
+* `/tag <gracz|entity> list` – wyświetla tagi gracza/moba
+
+---
+
+## **15. Komendy związane z loot, funkcjami i strukturami**
+
+* `/loot give <gracz> <lootTable>` – daje przedmioty z tabeli loot
+* `/loot spawn <x y z> <lootTable>` – spawn lootu w świecie
+* `/function <nazwa>` – uruchamia funkcję z datapacka
+* `/schedule function <nazwa> <czas>` – uruchamia funkcję po określonym czasie
+* `/structure save <nazwa> <x1 y1 z1> <x2 y2 z2>` – zapisuje strukturę
+* `/structure load <nazwa> <x y z>` – wczytuje strukturę
+* `/structure delete <nazwa>` – usuwa strukturę
+
+---
+
+## **16. Komendy dla badań, raportów i debugowania**
+
+* `/locate <typ_struktury>` – lokalizuje najbliższą strukturę (np. village, fortress)
+* `/locate biome <biome>` – lokalizuje najbliższy biom
+* `/debug start|stop` – włącza lub wyłącza debugowanie
+* `/data get block <x y z>` – odczytuje NBT bloku
+* `/data get entity <target>` – odczytuje NBT gracza/moba
+* `/data get storage <id>` – odczytuje NBT przechowywane w pamięci
+
+---
+
+## **17. Komendy eksperymentalne / nowe w nowszych wersjach**
+
+* `/execute as <target> run <komenda>` – wykonuje komendę jako inny gracz/mob
+* `/execute at <target> run <komenda>` – wykonuje komendę w miejscu targetu
+* `/execute positioned <x y z> run <komenda>` – wykonuje komendę w określonej pozycji
+* `/execute rotated <rotacja> run <komenda>` – wykonuje komendę z określoną rotacją
+* `/execute if|unless <warunek> run <komenda>` – wykonuje komendę jeśli warunek jest spełniony
+* `/execute store <target> <path> <typ>` – zapisuje wynik komendy do zmiennej
+
+---
+
+## **18. Komendy związane z blokami poleceń / chain commands**
+
+* `/execute store result <target> <path>` – zapisuje wynik komendy
+* `/execute store success <target> <path>` – zapisuje status powodzenia
+* `/clone <x1 y1 z1> <x2 y2 z2> <x y z> filtered` – kopiuje tylko określony typ bloków
+* `/fill <x1 y1 z1> <x2 y2 z2> <blok> filtered` – wypełnia tylko określone bloki
+* `/setblock <x y z> <blok> replace` – zamienia blok tylko jeśli spełnia warunek
+
+---
+
+## **19. Komendy związane z teleportacją i ruchem**
+
+* `/tp <cel>` – teleportuje do gracza/moba
+* `/tp <gracz> <cel>` – teleportuje gracza do innego gracza
+* `/tp <gracz> <x y z>` – teleportuje gracza do współrzędnych
+* `/tp <gracz> <x y z> <yaw> <pitch>` – teleportuje gracza i ustawia kierunek
+* `/execute positioned <x y z> run tp <target>` – teleportacja w określone miejsce w ramach execute
+
+---
+
+Mikołaj, jeśli chcesz, mogę zrobić teraz **ogromną, kompletną listę WSZYSTKICH komend z opisami i przykładami**, w jednej mega-tabeli – dosłownie wszystko, co można użyć w Minecraft Java Edition, w tym najnowsze wersje 1.20+. To będzie coś w rodzaju „encyklopedii komend” do Twojej gry.
+
+Chcesz, żebym taką zrobił?
+
+
+Jasne, Mikołaj! 😎 Rozwinę listę komend w **Minecraft Java Edition**, dodając więcej szczegółów i mniej oczywistych komend, w tym dla bloków poleceń i bardziej zaawansowanych funkcji.
+
+---
+
+## **8. Komendy zaawansowane związane z mobami i entity**
+
+* `/data get entity <target> [path]` – odczytuje dane NBT mobów/graczy
+* `/data merge entity <target> {dataTag}` – modyfikuje moby/graczy
+* `/data remove entity <target> <path>` – usuwa określone dane
+* `/kill [target]` – zabija moby lub graczy
+* `/ride` – pozwala kontrolować moby (w Java od 1.19)
+* `/effect` – dodaje lub usuwa efekty potionów
+* `/summon <mob> [x y z] [dataTag]` – przywołuje moby z dodatkowymi właściwościami
+
+---
+
+## **9. Komendy związane z blokami**
+
+* `/data get block <x y z> [path]` – odczytuje dane NBT bloku
+* `/data merge block <x y z> {dataTag}` – modyfikuje blok
+* `/data remove block <x y z> <path>` – usuwa dane z bloku
+* `/setblock <x y z> <blok> [data] replace|destroy|keep` – ustawia blok z opcjami
+* `/fill <x1 y1 z1> <x2 y2 z2> <blok> replace|destroy|keep|hollow|outline` – wypełnia przestrzeń blokami w różnych trybach
+* `/clone <x1 y1 z1> <x2 y2 z2> <x y z> maskMode move|replace|masked` – kopiuje strukturę bloków
+
+---
+
+## **10. Komendy sterowania serwerem / graczami**
+
+* `/ban-ip <adres>` – blokuje adres IP
+* `/pardon-ip <adres>` – odblokowuje adres IP
+* `/stop` – zatrzymuje serwer
+* `/save-all` – zapisuje świat
+* `/save-off` – wyłącza automatyczne zapisywanie
+* `/save-on` – włącza automatyczne zapisywanie
+* `/reload` – ładuje konfiguracje serwera
+* `/spawnpoint [gracz] [x y z]` – ustawia punkt odrodzenia gracza
+
+---
+
+## **11. Komendy związane z drużynami i scoreboard**
+
+* `/scoreboard objectives add <nazwa> <typ> [displayName]` – tworzy nowy cel
+* `/scoreboard objectives remove <nazwa>` – usuwa cel
+* `/scoreboard objectives setdisplay <slot> <nazwa>` – pokazuje cel na ekranie
+* `/scoreboard players set|add|remove <gracz> <cel> <wartość>` – ustawia/zmienia punkty
+* `/team add <nazwa> [displayName]` – tworzy drużynę
+* `/team remove <nazwa>` – usuwa drużynę
+* `/team join <nazwa> [gracz]` – dodaje gracza do drużyny
+* `/team leave <gracz>` – usuwa gracza z drużyny
+* `/team list [nazwa]` – lista drużyn lub graczy w drużynie
+
+---
+
+## **12. Komendy związane z tytułami, dźwiękami i efektami**
+
+* `/title <gracz> title|subtitle|actionbar|clear|reset <tekst>` – pokazuje napisy
+* `/playsound <dźwięk> <gracz> [x y z] [głośność] [pitch] [minimalna odległość]` – odtwarza dźwięk
+* `/stopsound <gracz> [dźwięk] [source]` – zatrzymuje dźwięk
+* `/particle <efekt> <x y z> [dx dy dz] [speed] [count] [mode]` – tworzy cząsteczki
+
+---
+
+## **13. Komendy związane z granicą świata**
+
+* `/worldborder set <rozmiar> [czas]` – ustawia rozmiar granicy świata
+* `/worldborder add <ilość> [czas]` – zmienia granicę o określoną wartość
+* `/worldborder center <x z>` – ustawia centrum granicy
+* `/worldborder damage amount <wartość>` – ustawia obrażenia poza granicą
+* `/worldborder warning time <czas>` – ustawia czas ostrzeżenia
+* `/worldborder warning distance <odległość>` – ustawia odległość ostrzeżenia
+
+---
+
+Mikołaj, jeśli chcesz, mogę teraz zrobić **mega pełną tabelę wszystkich komend Minecrafta Java Edition z opisem składni i przykładami użycia**, tak żebyś miał gotową „ściągę” do gry i eksperymentów z komendami.
+
+Chcesz, żebym taką zrobił?
+
+
+Cześć Mikołaj! 😄
+
+Lista **wszystkich komend w Minecraft** jest dość obszerna, bo zależy od wersji gry (Java/Bedrock) i czy masz włączone mody. Skupię się na **oficjalnych komendach w wersji Java Edition**. Podzielę je na kategorie, żeby było czytelniej.
+
+---
+
+### **1. Podstawowe komendy gracza**
+
+* `/help [komenda]` – pokazuje listę komend lub pomoc do konkretnej komendy
+* `/say <wiadomość>` – wysyła wiadomość do wszystkich graczy
+* `/me <akcja>` – pokazuje akcję gracza
+* `/tell <gracz> <wiadomość>` – wysyła prywatną wiadomość
+* `/msg <gracz> <wiadomość>` – alternatywa dla `/tell`
+* `/list` – lista graczy online
+
+---
+
+### **2. Zarządzanie światem**
+
+* `/gamemode <tryb> [gracz]` – zmienia tryb gry (survival, creative, adventure, spectator)
+* `/difficulty <tryb>` – zmienia trudność (peaceful, easy, normal, hard)
+* `/time set <czas>` – ustawia godzinę w grze
+* `/time add <ilość>` – dodaje czas
+* `/weather <typ>` – ustawia pogodę (clear, rain, thunder)
+* `/gamerule <reguła> [wartość]` – ustawia reguły gry
+
+---
+
+### **3. Komendy związane z graczami**
+
+* `/tp <cel>` – teleportacja
+* `/tp <gracz> <cel>` – teleportacja gracza do innego gracza
+* `/spawnpoint [gracz] [x y z]` – ustawia punkt odrodzenia
+* `/setworldspawn [x y z]` – ustawia punkt odrodzenia świata
+* `/effect give <gracz> <efekt> [czas] [poziom]` – dodaje efekt
+* `/effect clear <gracz> [efekt]` – usuwa efekt
+
+---
+
+### **4. Komendy dla przedmiotów i bloków**
+
+* `/give <gracz> <przedmiot> [ilość]` – daje przedmiot
+* `/replaceitem` – zamienia przedmiot w ekwipunku lub na bloku
+* `/summon <mob> [x y z] [dataTag]` – przywołuje moby
+* `/setblock <x y z> <blok> [data]` – ustawia blok
+* `/fill <x1 y1 z1> <x2 y2 z2> <blok>` – wypełnia przestrzeń blokami
+* `/clone <x1 y1 z1> <x2 y2 z2> <x y z>` – kopiuje strukturę bloków
+
+---
+
+### **5. Komendy związane z funkcjami serwera**
+
+* `/op <gracz>` – daje uprawnienia operatora
+* `/deop <gracz>` – odbiera uprawnienia operatora
+* `/kick <gracz> [powód]` – wyrzuca gracza
+* `/ban <gracz> [powód]` – blokuje gracza
+* `/pardon <gracz>` – odblokowuje gracza
+* `/whitelist add <gracz>` – dodaje gracza do białej listy
+* `/whitelist remove <gracz>` – usuwa gracza z białej listy
+
+---
+
+### **6. Komendy bloków poleceń i redstone**
+
+* `/execute <warunki> <komenda>` – wykonuje komendę w określonych warunkach
+* `/scoreboard` – zarządzanie statystykami i celami graczy
+* `/tag` – dodaje/usuwa tagi graczom
+* `/team` – zarządza drużynami graczy
+* `/data` – odczytuje lub zmienia dane bloków, mobów, graczy
+
+---
+
+### **7. Komendy zaawansowane**
+
+* `/particle` – generuje efekty cząsteczkowe
+* `/title` – wyświetla tytuły i napisy na ekranie
+* `/playsound` – odtwarza dźwięki
+* `/stopsound` – zatrzymuje dźwięki
+* `/worldborder` – zarządza granicą świata
+* `/forceload` – wymusza ładowanie chunków
+
+---
+
+Jeśli chcesz, mogę Ci zrobić **pełną, gotową listę wszystkich komend w jednej tabelce**, razem z opisem i składnią, żebyś miał wszystko w jednym miejscu. To będzie super do szybkiego sprawdzania w grze.
+
+Chcesz, żebym taką zrobił?
+
 
 Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności od wersji gry (Java vs Bedrock), ale mogę wymienić Ci te najważniejsze i najczęściej używane. Podzielę je na kategorie, żeby było łatwiej się w tym odnaleźć.
 ---
@@ -177,6 +842,8 @@ dźwięki
 
 /playsound minecraft:entity.firework_rocket.twinkle ambient @a
 
+
+Mannequin Vanilla Wiki
 ===================================================================================================
 Struż
 /summon minecraft:mannequin
@@ -213,11 +880,15 @@ Struż z Skina dowolnwgo gracza
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "Jan1000"}}
 
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "PanZiemniaczekk"}}
+
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "JulekGeralt"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "JurajskiStas"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "TIDZIMI"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Nerkin_"}}
 
 mojang studio
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "Notch"}}
@@ -239,8 +910,66 @@ teleport
 /tp d07da099-5798-4e58-afae-323f26a1bf08 MikiYT1
 ===========================================================================================
 
+🧍‍♂️ Przykładowa komenda z pełną konfiguracją
+
+/summon minecraft:mannequin ~ ~1 ~ {Rotation:[90f,0f]}
+
+/summon minecraft:mannequin ~ ~1 ~ {profile:{name:"Minecraft_guides"}} 
+
+/summon minecraft:mannequin ~ ~1 ~ {profile:{name:"Notch"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/player/wide/steve",hidden_layers:["hat","jacket"]}}
+
+/summon minecraft:mannequin ~ ~ ~ {CustomName:'"Bob"'}
+
+/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:iron_sword",Count:1}}}
+
+/summon minecraft:mannequin ~ ~ ~ {equipment:{mainhand:{id:"minecraft:iron_sword",Count:1}},CustomName:'"Village Guard"'}
+
+/summon minecraft:mannequin ~ ~1 ~ {
+ Rotation:[180f,0f],
+ CustomName:'"Minecraft_Guides"',
+ profile:{name:"Steve"},
+ equipment:{
+ mainhand:{id:"minecraft:iron_sword",Count:1},
+ head:{id:"minecraft:iron_helmet",Count:1}
+ }
+}
+
+/summon minecraft:mannequin ~ ~1 ~ {
+equipment:{
+head:{id:"minecraft:diamond_helmet",Count:1},
+chest:{id:"minecraft:diamond_chestplate",Count:1},
+legs:{id:"minecraft:diamond_leggings",Count:1},
+feet:{id:"minecraft:diamond_boots",Count:1},
+mainhand:{id:"minecraft:diamond_sword",Count:1},
+offhand:{id:"minecraft:shield",Count:1}
+},
+CustomName:'"Diamond Warrior"'
+}
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/player/wide/steve",model:"wide"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/player/slim/steve",model:"slim"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/player/slim/alex",model:"slim"}}
+
+/summon minecraft:mannequin ~ ~ ~ {pose:"crouching"}
+
+/summon minecraft:mannequin ~ ~ ~ {immovable:true}
 
 
+/data modify entity 1c2d9794-237c-417a-b460-50199d7405c7 profile set value 'MikiYT1'
+
+/summon minecraft:mannequin ~ ~ ~ {description:"Mój Manekin"}
+
+/summon minecraft:mannequin ~ ~ ~ {hide_description:true}
+
+/summon minecraft:mannequin ~ ~ ~ {profile:{texture:"entity/player/wide/steve",model:"wide"},pose:"standing",immovable:true,hidden_layers:["cape","jacket","left_sleeve","right_sleeve","left_pants_leg","right_pants_leg","hat"],description:"Manekin Steve"}
+
+/summon minecraft:mannequin ~ ~ ~ {Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b,Pose:{Body:[0f,0f,0f],Head:[0f,0f,0f],LeftArm:[0f,0f,0f],RightArm:[0f,0f,0f],LeftLeg:[0f,0f,0f],RightLeg:[0f,0f,0f]}}
+
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
 
 
 ============================================================================================

@@ -844,6 +844,30 @@ dźwięki
 
 
 Mannequin Vanilla Wiki
+
+TWOJE STATYSTYKI
+/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:book",Count:1b}}}
+
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
+
+/data modify entity <UUID_manekina> immovable set value true
+=======================================================================================================================================================
+
+/summon minecraft:armor_stand ~ ~1.9 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"TWOJE STATYSTYKI","color":"gold"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.7 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Peleryny (15)✫","color":"gray"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.5 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Postep: 167865/135566","color":"aqua"},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"konto od: 2019-07-06","color":""},Small:1b}
+
+/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow"},Small:1b}
+========================================================================================================================================================
+
+/summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'',CustomNameVisible:1b,Tags:["obracajacy"],ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}]}
+
+/item replace entity @e[type=armor_stand,tag=obracajacy,limit=1,sort=nearest] armor.head with minecraft:moss_block
+
 ===================================================================================================
 Struż
 /summon minecraft:mannequin

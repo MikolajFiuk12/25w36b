@@ -6,6 +6,2929 @@ https://mikolajfiuk12.github.io/25w36b/Npc%20Minecraft.txt
 https://chromewebstore.google.com/detail/youtube-anti-translate/ndpmhjnlfkgfalaieeneneenijondgag?pli=1
 https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2FlbQIxMQABHugFPUwwbQbaw8pwiiuDDMwfkxKKc-It3d4H-VWd9Mw5ODbqOC7ldu6ThafU_aem_XUWnLNeCWBXQoGG8iq2zkg
 ============================================================================================================================================================================================================================================
+Dzienkuje za pomoc OpenAI
+https://chatgpt.com
+==============================================================================================
+Cześć Mikołaj 👋
+Okej — poniżej masz **pełną, krok‑po‑kroku instrukcję** jak przygotować pendrive instalacyjny z **Debianem 12** (wersja instalatora). Zamieściłem metody dla **Windows**, **Linux** i **macOS**, sprawdzenie sumy kontrolnej i kilka tipów do BIOS/UEFI. Zrób to uważnie — wszystkie dane na pendrive zostaną usunięte.
+
+# 1) Pobranie obrazu ISO Debiana 12
+
+1. Wejdź na oficjalną stronę Debiana i pobierz odpowiedni obraz, np. **netinst** (mały instalator) lub pełny obraz live/amd64:
+
+   * wybierz architekturę `amd64` jeśli masz zwykły PC/laptop.
+2. Pobierz też plik z sumami kontrolnymi (SHA256) z tej samej strony — będziesz weryfikować plik.
+
+# 2) Weryfikacja sumy kontrolnej (zalecane)
+
+Po pobraniu sprawdź SHA256, żeby upewnić się, że plik nie jest uszkodzony:
+
+* Na Linux/macOS:
+
+```bash
+sha256sum debian-12.*.iso
+# porównaj wynik z wartością w pobranym pliku SHA256SUMS
+```
+
+* Na Windows możesz użyć PowerShell:
+
+```powershell
+Get-FileHash .\debian-12.*.iso -Algorithm SHA256
+```
+
+Porównaj z oryginalną sumą ze strony Debiana.
+
+# 3) Metoda A — Windows (najprościej: Rufus)
+
+1. Pobierz **Rufus** (portable) na Windows.
+2. Włóż pendrive (min. 4 GB dla netinst, 8 GB dla większych obrazów).
+3. Uruchom Rufus:
+
+   * Device: wybierz swój pendrive.
+   * Boot selection: wybierz pobrany plik `.iso`.
+   * Partition scheme: jeśli komputer używa UEFI — `GPT`, dla starszych BIOSów `MBR`.
+   * Target system: Rufus dobierze automatycznie.
+   * Kliknij **Start** → potwierdź usunięcie danych → poczekaj.
+4. Po skończeniu bezpiecznie odłącz pendrive.
+
+Rufus automatycznie ustawi obraz w trybie UEFI/BIOS i (zwykle) obsłuży Secure Boot.
+
+# 4) Metoda B — Linux (dd — ostrożnie)
+
+1. Włóż pendrive i znajdź jego urządzenie:
+
+```bash
+lsblk
+# lub
+sudo fdisk -l
+```
+
+Zlokalizuj np. `/dev/sdb` (nie `/dev/sdb1` — wskazujemy całe urządzenie). **Uwaga: pomyłka usunie dane na niewłaściwym dysku.**
+
+2. Odmontuj partycje pendrive (jeśli są zamontowane):
+
+```bash
+sudo umount /dev/sdb1  # powtórz dla innych partycji
+```
+
+3. Nagraj ISO (przykład):
+
+```bash
+sudo dd if=/ścieżka/do/debian-12.xx-amd64-netinst.iso of=/dev/sdb bs=4M status=progress oflag=sync
+```
+
+* `bs=4M` i `oflag=sync` polepszają zapis i synchronizację.
+* Poczekaj aż `dd` zakończy — nie przerywaj.
+
+4. Po zakończeniu:
+
+```bash
+sync
+sudo eject /dev/sdb
+```
+
+Wyjmij pendrive.
+
+Alternatywy (łatwiejsze GUI): **balenaEtcher**, **Ventoy** (jeśli chcesz mieć wiele ISO na jednym pendrive).
+
+# 5) Metoda C — macOS (dd)
+
+Procedura jak w Linux:
+
+1. Zlokalizuj pendrive:
+
+```bash
+diskutil list
+```
+
+2. Odmontuj:
+
+```bash
+diskutil unmountDisk /dev/diskN
+```
+
+3. Nagraj ISO (użyj `/dev/rdiskN` dla szybszego zapisu):
+
+```bash
+sudo dd if=/ścieżka/debian-12.iso of=/dev/rdiskN bs=4m status=progress
+sync
+```
+
+4. Po zakończeniu:
+
+```bash
+diskutil eject /dev/diskN
+```
+
+# 6) Ventoy — pendrive z wieloma ISO (polecam)
+
+Jeśli chcesz trzymać kilka instalatorów (np. różne wersje, narzędzia ratunkowe), użyj **Ventoy**:
+
+1. Zainstaluj Ventoy na pendrive (program formatuje pendrive).
+2. Po instalacji po prostu kopiuj pliki `.iso` na pendrive — przy starcie wybierzesz które ISO uruchomić.
+
+# 7) BIOS / UEFI — uruchomienie instalatora
+
+1. Włóż pendrive do docelowego komputera.
+2. Wejdź do BIOS/UEFI (klawisze: F2, Del, F12, Esc — zależy od producenta).
+3. Ustaw bootowanie z USB (UEFI lub Legacy/CSM w zależności od obrazu).
+4. (Opcjonalnie) Jeśli problem z uruchomieniem, wyłącz tymczasowo **Secure Boot** lub użyj ustawienia kompatybilności Legacy, jeżeli instalator nie startuje. Debian 12 zwykle działa z UEFI i Secure Boot, ale niektóre obrazy/sterowniki mogą sprawiać problemy.
+
+# 8) Najczęstsze problemy i rozwiązania
+
+* **Pendrive nie bootuje** → sprawdź czy ISO poprawnie nagrane; spróbuj Rufus (Windows) lub Etcher (Linux/macOS).
+* **Wybrałeś złe urządzenie dla `dd`** → niestety usuwa dane — uważaj na `of=/dev/sdX`.
+* **Instalator nie widzi dysku NVMe** → może brak sterownika; spróbuj innego obrazu (live) lub sprawdź w BIOS ustawienia SATA/NVMe.
+* **Chcesz persistent USB (live z zapisem)** → użyj narzędzi typu Rufus (persistent) lub tworzenia partycji persistent (zaawansowane).
+
+# 9) Szybkie przypomnienie bezpieczeństwa
+
+* Kopia ważnych danych z pendrive przed formatem.
+* Upewnij się, że wskazujesz właściwe urządzenie przy `dd`.
+* Weryfikuj SHA256 pobranego ISO.
+
+---
+
+Chcesz, żebym zrobił teraz **konkretny skrypt lub jedną szczegółową instrukcję** (np. dokładne komendy `dd` z nazwami plików na Twoim systemie), albo wolisz instrukcję krok‑po‑kroku tylko dla Windows (Rufus) z obrazkami?
+
+Jasne, Mikołaj 😎
+Rozumiem — chcesz **nie tylko instalację Debiana w trybie tekstowym**, ale też od razu **pełną instalację środowiska graficznego (GUI)**, żeby system był jak normalny desktop i łatwiej było używać go np. do FTP, przeglądania, edycji plików itp.
+
+Poniżej masz kompletne informacje i opcje.
+
+---
+
+## 1️⃣ Wersje środowiska graficznego w Debianie 12
+
+Debian 12 daje kilka popularnych środowisk GUI. Możesz wybrać jedno podczas instalacji lub doinstalować później:
+
+| Środowisko      | Opis                                                        |
+| --------------- | ----------------------------------------------------------- |
+| **GNOME**       | Domyślne w Debianie, nowoczesne, eleganckie, trochę cięższe |
+| **KDE Plasma**  | Bardzo konfigurowalne, estetyczne, trochę zasobożerne       |
+| **XFCE**        | Lekkie, szybkie, dobre na starsze komputery                 |
+| **LXDE / LXQt** | Bardzo lekkie, minimalne zużycie RAM                        |
+| **MATE**        | Stabilne i klasyczne środowisko, średnia waga               |
+
+---
+
+## 2️⃣ Instalacja GUI podczas instalacji Debiana
+
+1. Podczas uruchamiania instalatora wybierz **Graphical install** zamiast `Install`.
+2. Dalej instalator krok po kroku:
+
+   * Wybór języka, strefy czasowej
+   * Partycjonowanie dysku
+   * Instalacja podstawowego systemu
+3. W sekcji **Software selection**:
+
+   * Zaznacz **Debian desktop environment**
+   * Wybierz środowisko: GNOME (domyślne), KDE, XFCE, MATE…
+   * Możesz też zaznaczyć **standard system utilities** i **SSH server**, jeśli jeszcze nie zainstalowane.
+
+Po zakończeniu instalacji i reboot system uruchomi się w trybie graficznym.
+
+---
+
+## 3️⃣ Instalacja GUI po instalacji tekstowej (minimalny Debian)
+
+Jeśli zainstalowałeś tylko Debian bez GUI:
+
+### GNOME (domyślny desktop)
+
+```bash
+sudo apt update
+sudo apt install task-gnome-desktop -y
+```
+
+### KDE Plasma
+
+```bash
+sudo apt update
+sudo apt install task-kde-desktop -y
+```
+
+### XFCE (lekki)
+
+```bash
+sudo apt update
+sudo apt install task-xfce-desktop -y
+```
+
+### MATE (stabilne)
+
+```bash
+sudo apt update
+sudo apt install task-mate-desktop -y
+```
+
+### LXDE/LXQt (bardzo lekkie)
+
+```bash
+sudo apt update
+sudo apt install task-lxde-desktop -y
+# lub
+sudo apt install task-lxqt-desktop -y
+```
+
+---
+
+## 4️⃣ Włączanie GUI
+
+Po instalacji GUI, jeśli system nadal startuje w trybie tekstowym:
+
+1. Sprawdź domyślny target:
+
+```bash
+systemctl get-default
+```
+
+* Jeśli pokazuje `multi-user.target` → tryb tekstowy
+* Jeśli `graphical.target` → GUI
+
+2. Włącz GUI jako domyślny:
+
+```bash
+sudo systemctl set-default graphical.target
+sudo reboot
+```
+
+---
+
+## 5️⃣ Lekki setup dla serwera z GUI
+
+Jeśli planujesz serwer Minecraft + GUI na Debianie:
+
+* **XFCE lub MATE** — najlepiej, bo nie obciąża zbytnio RAM (Minecraft może potrzebować dużo pamięci).
+* Nie instaluj od razu GNOME/KDE jeśli masz mało RAM (oszczędność ok. 500-1000 MB).
+* Możesz też użyć **xrdp** lub **VNC**, żeby łączyć się z GUI zdalnie zamiast fizycznie przy komputerze.
+
+---
+
+## 6️⃣ Dodatkowe narzędzia graficzne po instalacji
+
+Po GUI warto doinstalować kilka narzędzi:
+
+```bash
+sudo apt install firefox-esr gedit file-roller vlc -y
+```
+
+* **firefox-esr** – przeglądarka
+* **gedit** – prosty edytor tekstu
+* **file-roller** – archiwizer
+* **vlc** – odtwarzacz multimediów
+
+---
+
+Jeżeli chcesz, mogę zrobić Ci teraz **kompletną instrukcję „instalacja Debiana 12 + XFCE + GUI + SSH + FTP + podstawowe narzędzia”**, tak żebyś mógł od razu po instalacji korzystać z systemu jak z desktopa i serwera jednocześnie.
+
+Chcesz, żebym to zrobił?
+
+
+Super, Mikołaj 😎
+Poniżej masz **rozszerzoną listę pakietów `apt install`** — nie tylko podstawowych, ale też **użytecznych narzędzi serwerowych**, które pomogą Ci w zarządzaniu Debianem, serwerem Minecrafta, bezpieczeństwem i siecią.
+
+Wszystko w jednej wygodnej komendzie, którą możesz wkleić w terminal.
+
+---
+
+## ⚙️ 🔥 **Pełna lista instalacyjna dla Debiana (Minecraft + zdalne zarządzanie + narzędzia systemowe)**
+
+```bash
+sudo apt update && sudo apt install -y \
+openjdk-17-jre-headless \
+openssh-server \
+vsftpd \
+ufw \
+wget \
+curl \
+screen \
+htop \
+nano \
+zip unzip \
+net-tools \
+sudo \
+fail2ban \
+mc \
+neofetch \
+rsync \
+nmap \
+lsof \
+tar \
+bzip2 \
+gzip \
+git \
+python3 \
+python3-pip \
+cron \
+locales \
+ca-certificates \
+dnsutils \
+apt-transport-https \
+software-properties-common \
+build-essential \
+iptables-persistent \
+psmisc \
+tree \
+lsb-release \
+vim \
+iotop \
+iotop-c \
+ncdu \
+dialog
+```
+
+---
+
+## 📖 Opis najważniejszych z nowych pakietów:
+
+| Pakiet                         | Opis                                                          |
+| ------------------------------ | ------------------------------------------------------------- |
+| **nmap**                       | Skaner sieci – sprawdzanie otwartych portów i bezpieczeństwa  |
+| **lsof**                       | Pokazuje, które procesy używają plików lub portów             |
+| **tar / bzip2 / gzip**         | Kompresowanie i rozpakowywanie archiwów                       |
+| **git**                        | System kontroli wersji – przydatny do projektów i skryptów    |
+| **python3 / python3-pip**      | Python do skryptów automatyzacji                              |
+| **cron**                       | Automatyczne zadania (np. backupy serwera)                    |
+| **locales**                    | Obsługa języków (np. polski interfejs)                        |
+| **ca-certificates**            | Certyfikaty HTTPS (potrzebne np. dla wget, curl)              |
+| **dnsutils**                   | Narzędzia DNS (`dig`, `nslookup`)                             |
+| **apt-transport-https**        | Pozwala pobierać pakiety przez HTTPS                          |
+| **software-properties-common** | Dodatkowe narzędzia do zarządzania repozytoriami              |
+| **build-essential**            | Kompilatory i biblioteki (jeśli chcesz kompilować coś samemu) |
+| **iptables-persistent**        | Zapisuje reguły firewalla po restarcie                        |
+| **psmisc**                     | Zawiera przydatne polecenia jak `killall`                     |
+| **tree**                       | Pokazuje strukturę katalogów w formie drzewa                  |
+| **lsb-release**                | Informacje o wersji systemu                                   |
+| **vim**                        | Alternatywny edytor tekstu                                    |
+| **iotop / iotop-c**            | Monitor zużycia dysku przez procesy                           |
+| **ncdu**                       | Wizualny analizator zajętości dysku (bardzo przydatny!)       |
+| **dialog**                     | Narzędzie do prostych menu w terminalu                        |
+
+---
+
+## 💾 (Opcjonalnie) – jeśli chcesz też zarządzać serwerem przez panel WWW
+
+Możesz dodać **Webmin** (panel administracyjny do Debiana w przeglądarce):
+
+```bash
+sudo apt install -y wget apt-transport-https software-properties-common
+wget -q -O- http://www.webmin.com/jcameron-key.asc | sudo apt-key add -
+sudo add-apt-repository "deb http://download.webmin.com/download/repository sarge contrib"
+sudo apt update
+sudo apt install -y webmin
+```
+
+Potem wejdziesz z przeglądarki:
+
+```
+https://IP_SERWERA:10000
+```
+
+(logowanie tym samym loginem i hasłem co w Debianie).
+
+---
+
+## ✅ Po instalacji
+
+Sprawdź status kluczowych usług:
+
+```bash
+sudo systemctl status ssh
+sudo systemctl status vsftpd
+sudo systemctl status ufw
+```
+
+---
+
+Czy chcesz, żebym Ci teraz zrobił **pełny skrypt `.sh`**, który automatycznie zainstaluje wszystkie te pakiety, włączy SSH, FTP, ustawi firewall i doda kilka podstawowych zabezpieczeń (np. Fail2Ban + automatyczny start serwera)?
+Wtedy wystarczy, że go uruchomisz jednym poleceniem — wszystko zrobi się samo.
+
+Jasne, Mikołaj 😎
+Zróbmy **pełny przewodnik krok po kroku** – od pobrania ISO, przez instalację Debiana 12, dodanie środowiska graficznego, po konfigurację serwera SSH/FTP i podstawowych narzędzi. Będę podawał dokładnie **co instalować i w jakiej kolejności**, żebyś mógł zrobić wszystko poprawnie.
+
+---
+
+# **1️⃣ Pobranie Debiana 12**
+
+1. Wejdź na oficjalną stronę Debiana:
+   [https://www.debian.org/distrib/](https://www.debian.org/distrib/)
+2. Pobierz obraz **netinst** (mały instalator, ok. 400 MB) lub **DVD/Live** (pełny system z GUI).
+3. Pobierz również plik z **SHA256SUMS** (dla weryfikacji).
+
+**Weryfikacja ISO** (zalecane):
+
+* Linux/macOS:
+
+```bash
+sha256sum debian-12.*.iso
+```
+
+* Windows (PowerShell):
+
+```powershell
+Get-FileHash .\debian-12.*.iso -Algorithm SHA256
+```
+
+Porównaj z sumą ze strony Debiana.
+
+---
+
+# **2️⃣ Przygotowanie pendrive instalacyjnego**
+
+### Windows – Rufus:
+
+1. Pobierz Rufus.
+2. Włóż pendrive (min 4 GB).
+3. W Rufus:
+
+   * Device: Twój pendrive
+   * Boot selection: ISO Debiana
+   * Partition scheme: GPT dla UEFI, MBR dla BIOS
+4. Start → potwierdź formatowanie → poczekaj.
+
+### Linux/macOS – dd (ostrożnie!):
+
+1. Sprawdź urządzenie pendrive:
+
+```bash
+lsblk   # Linux
+diskutil list  # macOS
+```
+
+2. Odmontuj partycje pendrive:
+
+```bash
+sudo umount /dev/sdX*  # Linux
+diskutil unmountDisk /dev/diskN  # macOS
+```
+
+3. Nagraj ISO:
+
+```bash
+sudo dd if=/ścieżka/debian-12.iso of=/dev/sdX bs=4M status=progress oflag=sync  # Linux
+sudo dd if=/ścieżka/debian-12.iso of=/dev/rdiskN bs=4m status=progress  # macOS
+sync
+```
+
+---
+
+# **3️⃣ Instalacja Debiana 12**
+
+1. Włóż pendrive i uruchom komputer.
+2. W BIOS/UEFI wybierz boot z USB.
+3. Wybierz **Graphical install** (GUI).
+4. Kroki instalatora:
+
+   * Język → polski (lub angielski)
+   * Region, strefa czasowa
+   * Klawiatura
+   * Partycjonowanie dysku:
+
+     * *Guided – use entire disk* dla początkujących
+     * Lub ręczne, jeśli chcesz własne partycje
+   * Ustawienie użytkownika i hasła
+   * Instalacja pakietów:
+
+     * Zaznacz **Debian desktop environment**
+     * Wybierz środowisko: **XFCE** (lekki, dobre na serwer + GUI)
+     * Standard system utilities (SSH server możesz zaznaczyć)
+
+Po zakończeniu instalacji → reboot → system uruchomi się w GUI.
+
+---
+
+# **4️⃣ Instalacja GUI po instalacji minimalnej**
+
+Jeśli masz minimalny Debian (tekstowy) i chcesz dodać GUI:
+
+```bash
+sudo apt update
+sudo apt install task-xfce-desktop -y   # XFCE (lekki)
+# lub task-gnome-desktop -y dla GNOME
+```
+
+Włącz GUI domyślnie:
+
+```bash
+sudo systemctl set-default graphical.target
+sudo reboot
+```
+
+---
+
+# **5️⃣ Instalacja Java (dla Minecrafta)**
+
+```bash
+sudo apt update
+sudo apt install openjdk-17-jre-headless -y
+java -version  # sprawdź czy działa
+```
+
+---
+
+# **6️⃣ Instalacja serwera SSH (PuTTY, SFTP)**
+
+```bash
+sudo apt install openssh-server -y
+sudo systemctl enable ssh
+sudo systemctl start ssh
+sudo systemctl status ssh
+```
+
+Adres IP do połączenia:
+
+```bash
+ip a   # lub hostname -I
+```
+
+---
+
+# **7️⃣ Instalacja FTP/SFTP (vsftpd)**
+
+```bash
+sudo apt install vsftpd -y
+sudo nano /etc/vsftpd.conf
+```
+
+Zmień / dodaj:
+
+```
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+chroot_local_user=YES
+allow_writeable_chroot=YES
+```
+
+Uruchom ponownie:
+
+```bash
+sudo systemctl restart vsftpd
+```
+
+---
+
+# **8️⃣ Firewall (UFW)**
+
+```bash
+sudo apt install ufw -y
+sudo ufw allow 22/tcp   # SSH
+sudo ufw allow 21/tcp   # FTP
+sudo ufw enable
+sudo ufw status
+```
+
+---
+
+# **9️⃣ Podstawowe narzędzia systemowe**
+
+```bash
+sudo apt install wget curl git nano htop mc unzip zip tree rsync python3 python3-pip -y
+```
+
+* **wget / curl** – pobieranie plików
+* **git** – system kontroli wersji
+* **nano / mc** – edycja plików, menadżer plików
+* **htop** – monitor zasobów
+* **unzip / zip / tree** – praca z plikami i katalogami
+* **rsync / python3 / pip** – backupy i skrypty
+
+---
+
+# **🔟 Dodatkowe wskazówki**
+
+* Jeśli planujesz serwer Minecraft + GUI → najlepiej **XFCE**, lekki, mniej RAM zużywa.
+* SSH + SFTP = zdalny dostęp i przesyłanie plików.
+* Zrób **kopię zapasową** ważnych danych przed eksperymentami.
+* Możesz później doinstalować **xrdp** albo **VNC**, żeby łączyć się z GUI zdalnie.
+
+---
+
+Jeśli chcesz, mogę teraz zrobić **gotowy skrypt `.sh`**, który po jednym uruchomieniu automatycznie zainstaluje:
+
+1. XFCE
+2. SSH i SFTP
+3. Java
+4. Podstawowe narzędzia systemowe i serwerowe
+5. Firewall
+
+I wszystko będzie od razu gotowe do pracy.
+
+Chcesz, żebym taki skrypt przygotował?
+
+
+Jasne, Mikołaj 😎
+Oto gotowa **lista komend `apt install`**, która zainstaluje wszystkie podstawowe pakiety potrzebne do zarządzania **Debianem, serwerem Minecraft, SSH, FTP i narzędziami administracyjnymi**.
+Po wpisaniu wszystkiego będziesz mieć kompletny, wygodny i zdalnie dostępny system.
+
+---
+
+## 🧩 Podstawowy zestaw pakietów do instalacji
+
+Wklej w terminalu Debiana (jako root lub przez `sudo`):
+
+```bash
+sudo apt update && sudo apt install -y \
+openjdk-17-jre-headless \
+openssh-server \
+vsftpd \
+ufw \
+wget \
+curl \
+screen \
+htop \
+nano \
+zip unzip \
+net-tools \
+sudo
+```
+
+---
+
+### 📦 Opis każdego pakietu:
+
+| Pakiet                      | Opis                                                          |
+| --------------------------- | ------------------------------------------------------------- |
+| **openjdk-17-jre-headless** | Java — potrzebna do uruchomienia serwera Minecraft            |
+| **openssh-server**          | Serwer SSH – umożliwia połączenie przez PuTTY i SFTP          |
+| **vsftpd**                  | Serwer FTP do przesyłania plików                              |
+| **ufw**                     | Prosty firewall do zabezpieczenia serwera                     |
+| **wget**                    | Pobieranie plików przez terminal                              |
+| **curl**                    | Pobieranie danych i sprawdzanie IP                            |
+| **screen**                  | Umożliwia uruchamianie procesów (np. serwera Minecraft) w tle |
+| **htop**                    | Monitor zasobów systemu w terminalu                           |
+| **nano**                    | Edytor tekstu (łatwiejszy niż vi)                             |
+| **zip / unzip**             | Kompresowanie i rozpakowywanie plików                         |
+| **net-tools**               | Narzędzia sieciowe (`ifconfig`, `netstat`, itp.)              |
+| **sudo**                    | Umożliwia uruchamianie komend z uprawnieniami administratora  |
+
+---
+
+## 🔒 (Opcjonalne) Dodatkowe pakiety administracyjne
+
+Jeśli chcesz mieć jeszcze więcej kontroli nad serwerem:
+
+```bash
+sudo apt install -y \
+fail2ban \
+mc \
+neofetch \
+rsync
+```
+
+### Dodatkowo:
+
+| Pakiet       | Opis                                                               |
+| ------------ | ------------------------------------------------------------------ |
+| **fail2ban** | Chroni przed atakami typu brute-force (np. na SSH)                 |
+| **mc**       | Midnight Commander – menedżer plików w terminalu (łatwa nawigacja) |
+| **neofetch** | Pokazuje ładne info o systemie (dla zabawy 😄)                     |
+| **rsync**    | Do automatycznych backupów między komputerami                      |
+
+---
+
+## 🚀 Po instalacji
+
+Zrestartuj serwis SSH i FTP, żeby wszystko działało:
+
+```bash
+sudo systemctl restart ssh
+sudo systemctl restart vsftpd
+```
+
+Sprawdź status:
+
+```bash
+sudo systemctl status ssh
+sudo systemctl status vsftpd
+```
+
+---
+
+Chcesz, żebym Ci teraz zrobił **gotowy skrypt `.sh`**, który po uruchomieniu automatycznie zainstaluje wszystko z tej listy i skonfiguruje SSH + FTP + UFW?
+Wtedy wystarczy, że go uruchomisz jednym poleceniem.
+
+
+Super — masz kilka prostych i sprawdzonych sposobów, żeby inni gracze mogli połączyć się z Twoim serwerem Minecraft działającym na Debianie. Poniżej dam **3 główne opcje** (od najprostszej do bardziej „obejściowej”), z konkretnymi komendami i wskazówkami bezpieczeństwa. Wybierz, która najbardziej pasuje do Twojej sytuacji.
+
+---
+
+# Krótkie przypomnienie przed startem
+
+Adres do połączenia z serwerem to zwykle:
+
+* **W LAN**: `IP_wewnętrzne_serwera:25565` (np. `192.168.1.50:25565`)
+* **Przez Internet**: `IP_zewnętrzne:25565` (albo domena + port)
+
+Z sprawdzeniem zewnętrznego IP:
+
+```bash
+curl ifconfig.me
+```
+
+---
+
+## Opcja A — **Port forwarding** (najczęściej używane, gdy masz dostęp do routera)
+
+To klasyczna metoda: przekierowujesz port 25565 na routerze na adres Twojego serwera.
+
+1. **Ustal stały adres IP serwera**
+
+   * Najprościej: ustaw w routerze *DHCP reservation* (przypisz stały adres do MAC serwera).
+   * Alternatywnie statyczne ustawienie w systemie, ale łatwiej przez router.
+
+2. **W routerze ustaw przekierowanie portu (Port Forward / Virtual Server)**
+
+   * Port zewnętrzny: **25565** (TCP) → adres wewnętrzny: **192.168.x.x:25565** (TCP).
+   * Zapisz ustawienia i zrestartuj router jeśli potrzeba.
+
+3. **Upewnij się, że firewall na Debianie przepuszcza port**
+   Jeśli używasz `ufw`:
+
+   ```bash
+   sudo ufw allow 25565/tcp
+   sudo ufw reload
+   ```
+
+   Jeśli nie masz ufw, sprawdź `iptables`/`nftables`.
+
+4. **Test**
+
+   * Sprawdź z zewnątrz (np. kolega łączy się z Twoim publicznym IP:25565).
+   * Możesz też sprawdzić dostępność portu z narzędzia online (np. „canyouseeme”) — poproś kogoś spoza Twojej sieci, żeby testował.
+
+**Plusy:** stabilne, małe opóźnienia.
+**Minusy:** wymaga dostępu do routera i publicznego IP (czasem ISP blokuje porty).
+
+---
+
+## Opcja B — **ZeroTier (VPN P2P)** — działa bez przekierowywania portów
+
+ZeroTier tworzy wirtualną sieć — serwer i gracze dołączają do tej samej sieci i łączą się po adresie wirtualnym.
+
+1. **Zainstaluj ZeroTier na Debianie** (jednolinijkowa instalacja):
+
+```bash
+curl -s https://install.zerotier.com | sudo bash
+sudo zerotier-cli join TWÓJ_NETWORK_ID
+```
+
+2. Zaloguj się na [https://my.zerotier.com](https://my.zerotier.com) i zaakceptuj urządzenie serwera (jeśli masz konto).
+3. Gracze instalują ZeroTier i dołączają do tego samego `NETWORK_ID`.
+4. Po dołączeniu każdy dostaje wirtualny adres (np. `10.147.17.x`). Gracze łączą się w Minecraft po tym adresie: `10.xxx.xxx.xxx:25565`.
+
+**Plusy:** proste, działa przez NAT, bez routera.
+**Minusy:** wymaga, żeby każdy z graczy zainstalował ZeroTier; dodatkowa warstwa sieciowa.
+
+---
+
+## Opcja C — **Reverse SSH tunnel** (gdy masz VPS z publicznym IP)
+
+Jeśli nie możesz przekierować portu i nie chcesz instalować VPN, możesz użyć VPS jako „przekaźnika”.
+
+1. Zakładamy, że masz VPS z publicznym IP i konto `user@vps_ip`.
+2. Na serwerze Minecraft uruchom tunel:
+
+```bash
+ssh -N -R 25565:localhost:25565 user@VPS_PUBLIC_IP
+```
+
+Wyjaśnienie: ruch na porcie 25565 na VPS będzie przekierowany do Twojego serwera lokalnego.
+3. Na VPS musisz mieć w `/etc/ssh/sshd_config`:
+
+```
+GatewayPorts yes
+```
+
+i zrestartować sshd (`sudo systemctl restart sshd`) — wtedy inne komputery będą mogły łączyć się na `VPS_PUBLIC_IP:25565`.
+
+**Plusy:** działa jeśli masz VPS.
+**Minusy:** wymaga VPS i konfiguracji ssh; może być wolniejsze niż bezpośrednie połączenie.
+
+---
+
+## Opcja D — **ngrok (szybkie i proste, dla testów / krótkich sesji)**
+
+ngrok pozwala wystawić lokalny serwer przez tunel. Do Minecrafta potrzebujesz trybu TCP (część funkcji może być płatna).
+
+1. Pobierz ngrok, zarejestruj konto i ustaw `authtoken`.
+2. Uruchom:
+
+```bash
+./ngrok tcp 25565
+```
+
+ngrok poda adres typu `0.tcp.ngrok.io:xxxxx` — gracze łączą się pod tym adresem.
+
+**Plusy:** bardzo proste testowo.
+**Minusy:** w darmowej wersji adresy mogą się zmieniać; nie dla produkcyjnych serwerów bez płatnego planu.
+
+---
+
+## Bezpieczeństwo i dobre praktyki
+
+* **Zrób kopię zapasową** świata i plików `server.properties`, `whitelist.json`, itp.
+* Używaj **whitelisty** żeby tylko zaproszeni gracze mogli wejść:
+
+  * W `server.properties` ustaw `white-list=true` i dodaj graczy komendą na serwerze:
+
+    ```
+    whitelist add NickGracza
+    ```
+* Monitoruj logi (`logs/latest.log`) i używaj opcji `ops.json` do przyznawania uprawnień.
+* Aktualizuj JDK, system i plik serwera.
+
+---
+
+## Która opcja najlepsza dla Ciebie?
+
+* Jeśli masz dostęp do routera i publiczne IP → **Port forwarding** (Opcja A).
+* Jeśli nie chcesz dotykać routera, a gracze nie mają publicznych IP → **ZeroTier** (Opcja B).
+* Jeśli masz VPS → **Reverse SSH** (Opcja C).
+* Na szybką próbę z nieznajomymi → **ngrok** (Opcja D).
+
+---
+
+Chcesz, żebym przygotował dokładną instrukcję krok-po-kroku dla **jednej z tych opcji** (np. port forwarding z ustawieniem stałego IP w Debianie + przykład konfiguracji routera) — od razu Ci to zrobię. Która opcja Cię interesuje najbardziej?
+
+
+Super — masz kilka prostych i sprawdzonych sposobów, żeby inni gracze mogli połączyć się z Twoim serwerem Minecraft działającym na Debianie. Poniżej dam **3 główne opcje** (od najprostszej do bardziej „obejściowej”), z konkretnymi komendami i wskazówkami bezpieczeństwa. Wybierz, która najbardziej pasuje do Twojej sytuacji.
+
+---
+
+# Krótkie przypomnienie przed startem
+
+Adres do połączenia z serwerem to zwykle:
+
+* **W LAN**: `IP_wewnętrzne_serwera:25565` (np. `192.168.1.50:25565`)
+* **Przez Internet**: `IP_zewnętrzne:25565` (albo domena + port)
+
+Z sprawdzeniem zewnętrznego IP:
+
+```bash
+curl ifconfig.me
+```
+
+---
+
+## Opcja A — **Port forwarding** (najczęściej używane, gdy masz dostęp do routera)
+
+To klasyczna metoda: przekierowujesz port 25565 na routerze na adres Twojego serwera.
+
+1. **Ustal stały adres IP serwera**
+
+   * Najprościej: ustaw w routerze *DHCP reservation* (przypisz stały adres do MAC serwera).
+   * Alternatywnie statyczne ustawienie w systemie, ale łatwiej przez router.
+
+2. **W routerze ustaw przekierowanie portu (Port Forward / Virtual Server)**
+
+   * Port zewnętrzny: **25565** (TCP) → adres wewnętrzny: **192.168.x.x:25565** (TCP).
+   * Zapisz ustawienia i zrestartuj router jeśli potrzeba.
+
+3. **Upewnij się, że firewall na Debianie przepuszcza port**
+   Jeśli używasz `ufw`:
+
+   ```bash
+   sudo ufw allow 25565/tcp
+   sudo ufw reload
+   ```
+
+   Jeśli nie masz ufw, sprawdź `iptables`/`nftables`.
+
+4. **Test**
+
+   * Sprawdź z zewnątrz (np. kolega łączy się z Twoim publicznym IP:25565).
+   * Możesz też sprawdzić dostępność portu z narzędzia online (np. „canyouseeme”) — poproś kogoś spoza Twojej sieci, żeby testował.
+
+**Plusy:** stabilne, małe opóźnienia.
+**Minusy:** wymaga dostępu do routera i publicznego IP (czasem ISP blokuje porty).
+
+---
+
+## Opcja B — **ZeroTier (VPN P2P)** — działa bez przekierowywania portów
+
+ZeroTier tworzy wirtualną sieć — serwer i gracze dołączają do tej samej sieci i łączą się po adresie wirtualnym.
+
+1. **Zainstaluj ZeroTier na Debianie** (jednolinijkowa instalacja):
+
+```bash
+curl -s https://install.zerotier.com | sudo bash
+sudo zerotier-cli join TWÓJ_NETWORK_ID
+```
+
+2. Zaloguj się na [https://my.zerotier.com](https://my.zerotier.com) i zaakceptuj urządzenie serwera (jeśli masz konto).
+3. Gracze instalują ZeroTier i dołączają do tego samego `NETWORK_ID`.
+4. Po dołączeniu każdy dostaje wirtualny adres (np. `10.147.17.x`). Gracze łączą się w Minecraft po tym adresie: `10.xxx.xxx.xxx:25565`.
+
+**Plusy:** proste, działa przez NAT, bez routera.
+**Minusy:** wymaga, żeby każdy z graczy zainstalował ZeroTier; dodatkowa warstwa sieciowa.
+
+---
+
+## Opcja C — **Reverse SSH tunnel** (gdy masz VPS z publicznym IP)
+
+Jeśli nie możesz przekierować portu i nie chcesz instalować VPN, możesz użyć VPS jako „przekaźnika”.
+
+1. Zakładamy, że masz VPS z publicznym IP i konto `user@vps_ip`.
+2. Na serwerze Minecraft uruchom tunel:
+
+```bash
+ssh -N -R 25565:localhost:25565 user@VPS_PUBLIC_IP
+```
+
+Wyjaśnienie: ruch na porcie 25565 na VPS będzie przekierowany do Twojego serwera lokalnego.
+3. Na VPS musisz mieć w `/etc/ssh/sshd_config`:
+
+```
+GatewayPorts yes
+```
+
+i zrestartować sshd (`sudo systemctl restart sshd`) — wtedy inne komputery będą mogły łączyć się na `VPS_PUBLIC_IP:25565`.
+
+**Plusy:** działa jeśli masz VPS.
+**Minusy:** wymaga VPS i konfiguracji ssh; może być wolniejsze niż bezpośrednie połączenie.
+
+---
+
+## Opcja D — **ngrok (szybkie i proste, dla testów / krótkich sesji)**
+
+ngrok pozwala wystawić lokalny serwer przez tunel. Do Minecrafta potrzebujesz trybu TCP (część funkcji może być płatna).
+
+1. Pobierz ngrok, zarejestruj konto i ustaw `authtoken`.
+2. Uruchom:
+
+```bash
+./ngrok tcp 25565
+```
+
+ngrok poda adres typu `0.tcp.ngrok.io:xxxxx` — gracze łączą się pod tym adresem.
+
+**Plusy:** bardzo proste testowo.
+**Minusy:** w darmowej wersji adresy mogą się zmieniać; nie dla produkcyjnych serwerów bez płatnego planu.
+
+---
+
+## Bezpieczeństwo i dobre praktyki
+
+* **Zrób kopię zapasową** świata i plików `server.properties`, `whitelist.json`, itp.
+* Używaj **whitelisty** żeby tylko zaproszeni gracze mogli wejść:
+
+  * W `server.properties` ustaw `white-list=true` i dodaj graczy komendą na serwerze:
+
+    ```
+    whitelist add NickGracza
+    ```
+* Monitoruj logi (`logs/latest.log`) i używaj opcji `ops.json` do przyznawania uprawnień.
+* Aktualizuj JDK, system i plik serwera.
+
+---
+
+## Która opcja najlepsza dla Ciebie?
+
+* Jeśli masz dostęp do routera i publiczne IP → **Port forwarding** (Opcja A).
+* Jeśli nie chcesz dotykać routera, a gracze nie mają publicznych IP → **ZeroTier** (Opcja B).
+* Jeśli masz VPS → **Reverse SSH** (Opcja C).
+* Na szybką próbę z nieznajomymi → **ngrok** (Opcja D).
+
+---
+
+Chcesz, żebym przygotował dokładną instrukcję krok-po-kroku dla **jednej z tych opcji** (np. port forwarding z ustawieniem stałego IP w Debianie + przykład konfiguracji routera) — od razu Ci to zrobię. Która opcja Cię interesuje najbardziej?
+
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up
+
+
+Świetny wybór, Mikołaj 😎
+Zrobimy to profesjonalnie — serwer **Minecraft Java Edition** na **Debianie (Linux)**.
+Poniżej masz kompletną instrukcję krok po kroku.
+
+---
+
+## 🧱 Instalacja serwera Minecraft na Debianie
+
+### 🔧 Wymagania wstępne
+
+* System: **Debian 11 / 12**
+* Uprawnienia administratora (**sudo** lub root)
+* Zainstalowana Java (JDK 17 lub nowsza – wymagana przez najnowsze wersje Minecrafta)
+
+---
+
+### 1️⃣ Aktualizacja systemu
+
+Otwórz terminal i wpisz:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+---
+
+### 2️⃣ Instalacja Javy
+
+Zainstaluj OpenJDK 17:
+
+```bash
+sudo apt install openjdk-17-jre-headless -y
+```
+
+Sprawdź wersję:
+
+```bash
+java -version
+```
+
+Powinno pokazać coś jak:
+
+```
+openjdk version "17.x.x"
+```
+
+---
+
+### 3️⃣ Utwórz katalog serwera
+
+```bash
+mkdir ~/minecraft
+cd ~/minecraft
+```
+
+---
+
+### 4️⃣ Pobierz plik serwera (np. oryginalny Mojang)
+
+Otwórz [https://www.minecraft.net/en-us/download/server](https://www.minecraft.net/en-us/download/server)
+Skopiuj link do pliku `.jar`, np.:
+
+```
+server.jar
+```
+
+Pobierz go:
+
+```bash
+wget https://pobierz.link/do/server.jar -O server.jar
+```
+
+*(wklej prawdziwy link z oficjalnej strony)*
+
+---
+
+### 5️⃣ Uruchom po raz pierwszy, żeby wygenerować pliki
+
+```bash
+java -Xmx2G -Xms1G -jar server.jar nogui
+```
+
+Zobaczysz komunikat o **EULA**.
+
+---
+
+### 6️⃣ Zaakceptuj licencję
+
+Edytuj plik `eula.txt`:
+
+```bash
+nano eula.txt
+```
+
+Zmień:
+
+```
+eula=false
+```
+
+na
+
+```
+eula=true
+```
+
+Zapisz i wyjdź: **Ctrl+O**, potem **Enter**, następnie **Ctrl+X**.
+
+---
+
+### 7️⃣ Uruchom serwer ponownie
+
+```bash
+java -Xmx2G -Xms1G -jar server.jar nogui
+```
+
+---
+
+### 8️⃣ (Opcjonalnie) Utwórz skrypt startowy
+
+Aby łatwo uruchamiać serwer:
+
+```bash
+nano start.sh
+```
+
+Wklej:
+
+```bash
+#!/bin/bash
+java -Xmx2G -Xms1G -jar server.jar nogui
+```
+
+Zapisz i nadaj uprawnienia:
+
+```bash
+chmod +x start.sh
+```
+
+Uruchamiasz potem komendą:
+
+```bash
+./start.sh
+```
+
+---
+
+### 9️⃣ (Opcjonalnie) Uruchamianie w tle (screen)
+
+Aby serwer działał po zamknięciu terminala:
+
+```bash
+sudo apt install screen -y
+screen -S minecraft
+./start.sh
+```
+
+Aby wyjść z sesji bez wyłączania:
+
+```
+Ctrl + A, potem D
+```
+
+Aby wrócić:
+
+```bash
+screen -r minecraft
+```
+
+---
+
+### 🔟 Otwórz port 25565
+
+Jeśli używasz firewalla (np. ufw):
+
+```bash
+sudo apt install ufw -y
+sudo ufw allow 25565/tcp
+sudo ufw enable
+```
+
+---
+
+### ✅ Gotowe!
+
+Twój serwer działa 🎉
+Adres do połączenia z innego komputera:
+
+```
+IP_twojego_serwera:25565
+```
+
+---
+
+Chcesz, żebym dodał też instrukcję dla **PaperMC** (szybszy i lepszy serwer z pluginami), albo **Forge/Fabric** (dla modów)?
+
+
+KOD HTML Z Podstawowe komendy LINUXa
+https://github.com/MikolajFiuk12/Backups-zewnenczny.git
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtm
+l1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   
+  <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/komendy.css" />
+  <link rel="shortcut icon" href="../../img/jon.ico" />
+  <title>Podstawowe komendy LINUXa</title>
+
+  <style type="text/css">
+  </style>
+
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+</head>
+
+<body>
+
+    <!--[if lt IE 8]>
+    <![endif]-->
+    <!--
+    <link href="../../infobar.css" rel="stylesheet">
+    <div id="infobar"><a href="http://browsehappy.pl/infobar">
+    Internet Explorer Alert!!!  Uważaj, używasz najgorszej przeglądarki w sieci. Kliknij tutaj, aby dowiedzieć się więcej...
+    </a></div><div id="viewplot"><script src="../../infobar.js"></script>
+    -->
+    
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<h1><a href="./">Podstawowe komendy LINUXa</a>
+<span style="position: absolute; left: 15pt; margin-top: 10pt; font-size: medium; font-weight: normal"><a href="../" style="color: #DDDDDD">powrót</a></span>
+<a name="top" style="clear: both"></a>
+</h1>
+
+
+<!-- +++++++++++++ TREŚĆ +++++++++++++++++++++++++++++++++++ -->
+
+<ul>
+    <li><a href="#r__data_pomoc_txt">Pomoc</a></li>
+    <li><a href="#r__data_login_txt">Logowanie</a></li>
+    <li><a href="#r__data_podstawowe_txt">Podstawowe komendy</a></li>
+    <li><a href="#r__data_pliki_txt">Pliki i katalogi</a></li>
+    <li><a href="#r__data_przekierowania_txt">Przekierowania</a></li>
+    <li><a href="#r__data_procesy_txt">Procesy</a></li>
+    <li><a href="#r__data_edytory_txt">Edytory</a></li>
+    <li><a href="#r__data_siec_txt">Sieć</a></li>
+    <li><a href="#r__data_dyski_txt">Dyski</a></li>
+    <li><a href="#r__data_srodowisko_txt">Środowisko</a></li>
+    <li><a href="#r__data_urzadzenia_txt">Urządzenia systemowe</a></li>
+</ul>
+<!-- Tresc wygenerowana automatycznie z pliku './data/pomoc.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Pomoc<a name="r__data_pomoc_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>man</b>
+          &ndash;
+          <span>wyświetla stronę manuala dla polecenia 'program'</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>man program</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>info</b>
+          &ndash;
+          <span>podobnie jak man, wyświetla stronę pomocy dla polecenia 'program'.</span>
+      </dt>
+      <dd>
+          <p>Gdy nie znajdzie strony info, szuka strony man i ja wyświetla.</p>
+        <ul>
+            <li><i>info program, pinfo program</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>--help</b>
+          &ndash;
+          <span>każdy program ma opcję --help lub -h, która wyświetla krótką pomoc</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>jakis_program --help</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/login.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Logowanie<a name="r__data_login_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>logout</b>
+          &ndash;
+          <span>komenda służąca do wylogowania się z terminala</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>exit</b>
+          &ndash;
+          <span>komenda służąca do zakończenia procesu powłoki: tcsh, bash, itp.</span>
+      </dt>
+      <dd>
+          <p>Może być używana w skryptach. Pozwala też zwrócić kod wyjścia ze skryptu:</p>
+        <ul>
+            <li><i>exit</i></li>
+            <li><i>exit 127</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>passwd</b>
+          &ndash;
+          <span>zmień hasło użytkownika</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>^D</b>
+          &ndash;
+          <span>(Ctrl-D) wysyła komunikat EOF (end-of-file) do terminala</span>
+      </dt>
+      <dd>
+          <p>Oznacza koniec wprowadzania danych. W powłoce 'bash' skutkuje zazwyczaj zamknięciem terminala</p>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>whoami</b>
+          &ndash;
+          <span>wyświetla nazwę użytkownika</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>id</b>
+          &ndash;
+          <span>wyświetla obecną nazwę i grupę użytkownika oraz ich numery (UID i GID)</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>su</b>
+          &ndash;
+          <span>komenda do przelogowania się jako inny użytkownik (su, od 'switch user')</span>
+      </dt>
+      <dd>
+          <p>Pozwala, w tym samym terminalu, zmienić uprawnienia do wykonywania komend chwilowo na innego użytkownika (zmienić aktualny UID i GID)</p>
+        <ul>
+            <li><i>su username</i> &ndash; zmień użytkownika na użytkownika o nazwie 'username'</li>
+            <li><i>su&nbsp;- username &nbsp;</i> &ndash;  zmień użytkownika, wyczyść zmienne środowiskowe i ustaw nowe wartości zmiennych HOME, SHELL, USER, LOGNAME, PATH</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>finger</b>
+          &ndash;
+          <span>wypisuje wszystkich użytkowników obecnie zalogowanych na danej maszynie (i ich terminale)</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>finger</i></li>
+            <li><i>finger @komputer</i> &ndash; użytkownicy zalogowani na komputerze o nazwie 'komputer;</li>
+            <li><i>finger username</i> &ndash; wypisuje informacje o użytkowniku 'username' i wszystkie terminale na których jest zalogowany</li>
+            <li><i>finger Marek</i> &ndash; wypisuje informacje o wszystkich użytkownikach o imieniu 'marek'</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>w</b>
+          &ndash;
+          <span>podobnie jak finger wypisuje zalogowanych użytkowników i ich aktywne terminale</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/podstawowe.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Podstawowe komendy<a name="r__data_podstawowe_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>cd</b>
+          &ndash;
+          <span>zmienia aktualny katalog (od 'change directory')</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>cd dirname</i> &ndash; zmienia aktualny katalog na 'dirname'</li>
+            <li><i>cd dir1/dir2/dir3</i> &ndash; wchodzi do katalogu 'dir3', który jest w katalogu 'dir2', który jest w 'dir1'</li>
+            <li><i>cd &nbsp;</i> &ndash; z dowolnego miejsca, zmienia katalog na domowy</li>
+            <li><i>cd ..</i> &ndash; przechodzi do katalogu o jeden wyższego w drzewie katalogów niż obecny</li>
+            <li><i>cd /home/dir</i> &ndash; z dowolnego miejsca, przechodzi do katalogu zaczynając od początku drzewa: /</li>
+            <li><i>cd&nbsp;-&nbsp;</i> &ndash; przechodzi do poprzedniego katalogu</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>pwd</b>
+          &ndash;
+          <span>wypisuje ścieżkę obecnego katalogu (od 'print working directory')</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>ls</b>
+          &ndash;
+          <span>listuje katalog</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>ls</i> &ndash; listuje katalog . (ls .)</li>
+            <li><i>ls plik1 plik2 plik3</i> &ndash; listuje tylko wymienione pliki</li>
+            <li><i>ls *.txt</i> &ndash; wypisze wszystkie pliki o nazwie kończącej się na '.txt'</li>
+            <li><i>ls katalog1 katalog2</i> &ndash; listuje wymienione katalogi</li>
+            <li><i>ls -l</i> &ndash; szczegółowa lista</li>
+            <li><i>ls -a</i> &ndash; wypisuje również ukryte pliki (czyli te których nazwa zaczyna się kropką)</li>
+            <li><i>ls -R</i> &ndash; listuje katalogi rekursywnie (czyli wyświetla również zawartość podkatalogów)</li>
+            <li><i>ls -d</i> &ndash; wyświetla tylko nazwy katalogów, tak jak zwyczajnych plików, czyli nie listuje ich zawartości</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>cat</b>
+          &ndash;
+          <span>wypisuje wszystkie podane mu pliki na standardowe wyjście</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>cat plik</i> &ndash; jeśli nie przekierujemy standardowego wyjścia do innego pliku (>, >>) lub programu (|), to wypisze plik na ekran</li>
+            <li><i>cat plik1 plik2 plik3</i> &ndash; wypisze po kolei zawartość wszystkich plików</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>tac</b>
+          &ndash;
+          <span>wypisuje wszystkie podane mu pliki na standardowe wyjście, ale w odwraca kolejność linii</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>tac plik1 plik2</i> &ndash; wypisze połączone oba pliki, od ostatniej do pierwszej linii</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>echo</b>
+          &ndash;
+          <span>powtarza na standardowym wyjściu słowa podane w argumencie</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>echo costam wypisz, czy echo "costam wypisz"</i> &ndash; wypisze 'costam wypisz' i zakończy znakiem nowej linii</li>
+            <li><i>echo -n "costam wypisz"</i> &ndash; po wypisaniu argumentów, nie wypisze znaku nowej linii</li>
+            <li><i>echo $HOME</i> &ndash; wypisuje zawartość zmiennej środowiskowej HOME</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>wc</b>
+          &ndash;
+          <span>liczy linie, słowa, i znaki w pliku</span>
+      </dt>
+      <dd>
+          <p>gdy nie podamy argumentu, czyta ze standardowego wejścia</p>
+        <ul>
+            <li><i>cat plik1 plik2 | wc -l</i> &ndash; policzy wszystkie linie z połączonych plików plik1 plik2</li>
+            <li><i>wc plik</i> &ndash; wypisze linie słowa i znaki oraz nazwę pliku</li>
+            <li><i>wc -m</i> &ndash; tylko znaki (lub --chars)</li>
+            <li><i>wc -l</i> &ndash; tylko linie (lub --lines)</li>
+            <li><i>wc -w</i> &ndash; tylko słowa (lib --words)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>less</b>
+          &ndash;
+          <span>wygodne i szybkie przeglądanie plików tekstowych</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>less plik</i> &ndash; wyświetla zawartość pliku i pozwala przewijać strony (q-wyjście)</li>
+        </ul>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/pliki.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Pliki i katalogi<a name="r__data_pliki_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>touch</b>
+          &ndash;
+          <span>zmienia czas dostępu i modyfikacji pliku, lub jeśli plik nie istnieje - tworzy go.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>touch plik</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>cp</b>
+          &ndash;
+          <span>kopiuje plik</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>cp plik1 plik2</i> &ndash; stworzy ./plik2 identyczny z plik1</li>
+            <li><i>cp plik3 ../katalog/jakis/</i> &ndash; stworzy plik ../katalog/jakis/plik3</li>
+            <li><i>cp pom.* podkatalog/</i> &ndash; skopiuje wszystkie pliki zaczynające się na 'pom.' do ./podkatalog/</li>
+            <li><i>cp plik5 ~/katalog/jakis/pliczek</i> &ndash; stworzy plik ~/katalog/jakis/pliczek</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>mv</b>
+          &ndash;
+          <span>przesuwa plik (tym samym służy również do zmiany nazwy)</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>mv plik1 plik2</i> &ndash; zmieni nazwę pliku z ./plik1 na plik2</li>
+            <li><i>mv plik3 ../katalog/jakis/</i> &ndash; przesunie plik do ../katalog/jakis/plik3</li>
+            <li><i>mv plik4 podkatalog/</i> &ndash; przesunie plik ./podkatalog/plik4</li>
+            <li><i>mv plik5 ~/katalog/jakis/pliczek</i> &ndash; przesunie i zmieni nazwę ~/katalog/jakis/pliczek</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>rm</b>
+          &ndash;
+          <span>kasuje plik</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>rm plik -</i></li>
+            <li><i>rm -r katalog</i> &ndash; kasuje wszystko w katalogu i wszystkie jego podkatalogi (--recursive)</li>
+            <li><i>rm -f plik</i> &ndash; nie pyta się czy skasować (--force)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>mkdir</b>
+          &ndash;
+          <span>tworzy katalog</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>mkdir moj_nowy_katalog</i></li>
+            <li><i>mkdir /home/users/ja/moj_nowy_katalog</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>rmdir</b>
+          &ndash;
+          <span>usuwa pusty katalog</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>rmdir katalog</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>chmod</b>
+          &ndash;
+          <span>zmienia prawa dostępu do pliku</span>
+      </dt>
+      <dd>
+          <p>grupy użytkowników: u - user, g - group, o - others, a - all</p>
+          <p>prawa dostępu: r - read, w - write, x - execute</p>
+        <ul>
+            <li><i>chmod o+r plik</i> &ndash; udziel innym prawo do czytania pliku</li>
+            <li><i>chmod a-x plik</i> &ndash; zabierz wszystkim prawo do wykonywania pliku</li>
+            <li><i>chmod g=rw plik</i> &ndash; ustaw prawa do czytania i pisania dla swojej grupy</li>
+            <li><i>chmod -R go+w katalog</i> &ndash; ustawia prawa wszystkim plikom w katalogu i jego podkatalogach (--recursive)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>locate</b>
+          &ndash;
+          <span>wypisuje gdzie ostatnio, na tym komputerze, był widziany plik o podanej nazwie (lub fragmencie nazwy)</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>locate raport.txt</b>
+          &ndash;
+          <span>locate pdf</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>find</b>
+          &ndash;
+          <span>przejrzyj katalog w poszukiwaniu danego pliku</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>find . -name raport.txt</i></li>
+            <li><i>find /home/user -name "rap*xt"</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/przekierowania.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Przekierowania<a name="r__data_przekierowania_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>></b>
+          &ndash;
+          <span>przekierowanie wyjścia z programu do pliku.</span>
+      </dt>
+      <dd>
+          <p>Standardowym wyjściem każdego programu jest ekran (konsola tekstowa) a standardowym wejściem jest klawiatura. Można te wejścia i wyjścia przekierowywać dowolnie.</p>
+        <ul>
+            <li><i>echo "ala ma kota"  >  plik.txt</i> &ndash; wyjście z programu echo wpisze do pliku plik.txt</li>
+            <li><i>ls -l  >  lista.dat</i> &ndash;  wypisze listę plików do pliku lista.dat</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>>></b>
+          &ndash;
+          <span>doklejenie wyjścia z programu na koniec pliku</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>echo "ala ma psa"  >>  plik.txt</i> &ndash; dopisze "ala ma psa" na koniec pliku plik.txt</li>
+            <li><i>ls -l  >  lista.dat</i> &ndash;  wypisze listę plików do pliku lista.dat</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>|</b>
+          &ndash;
+          <span>przekierowanie wyjścia jednego programu na wejście drugiego</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>cat plik.txt | wc -l</i> &ndash;  cat wypisuje plik.txt na wyjście które przekierowujemy na program liczący wiersze.</li>
+            <li><i>ls -l | lpr</i> &ndash; program drukujący 'lpr' dostanie na wejście listę plików</li>
+            <li><i>cat plik.txt | tac | grep "coś" | head > cosie.txt</i> &ndash;  wypisanie pliku.txt na program 'tac', który odwraca kolejność wierszy, wynik tego przekierowany na 'grep', który wypisze tylko linie zawierające słowo "coś", wynik tego wysłany na program 'head', który pośle dalej tylko pierwsze 10 wierszy na wyjście, które przekierowaliśmy do pliku cosie.txt.</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>>!</b>
+          &ndash;
+          <span>przekierowanie do pliku. Działa podobnie jak >, ale kontynuuje nawet gdy plik już istnienie. Działa w "tcsh".</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>echo "ala ma kota" > plik.txt</i> &ndash;  gdy plik.txt istnieje, ta komenda może się nie powieść.</li>
+            <li><i>echo "ala ma kota" >! plik.txt</i> &ndash;  konieczne będzie użycie wykrzyknika >!</li>
+            <li><i>echo "ala ma kota" >| plik.txt</i> &ndash;  to samo tylko w 'bash'</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b><</b>
+          &ndash;
+          <span>przekierowanie pliku jako standardowego wejścia.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>szachy < ruchy.txt</i> &ndash;  jeśli program szachy przyjmuje ruchy na standardowe wejście, możemy te ruchy spisać do pliku i podać programowi w ten sposób</li>
+            <li><i>cat ruchy.txt | szachy</i> &ndash;  to samo można też zrobić tak</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b><<</b>
+          &ndash;
+          <span>podanie na wejście następujących później linii.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>szachy << DO_KONCA<br/>E2-B4<br/>H5-A1<br/>C6-F5<br/>DO_KONCA</i> &ndash;  podanie tzw. dokumentu w miejscu. Wszystkie następujące linie między etykietami 'DO_KONCA' będą podane na standardowe wejście programu 'szachy'.</li>
+            <li><i>echo "E2-B4<br/>H5-A1<br/>C6-F5" | szachy</i> &ndash;  to samo można też zrobić tak</li>
+            <li><i>echo -e "E2-B4\nH5-A1\nC6-F5" | szachy</i> &ndash;  to samo można też zrobić tak</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>2></b>
+          &ndash;
+          <span>przekierowanie standardowego wyjścia dla błędów do pliku. Oprócz standardowego wyjścia i wejścia, każdy program ma jeszcze standardowe wyjście dla błędów. Je też możemy przekierowywać, na przykład w inne miejsce niż wyjście zwykłe. Działa w "bash", nie w "tcsh".</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>find -name "plik.*" >znalezione.log 2>bledy.log</i> &ndash;  pliki znalezione przez 'find' wylądują w znalezione.log, komunikaty o błędach nie zaciemnią nam wyniku i wpiszą się do innego pliku &ndash; bledy.log</li>
+            <li><i>cp -r dane/ backup/ 2>error.log</i> &ndash;  jeśli podczas kopiowania całego katalogu wystąpią błędy, wszystkie komunikaty zostaną wpisane do error.log</li>
+            <li><i>( ls > plik.log ) >& plik.err</i> &ndash;  w 'tcsh' nie można przekierować samego wyjścia dla błędów, stąd konieczność takiej konstrukcji.</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>&> lub >&</b>
+          &ndash;
+          <span>przekierowanie obu wyjść do pliku.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>ls >& plik.log</i> &ndash; standardowe wyjście i standardowe wyjście dla błędów jest przekierowane do plik.log</li>
+            <li><i>ls >plik.log 2>&1</i> &ndash; to samo, ale działa tylko w 'bash'. Przekierowanie wyjścia, a potem skopiowanie go na wyjście dla błędów.</li>
+            <li><i>ls &> plik.log</i> &ndash;  to samo co >& ale w notacji bardziej właściwej dla 'bash'.</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>man bash</b>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>polecam aby uzyskać więcej informacji</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>man tcsh</b>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>polecam aby uzyskać więcej informacji</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/procesy.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Procesy<a name="r__data_procesy_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>ps</b>
+          &ndash;
+          <span>wypisuje procesy uruchomione na komputerze</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>ps</i> &ndash; wyświetla procesy uruchomione przez użytkownika</li>
+            <li><i>ps a</i> &ndash; wyświetl również procesy innych użytkowników</li>
+            <li><i>ps -l, ps -f, ps -F</i> &ndash; więcej informacji o procesach (od: long, full, extra full)</li>
+            <li><i>ps  f</i> &ndash; wyświetla drzewo zależności procesów (od: forest)</li>
+            <li><i>ps --help</i> &ndash; :P</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>bg</b>
+          &ndash;
+          <span>uruchamia na nowo zatrzymane (Ctrl-Z) zadanie, ale w tle, tak jakby zostało ono uruchomione z &amp;</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>bg</i> &ndash; uruchamia ostatnio zatrzymane zadanie</li>
+            <li><i>bg NUMER</i> &ndash; uruchamia zadanie o danym numerze na liście zatrzymanych zadań (jobs)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>fg</b>
+          &ndash;
+          <span>uruchamia na nowo zatrzymane (Ctrl-Z) zadanie, na pierwszym planie</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>fg</i> &ndash; uruchamia ostatnio zatrzymane zadanie</li>
+            <li><i>fg NUMER</i> &ndash; uruchamia zadanie o danym numerze na liście zatrzymanych zadań (jobs)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>jobs</b>
+          &ndash;
+          <span>wyświetla listę zatrzymanych zadań</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>kill</b>
+          &ndash;
+          <span>zabija podany proces</span>
+      </dt>
+      <dd>
+          <p>PID - jest to numer identyfikacyjny procesu (process id), można go odczytać np. używając polecenia ps</p>
+        <ul>
+            <li><i>kill PID</i> &ndash; wysyła do procesu o numerze PID sygnał do przerwania procesu</li>
+            <li><i>kill -KILL PID</i> &ndash; zabija proces bez pytania</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>&</b>
+          &ndash;
+          <span>modyfikator który pozwala uruchomić od razu proces w tle.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>xcalc &</i> &ndash;  uruchamia program xcalc w tle, dzięki temu mamy wolną konsole</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>top</b>
+          &ndash;
+          <span>interaktywne narzędzie do monitorowania procesów</span>
+      </dt>
+      <dd>
+          <p>Sortuje procesy po ich bieżącym użyciu procesora, po użyciu pamięci, itp.</p>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/edytory.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Edytory<a name="r__data_edytory_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>vim</b>
+          &ndash;
+          <span>zaawansowany edytor tekstowy w trybie tekstowym</span>
+      </dt>
+      <dd>
+          <p>Vi iMproved - nowa wersja znanego edytora Vi. Posiada</p>
+        <ul>
+            <li><i>podświetlanie składni dla wielu języków programowania</i></li>
+            <li><i>możliwość edycji kilku plików na raz</i></li>
+            <li><i>bogatego helpa</i></li>
+            <li><i>bardzo zaawansowane funkcje edycji</i></li>
+            <li><i>...</i></li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>gvim</b>
+          &ndash;
+          <span>vim w trybie graficznym</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>emacs</b>
+          &ndash;
+          <span>zaawansowany edytor tekstowy w trybie graficznym</span>
+      </dt>
+      <dd>
+          <p>Emacs podobnie jak Vim jest wszechstronnym edytorem obsługującym wiele języków i posiadającym bogate funkcje.</p>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>uemacs</b>
+          &ndash;
+          <span>edytor tekstowy w trybie tekstowym</span>
+      </dt>
+      <dd>
+          <p>Micro Emacs jest tekstową wersją Emacsa</p>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>joe</b>
+          &ndash;
+          <span>prosty edytor tekstowy</span>
+      </dt>
+      <dd>
+          <p>Joe's Own Editor. Nadaje się do pisania prostych dokumentów</p>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>mcedit</b>
+          &ndash;
+          <span>edytor tekstowy w trybie tekstowym</span>
+      </dt>
+      <dd>
+          <p>mcedit jest wbudowanym w Midnight Commandera edytorem.</p>
+          <p>Posiada m.in. podświetlanie składni.</p>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/siec.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Sieć<a name="r__data_siec_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>pine</b>
+          &ndash;
+          <span>program do obsługi poczty</span>
+      </dt>
+      <dd>
+          <p>Bardzo dobry, szybki i wygodny program do sprawdzania i wysyłania poczty elektronicznej. Jego największą zaletą jest to, że działa w trybie tekstowym, więc można uruchomić go na zdalnym terminalu.</p>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>ssh</b>
+          &ndash;
+          <span>program do zdalnego logowania używając szyfrowanego połączenia</span>
+      </dt>
+      <dd>
+          <p>Najważniejszy sieciowy program. Umożliwia logowanie się na dowolny komputer na świecie, przy czym połączenie jest bezpieczne dzięki algorytmom szyfrującym opartym na kluczach RSA.</p>
+        <ul>
+            <li><i>ssh anatres</i> &ndash; zaloguje mnie na 'antares'a</li>
+            <li><i>ssh ja@anatres</i> &ndash; zaloguje mnie jako użytkownika 'ja' na 'antares'a</li>
+            <li><i>ssh ja@antares komenda</i> &ndash; zaloguje mnie tylko by wykonać na 'antares'ie komendę</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>scp</b>
+          &ndash;
+          <span>program do kopiowania plików używając szyfrowanego połączenia SSH</span>
+      </dt>
+      <dd>
+          <p>scp łączy się z podanym serwerem i kopiuje podane pliki między oboma komputerami</p>
+          <p>'scp'do połączenia używa programu 'ssh'</p>
+        <ul>
+            <li><i>scp plik ja@antares:~/moje_pliki/</i> &ndash; skopiuje plik do mojego katalogu na antaresie ~/moje_pliki/</li>
+            <li><i>scp ja@antares:/var/log/plik .</i> &ndash; do bieżącego katalogu skopiuje podany plik z antaresa</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>rlogin</b>
+          &ndash;
+          <span>prosty protokół zdalnego logowania</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>rlogin antares</i> &ndash; zaloguje mnie na 'antares'a</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>ping</b>
+          &ndash;
+          <span>program diagnostyczny sprawdzający czy istnieje połączenie sieciowe z danym komputerem.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>ping antares.astrouw.edu.pl</i> &ndash;  sprawdzamy czy antares odpowiada (i jak szybko)</li>
+        </ul>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/dyski.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Dyski<a name="r__data_dyski_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>df</b>
+          &ndash;
+          <span>wypisuje rozmiary i ilość dostępnego miejsca na zamontowanych dyskach (w kilobajtach i w procentach)</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>df</i></li>
+            <li><i>df /dev/sda1</i> &ndash; ogranicz wyniki tylko do jednej partycji</li>
+            <li><i>df -h</i> &ndash; wyświetl rozmiary w wygodnych dla użytkownika jednostkach (human readable)</li>
+            <li><i>df -m</i> &ndash; rozmiary w megabajtach</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>du</b>
+          &ndash;
+          <span>policz rozmiary katalogów i plików zawartych w podanym katalogu</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>du</i> &ndash; rozmiar obecnego katalogu</li>
+            <li><i>du katalog</i> &ndash; policz rozmiar podanego katalogu</li>
+            <li><i>du -s</i> &ndash; wypisz tylko sumę, a nie rozmiary poszczególnych podkatalogów</li>
+            <li><i>du -sm</i> &ndash; wypisz tylko sumę dla każdego katalogu i podaj rozmiar w megabajtach</li>
+            <li><i>du -sm dir* | sort -n</i> &ndash; posortuj wyniki od najmniejszego do największego z podanych katalogów</li>
+        </ul>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/srodowisko.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Środowisko<a name="r__data_srodowisko_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>which</b>
+          &ndash;
+          <span>wypisuje gdzie znajduje się plik z programem o podanej nazwie</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>which ls</i> &ndash; zlokalizuj plik, który zostanie uruchomiony po wywołaniu komendy 'ls'</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>env</b>
+          &ndash;
+          <span>wypisuje aktualne wartości wszystkich zmiennych środowiskowych</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>alias</b>
+          &ndash;
+          <span>ustawia i wypisuje definicje skrótowych komend ('aliasów'), które są obecnie ustawione w środowisku</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>alias</i> &ndash; wypisuje aliasy</li>
+            <li><i>alias ls 'ls --color=auto'</i> &ndash; definiuje nowy alias o nazwie 'ls' i podanej treści</li>
+        </ul>
+      </dd>
+    </dl>
+
+
+<!-- Tresc wygenerowana automatycznie z pliku './data/urzadzenia.txt' -->
+
+
+<div style="float: right"><a href="#top"><span style="font-size: x-large">&uarr;</span> góra</a></div><h2>Urządzenia systemowe<a name="r__data_urzadzenia_txt"></a></h2>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>/dev/null</b>
+          &ndash;
+          <span>studnia bez dna. Urządzenie do którego możemy pisać do woli, a wszystko co wpiszemy przepada.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>find -name "plik.*" 2>/dev/null</i> &ndash;  jeśli wsród wyników szukania nie chcemy oglądać komunikatów o błędach</li>
+            <li><i>latex plik.tex >/dev/null</i> &ndash;  program wykona wszystkie czynności, ale nie zaśmieci nam konsoli logami</li>
+            <li><i>licz >/dev/null 2>/dev/null &</i> &ndash;  jeśli chcemy puścić program w tle, a potem się wylogować (zamknąć konsole), musimy przekierować wyjścia z programu tak, aby nie próbował pisać do nieistniejącego już urządzenia. Urządzenie 'null' jest zawsze.</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>/dev/zero</b>
+          &ndash;
+          <span>składnica zer. Jest to urządzenie do czytania, które nigdy się nie kończy. Można z niego wczytać dowolną liczbę bajtów, a wszystkie będą równe zero.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>dd if=/dev/zero of=zera.txt count=1000</i> &ndash;  wczyta tysiąc zer do pliku 'zera.txt'.</li>
+            <li><i>cat /dev/zero</i> &ndash;  radzę nie próbować</li>
+            <li><i>head -c 10 /dev/zero > zera.txt</i> &ndash;  wypisze pierwsze 10 bajtów z '/dev/zero' do pliku 'zera.txt'. W wyniku mamy plik z dziesięcioma zerami.</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>/dev/random</b>
+          &ndash;
+          <span>zbiór liczb losowych. Jest to urządzenie do czytania, które daje prawdziwie losowe dane. Korzysta przy tym z systemowego zbiornika entropii, który jest uzupełniany dzięki różnym przejawom aktywności użytkownika. Zbiór ten może się wyczerpać, dlatego nie należy z niego czytać wielu liczb na raz.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>od -t x1 -N 100 /dev/random</i> &ndash;  wypisze pierwsze 100 losowych bajtów z urządzenia /dev/random na ekran (w systemie szesnastkowym)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>/dev/urandom</b>
+          &ndash;
+          <span>zbiór liczba pseudolosowych. Jest to urządzenie do czytania, które podaje liczby pseudolosowe. Ma ich do dyspozycji dowolnie dużo.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>od -t d1 -N 100 /dev/urandom</i> &ndash;  wypisze pierwsze 100 bajtów z urządzenia /dev/urandom na ekran (w systemie dziesiętnym)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>/dev/stdin</b>
+          &ndash;
+          <span>standardowe wejście aktualnego procesu. Każdy proces który próbuje czytać z tego urządzenia, dostanie zawartość własnego wejścia.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>echo "ma kota" | cat ala.txt /dev/stdin</i> &ndash;  program cat połączy zawartość pliku ala.txt z tym co dostał na standardowe wejście</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>/dev/stdout</b>
+          &ndash;
+          <span>standardowe wyjście aktualnego programu. Gdy proces wypisze coś do pliku /dev/stdout, pojawi się to na jego standardowym wyjściu.</span>
+      </dt>
+      <dd>
+        <ul>
+            <li><i>a2ps --output plik.ps     plik.txt</i> &ndash;  program a2ps stworzy dokument postscript w pliku plik.ps</li>
+            <li><i>a2ps --output /dev/stdout plik.txt</i> &ndash;  program a2ps wypisze dokument na ekran (jego standardowe wyjście)</li>
+        </ul>
+      </dd>
+    </dl>
+
+<hr class="komenda"/><!-- +++++++++++++++++++++++++ -->
+
+    <dl class="kom">
+      <dt>
+          <b>/dev/stderr</b>
+          &ndash;
+          <span>standardowe wyjście dla błędów aktualnego programu. Gdy proces wypisze coś do pliku /dev/stderr, pojawi się to na jego standardowym wyjściu dla błędów.</span>
+      </dt>
+      <dd>
+      </dd>
+    </dl>
+
+
+
+
+
+
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<hr />
+
+<div style="font-size: small; color: gray; clear: both; float: right">
+administratorem jest
+<a href="mailto:&#106;&#115;&#107;&#111;&#119;&#114;&#111;&#110;&#64;&#97;&#115;&#116;&#114;&#111;&#117;&#119;&#46;&#101;&#100;&#117;&#46;&#112;&#108;">Jan Skowron</a>,
+strona znajduje sie na serwerze <a href="/">astrouw.edu.pl</a>
+<!-- , licznik odwiedzin: <a href="./count/"></a> -->
+</div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<div style="float: left">
+<a href="http://validator.w3.org/check?uri=referer"><img alt="Valid HTML!" style="border: 0px; margin: 0px 5px" src="../../img/w3c_xhtml10.gif" /></a>
+
+<a href="http://jigsaw.w3.org/css-validator/check/referer"><img alt="Valid CSS!" style="border: 0px; margin: 0px 5px" src="../../img/w3c_css_black.gif" /></a>
+</div>
+
+</body>
+</html>
+
+Okej, Mikołaj 😎
+Przygotuję Ci **kompletny, praktyczny poradnik Debiana 12 z najważniejszymi komendami**, który będzie przydatny zarówno do pracy w terminalu, konfiguracji serwera, zarządzania plikami, jak i do zdalnego administrowania systemem.
+
+---
+
+# **1️⃣ Podstawowe komendy systemowe**
+
+| Komenda                   | Opis                                                                   |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `pwd`                     | Pokazuje aktualny katalog                                              |
+| `ls`                      | Wyświetla pliki i katalogi (`ls -l` szczegółowo, `ls -a` także ukryte) |
+| `cd katalog`              | Zmiana katalogu                                                        |
+| `mkdir nazwa`             | Tworzy nowy katalog                                                    |
+| `rmdir nazwa`             | Usuwa pusty katalog                                                    |
+| `rm plik`                 | Usuwa plik (`rm -r katalog` usuwa katalog z zawartością)               |
+| `cp źródło cel`           | Kopiuje plik/katalog                                                   |
+| `mv źródło cel`           | Przenosi lub zmienia nazwę pliku/katalogu                              |
+| `touch plik`              | Tworzy pusty plik                                                      |
+| `cat plik`                | Wyświetla zawartość pliku                                              |
+| `nano plik`               | Edycja pliku w terminalu                                               |
+| `head plik` / `tail plik` | Podgląd początku/końca pliku                                           |
+| `less plik`               | Przeglądanie dużych plików w terminalu                                 |
+| `tree`                    | Wyświetla strukturę katalogów w formie drzewa                          |
+
+---
+
+# **2️⃣ Komendy zarządzania pakietami (APT)**
+
+| Komenda                             | Opis                                 |
+| ----------------------------------- | ------------------------------------ |
+| `sudo apt update`                   | Aktualizacja listy pakietów          |
+| `sudo apt upgrade -y`               | Aktualizacja wszystkich pakietów     |
+| `sudo apt install nazwa_pakietu -y` | Instalacja pakietu                   |
+| `sudo apt remove nazwa_pakietu -y`  | Usuwanie pakietu                     |
+| `sudo apt purge nazwa_pakietu -y`   | Usuwanie pakietu wraz z konfiguracją |
+| `sudo apt autoremove -y`            | Usuwanie niepotrzebnych zależności   |
+| `apt search słowo`                  | Szukanie pakietów                    |
+| `apt show nazwa_pakietu`            | Informacje o pakiecie                |
+
+---
+
+# **3️⃣ Zarządzanie użytkownikami i uprawnieniami**
+
+| Komenda                        | Opis                                    |
+| ------------------------------ | --------------------------------------- |
+| `whoami`                       | Pokazuje zalogowanego użytkownika       |
+| `id`                           | Informacje o użytkowniku i grupach      |
+| `sudo adduser nazwa`           | Dodaje nowego użytkownika               |
+| `sudo deluser nazwa`           | Usuwa użytkownika                       |
+| `sudo passwd nazwa`            | Zmiana hasła użytkownika                |
+| `sudo usermod -aG grupa nazwa` | Dodanie użytkownika do grupy (np. sudo) |
+| `groups nazwa`                 | Wyświetla grupy użytkownika             |
+
+---
+
+# **4️⃣ Zarządzanie systemem i procesami**
+
+| Komenda                                          | Opis                                      |
+| ------------------------------------------------ | ----------------------------------------- |
+| `top`                                            | Pokazuje procesy w czasie rzeczywistym    |
+| `htop`                                           | Bardziej rozbudowany monitor procesów     |
+| `ps aux`                                         | Lista wszystkich procesów                 |
+| `kill PID`                                       | Zabija proces o podanym PID               |
+| `killall nazwa_procesu`                          | Zabija wszystkie procesy o podanej nazwie |
+| `systemctl status nazwa_usługi`                  | Status usługi systemowej (np. ssh)        |
+| `sudo systemctl start/stop/restart nazwa_usługi` | Start/stop/restart usługi                 |
+| `sudo reboot`                                    | Restart systemu                           |
+| `sudo shutdown -h now`                           | Wyłączenie systemu natychmiast            |
+
+---
+
+# **5️⃣ Zarządzanie dyskiem i plikami**
+
+| Komenda            | Opis                                             |
+| ------------------ | ------------------------------------------------ |
+| `df -h`            | Pokazuje wolne miejsce na dyskach                |
+| `du -sh katalog`   | Pokazuje rozmiar katalogu                        |
+| `ncdu`             | Graficzne sprawdzanie zajętości dysku (terminal) |
+| `mount` / `umount` | Montowanie i odmontowanie dysków/USB             |
+| `lsblk`            | Pokazuje wszystkie dyski i partycje              |
+| `blkid`            | Pokazuje UUID i typ partycji                     |
+| `fdisk -l`         | Lista dysków i partycji                          |
+
+---
+
+# **6️⃣ Sieć i połączenia**
+
+| Komenda          | Opis                                          |
+| ---------------- | --------------------------------------------- |
+| `ip a`           | Pokazuje adresy IP i interfejsy sieciowe      |
+| `ping adres`     | Test połączenia z hostem                      |
+| `curl adres`     | Pobranie danych z URL                         |
+| `wget adres`     | Pobranie pliku z internetu                    |
+| `netstat -tulnp` | Pokazuje otwarte porty i nasłuchujące procesy |
+| `nmap IP`        | Skanowanie portów na zdalnym hoście           |
+
+---
+
+# **7️⃣ SSH i zdalny dostęp**
+
+| Komenda                        | Opis                                       |
+| ------------------------------ | ------------------------------------------ |
+| `ssh user@IP`                  | Połączenie zdalne z serwerem przez SSH     |
+| `scp plik user@IP:/ścieżka`    | Kopiowanie pliku na serwer SSH             |
+| `scp user@IP:/ścieżka/plik ./` | Pobieranie pliku z serwera                 |
+| `sftp user@IP`                 | Interaktywne przesyłanie plików przez SFTP |
+| `sudo systemctl enable ssh`    | Automatyczne uruchamianie SSH po starcie   |
+| `sudo systemctl restart ssh`   | Restart serwera SSH                        |
+
+---
+
+# **8️⃣ Instalacja i zarządzanie Minecraft Server**
+
+| Komenda                                    | Opis                                              |
+| ------------------------------------------ | ------------------------------------------------- |
+| `java -Xmx2G -Xms1G -jar server.jar nogui` | Uruchomienie serwera Minecraft (2 GB RAM)         |
+| `screen -S minecraft ./start.sh`           | Uruchomienie serwera w tle (screen)               |
+| `Ctrl+A, D`                                | Wyjście z ekranu screen bez zatrzymywania serwera |
+| `screen -r minecraft`                      | Powrót do sesji serwera w screen                  |
+
+---
+
+# **9️⃣ Archiwizacja i backupy**
+
+| Komenda                               | Opis                                     |
+| ------------------------------------- | ---------------------------------------- |
+| `tar -czvf backup.tar.gz katalog`     | Kompresja katalogu do tar.gz             |
+| `tar -xzvf backup.tar.gz`             | Rozpakowanie archiwum                    |
+| `rsync -avh katalog user@IP:/ścieżka` | Synchronizacja katalogu na serwer zdalny |
+
+---
+
+# **🔟 Firewall i bezpieczeństwo**
+
+| Komenda                        | Opis                                                |
+| ------------------------------ | --------------------------------------------------- |
+| `sudo ufw status`              | Sprawdzenie statusu firewalla                       |
+| `sudo ufw enable`              | Włączenie firewalla                                 |
+| `sudo ufw allow 22/tcp`        | Otwarcie portu SSH                                  |
+| `sudo ufw allow 21/tcp`        | Otwarcie portu FTP                                  |
+| `sudo ufw reload`              | Przeładowanie ustawień firewalla                    |
+| `sudo apt install fail2ban -y` | Instalacja Fail2Ban (ochrona SSH przed brute-force) |
+
+---
+
+Mikołaj, jeśli chcesz, mogę teraz zrobić **wersję tej listy w formie „ściągi PDF” lub pliku tekstowego**, który będziesz mógł mieć zawsze przy sobie i korzystać w każdej instalacji Debiana — zawierałaby wszystkie najważniejsze komendy i krótkie opisy.
+
+Chcesz, żebym to zrobił?
+
+Jasne, Mikołaj 😎
+Zrobimy teraz **bardzo rozszerzoną listę komend Debiana 12** z podziałem na kategorie, dodatkowe narzędzia i przykłady użycia. To będzie prawdziwa **ściąga dla każdego administratora i użytkownika**.
+
+---
+
+# **1️⃣ System i informacje o systemie**
+
+| Komenda          | Opis                                                |                    |
+| ---------------- | --------------------------------------------------- | ------------------ |
+| `uname -a`       | Informacje o jądrze systemu i architekturze         |                    |
+| `lsb_release -a` | Informacje o wersji Debiana                         |                    |
+| `hostname`       | Nazwa hosta systemu                                 |                    |
+| `hostnamectl`    | Szczegółowe info o hoście, wersji systemu i kernelu |                    |
+| `uptime`         | Czas działania systemu, obciążenie CPU              |                    |
+| `who`            | Kto jest zalogowany                                 |                    |
+| `w`              | Szczegółowe info o użytkownikach i procesach        |                    |
+| `dmesg           | less`                                               | Logi jądra systemu |
+
+---
+
+# **2️⃣ Zarządzanie pakietami i repozytoriami**
+
+| Komenda                             | Opis                                         |
+| ----------------------------------- | -------------------------------------------- |
+| `sudo apt update`                   | Aktualizacja listy pakietów                  |
+| `sudo apt upgrade -y`               | Aktualizacja wszystkich pakietów             |
+| `sudo apt install nazwa_pakietu -y` | Instalacja pakietu                           |
+| `sudo apt remove nazwa_pakietu -y`  | Usunięcie pakietu                            |
+| `sudo apt purge nazwa_pakietu -y`   | Usunięcie pakietu i konfiguracji             |
+| `sudo apt autoremove -y`            | Usuwanie niepotrzebnych zależności           |
+| `apt search słowo`                  | Szukanie pakietów w repozytoriach            |
+| `apt show nazwa_pakietu`            | Informacje o pakiecie                        |
+| `sudo add-apt-repository PPA`       | Dodanie repozytorium (np. dla nowych wersji) |
+| `apt-cache policy nazwa_pakietu`    | Sprawdzenie dostępnej wersji pakietu         |
+
+---
+
+# **3️⃣ Zarządzanie użytkownikami i grupami**
+
+| Komenda                        | Opis                               |
+| ------------------------------ | ---------------------------------- |
+| `whoami`                       | Aktualny użytkownik                |
+| `id`                           | UID, GID i grupy użytkownika       |
+| `sudo adduser nazwa`           | Dodanie nowego użytkownika         |
+| `sudo deluser nazwa`           | Usunięcie użytkownika              |
+| `sudo usermod -aG grupa nazwa` | Dodanie użytkownika do grupy       |
+| `groups nazwa`                 | Sprawdzenie grup użytkownika       |
+| `passwd`                       | Zmiana hasła bieżącego użytkownika |
+| `sudo passwd nazwa`            | Zmiana hasła innego użytkownika    |
+
+---
+
+# **4️⃣ Zarządzanie systemem i procesami**
+
+| Komenda                                          | Opis                                         |
+| ------------------------------------------------ | -------------------------------------------- |
+| `top`                                            | Monitor procesów w czasie rzeczywistym       |
+| `htop`                                           | Zaawansowany monitor procesów (interaktywny) |
+| `ps aux`                                         | Lista wszystkich procesów                    |
+| `kill PID`                                       | Zabicie procesu o podanym PID                |
+| `killall nazwa_procesu`                          | Zabicie wszystkich procesów o danej nazwie   |
+| `systemctl status nazwa_usługi`                  | Status usługi systemowej                     |
+| `sudo systemctl start/stop/restart nazwa_usługi` | Start, stop, restart usługi                  |
+| `journalctl -xe`                                 | Logi systemowe i błędy usług                 |
+| `uptime`                                         | Czas pracy systemu i średnie obciążenie CPU  |
+| `reboot`                                         | Restart systemu                              |
+| `shutdown -h now`                                | Wyłączenie systemu natychmiast               |
+| `shutdown -r +5`                                 | Restart za 5 minut                           |
+
+---
+
+# **5️⃣ Zarządzanie dyskami i partycjami**
+
+| Komenda               | Opis                                         |
+| --------------------- | -------------------------------------------- |
+| `df -h`               | Wolne miejsce na dyskach (ludzkie jednostki) |
+| `du -sh katalog`      | Rozmiar katalogu                             |
+| `lsblk`               | Lista dysków i partycji                      |
+| `blkid`               | Typy partycji i UUID                         |
+| `mount /dev/sdX /mnt` | Montowanie dysku                             |
+| `umount /mnt`         | Odmontowanie dysku                           |
+| `fdisk -l`            | Informacje o dyskach i partycjach            |
+| `parted /dev/sdX`     | Zarządzanie partycjami (interaktywnie)       |
+| `mkfs.ext4 /dev/sdX1` | Formatowanie partycji ext4                   |
+| `fsck /dev/sdX1`      | Sprawdzenie i naprawa systemu plików         |
+
+---
+
+# **6️⃣ Sieć i połączenia**
+
+| Komenda            | Opis                                           |
+| ------------------ | ---------------------------------------------- |
+| `ip a`             | Adresy IP i interfejsy sieciowe                |
+| `ping adres`       | Test połączenia z hostem                       |
+| `traceroute adres` | Ścieżka pakietu do hosta                       |
+| `curl adres`       | Pobranie danych z internetu                    |
+| `wget adres`       | Pobranie pliku z internetu                     |
+| `netstat -tulnp`   | Otwarte porty i nasłuchujące procesy           |
+| `ss -tulnp`        | Alternatywa dla netstat                        |
+| `nmap IP`          | Skanowanie portów hosta                        |
+| `ifconfig`         | Informacje o interfejsach sieciowych (starsze) |
+| `route -n`         | Trasa domyślna i routing                       |
+
+---
+
+# **7️⃣ SSH, SFTP i zdalny dostęp**
+
+| Komenda                        | Opis                                     |
+| ------------------------------ | ---------------------------------------- |
+| `ssh user@IP`                  | Połączenie zdalne przez SSH              |
+| `scp plik user@IP:/ścieżka`    | Kopiowanie pliku na serwer               |
+| `scp user@IP:/ścieżka/plik ./` | Pobieranie pliku z serwera               |
+| `sftp user@IP`                 | Interaktywne przesyłanie plików          |
+| `sudo systemctl enable ssh`    | Automatyczny start SSH                   |
+| `sudo systemctl restart ssh`   | Restart serwera SSH                      |
+| `ssh-keygen -t rsa`            | Generowanie kluczy SSH                   |
+| `ssh-copy-id user@IP`          | Skopiowanie klucza publicznego na serwer |
+
+---
+
+# **8️⃣ Archiwizacja i backupy**
+
+| Komenda                               | Opis                              |
+| ------------------------------------- | --------------------------------- |
+| `tar -czvf backup.tar.gz katalog`     | Kompresja katalogu                |
+| `tar -xzvf backup.tar.gz`             | Rozpakowanie archiwum             |
+| `zip -r backup.zip katalog`           | Kompresja zip                     |
+| `unzip backup.zip`                    | Rozpakowanie zip                  |
+| `rsync -avh katalog user@IP:/ścieżka` | Synchronizacja katalogu zdalnie   |
+| `cron`                                | Automatyzacja zadań (backupów)    |
+| `crontab -e`                          | Edycja zadań cron dla użytkownika |
+
+---
+
+# **9️⃣ Firewall i bezpieczeństwo**
+
+| Komenda                          | Opis                          |
+| -------------------------------- | ----------------------------- |
+| `sudo ufw status`                | Status firewalla              |
+| `sudo ufw enable`                | Włączenie firewalla           |
+| `sudo ufw allow 22/tcp`          | Port SSH                      |
+| `sudo ufw allow 21/tcp`          | Port FTP                      |
+| `sudo ufw allow 25565/tcp`       | Port Minecraft (opcjonalnie)  |
+| `sudo ufw reload`                | Przeładowanie reguł           |
+| `sudo apt install fail2ban -y`   | Ochrona SSH przed brute-force |
+| `sudo systemctl enable fail2ban` | Auto start Fail2Ban           |
+
+---
+
+# **🔟 Minecraft server – podstawowe komendy**
+
+| Komenda                                    | Opis                                               |
+| ------------------------------------------ | -------------------------------------------------- |
+| `java -Xmx2G -Xms1G -jar server.jar nogui` | Uruchomienie serwera Minecraft (2GB RAM)           |
+| `screen -S minecraft ./start.sh`           | Uruchomienie w tle (screen)                        |
+| `Ctrl+A, D`                                | Wyjście z ekranu screen bez zatrzymania serwera    |
+| `screen -r minecraft`                      | Powrót do sesji serwera                            |
+| `stop`                                     | Komenda w konsoli Minecraft do zatrzymania serwera |
+| `backup.sh`                                | Twój własny skrypt do backupu świata i plików      |
+
+---
+
+# **1️⃣1️⃣ Przydatne narzędzia w terminalu**
+
+| Narzędzie  | Opis                                                |
+| ---------- | --------------------------------------------------- |
+| `mc`       | Midnight Commander – menedżer plików w terminalu    |
+| `ncdu`     | Wizualizacja użycia dysku w terminalu               |
+| `htop`     | Zaawansowany monitor procesów                       |
+| `iotop`    | Zużycie dysku przez procesy                         |
+| `dialog`   | Tworzenie prostych interaktywnych menu w terminalu  |
+| `neofetch` | Wyświetla info o systemie w terminalu (fajny efekt) |
+
+---
+
+Mikołaj, jeśli chcesz, mogę zrobić **wersję PDF lub TXT**, w której będziesz miał wszystkie te komendy w jednej, gotowej „ściądze”, posortowanej i z przykładami użycia — idealna do pracy na serwerze Debian 12.
+
+Chcesz, żebym przygotował taki plik?
+
+Okej, Mikołaj 😎
+Zrobimy teraz **mega listę komend Debiana 12**, skupioną na **wszystkich najważniejszych, standardowych i praktycznych poleceniach**, które używa się codziennie w systemie, administracji serwerem, pracy w terminalu, backupach, sieci i GUI. Zrobię to w **przejrzystej formie, pogrupowane według zastosowania**.
+
+---
+
+# **1️⃣ Podstawowe komendy systemowe**
+
+| Komenda                 | Opis                                                    |
+| ----------------------- | ------------------------------------------------------- |
+| `pwd`                   | Pokazuje bieżący katalog                                |
+| `ls`                    | Wyświetla pliki i katalogi                              |
+| `ls -l`                 | Szczegółowa lista plików z uprawnieniami i właścicielem |
+| `ls -a`                 | Pokazuje również ukryte pliki                           |
+| `cd katalog`            | Zmiana katalogu                                         |
+| `cd ..`                 | Przejście o katalog wyżej                               |
+| `cd ~`                  | Przejście do katalogu domowego                          |
+| `mkdir nazwa`           | Tworzy katalog                                          |
+| `rmdir nazwa`           | Usuwa pusty katalog                                     |
+| `rm plik`               | Usuwa plik                                              |
+| `rm -r katalog`         | Usuwa katalog wraz z zawartością                        |
+| `touch plik`            | Tworzy pusty plik                                       |
+| `cat plik`              | Wyświetla zawartość pliku                               |
+| `less plik`             | Podgląd dużego pliku z możliwością przewijania          |
+| `head -n 10 plik`       | Pierwsze 10 linii pliku                                 |
+| `tail -n 10 plik`       | Ostatnie 10 linii pliku                                 |
+| `tail -f plik`          | Podgląd logów w czasie rzeczywistym                     |
+| `nano plik`             | Edycja pliku w terminalu                                |
+| `vim plik`              | Zaawansowana edycja pliku                               |
+| `cp źródło cel`         | Kopiowanie pliku/katalogu                               |
+| `mv źródło cel`         | Przenoszenie lub zmiana nazwy pliku/katalogu            |
+| `chmod 755 plik`        | Zmiana uprawnień pliku                                  |
+| `chown user:group plik` | Zmiana właściciela i grupy pliku                        |
+
+---
+
+# **2️⃣ Informacje o systemie**
+
+| Komenda          | Opis                                                      |
+| ---------------- | --------------------------------------------------------- |
+| `uname -a`       | Informacje o jądrze systemu                               |
+| `lsb_release -a` | Informacje o wersji Debiana                               |
+| `hostname`       | Nazwa hosta                                               |
+| `hostnamectl`    | Szczegółowe informacje o hoście i systemie                |
+| `uptime`         | Czas działania systemu i średnie obciążenie CPU           |
+| `whoami`         | Aktualny użytkownik                                       |
+| `id`             | UID, GID i grupy użytkownika                              |
+| `who`            | Kto jest zalogowany                                       |
+| `w`              | Szczegółowe info o zalogowanych użytkownikach i procesach |
+
+---
+
+# **3️⃣ Zarządzanie użytkownikami i grupami**
+
+| Komenda                        | Opis                                    |
+| ------------------------------ | --------------------------------------- |
+| `sudo adduser nazwa`           | Dodanie nowego użytkownika              |
+| `sudo deluser nazwa`           | Usunięcie użytkownika                   |
+| `sudo passwd nazwa`            | Zmiana hasła użytkownika                |
+| `sudo usermod -aG grupa nazwa` | Dodanie użytkownika do grupy (np. sudo) |
+| `groups nazwa`                 | Wyświetlenie grup użytkownika           |
+
+---
+
+# **4️⃣ Zarządzanie pakietami (APT)**
+
+| Komenda                     | Opis                                |
+| --------------------------- | ----------------------------------- |
+| `sudo apt update`           | Aktualizacja listy pakietów         |
+| `sudo apt upgrade -y`       | Aktualizacja wszystkich pakietów    |
+| `sudo apt install nazwa -y` | Instalacja pakietu                  |
+| `sudo apt remove nazwa -y`  | Usunięcie pakietu                   |
+| `sudo apt purge nazwa -y`   | Usunięcie pakietu i konfiguracji    |
+| `sudo apt autoremove -y`    | Usunięcie niepotrzebnych zależności |
+| `apt search słowo`          | Szukanie pakietu                    |
+| `apt show nazwa`            | Informacje o pakiecie               |
+
+---
+
+# **5️⃣ Procesy i usługi**
+
+| Komenda                                          | Opis                                       |
+| ------------------------------------------------ | ------------------------------------------ |
+| `ps aux`                                         | Lista wszystkich procesów                  |
+| `top`                                            | Procesy w czasie rzeczywistym              |
+| `htop`                                           | Zaawansowany interaktywny monitor procesów |
+| `kill PID`                                       | Zabicie procesu po PID                     |
+| `killall nazwa`                                  | Zabicie wszystkich procesów o nazwie       |
+| `systemctl status nazwa_usługi`                  | Status usługi                              |
+| `sudo systemctl start/stop/restart nazwa_usługi` | Start/stop/restart usługi                  |
+| `sudo systemctl enable nazwa_usługi`             | Automatyczny start usługi                  |
+
+---
+
+# **6️⃣ Dyski i partycje**
+
+| Komenda               | Opis                                 |
+| --------------------- | ------------------------------------ |
+| `df -h`               | Wolne miejsce na dyskach             |
+| `du -sh katalog`      | Rozmiar katalogu                     |
+| `lsblk`               | Lista dysków i partycji              |
+| `blkid`               | UUID i typ systemu plików            |
+| `mount /dev/sdX /mnt` | Montowanie dysku                     |
+| `umount /mnt`         | Odmontowanie dysku                   |
+| `fdisk -l`            | Lista dysków i partycji              |
+| `mkfs.ext4 /dev/sdX1` | Formatowanie partycji ext4           |
+| `fsck /dev/sdX1`      | Sprawdzenie i naprawa systemu plików |
+
+---
+
+# **7️⃣ Sieć i połączenia**
+
+| Komenda            | Opis                                 |
+| ------------------ | ------------------------------------ |
+| `ip a`             | Adresy IP i interfejsy sieciowe      |
+| `ping adres`       | Test połączenia z hostem             |
+| `traceroute adres` | Ścieżka pakietu do hosta             |
+| `curl adres`       | Pobranie danych z internetu          |
+| `wget adres`       | Pobranie pliku z internetu           |
+| `netstat -tulnp`   | Otwarte porty i nasłuchujące procesy |
+| `ss -tulnp`        | Alternatywa dla netstat              |
+| `nmap IP`          | Skanowanie portów hosta              |
+
+---
+
+# **8️⃣ SSH i zdalny dostęp**
+
+| Komenda                        | Opis                            |
+| ------------------------------ | ------------------------------- |
+| `ssh user@IP`                  | Połączenie zdalne               |
+| `scp plik user@IP:/ścieżka`    | Kopiowanie pliku na serwer      |
+| `scp user@IP:/ścieżka/plik ./` | Pobranie pliku z serwera        |
+| `sftp user@IP`                 | Interaktywne przesyłanie plików |
+| `sudo systemctl enable ssh`    | Automatyczny start SSH          |
+| `sudo systemctl restart ssh`   | Restart SSH                     |
+
+---
+
+# **9️⃣ Backupy i archiwizacja**
+
+| Komenda                               | Opis                            |
+| ------------------------------------- | ------------------------------- |
+| `tar -czvf backup.tar.gz katalog`     | Kompresja katalogu do tar.gz    |
+| `tar -xzvf backup.tar.gz`             | Rozpakowanie archiwum           |
+| `zip -r backup.zip katalog`           | Kompresja zip                   |
+| `unzip backup.zip`                    | Rozpakowanie zip                |
+| `rsync -avh katalog user@IP:/ścieżka` | Synchronizacja katalogu zdalnie |
+
+---
+
+# **🔟 Firewall i bezpieczeństwo**
+
+| Komenda                        | Opis                          |
+| ------------------------------ | ----------------------------- |
+| `sudo ufw status`              | Status firewalla              |
+| `sudo ufw enable`              | Włączenie firewalla           |
+| `sudo ufw allow 22/tcp`        | Port SSH                      |
+| `sudo ufw allow 21/tcp`        | Port FTP                      |
+| `sudo ufw allow 25565/tcp`     | Port Minecraft                |
+| `sudo ufw reload`              | Przeładowanie reguł           |
+| `sudo apt install fail2ban -y` | Ochrona SSH przed brute-force |
+
+---
+
+Mikołaj, mogę teraz zrobić **pełną wersję mega-poradnika Debiana**, która będzie zawierała **około 300+ najważniejszych komend, skrótów, przykładów użycia i konfiguracji**, posortowaną w kategorie – idealną do nauki i pracy na serwerze.
+
+Chcesz, żebym przygotował taki komplet?
+
+
+1234567890
+=========================================================================================================================================
 
 Jasne, Mikołaj! 😄 Skoro chcesz naprawdę głębokie wyjaśnienie, to opowiem Ci o **komendach w Minecraft**, **po co są**, **co dzięki nim możesz robić** i jak można je wykorzystać w praktyce, zarówno w normalnej grze, jak i w **command blockach**.
 
@@ -802,7 +3725,7 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
 
 
-
+12333
 ===============================================================================================================
 Mannequins
 25w36b
@@ -1768,18 +4691,60 @@ iterakcja z npc
 
 give @p minecraft:apple
 =================================================================================================
+=====================================================
+👖Helmet
+/enchant MikiYT1 protection 4
+/enchant MikiYT1 respiration 3
+/enchant MikiYT1 aqua_affinity 1
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 mending 1
+/enchant MikiYT1 thorns 3
 
+👖Chestplate
+/enchant MikiYT1 protection 4
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 mending 1
+/enchant MikiYT1 thorns 3
 
+👖Leggings
+/enchant MikiYT1 protection 4
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 mending 1
+/enchant MikiYT1 thorns 3
 
+👖Boots
+/enchant MikiYT1 protection 4
+/enchant MikiYT1 feather_falling 4
+/enchant MikiYT1 depth_strider 3
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 mending 1
+/enchant MikiYT1 soul_speed 3
 
+⚒️Narzędzia (Klofy)
+/enchant MikiYT1 efficiency 5
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 fortune 3
+/enchant MikiYT1 mending 1
 
+⚒️Axe
+/enchant MikiYT1 efficiency 5
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 mending 1
+/enchant MikiYT1 fortune 3
+/enchant MikiYT1 sharpness 5
 
+⚒️Shovel
+/enchant MikiYT1 efficiency 5
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 mending 1
+/enchant MikiYT1 silk_touch 1
 
-
-
-
-
-
+⚒️Hoe
+/enchant MikiYT1 efficiency 5
+/enchant MikiYT1 unbreaking 3
+/enchant MikiYT1 mending 1
+/enchant MikiYT1 fortune 3
+=========================================
 =================================================================================================================
 Glowing
 /effect give @e[type=minecraft:mannequin,limit=1,sort=nearest] minecraft:glowing 999999 0 true

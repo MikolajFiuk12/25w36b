@@ -9,6 +9,1190 @@ https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2Fl
 Dzienkuje za pomoc OpenAI
 https://chatgpt.com
 ==============================================================================================
+
+🖥️ System operacyjny Windows
+
+Windows jest systemem operacyjnym opracowanym przez Microsoft. Jest jednym z najpopularniejszych systemów operacyjnych na świecie, używanym zarówno w celach osobistych, jak i biznesowych.
+
+🔍 Interfejs użytkownika
+
+Interfejs użytkownika systemu Windows składa się z pulpitu, ikon, paska zadań i menu Start. Użytkownicy mogą dostosowywać swój pulpit, zmieniać tapety, układy ikon i inne elementy, aby dopasować system do swoich preferencji.
+
+💻 Funkcje
+
+Windows oferuje szeroki zakres funkcji, w tym przeglądarkę internetową (Microsoft Edge), program pocztowy (Microsoft Outlook), pakiet biurowy (Microsoft Office), odtwarzacz multimedialny (Windows Media Player) i wiele innych aplikacji wbudowanych.
+
+🔒 Bezpieczeństwo
+
+Windows zawiera funkcje zabezpieczające, takie jak Windows Defender, który chroni system przed wirusami i innymi zagrożeniami. Użytkownicy mogą również instalować oprogramowanie antywirusowe zewnętrzne, aby zwiększyć bezpieczeństwo swojego systemu.
+
+🚀 Aktualizacje
+
+Microsoft regularnie wydaje aktualizacje systemu Windows, które poprawiają bezpieczeństwo, wydajność i funkcjonalność. Użytkownicy mogą skorzystać z funkcji automatycznych aktualizacji lub ręcznie instalować nowe aktualizacje.
+
+🎮 Gaming
+
+Windows jest popularnym systemem operacyjnym wśród graczy ze względu na wsparcie dla wielu gier, platformy Steam i inne usługi gamingowe. Microsoft oferuje także usługę Xbox Game Pass, która umożliwia subskrypcję dostępu do dużej biblioteki gier.
+
+🌐 Sieć i internet
+
+Windows zapewnia użytkownikom dostęp do sieci poprzez wbudowane przeglądarki internetowe, obsługę Wi-Fi, funkcje udostępniania plików i drukarek w sieci lokalnej oraz wiele innych funkcji związanych z łącznością.
+
+Świetne pytanie, Mikołaj 😄
+Zaraz Ci wszystko wypiszę — **najlepsze programy do robienia modów, tekstur i pracy z Minecraftem**, w zależności od tego, **co dokładnie chcesz tworzyć** 👇
+
+💻 Komputer (PC) składa się z kilku głównych części:
+
+🔌 Zasilacz: Dostarcza energię elektryczną do wszystkich komponentów komputera.
+
+🖥️ Obudowa: Zapewnia ochronę i miejsce montażu dla wszystkich komponentów komputera.
+
+🔧 Płyta główna (Motherboard): Centralna płyta, do której podłączone są wszystkie inne części komputera, zapewniając im komunikację.
+
+💾 Pamięć RAM (Random Access Memory): Zapewnia tymczasowe przechowywanie danych, które są aktualnie używane przez system operacyjny i programy.
+
+💽 Dysk twardy (HDD) lub dysk SSD: Przechowuje trwałe dane, takie jak system operacyjny, aplikacje i pliki użytkownika.
+
+🖥️ Procesor (CPU): Centralna jednostka obliczeniowa, wykonuje instrukcje programów i kontroluje działanie komputera.
+
+⌨️ Klawiatura i mysz: Urządzenia wejścia, umożliwiające użytkownikowi interakcję z komputerem.
+
+🖱️ Monitor: Wyświetla obrazy i informacje generowane przez komputer.
+
+🔊 Głośniki lub słuchawki: Wyjścia audio, umożliwiające odsłuchiwanie dźwięku generowanego przez komputer.
+
+🖨️ Drukarka: Urządzenie wyjściowe, umożliwiające drukowanie dokumentów i obrazów.
+
+📡 Karta sieciowa: Zapewnia połączenie z siecią, bezprzewodową lub przewodową, umożliwiając dostęp do internetu i udostępnianie zasobów sieciowych.
+
+🔌 Inne urządzenia wejścia/wyjścia: Mogą to być np. karty graficzne, karty dźwiękowe, czy czytniki kart pamięci, w zależności od potrzeb użytkownika i zastosowań komputera.
+
+🖥️ System operacyjny Windows:
+
+Windows to popularny system operacyjny opracowany przez firmę Microsoft. Jest używany na komputerach osobistych, laptopach, tabletach i innych urządzeniach. Oto główne cechy:
+
+🔍 Interfejs użytkownika: Windows oferuje łatwy w obsłudze interfejs użytkownika, znanego z pulpitu, ikon, paska zadań i menu Start. Możesz dostosować swój pulpit do swoich potrzeb.
+
+💻 Funkcje: Windows oferuje szeroki zakres funkcji, w tym przeglądarkę internetową (Microsoft Edge), program pocztowy (Microsoft Outlook), pakiet biurowy (Microsoft Office) oraz wiele innych aplikacji wbudowanych.
+
+🔒 Bezpieczeństwo: Windows ma wbudowane funkcje bezpieczeństwa, takie jak Windows Defender, aby chronić użytkowników przed wirusami i innymi zagrożeniami.
+
+🚀 Aktualizacje: Microsoft regularnie wydaje aktualizacje systemu Windows, które poprawiają bezpieczeństwo, wydajność i funkcjonalność systemu.
+
+🎮 Gaming: Windows jest popularnym systemem operacyjnym wśród graczy, z szeroką gamą gier dostępnych na platformie Windows oraz usługą Xbox Game Pass.
+
+🌐 Sieć i internet: Windows oferuje użytkownikom dostęp do sieci poprzez wbudowane przeglądarki internetowe, obsługę Wi-Fi i inne funkcje sieciowe.
+
+🐧 System operacyjny Debian:
+
+Debian to popularna dystrybucja systemu operacyjnego GNU/Linux. Jest znany z otwartego oprogramowania, stabilności i bezpieczeństwa. Oto główne cechy:
+
+📦 System pakietów: Debian używa systemu zarządzania pakietami APT (Advanced Package Tool), który ułatwia instalację, aktualizację i usuwanie oprogramowania.
+
+🎯 Stabilność: Debian jest znany z długotrwałego wsparcia i stabilnych wydań. Dzięki temu jest często wybierany do serwerów i innych krytycznych zastosowań.
+
+🔒 Bezpieczeństwo: Społeczność Debian dba o bezpieczeństwo systemu poprzez regularne aktualizacje pakietów i wsparcie dla mechanizmów bezpieczeństwa, takich jak SELinux i AppArmor.
+
+🌐 Wieloplatformowość: Debian jest dostępny na różne platformy, w tym na architekturę x86, x86-64, ARM i innych. Można go uruchamiać na serwerach, desktopach, a nawet na urządzeniach wbudowanych.
+
+🛠️ Otwarte oprogramowanie: Debian promuje wolne i otwarte oprogramowanie, co oznacza, że większość oprogramowania dostępna jest na zasadach wolnego oprogramowania, co pozwala na swobodne korzystanie, modyfikowanie i rozpowszechnianie.
+
+👨‍💻 Społeczność: Debian to projekt społecznościowy, który jest rozwijany i utrzymywany przez szeroką społeczność deweloperów i użytkowników na całym świecie.
+
+Debian jest wybierany przez wielu użytkowników z powodu swojej stabilności, bezpieczeństwa i wsparcia dla wolnego oprogramowania. Jest to popularna dystrybucja zarówno w środowiskach serwerowych, jak i desktopowych.
+
+🐧 Linux:
+
+Linux to rodzina systemów operacyjnych opartych na jądrze Linux, które są otwartoźródłowe i dostępne dla użytkowników na całym świecie. Oto kilka głównych cech:
+
+🌐 Otwarte oprogramowanie: Linux jest oparty na wolnym i otwartym oprogramowaniu, co oznacza, że jego kod źródłowy jest dostępny dla każdego do przeglądania, modyfikowania i dystrybucji.
+
+🔒 Bezpieczeństwo: Linux jest znany z dobrych mechanizmów bezpieczeństwa, takich jak uprawnienia użytkowników, kontrole dostępu i możliwość szybkiej reakcji na zagrożenia dzięki społeczności deweloperów.
+
+📦 Dystrybucje: Istnieje wiele różnych dystrybucji Linuxa, które różnią się od siebie wersjami oprogramowania, konfiguracją, społecznością i filozofią. Przykładowe dystrybucje to Ubuntu, Fedora, Debian, Arch Linux i wiele innych.
+
+🎓 Elastyczność: Linux jest elastyczny i może być dostosowany do różnych zastosowań, od serwerów po komputery stacjonarne, urządzenia wbudowane i superkomputery.
+
+🚀 Wydajność: Linux jest znany z wydajności, stabilności i skalowalności, co czyni go popularnym wyborem dla serwerów, klastrów obliczeniowych i innych zastosowań wymagających wysokiej wydajności.
+
+👩‍💻 Społeczność: Społeczność Linuxa jest duża i aktywna, z tysiącami deweloperów, użytkowników i entuzjastów na całym świecie, którzy współpracują nad rozwojem systemu i jego komponentów.
+
+Linux jest często wybierany przez tych, którzy cenią sobie kontrolę nad swoim systemem operacyjnym, otwartość i elastyczność. Dzięki różnorodności dystrybucji i szerokiej społeczności, Linux jest popularnym wyborem dla wielu użytkowników i organizacji.
+
+Java: Jest to obiektowy język programowania, który jest powszechnie stosowany w tworzeniu aplikacji internetowych, mobilnych, gier, oraz aplikacji na różne platformy.
+Python: Jest to interpretowany, wieloparadygmatowy język programowania, który jest łatwy w nauce i ma szerokie zastosowanie, od analizy danych po tworzenie stron internetowych.
+HTML (HyperText Markup Language): HTML jest językiem znaczników używanym do tworzenia stron internetowych. Definiuje strukturę i zawartość strony za pomocą elementów i atrybutów.
+CSS (Cascading Style Sheets): CSS jest językiem stylów używanym do definiowania wyglądu i formatowania stron internetowych stworzonych w HTML. Pozwala na kontrolę kolorów, czcionek, układu i innych właściwości wizualnych.
+JavaScript: Jest to skryptowy język programowania, który jest często używany do tworzenia interaktywnych elementów na stronach internetowych. Pozwala na dodanie dynamiki, animacji i logiki do stron internetowych.
+C++: Jest to język programowania ogólnego przeznaczenia, który jest używany w tworzeniu aplikacji systemowych, gier komputerowych, oprogramowania wbudowanego i innych zaawansowanych aplikacji.
+C# (C Sharp): Jest to obiektowy język programowania rozwijany przez Microsoft, który jest często stosowany w tworzeniu aplikacji Windows, gier komputerowych i aplikacji mobilnych na platformę .NET.
+PHP: Jest to język skryptowy często stosowany do tworzenia stron internetowych dynamicznych, interaktywnych i bazujących na bazach danych. Jest często używany w połączeniu z bazami danych MySQL.
+Ruby: Jest to interpretowany język programowania, który jest popularny w tworzeniu aplikacji internetowych i frameworków, takich jak Ruby on Rails.
+Swift: Jest to język programowania stworzony przez Apple, który jest często stosowany do tworzenia aplikacji na platformy iOS, macOS, watchOS i tvOS.
+To tylko kilka przykładów języków programowania, z których każdy ma swoje własne zastosowanie i zalety.
+
+💽 Dyski twarde (HDD) i SSD (Solid State Drive):
+
+HDD (Dysk Twardy Z Magnetycznymi Talerzami):
+🔄 Mechaniczny: HDD składa się z wirujących talerzy pokrytych magnetyczną warstwą zapisu, które odczytywane są za pomocą ruchomej głowicy.
+📂 Pojemność: Oferują duże pojemności za przystępną cenę, co sprawia, że są popularne w przypadku przechowywania dużych ilości danych.
+SSD (Dysk Półprzewodnikowy):
+⚡ Bezczynnościowy: SSD nie zawiera żadnych ruchomych części, co oznacza szybszy czas dostępu i odczytu danych.
+🚀 Szybkość: Są znacznie szybsze od tradycyjnych HDD, co przekłada się na szybsze uruchamianie systemu operacyjnego, ładowanie aplikacji i przetwarzanie danych.
+💡 Trwałość: SSD są bardziej trwałe niż HDD, ponieważ nie mają ruchomych części, co oznacza mniejsze ryzyko uszkodzeń mechanicznych.
+Porównanie:
+🎯 Zastosowania: HDD są nadal popularne w przypadku przechowywania dużych plików, takich jak filmy i zdjęcia, podczas gdy SSD są często wybierane do zastosowań wymagających szybkiego dostępu do danych, takich jak systemy operacyjne i aplikacje.
+🔒 Cena: SSD są zazwyczaj droższe na gigabajt niż HDD, ale ich ceny spadają, co sprawia, że są bardziej dostępne dla szerokiego grona użytkowników.
+🛡️ Kopia zapasowa: W celu zwiększenia wydajności i zabezpieczenia danych, wiele osób korzysta z kombinacji SSD jako dysku systemowego i HDD jako dysku do przechowywania kopii zapasowych.
+
+BACKUPS
+Backupy są jak superbohaterowie twoich danych! Oto kilka kluczowych informacji o backupach:
+
+🔒 Zabezpiecz swoje dane:
+Regularne tworzenie kopii zapasowych jest kluczowe dla zabezpieczenia twoich danych przed utratą w wyniku awarii sprzętu, ataków złośliwego oprogramowania, błędów użytkownika itp.
+
+💾 Wybierz miejsce na backup:
+Możesz przechowywać kopie zapasowe na zewnętrznym dysku twardym, serwerze w chmurze lub nawet na innych urządzeniach sieciowych. Ważne, aby wybrać miejsce, które jest bezpieczne i łatwo dostępne w razie potrzeby.
+
+🔄 Regularność backupów:
+Nie wystarczy zrobić jednego backupu i zapomnieć o nim. Regularne backupy są kluczowe, ponieważ twoje dane mogą się zmieniać z czasem. Ustaw regularne harmonogramy backupu, aby uniknąć utraty nowych danych.
+
+📁 Wybierz odpowiednie oprogramowanie:
+Wybierz narzędzie do tworzenia kopii zapasowych, które odpowiada twoim potrzebom. Istnieje wiele programów i aplikacji dostępnych online, które mogą ułatwić proces tworzenia i zarządzania backupami.
+
+🔍 Sprawdź integralność kopii zapasowej:
+Regularnie sprawdzaj, czy twoje kopie zapasowe są kompletne i nieuszkodzone. Niektóre programy do tworzenia kopii zapasowych mają wbudowane funkcje sprawdzania integralności danych.
+
+🔥 Plan awaryjny:
+Miej plan awaryjny na wypadek, gdybyś kiedyś potrzebował odzyskać dane z kopii zapasowej. Wiedz, jak szybko i skutecznie przywrócić dane, gdy zajdzie taka potrzeba.
+
+✅ Testuj backupy:
+Okresowo przetestuj swoje kopie zapasowe, aby upewnić się, że możesz je poprawnie przywrócić w razie potrzeby. Nie chcesz odkryć, że twoje kopie zapasowe są uszkodzone dopiero w momencie, gdy ich potrzebujesz.
+
+🔒 Szyfrowanie:
+Rozważ szyfrowanie swoich kopii zapasowych, aby dodatkowo zabezpieczyć swoje dane przed nieuprawnionym dostępem.
+
+Pamiętaj, że backupy są kluczowym elementem dbania o swoje dane i powinny być częścią każdego planu zarządzania danymi.
+
+💻 Informatyka:
+
+Informatyka to nauka o przetwarzaniu informacji za pomocą komputerów. Obejmuje szeroki zakres zagadnień, w tym:
+
+🔢 Programowanie: Tworzenie instrukcji (kodu) dla komputerów, aby wykonywały określone zadania. Programowanie może być wykorzystywane do tworzenia aplikacji, gier, stron internetowych i wielu innych.
+
+🖥️ Systemy operacyjne: Oprogramowanie kontrolujące działanie komputerów, takie jak Windows, macOS i Linux. Systemy operacyjne zarządzają zasobami komputera i umożliwiają użytkownikom korzystanie z jego funkcji.
+
+🌐 Sieci komputerowe: Infrastruktura umożliwiająca komunikację między komputerami, urządzeniami i zasobami. Sieci komputerowe są podstawą internetu i umożliwiają wymianę danych na całym świecie.
+
+💾 Bazy danych: Systemy służące do przechowywania, zarządzania i przetwarzania danych. Bazy danych są używane w aplikacjach biznesowych, stronach internetowych, systemach zarządzania treścią i wielu innych.
+
+🔒 Bezpieczeństwo informatyczne: Ochrona danych i systemów przed nieuprawnionym dostępem, atakami złośliwego oprogramowania i innymi zagrożeniami. Bezpieczeństwo informatyczne jest kluczowym aspektem w dzisiejszym cyfrowym świecie.
+
+📈 Analiza danych: Zbieranie, analiza i interpretacja danych w celu wydobycia z nich wartościowych informacji. Analiza danych jest wykorzystywana w biznesie, naukach społecznych, medycynie i wielu innych dziedzinach.
+
+🤖 Sztuczna inteligencja: Dziedzina informatyki, która zajmuje się tworzeniem systemów komputerowych, które potrafią wykonywać zadania, które zazwyczaj wymagają ludzkiego myślenia. Sztuczna inteligencja jest wykorzystywana w robotyce, analizie danych, automatyce i innych dziedzinach.
+
+👾 Gry komputerowe: Rozwój i projektowanie gier komputerowych, które są coraz bardziej zaawansowane pod względem grafiki, dźwięku i interaktywności.
+
+Cześć Mikołaj — oto krok po kroku jak zrobić **datapack** do Minecraft (wersja Java). Dam prosty przykład (gotowe pliki), wyjaśnię strukturę i najczęstsze pułapki.
+
+---
+
+# 1) Co to jest datapack (krótko)
+
+Datapack to zbiór plików (funkcji `.mcfunction`, JSON-y itp.), które modyfikują zachowanie gry — działa to tylko w **Java Edition**. ([Minecraft Wiki][1])
+
+---
+
+# 2) Przygotuj wersję gry i `pack_format`
+
+`pack.mcmeta` musi zawierać pole `pack_format` — jego wartość zależy od wersji Minecrafta, więc sprawdź właściwy numer dla swojej wersji przed zapisem. (Jeśli wpiszesz błędny numer Minecraft może pominąć datapack.) Jak znaleźć właściwy numer — patrz strona o `pack_format`. ([Minecraft Wiki][2])
+
+Przykładowy `pack.mcmeta` (wstaw poprawny numer zamiast `PACK_FORMAT_NUMBER`):
+
+```json
+{
+  "pack": {
+    "pack_format": PACK_FORMAT_NUMBER,
+    "description": "Mój pierwszy datapack — przykład"
+  }
+}
+```
+
+---
+
+# 3) Struktura folderów (must-have)
+
+Podstawowa struktura datapacka:
+
+```
+my-datapack/
+├─ pack.mcmeta
+└─ data/
+   ├─ <twojanazwa>/
+   │  └─ functions/
+   │     └─ hello.mcfunction
+   └─ minecraft/
+      └─ tags/
+         └─ functions/
+            └─ load.json
+```
+
+Ważne: funkcje muszą być w `data/<namespace>/functions/` — dokładnie tak, inaczej Minecraft ich nie znajdzie. ([Playful Programming][3])
+
+---
+
+# 4) Pierwsza funkcja (`.mcfunction`)
+
+Plik: `data/twojanazwa/functions/hello.mcfunction`
+Zawartość (bez ukośnika na początku):
+
+```
+say Cześć Mikołaj! Datapack działa!
+give @p minecraft:diamond 1
+```
+
+(Uwaga: w `.mcfunction` **nie** piszemy `/` na początku komend.)
+
+---
+
+# 5) Automatyczne uruchamianie przy ładowaniu świata (tag `load`)
+
+Aby wykonać funkcję automatycznie po załadowaniu, stwórz:
+
+`data/minecraft/tags/functions/load.json`:
+
+```json
+{
+  "values": ["twojanazwa:init"]
+}
+```
+
+I plik `data/twojanazwa/functions/init.mcfunction`:
+
+```
+say Datapack uruchomiony!
+function twojanazwa:hello
+```
+
+Tagi `load` i `tick` służą do automatycznego uruchamiania funkcji (load raz przy wczytaniu, tick co tick). Użycie tagów opisane jest w poradnikach o datapackach. ([Minecraft Wiki][4])
+
+---
+
+# 6) Instalacja do świata
+
+Opcje:
+
+* **Spakuj** (zip) folder zawierający `pack.mcmeta` i `data/` i wrzuć plik ZIP do `saves/<twoj_swiat>/datapacks/`
+* Lub **wklej** folder `my-datapack` bezpośrednio do `saves/<twoj_swiat>/datapacks/`
+
+Jak znaleźć folder świata: w Minecraft -> wybierz świat -> *Edit* -> *Open World Folder* (otworzy się katalog z folderem `datapacks`). Po wrzuceniu użyj `/reload` w grze lub wyjdź i wejść ponownie, aby załadować datapack. ([Minecraft Wiki][4])
+
+Przydatne komendy:
+
+* `/reload` — przeładowanie datapacków
+* `/datapack list` — lista zainstalowanych datapacków
+* `/function twojanazwa:hello` — ręczne uruchomienie funkcji
+
+---
+
+# 7) Najczęstsze błędy i debugowanie
+
+* `pack.mcmeta` ma rozszerzenie `.txt` zamiast `.mcmeta` → Minecraft go zignoruje.
+* Błędny JSON w `pack.mcmeta` lub w tagach → datapack nie załaduje się. Sprawdź validność JSON (np. online JSON validator). ([Minecraft Wiki][4])
+* Zła ścieżka plików (np. `data/functions/hello.mcfunction` zamiast `data/twojanazwa/functions/hello.mcfunction`) → funkcja niewidoczna. ([Playful Programming][3])
+* W `.mcfunction` nie stawiaj leading `/`.
+* Funkcje `tick` uruchamiają się bardzo często — uważaj żeby nie obciążać serwera.
+
+---
+
+# 8) Co możesz dodać dalej (rozszerzenia)
+
+* własne przepisy (`recipes/`), loot tables (`loot_tables/`), osiągnięcia/awardy (`advancements/`), modyfikacje generowania świata (`worldgen/`), custom dimensions itp. Datapack bardzo rozbudowuje możliwości gry. ([Minecraft Wiki][1])
+
+---
+
+# 9) Gdzie czytać więcej (szybkie źródła)
+
+* Oficjalne wiki — tworzenie datapacków / instrukcje krok-po-kroku. ([Minecraft Wiki][4])
+* Artykuły i tutoriale (przykłady funkcji, tagów). ([Playful Programming][3])
+* Strona `pack_format` (żeby dobrać `pack_format` do wersji gry). ([Minecraft Wiki][2])
+
+---
+
+Chcesz, żebym od razu **stworzył dla Ciebie przykładowy datapack** (zip), np. który przy wejściu w świat daje graczowi diament i wypisuje wiadomość? Jeśli tak, mogę go wygenerować tu i dać Ci do pobrania.
+
+[1]: https://minecraft.fandom.com/wiki/Data_pack?utm_source=chatgpt.com "Data pack - Minecraft Wiki - Fandom"
+[2]: https://minecraft.fandom.com/wiki/Pack_format "pack_format – Minecraft Wiki"
+[3]: https://playfulprogramming.com/posts/minecraft-data-packs-introduction?utm_source=chatgpt.com "Minecraft Data Pack Programming: Introduction"
+[4]: https://minecraft.fandom.com/wiki/Tutorials/Creating_a_data_pack?utm_source=chatgpt.com "Tutorials/Creating a data pack - Minecraft Wiki - Fandom"
+
+
+Cześć Mikołaj — super pytanie! Poniżej masz **praktyczny poradnik krok-po-kroku** (LEMP — Nginx, MariaDB, PHP) do zrobienia własnego hostingu na VPS/serwerze. Nie pytam o szczegóły — daję gotowy, od A do Z, razem z przykładami komend — po prostu zamień `example.com` i `twoj_uzytkownik` na swoje wartości.
+
+# Szybkie decyzje przed startem
+
+* **Opcja A (polecana): VPS** — wynajmujesz maszynę (Ubuntu LTS) u dostawcy (np. DigitalOcean, Vultr, Hetzner). Łatwiej, stabilniej i bez problemów z ISP. ([DigitalOcean][1])
+* **Opcja B: serwer w domu** — możliwe, ale trudniejsze (publiczny IP, up-time, bezpieczeństwo, brak szybkiego łącza).
+
+# Krok po kroku (LEMP — Nginx + MariaDB + PHP)
+
+### 1) Przygotowanie (kup domenę + VPS)
+
+* Kup domenę u rejestratora.
+* Utwórz VPS z **Ubuntu LTS** (np. 22.04/24.04). (Tutorial: jak stworzyć droplet/serwer znajdziesz w przewodnikach VPS). ([DigitalOcean][1])
+
+### 2) Podstawowa konfiguracja serwera (bezpieczeństwo)
+
+Zaloguj się przez SSH jako root (lub konsolę dostawcy) i wykonaj:
+
+```bash
+apt update && apt upgrade -y
+adduser twoj_uzytkownik
+usermod -aG sudo twoj_uzytkownik
+```
+
+Skonfiguruj logowanie kluczem SSH (na swoim komputerze `ssh-keygen` i `ssh-copy-id twoj_uzytkownik@IP`). Utwórz reguły podstawowego firewalla (UFW) **przed** aktywowaniem:
+
+```bash
+apt install ufw -y
+ufw allow OpenSSH
+# jeśli używasz Nginx:
+ufw allow 'Nginx Full'
+ufw enable
+```
+
+Dobry, ustandaryzowany start serwera (non-root user, firewall) — sprawdzone praktyki. ([DigitalOcean][2])
+
+### 3) Zainstaluj Nginx (web server) i ustaw "server block" (virtual host)
+
+```bash
+apt install nginx -y
+# przykładowa struktura
+mkdir -p /var/www/example.com/html
+chown -R $USER:$USER /var/www/example.com
+chmod -R 755 /var/www/example.com
+```
+
+Stwórz plik `/etc/nginx/sites-available/example.com` (przykład niżej), włącz go i przetestuj:
+
+```bash
+ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+nginx -t
+systemctl reload nginx
+```
+
+Instrukcje instalacji i konfiguracji Nginx (server blocks / virtual hosts) są dobrze opisane w przewodnikach. ([DigitalOcean][3])
+
+**Przykładowy prosty server block (`/etc/nginx/sites-available/example.com`):**
+
+```
+server {
+    listen 80;
+    server_name example.com www.example.com;
+
+    root /var/www/example.com/html;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock
+    }
+
+    access_log /var/log/nginx/example.com.access.log;
+    error_log /var/log/nginx/example.com.error.log;
+}
+```
+
+(Zamień `php8.1-fpm` na zainstalowaną wersję PHP jeśli używasz PHP.)
+
+### 4) Zainstaluj PHP + MariaDB (jeżeli potrzebujesz dynamicznych stron)
+
+```bash
+apt install php-fpm php-mysql -y
+apt install mariadb-server -y
+mysql_secure_installation
+```
+
+Po instalacji utwórz bazę i użytkownika DB dla swojej aplikacji.
+
+### 5) SSL — Let's Encrypt (darmowy certyfikat) i automatyczna obsługa
+
+Zainstaluj **certbot** i wygeneruj certyfikat:
+
+```bash
+apt install certbot python3-certbot-nginx -y
+certbot --nginx -d example.com -d www.example.com
+# sprawdź automatyczne odnowienie:
+certbot renew --dry-run
+```
+
+Let's Encrypt + Certbot to standard sposób na bezpłatne certyfikaty i automatyczne odnowienia. ([DigitalOcean][4])
+
+### 6) Zabezpieczenia dodatkowe
+
+* Zainstaluj **Fail2Ban** żeby blokować próby bruteforce SSH/Nginx.
+  `apt install fail2ban -y` i podstawowa konfiguracja. ([DigitalOcean][5])
+* Wyłącz logowanie root przez SSH (`/etc/ssh/sshd_config` → `PermitRootLogin no`) i pozostaw tylko login kluczem publicznym.
+* Regularne aktualizacje: ustaw `unattended-upgrades` lub automatyczne aktualizacje krytyczne.
+
+### 7) SFTP, konta użytkowników i prawa
+
+* Używaj **SFTP (SSH)** zamiast FTP — bezpieczne i proste.
+* Twórz konta systemowe per klient/projekt i nadaj dostęp tylko do odpowiednich katalogów (chroot jeśli potrzeba).
+
+### 8) Kopie zapasowe (backup)
+
+* Najprostsze: **rsync** do innego serwera lub zdalnego dysku + wpis w cron.
+  Przykład:
+
+  ```bash
+  rsync -av --delete /var/www/ backup@backup-server:/backups/www/
+  ```
+* VPS często oferuje snapshoty — konfiguruj snapshoty przed większymi zmianami.
+
+### 9) Panel sterowania (opcjonalnie, jeśli chcesz wielu klientów)
+
+* Jeśli chcesz łatwe GUI do zarządzania kontami/domenami/DB, rozważ **Virtualmin**, **ISPConfig** lub płatne **cPanel**. Virtualmin ma automatyczny instalator. ([Virtualmin][6])
+
+### 10) Poczta (UWAGA: skomplikowane)
+
+* Hosting własnego serwera mailowego (SMTP/IMAP) wymaga konfiguracji SPF, DKIM, DMARC i dobrej reputacji IP — to osobny, trudny temat. Dla prostoty użyj zewnętrznego dostawcy SMTP (Mailgun, SendGrid, itp.) lub skonfiguruj pocztę przez panel typu Virtualmin jeśli chcesz prowadzić własny mail server.
+
+### 11) Monitorowanie i logi
+
+* Włącz rotację logów (`logrotate`) i monitoruj uptime (UptimeRobot) oraz zużycie (np. netdata).
+* Zadbaj o alerty (dysk, RAM, CPU).
+
+---
+
+# Gotowe przykładowe komendy — kopiuj/podmieniaj
+
+```bash
+# aktualizacja
+sudo apt update && sudo apt upgrade -y
+
+# użytkownik
+sudo adduser deployer
+sudo usermod -aG sudo deployer
+
+# instalacja stosu
+sudo apt install nginx mariadb-server php-fpm php-mysql certbot python3-certbot-nginx fail2ban ufw -y
+
+# firewall (przykład)
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+
+# certbot
+sudo certbot --nginx -d example.com -d www.example.com
+```
+
+# Checklista końcowa (co musisz mieć)
+
+* Domenę z poprawnymi rekordami DNS (A/AAAA) → wskazujące na IP serwera.
+* VPS z Ubuntu LTS.
+* SSH keys i nieużywanie root/password.
+* Nginx + server blocks.
+* SSL (Let's Encrypt).
+* Backup i monitoring.
+* Plan dla e-maili (external SMTP lub pełna konfiguracja poczty).
+
+---
+
+Jeżeli chcesz, to **od razu** mogę:
+
+* przygotować **gotowy skrypt bash** instalujący LEMP + certbot (pod `example.com`) — podmienię wartości za Ciebie,
+* albo przygotować **konfigurację Nginx** i plik `server` dla Twojej domeny,
+* lub instrukcję jak zrobić SFTP chroot dla użytkownika.
+
+Powiedz tylko którą z tych opcji chcesz, a dam Ci gotowy skrypt / konfigurację (nie pytam o domenę — użyję `example.com`, a Ty potem podmienisz nazwy).
+
+[1]: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-ubuntu-server-on-a-digitalocean-droplet?utm_source=chatgpt.com "How To Set Up an Ubuntu Server on a DigitalOcean Droplet"
+[2]: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu?utm_source=chatgpt.com "Initial Server Setup with Ubuntu"
+[3]: https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04?utm_source=chatgpt.com "How to Install and Configure Nginx on Ubuntu"
+[4]: https://www.digitalocean.com/community/tutorials/how-to-use-certbot-standalone-mode-to-retrieve-let-s-encrypt-ssl-certificates-on-ubuntu-20-04?utm_source=chatgpt.com "How To Use Certbot Standalone Mode to Retrieve Let's ..."
+[5]: https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-20-04?utm_source=chatgpt.com "How To Protect SSH with Fail2Ban on Ubuntu 20.04"
+[6]: https://www.virtualmin.com/download/?utm_source=chatgpt.com "Downloading and Installing"
+
+Jasne, Mikołaj! 😊 Zrobię dla Ciebie prosty **poradnik krok po kroku**, jak zrobić stronę internetową w HTML. Będziemy działać lokalnie na Twoim komputerze, a później możesz wrzucić stronę na hosting, jeśli chcesz.
+
+---
+
+## 1️⃣ Przygotowanie środowiska
+
+1. **Edytor tekstu** – potrzebujesz prostego edytora kodu, np.:
+
+   * [VS Code](https://code.visualstudio.com/) – bardzo popularny i darmowy
+   * Notepad++ – prostszy, też darmowy
+   * Możesz też użyć **Notatnika** w Windowsie, ale VS Code jest wygodniejszy
+
+2. **Folder projektu** – stwórz folder np. `moja_strona`. W tym folderze będziesz trzymał wszystkie pliki swojej strony (HTML, CSS, obrazy).
+
+---
+
+## 2️⃣ Tworzenie pierwszej strony HTML
+
+1. Otwórz edytor i stwórz nowy plik.
+
+2. Zapisz go w folderze projektu jako `index.html`.
+
+3. Wklej ten prosty szablon HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Pierwsza Strona</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; text-align: center; }
+        h1 { color: #2c3e50; }
+        p { color: #34495e; }
+        a { color: #e74c3c; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Cześć Mikołaj!</h1>
+    <p>To jest moja pierwsza strona HTML.</p>
+    <a href="#">Kliknij tutaj!</a>
+</body>
+</html>
+```
+
+---
+
+## 3️⃣ Jak to działa
+
+* `<!DOCTYPE html>` – mówi przeglądarce, że to strona HTML5
+* `<html lang="pl">` – język strony
+* `<head>` – sekcja dla informacji o stronie (tytuł, styl, meta)
+* `<title>` – tytuł wyświetlany na karcie przeglądarki
+* `<style>` – prosty CSS wbudowany w HTML
+* `<body>` – tu znajduje się treść strony widoczna dla użytkownika
+* `<h1>` – nagłówek
+* `<p>` – paragraf tekstu
+* `<a href="#">` – link
+
+---
+
+## 4️⃣ Uruchamianie strony
+
+1. W folderze projektu znajdź `index.html`.
+2. Kliknij dwukrotnie – otworzy się w przeglądarce (Chrome, Edge, Firefox).
+3. Zobaczysz swoją stronę z nagłówkiem i linkiem.
+
+---
+
+## 5️⃣ Co możesz robić dalej
+
+* Zmieniać tekst i kolory
+* Dodawać nowe paragrafy `<p>` lub nagłówki `<h2>, <h3>`
+* Dodawać obrazki:
+
+```html
+<img src="obrazek.png" alt="Opis obrazka" width="300">
+```
+
+* Dodawać własne pliki CSS zamiast wbudowanego `<style>`
+
+---
+
+Jeżeli chcesz, mogę dla Ciebie zrobić **gotowy szablon strony w HTML + CSS**, który możesz od razu otworzyć w przeglądarce i edytować po swojemu.
+
+Chcesz, żebym taki przygotował?
+
+
+Super, Mikołaj! 😄 Skoro chcesz **więcej**, rozbudujmy Twój poradnik tak, abyś mógł zrobić naprawdę fajną stronę WWW w HTML i CSS. Podzielę to na części krok po kroku.
+
+---
+
+## 1️⃣ Struktura folderu strony
+
+Dobrze jest mieć folder projektu z taką strukturą:
+
+```
+moja_strona/
+│
+├─ index.html       ← główny plik strony
+├─ style.css        ← plik z wyglądem strony
+├─ obrazki/         ← folder z obrazkami
+│   └─ obrazek.png
+└─ skrypty/         ← folder z JS (jeśli później chcesz użyć)
+    └─ skrypt.js
+```
+
+---
+
+## 2️⃣ HTML – podstawa strony
+
+Przykład rozbudowanej strony:
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Super Strona</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Cześć Mikołaj!</h1>
+        <nav>
+            <ul>
+                <li><a href="#o-mnie">O mnie</a></li>
+                <li><a href="#projekty">Projekty</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="o-mnie">
+        <h2>O mnie</h2>
+        <p>Tu możesz napisać coś o sobie.</p>
+        <img src="obrazki/moje_zdjecie.png" alt="Moje zdjęcie" width="200">
+    </section>
+
+    <section id="projekty">
+        <h2>Projekty</h2>
+        <p>Tu możesz pokazać swoje projekty, np. Minecraft, strony, programy.</p>
+    </section>
+
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Napisz do mnie na email: <a href="mailto:twoj@email.com">twoj@email.com</a></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Mikołaj Fiuk</p>
+    </footer>
+</body>
+</html>
+```
+
+---
+
+## 3️⃣ CSS – wygląd strony (`style.css`)
+
+```css
+/* Reset marginesów i paddingów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section:nth-child(even) {
+    background-color: #ecf0f1;
+}
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+```
+
+---
+
+## 4️⃣ Co teraz możesz zrobić
+
+1. **Dodawać nowe sekcje** – np. blog, galerię zdjęć, gry, projekty Minecrafta.
+2. **Zmieniaj kolory i czcionki** w CSS – możesz mieć swoją paletę kolorów.
+3. **Dodawaj obrazki i linki** – obrazy w folderze `obrazki`.
+4. **Łącz pliki JS** – np. animacje, liczniki, interaktywne przyciski.
+
+---
+
+Jeśli chcesz, mogę teraz zrobić dla Ciebie **pełny gotowy szablon strony HTML + CSS**, który wygląda naprawdę profesjonalnie, a Ty będziesz go mógł od razu edytować i rozwijać.
+
+Chcesz, żebym taki przygotował?
+
+Jasne, Mikołaj! 😄 Zrobimy teraz **mega szczegółowy przewodnik**, krok po kroku, żebyś mógł naprawdę dobrze zrozumieć HTML, CSS i trochę podstaw JavaScript. Będziemy też uczyć się, jak strona działa i jak ją rozwijać.
+
+---
+
+## 1️⃣ Co to jest strona WWW?
+
+Strona WWW składa się z trzech głównych elementów:
+
+1. **HTML (HyperText Markup Language)** – struktura strony, nagłówki, paragrafy, obrazki, linki.
+2. **CSS (Cascading Style Sheets)** – wygląd strony, kolory, czcionki, układ.
+3. **JavaScript (JS)** – interaktywność, np. przyciski, animacje, gry.
+
+---
+
+## 2️⃣ Tworzenie projektu
+
+1. Stwórz folder, np. `moja_strona`.
+2. W środku utwórz:
+
+   * `index.html` → główny plik strony
+   * `style.css` → plik z wyglądem
+   * folder `obrazki` → tutaj będą obrazki
+   * folder `skrypty` → tutaj będą pliki JS
+
+---
+
+## 3️⃣ HTML – podstawa strony
+
+Przykład bardziej rozbudowanej strony:
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Super Strona</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Cześć Mikołaj!</h1>
+        <nav>
+            <ul>
+                <li><a href="#o-mnie">O mnie</a></li>
+                <li><a href="#projekty">Projekty</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="o-mnie">
+            <h2>O mnie</h2>
+            <p>Tu możesz napisać coś o sobie, np. swoje hobby, ulubione gry i projekty.</p>
+            <img src="obrazki/moje_zdjecie.png" alt="Moje zdjęcie" width="200">
+        </section>
+
+        <section id="projekty">
+            <h2>Projekty</h2>
+            <p>Pokazuję tu swoje projekty Minecrafta, programy i strony WWW.</p>
+        </section>
+
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <p>Napisz do mnie: <a href="mailto:twoj@email.com">twoj@email.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Mikołaj Fiuk</p>
+    </footer>
+
+    <script src="skrypty/skrypt.js"></script>
+</body>
+</html>
+```
+
+---
+
+## 4️⃣ CSS – wygląd strony
+
+Plik `style.css`:
+
+```css
+/* Resetowanie marginesów i paddingów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section:nth-child(even) {
+    background-color: #ecf0f1;
+}
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+```
+
+---
+
+## 5️⃣ JavaScript – pierwsza interaktywność
+
+Plik `skrypty/skrypt.js`:
+
+```javascript
+// Prosty przycisk, który pokazuje alert
+function przywitaj() {
+    alert("Cześć Mikołaj! Witaj na mojej stronie!");
+}
+
+// Możesz dodać przycisk w HTML:
+// <button onclick="przywitaj()">Kliknij mnie</button>
+```
+
+---
+
+## 6️⃣ Co dalej?
+
+1. **Dodawanie więcej sekcji** – np. blog, galeria zdjęć, gry.
+2. **Style CSS** – gradienty, cienie, animacje.
+3. **Interaktywność JS** – licznik kliknięć, zmiana obrazków, formularze kontaktowe.
+4. **Publikacja online** – po zakupie hostingu możesz wgrać stronę i udostępnić ją światu.
+
+---
+
+Jeśli chcesz, mogę teraz zrobić **pełny gotowy projekt strony** z **ładnym nagłówkiem, menu, galerią obrazków i przyciskiem interaktywnym**, który będziesz mógł od razu otworzyć w przeglądarce i rozwijać po swojemu.
+
+Chcesz, żebym taki zrobił?
+
+Jasne, Mikołaj! Zrobię Ci kompletny **przewodnik krok po kroku**, jak zacząć naukę **Java** i jak zainstalować wszystko, co potrzebne. Będę prosty i praktyczny.
+
+---
+
+## **Krok 1: Zainstaluj Java Development Kit (JDK)**
+
+1. **Pobranie JDK**
+
+   * Wejdź na stronę: [https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html](https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html) (najnowsza wersja Java 20)
+   * Wybierz wersję dla Twojego systemu (Windows x64 jeśli masz 64-bitowy system).
+
+2. **Instalacja**
+
+   * Uruchom pobrany plik `.exe` i kliknij **Next**, potem **Install**.
+   * Zapamiętaj miejsce instalacji (np. `C:\Program Files\Java\jdk-20`).
+
+3. **Sprawdzenie instalacji**
+
+   * Otwórz **cmd** (Windows + R → wpisz `cmd` → Enter).
+   * Wpisz:
+
+     ```
+     java -version
+     ```
+
+     i
+
+     ```
+     javac -version
+     ```
+   * Jeśli pokazuje wersję, wszystko działa.
+
+---
+
+## **Krok 2: Zainstaluj środowisko IDE (IntelliJ IDEA lub VS Code)**
+
+1. **IntelliJ IDEA (najlepsze dla początkujących)**
+
+   * Pobierz: [https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/)
+   * Wersja **Community** jest darmowa.
+   * Zainstaluj, klikając **Next → Next → Install**.
+
+2. **Alternatywa: VS Code**
+
+   * Pobierz: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+   * Zainstaluj wtyczkę **Java Extension Pack**.
+
+---
+
+## **Krok 3: Skonfiguruj projekt Java w IDE**
+
+1. Otwórz IntelliJ IDEA → **New Project** → wybierz **Java**
+2. Wybierz JDK, które zainstalowałeś
+3. Nazwij projekt (np. `MojaPierwszaJava`)
+4. Utwórz plik **Main.java** w folderze `src`
+
+   * Wklej przykładowy kod:
+
+     ```java
+     public class Main {
+         public static void main(String[] args) {
+             System.out.println("Cześć Mikołaj!");
+         }
+     }
+     ```
+5. Uruchom projekt klikając **Run** → powinno pokazać się w konsoli:
+
+   ```
+   Cześć Mikołaj!
+   ```
+
+---
+
+## **Krok 4: Nauka podstaw Java**
+
+1. **Podstawy składni**
+
+   * Zmienne: `int liczba = 5;`, `String tekst = "Hello";`
+   * Operatory: `+`, `-`, `*`, `/`, `%`
+   * Pętle: `for`, `while`
+   * Instrukcje warunkowe: `if`, `else`
+
+2. **Ćwiczenia praktyczne**
+
+   * Napisz program, który liczy sumę liczb od 1 do 10
+   * Program, który sprawdza, czy liczba jest parzysta
+
+3. **Dobre źródła online**
+
+   * [https://www.w3schools.com/java/](https://www.w3schools.com/java/) – szybka nauka
+   * [https://www.learnjavaonline.org/](https://www.learnjavaonline.org/) – praktyczne ćwiczenia
+
+---
+
+## **Krok 5: Systematyczna nauka**
+
+1. Zacznij od **podstaw** → zmienne, pętle, if
+2. Potem **tablice i kolekcje**
+3. Klasy i obiekty → podstawy OOP
+4. Projekty praktyczne → np. prosty kalkulator, gra w zgadywanie liczb
+
+---
+
+Jeśli chcesz, mogę Ci zrobić **wersję skróconą w formie checklisty**, żebyś miał ją jak **plan nauki Java krok po kroku**, którą możesz odhaczać.
+
+Chcesz, żebym taką zrobił?
+---
+
+## 🧩 🔧 **Do tworzenia modów (Forge / Fabric / bez kodu)**
+
+### 🥇 **MCreator**
+
+➡️ [https://mcreator.net/download](https://mcreator.net/download)
+✅ Najłatwiejszy program do tworzenia modów bez kodowania.
+
+* Tworzysz bloki, przedmioty, moby, biomy, struktury, GUI, itp.
+* Ma wbudowany edytor tekstur i modeli.
+* Eksportuje gotowy plik `.jar` — wystarczy wrzucić do folderu `mods`.
+  📌 Idealny na start.
+
+---
+
+### 🥈 **IntelliJ IDEA** (lub **Eclipse**)
+
+➡️ [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)
+✅ Dla bardziej zaawansowanych modderów — tutaj piszesz mody w **Javie**.
+
+* Wymaga **Forge MDK** albo **Fabric Loom**
+* Używany przez prawdziwych twórców modów z CurseForge.
+  📌 Dla Ciebie w przyszłości — jak już dobrze opanujesz podstawy programowania.
+
+---
+
+## 🎨 **Do tworzenia tekstur (2D)**
+
+### 🎨 **Paint.NET**
+
+➡️ [https://www.getpaint.net/](https://www.getpaint.net/)
+✅ Lekki i bardzo prosty edytor graficzny.
+
+* Idealny do tworzenia i edycji tekstur `.png`
+* Obsługuje przezroczystość (alpha channel)
+  📌 Najprostszy dla początkujących.
+
+---
+
+### 🖌️ **GIMP**
+
+➡️ [https://www.gimp.org/downloads/](https://www.gimp.org/downloads/)
+✅ Darmowy odpowiednik Photoshopa.
+
+* Umożliwia zaawansowaną edycję tekstur
+* Działa dobrze z Minecraftowymi plikami 16x16, 32x32, itp.
+
+---
+
+### 🧱 **Krita**
+
+➡️ [https://krita.org/](https://krita.org/)
+✅ Świetny do rysowania odręcznych tekstur (np. artystycznych).
+
+* Obsługuje pędzle i warstwy
+* Dobry, jeśli chcesz tworzyć wyjątkowe style bloków i przedmiotów
+
+---
+
+## 🧍‍♂️ **Do modeli 3D (moby, bloki, itemy 3D)**
+
+### 🧊 **Blockbench**
+
+➡️ [https://blockbench.net/](https://blockbench.net/)
+✅ Najlepszy edytor modeli 3D dla Minecrafta.
+
+* Tworzysz modele mobów, bloków, itemów i animacje
+* Możesz eksportować modele do MCreator lub bezpośrednio do moda
+  📌 Używany nawet przez Mojang (do mobów w Minecraft Bedrock!)
+
+---
+
+## 🧰 **Dodatkowe narzędzia**
+
+* **WinRAR / 7-Zip** → do otwierania plików `.jar` i `.zip`
+* **Java JDK 17** → potrzebna, by mody działały i się kompilowały
+* **Visual Studio Code** → do edycji plików JSON i konfiguracji resource packów
+
+---
+
+## ✨ Proponowany zestaw dla Ciebie, Mikołaj:
+
+Jeśli chcesz **zacząć od razu tworzyć**:
+
+1. 🧩 **MCreator** – do tworzenia modów
+2. 🧊 **Blockbench** – do modeli 3D
+3. 🎨 **Paint.NET** – do tekstur
+4. 📦 **WinRAR / 7-Zip** – do podglądu plików `.jar`
+
+---
+
+Chcesz, żebym Ci pomógł **ustawić cały zestaw krok po kroku** (np. z linkami instalacyjnymi i ustawieniami do pierwszego moda)?
+Mogę Ci przygotować taki „pakiet startowy moddera” 🚀
+
+Cześć Mikołaj 😊 — oto **instrukcja krok po kroku**, żeby stworzyć prostego moda do Minecrafta. Skupiłem się na **MCreator** (najprostsze) + krótkie wskazówki do tekstur i modeli. Zaczynamy!
+
+# Przygotowanie — co zainstalować
+
+1. **Java JDK (najlepiej 17)** — sprawdź w wierszu poleceń `java -version` i `javac -version`.
+2. **MCreator** — pobierz i zainstaluj (wersja zgodna z wersją Minecrafta, której chcesz użyć).
+3. **Paint.NET** / **GIMP** / **Krita** — do tworzenia tekstur (.png).
+4. **Blockbench** — do modeli 3D (moby/bloki/itemy 3D).
+5. **7-Zip / WinRAR** — do przeglądania plików .jar.
+
+(Jeśli jesteś na Windows: wszystkie te programy mają instalatory .exe; na macOS/Linux są wersje odpowiednie.)
+
+# 1) Pierwszy mod w MCreator — krok po kroku (prosty item)
+
+1. **Uruchom MCreator → „New workspace”**
+
+   * Nadaj nazwę (np. `MojMod`) i wybierz wersję Minecraft + typ (zwykle Forge).
+2. **Poczekaj, aż workspace się przygotuje.**
+3. **Dodaj nowy element:** kliknij `+` (Add new element) → wybierz **Item** (przykład: dodajemy nowy przedmiot).
+4. **Ustaw nazwy:**
+
+   * *Internal name / ID:* np. `mój_przedmiot` (bez polskich znaków, bez spacji).
+   * *Display name:* np. „Mój przedmiot”.
+5. **Tekstura:**
+
+   * Kliknij „Edit texture” → możesz narysować prostą teksturę wbudowanym edytorem albo **Import** → wgraj plik PNG (np. 16×16).
+   * Jeśli rysujesz sam: stwórz wcześniej w Paint.NET (nowy plik 16×16, zapisz jako PNG z przezroczystością).
+6. **Właściwości przedmiotu:** ustaw stack size, creative tab, czy jest jednorazowy itp.
+7. **Zapisz element** (Save mod element).
+8. **Testuj:** kliknij **Run Client / Test environment** — MCreator odpali testową wersję Minecraft z Twoim modem. Sprawdź przedmiot w grze (creative inventory).
+9. **Eksport mod .jar:** po testach -> `Build` → `Export workspace to mod file` (wybierz format Forge .jar) → poczekaj, aż zbuduje.
+10. **Zainstaluj w normalnym Minecraft:** skopiuj wygenerowany `.jar` do folderu:
+
+    * Windows: `%appdata%\.minecraft\mods`
+    * macOS: `~/Library/Application Support/minecraft/mods`
+    * Linux: `~/.minecraft/mods`
+      Uruchom Minecraft z profilem Forge — mod powinien być widoczny.
+
+# 2) Jak robić tekstury (szybko, Paint.NET)
+
+1. Otwórz Paint.NET → `File → New` → ustaw rozmiar np. **16×16** (do prostych tekstur), **32×32** lub **64×64** jeśli chcesz więcej szczegółów.
+2. Włącz **Background / Alpha** — żeby mieć przezroczystość.
+3. Rysuj, używaj narzędzi (ołów, wiadro, warstwy).
+4. `File → Save As` → wybierz **PNG** i zapisz (np. `my_item.png`).
+5. Importuj w MCreator przy tworzeniu elementu albo umieść w strukturze moda / resource pack:
+
+   ```
+   assets/<modid>/textures/item/my_item.png
+   ```
+
+# 3) Modele 3D — Blockbench (krótkie)
+
+1. Otwórz **Blockbench** → `New` → wybierz typ: *Java Block / Entity / Item* w zależności co chcesz zrobić.
+2. Modeluj (dodawaj kostki), nałóż swoją teksturę (albo maluj w Blockbench).
+3. **Export:** `File → Export` → wybierz format dla Minecraft Java (JSON model) lub bezpośrednio eksport do MCreator jeśli masz taką opcję.
+4. W MCreator możesz importować model i powiązać z teksturą podczas tworzenia bloku/moba.
+
+# 4) Testowanie i najczęstsze problemy
+
+* **Mod się nie ładuje:** sprawdź, czy **wersja Minecraft = wersja moda** (np. mod zrobiony dla 1.20 musi być uruchomiony na 1.20 z Forge/Fabric tej samej wersji).
+* **Błąd Java (UnsupportedClassVersionError):** masz złe JDK/JRE — zainstaluj JDK 17.
+* **Tekstury się nie pokazują:** sprawdź ścieżkę i nazwy plików (wrażliwe na wielkość liter) i czy pack/mod używa tej samej nazwy pliku.
+* **Logi:** sprawdź `logs/latest.log` w folderze Minecraft (`%appdata%\.minecraft\logs\latest.log` na Windows) — tam są błędy.
+* **Testowanie w MCreator:** jeśli coś nie działa, użyj `Run Client` — tam łatwiej debugować.
+
+# 5) Co dalej — jeśli chcesz iść dalej z Javą
+
+* Gdy już opanujesz MCreator i chcesz **pisać mody w Javie**: ucz się Javy, potem użyj **IntelliJ IDEA** i **Forge MDK** lub **Fabric** (import projektu Gradle, pisać klasy, rejestracja bloków/itemów itd.). To wymaga więcej nauki, ale daje pełną kontrolę.
+
+---
+
+Chcesz, żebym teraz przygotował **konkretny przykład** (instrukcja + gotowa tekstura 16×16 i kroki importu) — np. **dodamy prosty blok** i przejdziemy od utworzenia tekstury do testowania w MCreatorze? Napisz „tak — zrób blok” a od razu dam Ci gotowy, szczegółowy przewodnik z konkretnymi nazwami plików. 🚀
+
+
+
 Cześć Mikołaj 👋
 Okej — poniżej masz **pełną, krok‑po‑kroku instrukcję** jak przygotować pendrive instalacyjny z **Debianem 12** (wersja instalatora). Zamieściłem metody dla **Windows**, **Linux** i **macOS**, sprawdzenie sumy kontrolnej i kilka tipów do BIOS/UEFI. Zrób to uważnie — wszystkie dane na pendrive zostaną usunięte.
 
@@ -4755,3 +5939,2902 @@ Glowing
 
 /execute as @e[team=npcTeam] run say Jestem nieśmiertelny!
 ========================================================================================================
+
+
+%player_allow_flight%
+%player_armor_helmet_name%
+%player_armor_helmet_data%
+%player_armor_helmet_durability%
+%player_armor_chestplate_name%
+%player_armor_chestplate_data%
+%player_armor_chestplate_durability%
+%player_armor_leggings_name%
+%player_armor_leggings_data%
+%player_armor_leggings_durability%
+%player_armor_boots_name%
+%player_armor_boots_data%
+%player_armor_boots_durability%
+%player_bed_x%
+%player_bed_y%
+%player_bed_z%
+%player_bed_world%
+%player_biome%
+%player_biome_capitalized%
+%player_block_underneath%
+%player_can_pickup_items%
+%player_colored_ping%
+%player_compass_world%
+%player_compass_x%
+%player_compass_y%
+%player_compass_z%
+%player_custom_name%
+%player_current_exp%
+%player_direction%
+%player_direction_xz%
+%player_displayname%
+%player_list_name%
+%player_exp%
+%player_exp_to_level%
+%player_first_join_date%
+%player_first_played%
+%player_first_join%
+%player_first_played_formatted%
+%player_fly_speed%
+%player_food_level%
+%player_gamemode%
+%player_has_empty_slot%
+%player_has_played_before%
+%player_empty_slots%
+%player_has_health_boost%
+%player_has_potioneffect_<effect>%
+%player_has_permission_<permission>%
+%player_health%
+%player_health_boost%
+%player_health_rounded%
+%player_health_scale%
+%player_ip%
+%player_online%
+%player_is_whitelisted%
+%player_is_banned%
+%player_is_flying%
+%player_is_sneaking%
+%player_is_sprinting%
+%player_is_sleeping%
+%player_is_inside_vehicle%
+%player_is_op%
+%player_item_in_hand%
+%player_item_in_hand_name%
+%player_item_in_hand_data%
+%player_item_in_hand_durability%
+%player_item_in_hand_level_<enchantment>%
+%player_item_in_offhand%
+%player_item_in_offhand_name%
+%player_item_in_offhand_data%
+%player_item_in_offhand_durability%
+%player_item_in_offhand_level_<enchantment>%
+%player_locale%
+%player_locale_display_name%
+%player_locale_short%
+%player_locale_country%
+%player_locale_display_country%
+%player_last_damage%
+%player_last_played%
+%player_last_join%
+%player_last_played_formatted%
+%player_last_join_date%
+%player_level%
+%player_light_level%
+%player_max_air%
+%player_max_health%
+%player_max_health_rounded%
+%player_max_no_damage_ticks%
+%player_minutes_lived%
+%player_name%
+%player_no_damage_ticks%
+%player_ping%
+%player_ping_<playername>%
+%player_remaining_air%
+%player_saturation%
+%player_seconds_lived%
+%player_sleep_ticks%
+%player_thunder_duration%
+%player_ticks_lived%
+%player_time%
+%player_time_offset%
+%player_total_exp%
+%player_uuid%
+%player_walk_speed%
+%player_weather_duration%
+%player_world%
+%player_world_type%
+%player_world_time_12%
+%player_world_time_24%
+%player_x%
+%player_y%
+%player_z%
+%player_yaw%
+%player_pitch%
+%player_absorption%
+
+%server_name%
+%server_online%
+%server_version%
+%server_max_players%
+%server_unique_joins%
+%server_uptime%
+%server_ram_used%
+%server_ram_free%
+%server_ram_total%
+%server_ram_max%
+%server_tps%
+%server_tps_1%
+%server_tps_5%
+%server_tps_15%
+%server_tps_1_colored%
+%server_tps_5_colored%
+%server_tps_15_colored%
+%server_online_<world>%
+%server_has_whitelist%
+%server_total_chunks%
+%server_total_living_entities%
+%server_total_entities%
+%server_time_<SimpleDateFormat>%
+%server_countdown_<SimpleDateFormat>_<time>%
+e.g. %server_countdown_dd.MM.yyyy_01.01.2020%
+
+1./papi ecloud download Statistic
+
+2./papi reload
+
+3./ajlb add %statistic_player_kills%
+
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+WYMAGANE PLUGINY DO POBRANIA:
+
+Pobranie ajLeaderboards:
+https://www.spigotmc.org/resources/aj...
+
+Pobranie potrzebnego pluginu PlaceholderAPI:
+https://www.spigotmc.org/resources/pl...
+
+Plugin na hologramy:
+https://dev.bukkit.org/projects/holog...
+
+Plugin na NPC:
+https://www.spigotmc.org/resources/ci...
+pobranie NPC za darmo:
+https://ci.citizensnpcs.co/job/Citize...
+
+PRZYDATNE LINKI I KOMENDY:
+Wszystkie zmienne: https://github.com/PlaceholderAPI/Pla...
+
+Zmienna #1 z odcinka z hologramów:
+%ajlb_lb_statistic_player_kills_1_alltime_name% &7- %ajlb_lb_statistic_player_kills_1_alltime_value% zabojstw
+
+Dodanie na tabliczkę:
+/ajlb signs add statistic_player_kills 1 alltime
+
+Dodanie NPC:
+/npc create &a%ajlb_lb_statistic_player_kills_1_alltime_name% &7- &6%ajlb_lb_statistic_player_kills_1_alltime_value% kills
+
+Dodanie skina do NPC:
+/npc skin %ajlb_lb_statistic_player_kills_1_alltime_name%
+
+
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+1./ajp setup create MikiYT1
+
+2./ajp setup pos1
+
+3./ajp setup pos2
+
+4./ajp setup fallpos
+
+5./ajp setup difficulty balanced
+
+6./ajp setup save
+
+7./ajp start
+
+8./ajp portals create MikiYT1
+
+/npc create &6&l=-BANK-=
+
+/npc skin GraceWillChase
+
+/npc cmd add bank -l -r -p
+
+/bank
+
+/lp group default permission set bank.main
+
+
+/lp group vip permission set bank.main
+
+/lp group vip+ permission set bank.main
+
+/lp group mvip permission set bank.main
+
+/lp group mvip+ permission set bank.main
+
+/lp group elita permission set bank.main
+
+/lp group admin permission set bank.main
+
+/lp group właściciel permission set bank.main
+
+
+horgram
+/dh create kasa &6&lKASA&f: &f%vault_eco_balance_formatted%
+
+
+dodaj kase
+/eco give MikiYT1 10000
+
+
+==================================================================
+1./bossbar add mikity "Mikity server.pl"
+
+2./bossbar set minecraft:mikity players @p
+
+3./bossbar set minecraft:mikity color yellow
+
+4./bossbar set minecraft:mikity value 100
+
+5./bossbar set minecraft:mikity style notched_20
+
+6./bossbar set minecraft:mikity name "NOWA NAZWA"
+
+7./bossbar set minecraft:mikity visible false
+
+8./bossbar set minecraft:mikity visible true
+
+9./bossbar get minecraft:mikity players
+
+10./bossbar list
+======================================================================================================
+11./execute store result bossbar minecraft:mikity value run data get entity @e[tag=boss,limit=1] Heath
+
+/bossbar remove minecraft:mikity
+=====================================================================
+
+1.gmysteryboxes
+
+2./gmysteryboxes mode add-vault 1
+
+3./gmysteryboxes give MikiYT1 5
+
+4./gmysteryboxes mode remove-vault
+
+/dh create ga &bskarbiec
+
+/dh lines add ga 1 &e&lTAJEMNICZY
+
+/mrl erase diaxy
+
+
+
+
+
+diamond
+/mrl create diamond
+/mrl set diamond diamond_block 20%
+
+/mrl set diamond diamond_ore 80%
+
+/mrl flag diamond resetdelay 2
+
+/mrl flag diamond silent true
+
+
+
+
+
+iron
+/mrl create iron
+
+/mrl set iron iron_block 20%
+
+/mrl set iron iron_ore 80%
+
+/mrl flag iron resetdelay 2
+
+/mrl flag iron silent true
+
+
+
+
+
+Gold
+/mrl create Gold
+
+/mrl set Gold Gold_block 20%
+
+/mrl set Gold Gold_ore 80%
+
+/mrl flag Gold resetdelay 2
+
+/mrl flag Gold silent true
+
+
+
+Emerald
+/mrl create Emerald
+
+/mrl set Emerald Emerald_block 20%
+
+/mrl set Emerald Emerald_ore 80%
+
+/mrl flag Emerald resetdelay 2
+
+/mrl flag Emerald silent true
+
+
+
+
+
+
+/mrl create RUDY
+
+/mrl set RUDY diamond_block 20%
+
+/mrl set RUDY iron_block 20%
+
+/mrl set RUDY Gold_block 20%
+
+/mrl set RUDY Emerald_block 20%
+
+/mrl flag RUDY resetdelay 2
+
+/mrl flag RUDY silent true
+
+
+
+
+
+
+
+
+/mrl create lapis
+
+/mrl set lapis  lapis_block 20%
+
+/mrl set lapis  lapis_ore 80%
+
+/mrl flag lapis resetdelay 2
+
+/mrl flag lapis silent true
+
+
+
+
+
+/mrl create deski
+
+/mrl set deski  Oak_planks 100%
+
+/mrl flag deski resetdelay 2
+
+/mrl flag deski silent true
+
+/cm create diament
+/cm set diament diamond_block 50
+/cm set diament diamond_ore 50
+
+
+/hologram create kop1 &a%catamines_countdown_diamont%&fczas
+
+
+
+
+
+
+
+
+
+
+
+
+
+User
+enchant na zbroje minecraft napsz pokolej i pkreśl
+
+3 / 3
+
+ChatGPT
+Oczywiście! Oto komendy do zaklęcia zbroi w grze Minecraft:
+
+Odporność na ogień (Fire Protection):
+/enchant @p fire_protection
+
+Odporność na wybuchy (Blast Protection):
+/enchant @p blast_protection
+
+Odporność na podwodne obrażenia (Respiration):
+/enchant @p respiration
+
+Buty do chodzenia po wodzie (Depth Strider):
+/enchant @p depth_strider
+
+Odporność na obrażenia związane z wodą (Aqua Affinity):
+/enchant @p aqua_affinity
+
+Odporność na obrażenia (Protection):
+/enchant @p protection
+
+Szczęście (Thorns):
+/enchant @p thorns
+
+Unik (Unbreaking):
+/enchant @p unbreaking
+
+Odporność na obrażenia od mobów (Projectile Protection):
+/enchant @p projectile_protection
+
+Odporność na obrażenia od upadku (Feather Falling):
+/enchant @p feather_falling
+
+Możesz użyć tych komend na dowolnym przedmiocie, ustawiając @p na gracza, któremu chcesz nadać to zaklęcie. Jeśli chcesz nadać zaklęcie konkretnej liczbie, dodaj końcówkę <level> do komendy, na przykład /enchant @p protection 3 nada ochronę na poziomie 3.
+
+
+
+
+User
+a teras na miecze
+ChatGPT
+Oczywiście! Oto komendy do zaklęcia miecza w grze Minecraft:
+
+Ostre ostrze (Sharpness):
+/enchant @p sharpness
+
+Ogień (Fire Aspect):
+/enchant @p fire_aspect
+
+Trwałość (Unbreaking):
+/enchant @p unbreaking
+
+Obrona (Smite):
+/enchant @p smite
+
+Skuteczność (Bane of Arthropods):
+/enchant @p bane_of_arthropods
+
+Dysza (Sweeping Edge):
+/enchant @p sweeping
+
+Zabójca potworów (Looting):
+/enchant @p looting
+
+Przebijający pancerz (Piercing):
+/enchant @p piercing
+
+Multistrzał (Multishot):
+/enchant @p multishot
+
+Szybkość strzał (Quick Charge):
+/enchant @p quick_charge
+
+Możesz użyć tych komend na dowolnym mieczu, ustawiając @p na gracza, któremu chcesz nadać to zaklęcie. Jeśli chcesz nadać zaklęcie konkretnej liczbie, dodaj końcówkę <level> do komendy, na przykład /enchant @p sharpness 3 nada ostre ostrze na poziomie 3.
+
+
+
+
+
+
+/dh create GRACZ &k111&7[Gracz]&f&k111
+
+/dh create ZLOTA &k111&e[ZŁOTA]&f&k111
+
+/dh create Emerald &k111&2[Emerald]&f&k111
+
+/dh create ELITA &k111&5[ELITA]&f&k111
+
+/dh create RANGI &k111&u[RANGI]&f&k111
+
+
+/chunky world world
+/chunky radius 5000
+/chunky center 0 0
+/chunky start
+/chunky pause
+
+linkdo strony---> https://ci.citizensnpcs.co/job/Citizens2/#google_vignette
+
+/npc create MikiYT1 &cWŁAŚCICIEL
+
+/text add &6&lWITAJ
+
+/text add &6&lMORZESZ MI POMUC?
+
+/npc remove
+
+/npc look
+
+/npc skin
+
+/npc teleport
+
+/npc tph
+
+/npc control
+
+/npc type spider
+
+/npc path
+
+/npc type rabbit
+
+/npc select
+
+/npc cmd add -p -o
+
+/npc glowing --color Red
+
+/shopkeeper citizen
+
+/npc follow
+
+/npc equip
+
+/waypoint provider wander
+
+/waypoint provider linear
+
+/npc reload
+
+/npc rename
+
+/css
+
+/npcgui
+
+
+tp
+
+/warp c1
+
+/setwarp c1
+
+/npc cmd add warp c1 -l -r -p
+
+/dh create rud &b&lCZAS RESPU RUD
+
+/dh line add rud 1 &6&lZŁOTO &e&l1 min
+
+/dh line add rud 1 &a&lEMERALD &e&l2 min
+
+/dh line add rud 1 &7&lOFLINE &c&lPVP
+
+/dh line add rud 1 &f&lIRON &e&l3 min
+
+/dh line add rud 1 &b&lDIAXY &e&l4 min
+
+/dh line add rud 1 &d&lRUDY &e&l5 min
+
+/dh line add rud 1 &9&ldeski &e&l6 min
+
+
+/dh mvhr RUD
+
+/dh delete RUD
+
+
+
+/dh create &7kopalnia dla &6&lgraczy
+
+/dh line add rud 1 &7pvp &cOFF
+
+/dh line add rud 1 &7Reset kopalni za: &2 2 min
+
+1./dh create EME &2&lEMERALD
+
+2./dh lines add EME 1 #HEAD: EMERALD_ORE
+
+3./dh page addaction EME 1 LEFT CONSOLE:give {player} emerald
+
+
+
+/dh create EME &u&lMIENSO
+
+/dh lines add krowa1 1 #ENTITY: COW
+
+/dh lines setfacing krowa1 1 3 EAST
+
+/dh page addaction krowa1 1 LEFT CONSOLE:give {player} cooked_beef 3
+
+/bp add 1
+
+/bp set 1
+
+/bp reload
+
+/bp list
+
+/bp delete
+
+/npc hologram add &bDODATKI VIP
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+
+
+/npc skin  OrangeArcher007
+
+/npc cmd add uc menu -l -r -p
+
+/dh create czas &eczas ile jesteś na serverze!: &7%server_uptime%
+
+/dh create napraw &uKomenda:/napraw
+
+/npc create &6&lTRYBY NA SERVERZE!
+
+/npc skin Atroxii
+
+
+NPC
+PANEL MENU
+/npc create &#e8fb13&lP&#d7e612&lA&#c6d111&lN&#b5bc10&lE&#a5a70f&lL &#94920e&lM&#837d0d&lE&#72680c&lN&#61530b&lU
+/npc skin --url http://textures.minecraft.net/texture/c58380d20f9b5f18aa4c2608be1322e07e30f0e3816c26e62c7bfa9864f16273
+/npc cmd add menu -l -r -p
+
+MEDIA
+/npc create &#e8fb13&lM&#c6d111&lE&#a5a70f&lD&#837d0d&lI&#61530b&lA
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+/npc cmd add yt -l -r -p
+
+GILDIA
+/npc create &#e8fb13&lG&#cdd911&lI&#b2b810&lL&#97960e&lD&#7c750d&lI&#61530b&lA
+/shopkeeper citizen
+/npc skin OrangeArcher007
+
+STONE DROP
+/npc create &#e8fb13&lS&#d7e612&lT&#c6d111&lO&#b5bc10&lN&#a5a70f&lE &#94920e&lD&#837d0d&lR&#72680c&lO&#61530b&lP
+/npc cmd add drop -l -r -p
+/npc skin VILLAGER
+
+WARPY
+/npc create &#f6fb16&lW&#d4d314&lA&#b2aa12&lR&#90820f&lP&#6e590d&lY
+/npc cmd add deluxemenus:warp -l -r -p
+/npc skin --url http://textures.minecraft.net/texture/e765ec4e6ca2c98a78a87f58e3b4ee282046e1ee0dd25cdee56a37004d22bdee
+
+KITY
+/npc create &#b516cf&lZ&#a116bc&lE&#8d15aa&lS&#7a1597&lT&#661584&lA&#521472&lW&#3e145f&lY
+/npc cmd add kit -l -r -p
+/npc skin --url http://textures.minecraft.net/texture/e765ec4e6ca2c98a78a87f58e3b4ee282046e1ee0dd25cdee56a37004d22bdee
+
+
+SKLEPGUI
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc hologram add &bSklep
+/npc skin --url http://textures.minecraft.net/texture/c58380d20f9b5f18aa4c2608be1322e07e30f0e3816c26e62c7bfa9864f16273
+/npc cmd add economyshopgui:shop -l -r -p
+/npc cmd add sklep -l -r -p
+WARPY
+/npc skin --url http://textures.minecraft.net/texture/8223964b4eed8fc3b1d38b4fe266439ee0ec0952b6eb637e1dd1ce347c78951
+/npc cmd add warp -l -r -p
+/npc cmd add deluxemenus:warp -l -r -p
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ! 
+/npc hologram add &bWarpy
+ITEMCHOP
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ! 
+/npc hologram add &bItemShop
+/npc skin --url http://textures.minecraft.net/texture/56edc1c7954e006e10076897db6095d2d4ac75db2a3a520cfc2428fdd78e404f
+/npc cmd add itemshop -l -r -p
+
+
+
+Komendy: 
+
+/ajlb add %playtime_time_minutes%
+/ajlb add %vault_eco_balance%
+/ajlb add %slipcorpvpstats_kills%
+
+/npc create %ajlb_lb_playtime_time_minutes_1_alltime_name% &7- %ajlb_lb_playtime_time_minutes_1_alltime_value%
+/npc create %ajlb_lb_vault_eco_balance_1_alltime_name% &7- %ajlb_lb_vault_eco_balance_1_alltime_value%
+/npc create %ajlb_lb_slipcorpvpstats_kills_1_alltime_name% &7- %ajlb_lb_slipcorpvpstats_kills_1_alltime_value%
+
+/npc skin %ajlb_lb_playtime_time_minutes_1_alltime_name%
+/npc skin %ajlb_lb_vault_eco_balance_1_alltime_name%
+/npc skin %ajlb_lb_slipcorpvpstats_kills_1_alltime_name%
+
+/afkzone selector
+
+/afkzone create afk
+
+/afkzone reload
+
+crate key give %player% emerald 1
+
+      commands:
+      - crate key give {player} afk 1
+
+
+/jp create 20
+/jp set sound NONE
+/jp set particle GLOW
+
+/rg define stone
+/rg flag stone block-break allow
+/rg flag stone greeting-title &a Witaj w kopalnji \n &ftu zbieraj surofce!
+
+/rg define spawn
+/rg flag spawn mob-spawning deny
+/rg flag spawn greeting-title &a Witaj na spawn \n &fjestes bezpieczny!
+/rg flag spawn farewell-title &cOpuszczasz spawn
+
+
+1./uadd enchant efficiency 1000
+
+2./uadd enchant thorns 1000
+
+4./uadd name &6&lGracz kilof
+
+
+
+/enchant efficiency 200
+
+/enchant blastprotect 200
+
+/enchant projectileprotection 200
+
+/enchant unbreaking 200
+
+/enchant infarrows 200
+
+/enchant thorns 200
+
+/dh create SKRZYNIA1 &n&8[&5&lSKRZYNIA EPICKA&8]
+
+/dh create SKRZYNIA2 &n&8[&2&lSKRZYNIA SZARAGDOWA&8]
+
+/dh create SKRZYNIA3 &n&8[&e&lSKRZYNIA ZŁOTA&8]
+
+/dh create SKRZYNIA4 &n&8[&7&lSKRZYNIA GRACZ&8]
+
+&n&8[&7&lSKRZYNIA&8]
+
+/dh create ko &2&l-579 92 224 &fBudowanie!
+
+
+szpital
+/sethospital
+
+deski komena
+//set oak_planks,oak_wood
+
+/dh create szpital --&e&l☆&f--
+/dh line add szpital 1 &f&lⒽ &c&lSZPITAL &f&lⒽ
+/dh line add szpital 1 &7jeżli zginiesz, trafisz
+/dh line add szpital 1 &7tutaj na &c5 minut&7!
+==============
+/npc create .
+/npc name
+
+/npc skin BunnyBandit13
+
+/npc lookclose
+
+/give @p item_frame{EntityTag:{Invisible:1b}}
+/npc cmd add spawn -l -r -p
+================================================
+
+//set stone,stone_bricks,cobblestone
+
+setblock -83 62 -40 minecraft:coal_ore
+
+/dh create xp &aXP-->100
+
+/dh create VIP &e&lStrefa VIP
+
+/ecsadmin create 0 200
+
+
+wymniarka
+/dh create wy &a&lWymniarka #1
+
+/dh create wy2 &a&lWymniarka #2
+
+/dh create wy3 &a&lWymniarka #3
+
+/dh create wy4 &a&lWymniarka #4
+
+/npc create &6&lWymiana
+/npc skin Makarone
+/npc cmd add warp wy -l -r -p
+
+wy2
+/npc cmd add warp wy2 -l -r -p
+
+wy3
+/npc cmd add warp wy3 -l -r -p
+
+
+
+/dh create sklepy &6&lSKLEPY
+/dh lines add sklepy 1 &7/warp sklepy
+
+/npc create &6&lcraft
+
+/npc skin JoseProMcp
+
+/npc cmd add craft -l -r -p
+
+
+/dh create h &6&lustawić dom
+/dh line add h 1 &7/sethome
+/dh line add h 1 &7/home nazwa
+/dh line add h 1 &7/delhome
+
+
+skill
+/npc create .
+
+/npc skin MikiYT1
+
+/npc name
+
+/npc hologram add &5&lUMIEJĘTNOŚĆ
+
+/npc hologram add &eKliknij!
+
+/npc hologram add &7/warp sklepy
+
+/npc hologram add &6&lSKLEPY
+
+/npc cmd add skill -l -r -p
+
+
+
+/npc equip
+zzbroja
+/enchant power 5
+
+
+/npc create .
+
+/npc type ARMOR_STAND
+
+/npc name
+
+/skull tarkabb
+
+/npc lookclose
+
+
+
+/skull MoiLeCoffre
+
+CHEST OPEN
+100050
+
+
+/crate key give MikiYT1 gracz 1
+
+
+
+horagram
+
+klucz!!
+/dh create S --&e&l☆&f--
+
+/dh line add S 1 &7Klucz do &#1ffb35&lS&#24fb35&lK&#29fb34&lR&#2efc34&lZ&#33fc34&lY&#38fc33&lN&#3dfc33&lI &#41fc33&lG&#46fc32&lR&#4bfd32&lA&#50fd32&lC&#55fd31&lZ&#5afd31&lA
+
+/dh line add S 1 &7możesz odebrać &#1ffb35n&#26fb35a &#2efc34s&#35fc34p&#3dfc33a&#44fc33w&#4bfd32n&#53fd32i&#5afd31e
+
+/dh line add S 1 &7wpisując &#1ffb35/&#33fc34k&#46fc32i&#5afd31t
+
+/dh line add S 1 &7(raz na 1 dzień)
+
+
+
+strefa vip
+/dh create vip --&e&l☆&f--
+/dh line add vip 1 &7Po zakupie rangi &6&lVIP
+/dh line add vip 1 &7otrzymasz dostęp do
+/dh line add vip 1 &7specjalnego zestawu dla &6&lVIPÓW&7!
+/dh line add vip 1 &7Codziennie możesz odebrać
+/dh line add vip 1 &ezestaw &7z &eprzdatnym
+/dh line add vip 1 &7przedmiotem lub przedmiotami.
+/dh line add vip 1 &7Możesz go odebrać &e&nwszędzie
+/dh line add vip 1 &7za pomocą komendy &e/kit
+
+stojak na zbroje!
+/summon armor_stand ~ ~ ~ {NoBasePlate:1b,ShowArms:1b,Rotation:[330f],Pose:{Head:[344f,0f,0f],LeftArm:[250f,252f,0f],RightArm:[315f,0f,25f]}}
+
+/skull ZuSKaTo
+
+//set oak_planks,oak_wood,gold_block,gold_ore
+
+
+
+
+
+
+/cm create diamenty
+
+/cm set diamenty diamond_block 50%
+
+/cm set diamenty diamond_ore 50%
+
+/cm setdelay diamenty 180
+
+/hologram create dia &aCzas: &f%catamines_countdown_diamenty%
+
+https://www.spigotmc.org/resources/⭐-catamines-⭐-skymining-prison-mines.96457/
+
+/summon minecraft:armor_stand -284 141 -151 {NoGravity:1,Invisible:1}
+/execute as @e[type=armor_stand] at @s run tp @s ~ ~ ~ ~1 ~
+
+/summon minecraft:item ~ ~7 ~ {Item:{id:"minecraft:emerald",Count:1}}
+/summon minecraft:item ~ ~7 ~ {Item:{id:"minecraft:melon_slice",Count:1}}
+/summon minecraft:item ~ ~7 ~ {Item:{id:"minecraft:bone",Count:1}}
+/summon minecraft:item ~ ~7 ~ {Item:{id:"minecraft:lapis_lazuli",Count:1}}
+/summon minecraft:item ~ ~7 ~ {Item:{id:"minecraft:written_book",Count:1}}
+
+
+
+
+
+/give @p minecraft:player_head[minecraft:custom_name='{"text":"Emerald Octothorpe","color":"gold","underlined":true,"bold":true,"italic":false}',minecraft:lore=['{"text":"Custom Head ID: 96861","color":"gray","italic":false}','{"text":"www.minecraft-heads.com","color":"blue","italic":false}'],profile={id:[I;-519842554,-516076582,-1173360836,-129988553],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGYzYmFhMTY3NjY1ZGVkY2ZiZDViMzU3Nzc4ODhmMTIzZjAzMDViY2EzZWE4OWRhOTQyMTI2MmNiZWFiNTQ3NyJ9fX0="}]}] 1
+
+
+
+setblock -264 141 -167 minecraft:lapis_ore
+
+1./dh create GRACZ &6&lGRACZ ONLINE
+
+2./dh line add rud 1 GRACZ {online}/&f{max_players}
+
+3./hd mvhr GRACZ
+
+
+/npc create &#fbf21a&lG&#dfda19&lR&#c3c218&lA&#a7aa18&lT&#8b9217&lI&#6f7a16&lS&#536215&lY
+
+/npc lookclose
+
+/npc skin oIMIDo
+
+/npc equip
+
+/npc cmd add perks -l -r -p
+
+
+#70DEFB
+
+#4EFDA4
+
+https://www.birdflop.com/resources/rgb/
+
+/dh create ga &bskarbiec
+
+/dh lines add ga 1 &e&lTAJEMNICZY
+
+/mysteryboxes
+/gmysteryboxes mode add-vault 1
+/gmysteryboxes mode remove-vault
+
+/gmysteryboxes give MikiYT1 5
+/gadgetsmenu:dust add MikiYT1 1
+/gadgetsmenu:dust set MikiYT1 0
+
+/lp group default permission set gadgetsmenu.menuselector
+/lp group default permission set gadgetsmenu.* false
+/lp group właściciel permission set gadgetsmenu.mysteryboxes.mode
+/lp group właściciel permission set gadgetsmenu.*
+
+/papi ecloud download Bungee
+
+
+/papi reload
+
+/dh create GRACZ1 &8&lGRACZ &7%bungee_lobby%
+
+1/npc hologram add &8&lGRACZ&7 %bungee_SURVIVAL%
+
+2/npc hologram add &8&lGRACZ&7 %bungee_BOXPVP%
+
+3/npc hologram add &8&lGRACZ&7 %bungee_MEGADROP%
+
+4/npc hologram add &8&lGRACZ&7 %bungee_Skyblock%
+
+5/npc hologram add &8&lGRACZ&7 %bungee_ONEBLOCK%
+
+6/npc hologram add &8&lGRACZ&7 %bungee_LIFESTEAL SMP%
+
+7./npc hologram add &8&lGRACZ&7 %bungee_HARTKOR%
+
+/dh create login &3&l✪zaloguj się✪
+
+/dh line add login 1 &a&l/register hosło hasło
+
+/dh line add login 1 &a&l/login hosło
+
+/dh line add login 1 &a&l/email gmail
+
+/dh line add login 1 &3&l==============
+
+1./dh create survival &2&l&2✤&lKLIKNJ ABY GRAĆ&2✤
+
+2./dh create boxpvp &3&l&3✤&lKLIKNJ ABY GRAĆ&3✤
+
+3./dh create MEGADROP &5&l&5✤&lKLIKNJ ABY GRAĆ&5✤
+
+
+4./npc rename &a&lSURVIVAL
+
+5./npc rename &b&lBOXPVP
+
+6./npc rename &d&lMEGADROP
+
+
+/npc hologram add &7=============
+
+/npc hologram add &2&lSURVIVAL      skin---> sxymegger
+
+/npc hologram add &7=============
+
+
+
+
+/npc hologram add &7=============
+
+/npc hologram add &3&lBOXPVP      skin---> XXlogischerfabi
+
+/npc hologram add &7=============
+
+
+
+
+/npc hologram add &7=============
+
+/npc hologram add &5&lMEGADROP      skin---> Weatrace
+
+/npc hologram add &7=============
+
+
+
+/npc hologram add &7=============
+
+/npc hologram add &e&lSKYBLOCK      skin---> Invisible2802
+
+/npc hologram add &7=============
+
+
+
+
+/npc hologram add &7=============
+
+/npc hologram add &9&lONEBLOCK     skin---> OrangeArcher007
+
+/npc hologram add &7=============
+
+
+
+/npc hologram add &7=============
+
+/npc hologram add &4&lLifeSteal SMP         skin---> LinkTheBeast
+     
+/npc hologram add &7=============
+
+
+
+/npc hologram add &7=============
+
+/npc hologram add &1&lHARTKOR     skin--->LiquorFan
+
+/npc hologram add &7=============
+
+
+
+
+
+/papi ecloud download Bungee
+
+
+/papi reload
+
+/dh create GRACZ1 &8&lGRACZ &7%bungee_lobby%
+
+1/npc hologram add &8&lGRACZ&7 %bungee_SURVIVAL%
+
+2/npc hologram add &8&lGRACZ&7 %bungee_BOXPVP%
+
+3/npc hologram add &8&lGRACZ&7 %bungee_MEGADROP%
+
+4/npc hologram add &8&lGRACZ&7 %bungee_Skyblock%
+
+5/npc hologram add &8&lGRACZ&7 %bungee_ONEBLOCK%
+
+6/npc hologram add &8&lGRACZ&7 %bungee_LIFESTEAL SMP%
+
+7./npc hologram add &8&lGRACZ&7 %bungee_HARTKOR%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SURVIVAL:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_SURVIVAL% &7graczy!
+/npc hologram add &2&lSURVIVAL                                                                                             
+/npc cmd add server SURVIVAL -l -r -p
+
+skin---> sxymegger
+
+
+
+
+
+
+BOXPVP:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_BOXPVP% &7graczy!
+/npc hologram add &3&lBOXPVP                                                                                             
+/npc cmd add server BOXPVP -l -r -p
+
+skin---> XXlogischerfabi
+
+
+
+
+
+
+
+
+
+MEGADROP:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_MEGADROP% &7graczy! 
+/npc hologram add &5&lMEGADROP                                                                                  
+/npc cmd add server MEGADROP -l -r -p
+
+ skin---> Weatrace
+
+
+
+
+
+SKYBLOCK:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_SKYBLOCK% &7graczy! 
+/npc hologram add &e&lSKYBLOCK  
+/npc cmd add server SKYBLOCK -l -r -p
+                                                                       
+skin---> Invisible2802
+
+
+
+
+
+
+
+
+
+
+ONEBLOCK:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_ONEBLOCK% &7graczy!                                                                     
+/npc hologram add &9&lONEBLOCK
+/npc cmd add server ONEBLOCK -l -r -p
+
+skin---> Stefano_07
+
+
+
+
+
+
+
+
+
+
+
+SKYGEN:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_SKYGEN% &7graczy!
+/npc hologram add &4&lSKYGEN                                                                                                    
+/npc cmd add server SKYGEN -l -r -p
+
+skin---> LinkTheBeast
+
+
+
+
+
+
+
+
+
+HARTKOR:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_HARTKOR% &7graczy!
+/npc hologram add &1&lHARTKOR                                                                                                   
+/npc cmd add server HARTKOR -l -r -p
+
+skin--->LiquorFan
+
+
+
+
+
+CHEST PVP:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_CHEST PVP% &7graczy!
+/npc hologram add &6&lCHEST PVP                                                                                                 
+/npc cmd add server CHEST PVP -l -r -p
+
+skin--->MyrMidrax
+
+
+
+
+CREATIVE:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_CREATIVE% &7graczy!
+/npc hologram add &d&lCREATIVE                                                                                                  
+/npc cmd add server CREATIVE -l -r -p
+
+skin--->darki73
+
+
+
+
+
+
+
+
+WARSMP:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_WARSMP% &7graczy!
+/npc hologram add &a&lWARSMP 
+/npc cmd add server WARSMP  -l -r -p
+
+ skin--->o0Creditor0o
+
+
+
+
+
+
+
+
+
+
+
+
+
+EXTREME:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_EXTREME% &7graczy!
+/npc hologram add &c&lEXTREME 
+/npc cmd add server EXTREME  -l -r -p
+
+skin--->Gromdo
+
+
+
+
+
+
+
+
+
+LIFE STEAL SMP:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_LIFE STEAL SMP% &7graczy!
+/npc hologram add &b&lLIFE STEAL SMP
+/npc cmd add server LIFE STEAL SMP -l -r -p
+
+skin--->Divtz
+
+
+
+     
+
+
+
+
+
+/papi ecloud download Bungee
+
+
+/papi reload
+
+/dh create GRACZ1 &8&lGRACZ &7%bungee_lobby%
+
+1/npc hologram add &8&lGRACZ&7 %bungee_SURVIVAL%
+
+2/npc hologram add &8&lGRACZ&7 %bungee_BOXPVP%
+
+3/npc hologram add &8&lGRACZ&7 %bungee_MEGADROP%
+
+4/npc hologram add &8&lGRACZ&7 %bungee_Skyblock%
+
+5/npc hologram add &8&lGRACZ&7 %bungee_ONEBLOCK%
+
+6/npc hologram add &8&lGRACZ&7 %bungee_LIFESTEAL SMP%
+
+7./npc hologram add &8&lGRACZ&7 %bungee_HARTKOR%
+
+
+
+
+
+
+
+
+
+
+
+
+
+ramster5678 nagrody OrangeArcher007    lobbyAroobydoo Not_Paul       
+
+oneblock Stefano_07 
+
+/alevel rewards http://novask.in/4890603230.png
+
+LOBBY
+/rg flag spawn greeting-title &e&l&e&l&k111&e&lSKYBLOCK&k&l111
+
+CENTRUM
+https://www.minecraftskins.com/uploads/skins/2022/02/25/in---game-hypixel-store-19956611.png?v577
+
+BANK
+/npc skin --url http://textures.minecraft.net/texture/62a110b02efc58f2ba77aeef17df7e329d896c4590244233849f42da02328a9
+
+/npc create KIT
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bZESTAWY
+/npc skin OrangeArcher007
+/npc cmd add kit -l -r -p
+
+/npc create menu
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bMENU POMOCY
+/npc skin OrangeArcher007
+=======================================================
+/npc create AFK
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bSTREFA AFK
+/npc skin --url http://textures.minecraft.net/texture/c2e185582e9401e082f6d0012f4bcc501827b11c8a45ca9b1471dc02dbbf946b
+/npc cmd add afk -l -r -p
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bDODATKI
+/npc hologram add &cZOBACZ!
+/npc cmd add gadgetsmenu main -l -r -p
+/npc skin --url http://textures.minecraft.net/texture/c58380d20f9b5f18aa4c2608be1322e07e30f0e3816c26e62c7bfa9864f16273
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bSTREFA AFK
+/npc hologram add &cZOBACZ!
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bPARTICLESY
+/npc hologram add &cZOBACZ!
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bITEMSHOP
+/npc cmd add itemshop -l -r -p
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bBANK
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bSTREFA PVP
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bLEVEL UP
+
+/npc hologram add &e&lKLIKNIJ ABY FLY
+/npc hologram add &bFLY
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+/npc cmd add fly -l -r -p
+
+/npc hologram add &bKLUCZE
+Stefano_07 
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bSTREFA VIP
+/npc skin --url http://textures.minecraft.net/texture/5a1d413a8234102b77b7e2be424092061b0152e4fb01418115e25f1d11b333a7
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bTOP #3 POMOC YOUTUBE
+
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bPOWRÓT DO LOBBY
+/npc hologram add &7/centrum
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bTELEPORT HOMES
+/npc hologram add &7/sethome
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bPOWRÓT DO MENU
+/npc skin Driant
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bWYDARZENIA
+======================================================================================
+TRYBY
+======================================================================================
+/npc hologram add &e&lKLIKNIJ ABY ODEBRAĆ!
+/npc hologram add &bODBIESZ KLUCZ DO RANGI!
+/npc skin --url http://textures.minecraft.net/texture/7da04af922f1f8b046deca85b79bc45f9da9481d80fd035b576670a841eebbef
+
+/npc hologram add &e&lKLIKNIJ ABY ODEBRAĆ!
+/npc hologram add &bKLUCZ DO RANGI!
+/npc skin Gumbaldore
+
+
+/npc hologram add &e&lKLIKNIJ ABY ODEBRAĆ!
+/npc hologram add &bRANGE!
+/npc skin --url http://textures.minecraft.net/texture/23161b3e741dc2d91a0f7aa67cb4b1b0bb3fcff46dc0e7632c7e5358d964d58
+================================================================================================
+
+
+/npc hologram add &e&lKLIKNIJ ABY ODEBRAĆ!
+/npc hologram add &bKLUCZ
+/npc skin --url http://textures.minecraft.net/texture/aeadb1af4aac1593b9b9933cc8333e6fd6d7e400e9b3bcfe3bf028771d034fc9
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bPOWRÓT NA SPAWN
+/npc skin --url http://textures.minecraft.net/texture/4dd7a8e83fa18a13b9c6d010707c3e7d224a37e65b997e1f067511ae181976b2
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bPVP POLE PUSTE
+/npc skin --url http://textures.minecraft.net/texture/4dd7a8e83fa18a13b9c6d010707c3e7d224a37e65b997e1f067511ae181976b2
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bSKLEP
+
+
+ONEBLOCK
+/npc hologram add &e&lKLIKNIJ ABY STWORZYĆ!
+/npc hologram add &bSTWÓSZ WYSPĘ
+/npc skin --url  http://textures.minecraft.net/texture/77c810ce97f478c6a38ff242f2fa01bf3c85290ca3cee65a8a5ae55a924d8f0b
+
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bWYSPA PANEL
+/npc skin --url  http://textures.minecraft.net/texture/77c810ce97f478c6a38ff242f2fa01bf3c85290ca3cee65a8a5ae55a924d8f0b
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ! 
+/npc hologram add &bTP WYSPA
+/npc skin --url  http://textures.minecraft.net/texture/77c810ce97f478c6a38ff242f2fa01bf3c85290ca3cee65a8a5ae55a924d8f0b
+
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bTOP WYSPY
+/npc skin --url  http://textures.minecraft.net/texture/77c810ce97f478c6a38ff242f2fa01bf3c85290ca3cee65a8a5ae55a924d8f0b
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bBLOKI NA WYSPIE
+/npc skin --url  http://textures.minecraft.net/texture/77c810ce97f478c6a38ff242f2fa01bf3c85290ca3cee65a8a5ae55a924d8f0b
+
+
+
+
+
+SKYBLOCK
+/npc hologram add &e&lKLIKNIJ ABY STWORZYĆ!
+/npc hologram add &bSTWÓSZ WYSPĘ
+/npc skin --url http://textures.minecraft.net/texture/13fb24bb93e73771b4cc355bc4d02cd72d62598437956e2e05428c428dcdf26
+
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ PANEL!
+/npc hologram add &bWYSPA PANEL
+/npc skin --url http://textures.minecraft.net/texture/13fb24bb93e73771b4cc355bc4d02cd72d62598437956e2e05428c428dcdf26
+
+/npc hologram add &e&lKLIKNIJ ABY TELPORT NA WYSPĘ!
+/npc hologram add &bTP WYSPA
+/npc skin --url http://textures.minecraft.net/texture/13fb24bb93e73771b4cc355bc4d02cd72d62598437956e2e05428c428dcdf26
+
+
+SKLEPY
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bSKLEP
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+/npc cmd add economyshopgui:shop -l -r -p
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bBÓDOWA
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+/npc cmd add economyshopgui:shop Blocks -l -r -p
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bŻYWNOŚĆ
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+/npc cmd add economyshopgui:shop Food -l -r -p
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bRUDY
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+/npc cmd add economyshopgui:shop Ores -l -r -p
+
+
+/npc create SPSZEDAJ
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bSPSZEDAJ
+/npc cmd add sellgui -l -r -p
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+
+
+/npc create Różnorodny
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bRóżnorodny
+/npc cmd add economyshopgui:shop Miscellaneous -l -r -p
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+
+/npc create Enchanting
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bEnchanting
+/npc cmd add economyshopgui:shop Enchanting -l -r -p
+/npc skin --url http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+
+
+
+
+
+
+/npc create .
+/npc skin --url http://textures.minecraft.net/texture/5a1d413a8234102b77b7e2be424092061b0152e4fb01418115e25f1d11b333a7
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bCHESTY
+/npc cmd add warp chest -l -r -p
+
+
+
+
+
+
+
+
+
+
+/shopkeeper citizen
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc hologram add &bRUDY
+/npc skin --url http://textures.minecraft.net/texture/8223964b4eed8fc3b1d38b4fe266439ee0ec0952b6eb637e1dd1ce347c78951
+
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc hologram add &bITEMY
+/npc skin KOP
+
+
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc hologram add &bZBROJE
+/npc skin --url http://textures.minecraft.net/texture/5a1d413a8234102b77b7e2be424092061b0152e4fb01418115e25f1d11b333a7 
+
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc hologram add &bSKRZYNIA
+/npc skin --url http://textures.minecraft.net/texture/4dd7a8e83fa18a13b9c6d010707c3e7d224a37e65b997e1f067511ae181976b2
+
+/npc hologram add &bKLUCZ DO RANGI
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc skin --url http://textures.minecraft.net/texture/4dd7a8e83fa18a13b9c6d010707c3e7d224a37e65b997e1f067511ae181976b2
+
+
+
+/npc hologram add &bDZIAŁKI
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc skin --url https://www.minecraftskins.com/uploads/skins/2023/05/28/hypixel-skyblock-auction-master-npc-21639750.png?v577
+
+
+/npc hologram add &bKAMIEŃ
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc skin --url https://www.minecraftskins.com/uploads/skins/2019/09/28/npc-3--knight--13509694.png?v577
+
+
+
+WARSMP
+/npc hologram add &bKARABINY!
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+
+/npc hologram add &bGRATISY
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+
+/npc hologram add &bSALA DO TRENINGU
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY POWRÓCIC
+/npc hologram add &bSPAWN
+/npc skin --url http://textures.minecraft.net/texture/6f0e7fefc8bf7c968f2d60bcbdca0d1cd8a29d641b1e9bf07102969ba734cdab
+
+
+/dh create GO &eGRACZEONLINE:%bungee_LOBBY%
+
+
+
+STREFA AFK
+/npc create AFK
+/npc hologram add &e&lKLIKNIJ ABY ODEBRAĆ!
+/npc hologram add &bPREZENT
+/npc cmd add crate key give %player% afk -l -r -p
+/npc cmd add afk -l -r -p
+/ezchestshop create 438 0
+/npc skin --url http://textures.minecraft.net/texture/c58380d20f9b5f18aa4c2608be1322e07e30f0e3816c26e62c7bfa9864f16273
+/npc skin --url http://textures.minecraft.net/texture/c2e185582e9401e082f6d0012f4bcc501827b11c8a45ca9b1471dc02dbbf946b
+/afk set join
+
+/afk set leave
+
+/afk menu
+
+
+SKLEPGUI
+/npc hologram add &e&lKLIKNIJ ABY KUPIĆ
+/npc hologram add &bSklep
+/npc skin --url http://textures.minecraft.net/texture/5a1d413a8234102b77b7e2be424092061b0152e4fb01418115e25f1d11b333a7
+/npc cmd add sklep -l -r -p
+/lp group default permission set getsklep.use
+/sklep vault 45 11
+/sklep time 5 17
+/sklep reload
+
+KOPALNJA
+/regen gui
+/npc create KOP
+/npc skin --url http://textures.minecraft.net/texture/8223964b4eed8fc3b1d38b4fe266439ee0ec0952b6eb637e1dd1ce347c78951
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bKOPALNJA
+/npc cmd add warp kop -l -r -p
+
+KOPALNJA #2
+/regen gui
+/npc create KOP2
+/npc skin --url http://textures.minecraft.net/texture/8223964b4eed8fc3b1d38b4fe266439ee0ec0952b6eb637e1dd1ce347c78951
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bKOPALNJA#2
+/npc cmd add warp kop2 -l -r -p
+
+
+
+/npc create BESPIECZNA STREFA
+/npc skin Gumbaldore
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bBESPIECZNA STREFA
+/npc cmd add warp kop -l -r -p
+
+
+/npc create PVP PUSTEPOLE
+/npc skin Gumbaldore
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bPVP PUSTEPOLE
+/npc cmd add warp PVPq -l -r -p
+
+
+
+
+
+
+
+
+
+
+
+TRYBY
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bSURVIVAL
+/npc hologram add &e%bungee_SURVIVAL% &egrają
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bBOXPVP
+/npc hologram add &e%bungee_BOXPVP% &egrają
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bMEGADROP
+/npc hologram add &e%bungee_MEGADROP% &egrają
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bSKYBLOCK
+/npc hologram add &e%bungee_SKYBLOCK% &egrają
+
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bONEBLOCK
+/npc hologram add &e%bungee_ONEBLOCK% &egrają
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bSKYGEN
+/npc hologram add &e%bungee_SKYGEN% &egrają
+
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bHARTKOR
+/npc hologram add &e%bungee_HARTKOR% &egrają
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bCHESTPVP
+/npc hologram add &e%bungee_CHESTPVP% &egrają
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bCREATIVE
+/npc hologram add &e%bungee_CREATIVE% &egrają
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bWARSMP
+/npc hologram add &e%bungee_WARSMP% &egrają
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bEXTREME
+/npc hologram add &e%bungee_EXTREME% &egrają
+
+
+
+
+
+
+
+/npc hologram add &e&lKLIKNIJ ABY DOŁĄCZYĆ!
+/npc hologram add &bLIFE STEAL SMP
+/npc hologram add &e%bungee_LIFE STEAL SMP% &egrają
+
+
+
+
+
+/npc hologram add &eGRACZEONLINE:%bungee_LOBBY%
+
+
+CENTRUM:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_LOBBY% &7graczy!
+/npc hologram add &6&lCENTRUM                                                                                             
+/npc cmd add spawn -l -r -p
+
+PUSTY SURVIVAL:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_LOBBY% &7graczy!
+/npc hologram add &6&lPUSTY SURVIVAL                                                                                            
+/npc cmd add warp PUSTY -l -r -p
+
+
+
+
+
+
+http://textures.minecraft.net/texture/c58380d20f9b5f18aa4c2608be1322e07e30f0e3816c26e62c7bfa9864f16273
+
+http://textures.minecraft.net/texture/c2e185582e9401e082f6d0012f4bcc501827b11c8a45ca9b1471dc02dbbf946b
+
+http://textures.minecraft.net/texture/8223964b4eed8fc3b1d38b4fe266439ee0ec0952b6eb637e1dd1ce347c78951
+
+http://textures.minecraft.net/texture/a72fb1ac83da465f73ac96326989b4f4995c76c29a29e7c435d77b48a7ad384f
+
+http://textures.minecraft.net/texture/23161b3e741dc2d91a0f7aa67cb4b1b0bb3fcff46dc0e7632c7e5358d964d58
+
+http://textures.minecraft.net/texture/ef0f48420547c6644e707e9ccf47be155e512e14a0502565d2ac9d081d28c2c6
+
+https://minecraft.novaskin.me/skin/6370323294/górnik
+
+http://textures.minecraft.net/texture/4dd7a8e83fa18a13b9c6d010707c3e7d224a37e65b997e1f067511ae181976b2
+
+https://www.minecraftskins.com/skin/19956611/in---game-hypixel-store/
+
+https://www.minecraftskins.com/skin/21639750/hypixel-skyblock-auction-master-npc/
+
+http://textures.minecraft.net/texture/62a110b02efc58f2ba77aeef17df7e329d896c4590244233849f42da02328a9
+
+https://www.minecraftskins.com/skin/13509694/npc-3--knight-/
+
+http://textures.minecraft.net/texture/e765ec4e6ca2c98a78a87f58e3b4ee282046e1ee0dd25cdee56a37004d22bdee
+
+http://textures.minecraft.net/texture/5a1d413a8234102b77b7e2be424092061b0152e4fb01418115e25f1d11b333a7
+
+http://textures.minecraft.net/texture/aeadb1af4aac1593b9b9933cc8333e6fd6d7e400e9b3bcfe3bf028771d034fc9
+
+http://textures.minecraft.net/texture/13fb24bb93e73771b4cc355bc4d02cd72d62598437956e2e05428c428dcdf26
+
+http://textures.minecraft.net/texture/4dd7a8e83fa18a13b9c6d010707c3e7d224a37e65b997e1f067511ae181976b2
+
+http://textures.minecraft.net/texture/6f0e7fefc8bf7c968f2d60bcbdca0d1cd8a29d641b1e9bf07102969ba734cdab
+
+https://laby.net/@Gumbaldore
+OrangeArcher007
+
+bedwars
+http://textures.minecraft.net/texture/cd9e4fdbe26595e6bdcd1ef3493e9766e8093f302a5ca417e3e4a0ae86e080e6
+http://textures.minecraft.net/texture/ef41e4202b8a1a133f0bb5eeaa3b2e066bbef396e59115d88699be1959dcc717
+http://textures.minecraft.net/texture/8dc667704174a2aa8339bb41ea65ecdf085a5f4268ef6ece2c6670bc611ebea7
+http://textures.minecraft.net/texture/4a226e7c87b5f07205cdb36d3d558cca450cc1d386bd2ddb467cb9ee4e5de3d3
+
+
+
+
+https://mineskin.org/gallery
+dc pomoc
+https://discord.com/channels/774404516522229760/774928336216391710
+
+
+
+
+SURVIVAL:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_SURVIVAL% &7graczy!
+/npc hologram add &2&lSURVIVAL                                                                                             
+/npc cmd add server SURVIVAL -l -r -p
+
+
+
+
+
+
+
+BOXPVP:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_BOXPVP% &7graczy!
+/npc hologram add &3&lBOXPVP                                                                                             
+/npc cmd add server BOXPVP -l -r -p
+
+
+
+
+
+
+
+
+
+
+MEGADROP:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_MEGADROP% &7graczy! 
+/npc hologram add &5&lMEGADROP                                                                                  
+/npc cmd add server MEGADROP -l -r -p
+
+
+
+
+
+
+SKYBLOCK:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_SKYBLOCK% &7graczy! 
+/npc hologram add &e&lSKYBLOCK  
+/npc cmd add server SKYBLOCK -l -r -p
+                                                                       
+
+
+
+
+
+
+
+
+
+
+
+ONEBLOCK:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_ONEBLOCK% &7graczy!                                                                     
+/npc hologram add &9&lONEBLOCK
+/npc cmd add server ONEBLOCK -l -r -p
+
+
+
+
+
+CREATIVE:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_CREATIVE% &7graczy!
+/npc hologram add &d&lCREATIVE                                                                                                  
+/npc cmd add server CREATIVE -l -r -p
+
+
+
+
+
+
+SURVIVAL PRZYGODA:
+/npc hologram add &aKliknij aby dołączyć!
+/npc hologram add &7Dołącz do &f%bungee_SURVIVAL PRZYGODA% &7graczy!
+/npc hologram add &b&lPRZYGODA                                                                                                  
+/npc cmd add server SURVIVAL PRZYGODA -l -r -p
+
+===========================================
+=========================================
+
+
+SURVIVAL
+http://textures.minecraft.net/texture/8e291ba6e18e7fcb7da64a56545827f9f1dc74bc0ccccdb1fc555b6597350af3
+
+BOXPVP
+http://textures.minecraft.net/texture/e834274bcaa6587bdce95d94965fb3a115169f5b84c78727d03693a716f0a54f
+
+MEGADROP
+http://textures.minecraft.net/texture/88283bb9fa9c2e3d257ea9c55dba1100462eb09acd6c292deb434077a851097f
+
+SKYBLOCK
+http://textures.minecraft.net/texture/886d42217e64d1ecea462a7b9f6629fade873d8d440cc5baafd31f21f742bb0
+
+ONEBLOCK
+http://textures.minecraft.net/texture/e843d493aa7182c00ffc5414170a27431379b36425e034b150f7120db52141cb
+
+CRATIVE
+http://textures.minecraft.net/texture/f4691a06c511fd618dc41c3bbf55af2c7797dd2d9c7b160e161335198a5f4f44
+
+SURVIVAL PRZYGODA
+http://textures.minecraft.net/texture/5f326f5c98fca38d38f8e73671f4a4f6f7bd66d2fdf14eb172f1ca6df5d38992
+
+SURVIVAL
+/npc rename &a&LSUR&2&LVIVAL
+
+BOXPVP
+/npc rename &9&lBOX&1&lPVP
+
+MEGADROP
+/npc rename &d&lMEGA&5&lDROP
+
+admin
+/npc rename &4&lADMINISTRACJA
+
+
+1. /npc hologram add &6&lWitaj na serversze! Mikity server.pl
+
+2. /npc hologram add &d&lfacebook Mikołaj Fiuk
+
+3./npc hologram add &b&lfacebook strona Mikity server.pl
+
+4./npc hologram add &c&lyoutube Mikity kanał
+
+5./npc hologram add &6&ltryby na serversze &2&lSURVIVAL &3&lBOXPVP &d&lMEGADROP
+
+6./npc hologram add &9&ltiktok mikitytiktok
+
+7./npc hologram add &e&linstagram Mikity_kanal
+
+8. /npc hologram add &6&lINFORMACIE
+
+stfusz
+1./npc create &6&lINFORMACIE
+
+2./npc skin Elvisoo
+
+
+/dh create online &6&lSERVERY ONLINE GRACZY!
+
+/dh line add online 1 &u&lLOBBY &7&lGRACZ ONLINE &7%bungee_LOBBY%
+
+/dh line add online 1 &u&lCENTRUM &7&lGRACZ ONLINE &7%bungee_CENTRUM%
+
+/dh line add online 1 &2&lSURVIVAL &7&lGRACZ ONLINE &7%bungee_SURVIVAL%
+
+/dh line add online 1 &3&lBOXPVP &7&lGRACZ ONLINE &7%bungee_BOXPVP%
+
+/dh line add online 1 &5&lMEGADROP &7&lGRACZ ONLINE &7%bungee_MEGADROP%
+
+/dh line add online 1 &e&lSKYBLOCK &7&lGRACZ ONLINE &7%bungee_SKYBLOCK%
+
+/dh line add online 1 &9&lONEBLOCK &7&lGRACZ ONLINE &7%bungee_ONEBLOCK%
+
+/dh line add online 1 &4&lSKYGEN &7&lGRACZ ONLINE &7%bungee_SKYGEN%
+
+/dh line add online 1 &1&lHARTKOR &7&lGRACZ ONLINE &7%bungee_HARTKOR%
+
+/dh line add online 1 &6&lCHEST PVP &7&lGRACZ ONLINE &7%bungee_CHEST PVP%
+
+/dh line add online 1 &d&lCREATIVE &7&lGRACZ ONLINE &7%bungee_CREATIVE%
+
+
+1./pa create course Parkour
+
+2./pa create checkpoint parkour
+
+3./pa kit
+
+4./pa parkourkit edit default
+
+5.add
+
+6.bedrock
+
+7.no
+
+8.cancel
+
+9./pa kit
+
+10./pa ready parkour
+
+11./pa joinall
+
+
+npc
+/npc create &6&lParkour
+
+/npc skin Parkour
+
+/npc cmd add pa joinall -l -r -p
+
+
+1./bp add 1  /bp set 1 music
+
+2./bp add 2  /bp set 2 spew
+
+3./bp add 3 /bp set 3 volcano
+
+
+/bp add lobby /bp set lobby flamewheel
+
+
+TRYBY
+/bp add SURVIVAL /bp set SURVIVAL music
+
+/bp add BOXPVP  /bp set BOXPVP spew
+
+/bp add MEGADROP /bp set MEGADROP volcano
+
+sklepy
+/bp add chleb /bp add chleb /bp set chleb flame
+
+/bp add zborze /bp set zborze doublewitch
+
+/bp add mienso /bp set mienso doublewitch
+
+/bp add ryby   /bp set ryby doublespiral
+
+/bp add klucze /bp set klucze doublewitch
+
+/bp add PVP /bp set PVP happyvillager
+
+
+sklep klof
+/bp add sklep /bp set sklep doublewitch
+
+
+
+
+
+villager boxpvp
+
+/bp add v1
+
+/bp add v2
+
+/bp add v3
+
+/bp add v4
+
+/bp add v5
+
+/bp add v6
+
+/bp add v7
+
+/bp add v8
+
+/bp add v9
+
+/bp add v10
+
+
+
+/npc create &bParty System
+/npc hologram add &e&lKLIKNIJ ABY ZOBACZYĆ!
+/npc hologram add &bParty System
+/npc skin --url http://textures.minecraft.net/texture/45e59fbc374be8490a305bfba5354eb5e887ab961ce9316e465316db803e3b47
+/npc cmd add party -l -r -p
+/lp group default permission set bparty.create
+
+
+/lp group default permission set 1
+
+/lp group default permission set 2
+
+/lp group default permission set 3
+
+/lp group default permission set 4
+
+/lp group default permission set 5
+
+
+1./smallpets
+
+2./smallpets admin givepet MikiYT1 panda 1000
+
+
+
+/papi ecloud download Server
+%server_name%
+%server_online%
+%server_version%
+%server_max_players%
+%server_unique_joins%
+%server_uptime%
+%server_ram_used%
+%server_ram_free%
+%server_ram_total%
+%server_ram_max%
+%server_tps%
+%server_tps_1%
+%server_tps_5%
+%server_tps_15%
+%server_tps_1_colored%
+%server_tps_5_colored%
+%server_tps_15_colored%
+%server_online_<world>%
+%server_has_whitelist%
+%server_total_chunks%
+%server_total_living_entities%
+%server_total_entities%
+%server_time_<SimpleDateFormat>%
+%server_countdown_<SimpleDateFormat>_<time>%
+e.g. %server_countdown_dd.MM.yyyy_01.01.2020%
+================================================================================================================================
+/papi ecloud download Player
+
+%player_allow_flight%
+%player_armor_helmet_name%
+%player_armor_helmet_data%
+%player_armor_helmet_durability%
+%player_armor_chestplate_name%
+%player_armor_chestplate_data%
+%player_armor_chestplate_durability%
+%player_armor_leggings_name%
+%player_armor_leggings_data%
+%player_armor_leggings_durability%
+%player_armor_boots_name%
+%player_armor_boots_data%
+%player_armor_boots_durability%
+%player_bed_x%
+%player_bed_y%
+%player_bed_z%
+%player_bed_world%
+%player_biome%
+%player_biome_capitalized%
+%player_block_underneath%
+%player_can_pickup_items%
+%player_colored_ping%
+%player_compass_world%
+%player_compass_x%
+%player_compass_y%
+%player_compass_z%
+%player_custom_name%
+%player_current_exp%
+%player_direction%
+%player_direction_xz%
+%player_displayname%
+%player_list_name%
+%player_exp%
+%player_exp_to_level%
+%player_first_join_date%
+%player_first_played%
+%player_first_join%
+%player_first_played_formatted%
+%player_fly_speed%
+%player_food_level%
+%player_gamemode%
+%player_has_empty_slot%
+%player_has_played_before%
+%player_empty_slots%
+%player_has_potioneffect_<effect>%
+%player_has_permission_<permission>%
+%player_health%
+%player_health_rounded%
+%player_health_scale%
+%player_ip%
+%player_online%
+%player_is_whitelisted%
+%player_is_banned%
+%player_is_flying%
+%player_is_sneaking%
+%player_is_sprinting%
+%player_is_sleeping%
+%player_is_inside_vehicle%
+%player_is_op%
+%player_item_in_hand%
+%player_item_in_hand_name%
+%player_item_in_hand_data%
+%player_item_in_hand_durability%
+%player_item_in_hand_level_<enchantment>%
+%player_item_in_offhand%
+%player_item_in_offhand_name%
+%player_item_in_offhand_data%
+%player_item_in_offhand_durability%
+%player_item_in_offhand_level_<enchantment>%
+%player_locale%
+%player_locale_display_name%
+%player_locale_short%
+%player_locale_country%
+%player_locale_display_country%
+%player_last_damage%
+%player_last_played%
+%player_last_join%
+%player_last_played_formatted%
+%player_last_join_date%
+%player_level%
+%player_light_level%
+%player_max_air%
+%player_max_health%
+%player_max_health_rounded%
+%player_max_no_damage_ticks%
+%player_minutes_lived%
+%player_name%
+%player_no_damage_ticks%
+%player_ping%
+%player_ping_<playername>%
+%player_remaining_air%
+%player_saturation%
+%player_seconds_lived%
+%player_sleep_ticks%
+%player_thunder_duration%
+%player_ticks_lived%
+%player_time%
+%player_time_offset%
+%player_total_exp%
+%player_uuid%
+%player_walk_speed%
+%player_weather_duration%
+%player_world%
+%player_world_type%
+%player_world_time_12%
+%player_world_time_24%
+%player_x%
+%player_y%
+%player_z%
+%player_yaw%
+%player_pitch%
+%player_absorption%
+
+
+/npc create &6&llevel player
+
+/npc skin macrom8
+
+/npc cmd add skill -l -r -p
+
+/pp
+
+/pp reset
+
+/pp fixed create looking happy_villager celebration halo
+
+/pp fixed create looking reverse_portal celebration halo
+
+/pp fixed create looking dripping_lava celebration halo
+
+/pp fixed create looking instant_effect celebration halo
+
+
+/pp fixed remove 1
+
+
+
+block
+/pp fixed create looking firework sphere
+
+KFADRAT
+/pp fixed create looking happy_villager cube
+
+
+
+
+
+
+
+
+TOP4 PORADNIK
+/npc create Lethal88    --->/pp fixed create looking happy_villager celebration halo
+
+/npc create rap3erka   --->/pp fixed create looking reverse_portal celebration halo
+
+/npc create KasaiSora  --->/pp fixed create looking dripping_lava celebration halo
+
+/npc create getherTV --->/pp fixed create looking instant_effect celebration halo
+
+
+
+
+
+
+
+PARTITLE 
+/be create 1 GLOW
+
+/be create 1 SOUL
+
+/be create 2 DUST_COLOR_TRANSITION
+
+
+/be modify 1 count 10
+
+/be modify 1 speed 100
+========================
+/be modify 1 count 1020
+
+/be modify 1 offset 20 20 20
+==========================
+/be modify 2 color 10
+
+/be modify 2 colortransition 100 0 10
+
+/be remove 1
+
+
+
+
+/dh create ragi &bRangi
+
+/dh line add ragi 1 &e&lKlikmij aby odebrać
+
+/dh line add ragi 1 #ICON: TRIPWIRE_HOOK
+
+
+klucz chest ----> czas 1000000
+
+/crate key give MikiYT1 rangi 1
+
+/npc create parkour
+
+/npc equip
+
+/npc name
+
+/dh create ragik &bKLUCZ DO RANGI!
+
+/dh line add ragik 1 &e&lKlikmij aby odebrać
+
+
+
+/dh create &u&lTYLKO RANGI
+
+/dh line add RANGI 1 &aVIP
+
+/dh line add RANGI 1 &6VIP+
+
+/dh line add RANGI 1 &eMVIP
+
+/dh line add RANGI 1 &eMVIP+
+
+/dh line add RANGI 1 &5ELITA
+
+
+========================================================
+dodać RANGI
+/lp creategroup vip
+
+/lp creategroup vip+
+
+/lp creategroup mvip
+
+/lp creategroup mvip+
+
+/lp creategroup mvip++
+
+/lp creategroup ELITA
+
+/lp creategroup ELITA+
+
+/lp creategroup admin
+
+/lp creategroup Właściciel 
+
+/lp creategroup noG
+                                      
+usuń
+/lp deletegroup moderator
+
+/lp listgroups
+
+========================================================
+do odebrania
+/itemshop MikiYT1 vip
+
+/crate key give MikiYT1 rangi 64
+
+/crate give MikiYT1 rangi 1
+
+/crate editor
+
+NPC
+/npc create &#fb18f2&lR&#d112f5&lA&#a60cf8&lN&#7c06fa&lG&#5100fd&l!
+
+/npc lookclose
+
+/npc skin dominikk01
+
+/npc cmd add crate give %player% rangi 1 -l -r -p
+
+/lp group default permission set excellentcrates.user true
+
+/lp group default permission set excellentcrates.command.give true
+
+
+RANGI prefix
+
+1./lp group default meta setprefix "&#515151[&#5c5c5cG&#686868r&#737373a&#7e7e7ec&#8a8a8az&#959595] "
+
+2./lp group vip meta setprefix "&#55fb1a[&#47da1aV&#38b91aI&#2a9819P&#1b7719] " 
+
+3./lp group vip+ meta setprefix "&#5d5708[&#7d730bV&#9e8e0eI&#beaa12P&#dfc515+&#ffe118] "
+
+4./lp group mvip meta setprefix "&#1b27c8[&#1a21b9M&#191baaV&#19169aI&#18108bP&#170a7c] "
+
+5./lp group mvip+ meta setprefix "&#c8c719[&#b9b418M&#aaa016V&#9c8d15I&#8d7913P&#7e6612+&#6f5210] "
+
+6/lp group mvip++ meta setprefix "&#c0c819[&#b2c818M&#a3c717V&#95c716I&#87c716P&#79c715+&#6ac614+&#5cc613] "
+
+7./lp group admin meta setprefix "&#c80000[&#b70000A&#a60000d&#950000m&#840000i&#730000n&#620000] "
+
+8./lp group właściciel meta setprefix "&#c80b0b[&#bb0a0aW&#ae0909ł&#a10808a&#940707ś&#870606c&#7b0606i&#6e0505c&#610404i&#540303e&#470202l&#3a0101]&f "
+
+9./lp group elita meta setprefix "&#c81fb2[&#bc1eb5E&#b01eb9L&#a41dbcI&#981cbfT&#8c1cc3A&#801bc6] "
+
+10./lp group elita+ meta setprefix "&#c81fb2[&#be1eb5E&#b31eb8L&#a91dbbI&#9f1dbdT&#951cc0A&#8a1cc3+&#801bc6]"
+
+
+
+RANGI prefix stare
+
+1./lp group default meta setprefix "&7[Gracz]&f "
+
+2./lp group vip meta setprefix "&a[VIP]&f " 
+
+3./lp group vip+ meta setprefix "&d[VIP+]&f "
+
+4./lp group mvip meta setprefix "&e[MVIP]&f "
+
+5./lp group mvip+ meta setprefix "&6[MVIP+]&f "
+
+6/lp group mvip++ meta setprefix "&6[MVIP&d++&6]&f "
+
+7./lp group admin meta setprefix "&3[Admin]&f "
+
+8./lp group właściciel meta setprefix "&4[Właściciel]&f "
+
+9./lp group elita meta setprefix "&5[ELITA]&f "
+
+10./lp group elita+ meta setprefix "&5[ELITA+]&f "
+
+
+
+=========================================================
+dni
+lp user MikiYT1 permission settemp group.vip+ true 4s
+
+/lp user MikiYT1 permission settemp group.vip+ true 30d
+
+
+wyskosci
+/lp group default setweight 2
+
+/lp group vip setweight 50
+
+/lp group vip+ setweight 60
+
+/lp group mvip setweight 70
+
+/lp group mvip+ setweight 80
+
+/lp group mvip++ setweight 90
+
+/lp group admin setweight 100
+
+/lp group elita setweight 800
+
+/lp group elita+ setweight 800
+
+/lp group Właściciel setweight 100000
+
+look
+/lp group default permission set bukkit.command? false
+
+
+===================================================
+dodaj Rangę
+
+/lp user MikiYT1 parent set właściciel
+
+/lp user MikiYT1 parent clear
+=================================================
+permission spu praca
+/lp group vip parent set default
+
+/lp group vip+ parent set default
+
+/lp group mvip parent set default
+
+/lp group mvip+ parent set default
+
+/lp group mvip++ parent set default
+
+/lp group elita parent set default
+
+/lp group elita+ parent set default
+
+/lp group admin parent set default
+
+/lp group właściciel parent set default
+
+================================================
+
+do kartek
+/lp group default permission set 1
+
+/lp group default permission set 2
+
+/lp group default permission set 3
+
+/lp group default permission set 4
+
+/lp group default permission set 5
+
+/lp group default permission set 6
+
+/lp group default permission set 7
+
+
+
+
+
+
+
+
+===================================================
+kit
+/lp group vip parent set default
+
+/lp group vip+ parent set vip
+
+/lp group mvip parent set vip
+
+/lp group mvip parent set vip+
+
+/lp group mvip+ parent set vip
+
+/lp group mvip+ parent set vip+
+
+/lp group mvip+ parent set mvip
+
+/lp group mvip+ parent set default
+
+/lp group mvip+ parent set vip
+
+/lp group mvip+ parent set vip+
+
+/lp group mvip+ parent set mvip
+========================================================
+kit plugin permisje
+Gracz
+
+vip
+
+vip+
+
+mvip
+
+mvip+
+
+mvip++
+
+elita
+
+elita+
+
+admin
+=====================================
+kit permise
+/lp group default permission set Gracz
+
+/lp group vip permission set vip
+
+/lp group vip+ permission set vip+
+
+/lp group mvip permission set mvip
+
+/lp group admin permission set admin
+
+/lp group mvip+ permission set mvip+
+
+/lp group elita permission set elita
+
+===========================================
+/lp group elita permission set Gracz
+
+/lp group elita permission set vip
+
+/lp group elita permission set vip+
+
+/lp group elita permission set mvip+
+
+/lp group elita permission set mvip
+
+/lp group elita permission set elita
+===========================================
+
+=======================================================
+permission
+/lp group default permission set jumppads.use true
+
+/lp group vip+ permission set gadgetsmenu.* true
+
+/lp group default permission set essentials.warp true
+
+/lp group właściciel permission set *
+
+/lp group właściciel permission set minecraft.command.op
+=======================================================
+
+
+
+========================================================
+dodać RANGI
+/lp creategroup vip
+
+/lp creategroup vip+
+
+/lp creategroup mvip
+
+/lp creategroup mvip+
+
+/lp creategroup admin
+
+/lp creategroup Właściciel 
+
+/lp creategroup ELITA
+
+/lp creategroup noG
+                                      
+usuń
+/lp deletegroup moderator
+
+/lp listgroups
+
+========================================================
+RANGI prefix
+
+1./lp group default meta setprefix "&7[Gracz]&f "
+
+2./lp group vip meta setprefix "&a[VIP]&f " 
+
+3./lp group vip+ meta setprefix "&6[VIP+]&f "
+
+4./lp group mvip meta setprefix "&e[MVIP]&f "
+
+5./lp group mvip+ meta setprefix "&e[MVIP+]&f "
+
+5./lp group admin meta setprefix "&3[Admin]&f "
+
+7./lp group właściciel meta setprefix "&4[Właściciel]&f "
+
+8./lp group elita meta setprefix "&5[ELITA]&f "
+
+
+
+=========================================================
+dni
+lp user MikiYT1 permission settemp group.vip+ true 4s
+
+/lp user MikiYT1 permission settemp group.vip+ true 30d
+
+
+wyskosci
+/lp group default setweight 2
+
+/lp group vip setweight 50
+
+/lp group vip+ setweight 60
+
+/lp group mvip setweight 70
+
+/lp group admin setweight 100
+
+/lp group elita setweight 80
+
+/lp group Właściciel setweight 100000
+
+look
+/lp group default permission set bukkit.command? false
+
+
+===================================================
+dodaj Rangę
+
+/lp user MikiYT1 parent set właściciel
+
+/lp user MikiYT1 parent clear
+=================================================
+permission spu praca
+/lp group vip parent set default
+
+/lp group vip+ parent set default
+
+/lp group mvip parent set default
+
+/lp group mvip+ parent set default
+
+/lp group elita parent set default
+
+/lp group admin parent set default
+
+/lp group właściciel parent set default
+
+================================================
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================
+kit
+/lp group vip parent set default
+
+/lp group vip+ parent set vip
+
+/lp group mvip parent set vip
+
+/lp group mvip parent set vip+
+
+/lp group mvip+ parent set vip
+
+/lp group mvip+ parent set vip+
+
+/lp group mvip+ parent set mvip
+
+/lp group mvip+ parent set default
+
+/lp group mvip+ parent set vip
+
+/lp group mvip+ parent set vip+
+
+/lp group mvip+ parent set mvip
+========================================================
+kit plugin permisje
+Gracz
+
+vip
+
+vip+
+
+mvip
+
+mvip+
+
+elita
+
+admin
+=====================================
+kit permise
+/lp group default permission set Gracz
+
+/lp group vip permission set vip
+
+/lp group vip+ permission set vip+
+
+/lp group mvip permission set mvip
+
+/lp group admin permission set admin
+
+/lp group mvip+ permission set mvip+
+
+/lp group elita permission set elita
+
+===========================================
+/lp group elita permission set Gracz
+
+/lp group elita permission set vip
+
+/lp group elita permission set vip+
+
+/lp group elita permission set mvip+
+
+/lp group elita permission set mvip
+
+/lp group elita permission set elita
+===========================================
+
+=======================================================
+permission
+/lp group default permission set jumppads.use true
+
+/lp group vip+ permission set gadgetsmenu.* true
+
+/lp group default permission set essentials.warp true
+=======================================================
+
+/lp group default permission set superior.*
+
+/is panel
+
+/is create MikiYT1
+
+/enchant efficiency 200
+
+/enchant blastprotect 200
+
+/enchant projectileprotection 200
+
+/enchant unbreaking 200
+
+/enchant infarrows 200
+
+/enchant thorns 200
+
+1
+
+1./scoreboard objectives add Zgony deathCount
+
+2./scoreboard objectives setdisplay sidebar Zgony
+
+
+
+2
+
+1./scoreboard objectives add zdrowie health {"text":"❤","color":"red"}
+
+2./scoreboard objectives setdisplay belowName zdrowie

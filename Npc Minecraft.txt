@@ -8,6 +8,9 @@ https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2Fl
 ============================================================================================================================================================================================================================================
 Dzienkuje za pomoc OpenAI
 https://chatgpt.com
+
+Skiny
+https://pl.namemc.com
 ==============================================================================================
 
 🖥️ System operacyjny Windows
@@ -4909,7 +4912,14 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
 
 
-12333
+
+
+
+
+
+
+
+NPC1234
 ===============================================================================================================
 Mannequins
 25w36b
@@ -4936,7 +4946,16 @@ hidden_layers - List of outer skin layers to hide
 Valid entries: cape, jacket, left_sleeve, right_sleeve, left_pants_leg, right_pants_leg, hat
 main_hand - Which hand is the main hand of the Mannequn - one of left and right
 =====================================================================================================
+od kudłstyego
 
+-Przywołanie manekina: /summon minecraft:mannequin
+-Manekin innego gracza: /summon minecraft:mannequin ~ ~ ~ {profile:{name:"RoxMb"}}
+-Model chudy: /summon minecraft:mannequin ~ ~ ~ {profile:{model:slim}}
+-Model gruby: /summon minecraft:mannequin ~ ~ ~ {profile:{model:wide}}
+-Manekin stoi w miejscu: /summon minecraft:mannequin ~ ~ ~ {immovable:true}
+-Pozycje manekinów: /summon minecraft:mannequin ~ ~ ~ {pose:swimming}
+(standing, crouching, swimming, fall_flying, sleeping)
+-Manekiny podąrzają wzrokiem: /execute as @e[type=minecraft:mannequin] at @s facing entity @p feet run tp @s ~ ~ ~ ~ ~
 
 /tick freeze
 /tick unfreeze
@@ -4968,7 +4987,7 @@ TWOJE STATYSTYKI
 
 /summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"konto od: 2019-07-06","color":""},Small:1b}
 
-/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Jesteś Zajebisty Mikołaj Fiuk","color":"yellow"},Small:1b}
 ========================================================================================================================================================
 
 /summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'',CustomNameVisible:1b,Tags:["obracajacy"],ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}]}
@@ -4979,6 +4998,8 @@ TWOJE STATYSTYKI
 Struż
 /summon minecraft:mannequin
 /fetchprofile name MikiYT1
+
+/execute as @e[type=minecraft:mannequin] at @s facing entity @p feet run tp @s ~ ~ ~ ~ ~
 =====================================================================================================
 modfikacje
 zmień skina 
@@ -5020,6 +5041,44 @@ Struż z Skina dowolnwgo gracza
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "TIDZIMI"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "Nerkin_"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "FuzjaJadrowa"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Kudlaty_Artuditu"}}
+
+
+YOUTUBE
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "TIDZIMI"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "RoxMB"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "LJayPL"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "reZigioro"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Nexe33"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Jawor__"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Graf"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "EnzziGaming"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "InareQ"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "JurajskiStas"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Frelly"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "viv0"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Doknesss"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Dealereq"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "cpotworek"}}
+
+/team join odw @e[type=minecraft:mannequin,limit=1,sort=nearest]
 
 mojang studio
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "Notch"}}
@@ -5107,9 +5166,10 @@ CustomName:'"Diamond Warrior"'
 NPC KOMENDY PSZYDATNE
 Skin
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "JustcallmeAnna86"}}
-/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót na spawn ✅"}
-/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót na LOBBY ✅"}
-/summon minecraft:mannequin ~ ~ ~ {profile:"JustcallmeAnna86",CustomName:"Powrót do Domu ✅"}
+/summon minecraft:mannequin ~ ~ ~ {profile:"Jorge_Josiah",CustomName:"Miłej Gry! ✅"}
+/summon minecraft:mannequin ~ ~ ~ {profile:"Jorge_Josiah",CustomName:"Powrót na spawn ✅"}
+/summon minecraft:mannequin ~ ~ ~ {profile:"Jorge_Josiah",CustomName:"Powrót na LOBBY ✅"}
+/summon minecraft:mannequin ~ ~ ~ {profile:"Jorge_Josiah",CustomName:"Powrót do Domu ✅"}
 
 /tag @e[type=mannequin,limit=1,sort=nearest] add npc
 /execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet

@@ -404,6 +404,7 @@ Po restarcie masz czysty system serwerowy.
 i od razu sudo nano /etc/ssh/sshd_config
 
 PermitRootLogin yes
+systemctl restart ssh
 ---
 
 # ⭐ 3. Logowanie do systemu
@@ -8234,10 +8235,1924 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 
 
 
+To **normalne w Debianie 13 (Trixie)** – repozytoria są *puste lub wyłączone*, dlatego system nie widzi nawet podstawowych pakietów jak **mc**.
+
+### ✔️ Dlaczego masz ten błąd?
+
+Bo **nie masz aktywnych źródeł APT**. Debian 13 w wersjach minimalnych/domowych obrazach często instalowany jest z **wyłączonymi repozytoriami** w `/etc/apt/sources.list`.
+
+Dlatego system zwraca:
+
+> Pakiet "mc" nie ma kandydata do instalacji
+> Nie udało się odnaleźć pakietu
+
+---
+
+## ✔️ Jak to naprawić (najprościej)?
+
+### 1. Otwórz plik źródeł APT
+
+```
+nano /etc/apt/sources.list
+```
+
+### 2. Wstaw **to** do środka (pełne repozytoria Debian 13):
+
+```
+deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+```
+
+Zapisz:
+`CTRL + O`, Enter → `CTRL + X`.
+
+### 3. Zaktualizuj listę pakietów
+
+```
+apt update
+```
+
+### 4. Zainstaluj mc
+
+```
+apt install mc
+```
+
+To **na 100% zadziała** — właśnie tak wygląda standardowe repo dla Debian 13.
+
+---
+
+## ✔️ Alternatywna przyczyna (rzadko): minimalny obraz z netinst
+
+Jeżeli instalowałaś system bez Internetu → instalator tworzy pusty `sources.list`.
+Efekt: brak pakietów.
+
+---
+
+Jeśli chcesz, mogę sprawdzić Twój obecny `sources.list`. Wklej jego zawartość:
+
+```
+cat /etc/apt/sources.list
+```
+W Proxmox **nie działa zwykłe CTRL + V**, bo konsola działa jako *terminal w przeglądarce* — i ma własne skróty.
+
+### ✔️ Prawidłowe wklejanie w konsoli Proxmoxa
+
+#### **1️⃣ Zwykła konsola (noVNC) – ta, którą teraz masz**
+
+➡️ **CTRL + SHIFT + V**
+(wkleja z systemowego schowka)
+
+➡️ **CTRL + SHIFT + C**
+(kopiowanie)
+
+To działa w każdej sesji noVNC.
+
+---
+
+#### **2️⃣ Jeśli jesteś w "xterm.js Console" na liście opcji VM**
+
+➡️ Wklejasz **prawym przyciskiem myszy → Paste**
+
+albo
+
+➡️ **CTRL + V działa tylko gdy włączysz to w ustawieniach przeglądarki**, ale domyślnie jest blokowane.
+
+---
+
+#### **3️⃣ Jeśli używasz SSH (Putty, Termius, Windows Terminal, PowerShell)**
+
+* Windows Terminal / PowerShell → **CTRL + SHIFT + V**
+* Putty → **kliknij prawym — automatycznie wkleja**
+
+---
+
+## ✔️ Najczęstsze problemy
+
+Jeśli CTRL+SHIFT+V nadal nie działa:
+
+* upewnij się, że **masz fokus w oknie konsoli** (kliknij w nią raz)
+* w Chrome/Opera/Edge trzeba czasem potwierdzić popup:
+
+  > „Pozwolić stronie na dostęp do schowka?”
+
+---
+
+Jeśli chcesz — mogę też powiedzieć, jak ustawić automatyczne kopiowanie/wklejanie w Proxmox przez SSH lub jak wkleić duże pliki (klucze SSH, skrypty itp.).
+
+OK — jeśli **CTRL + SHIFT + V nie działa**, to znaczy, że jesteś prawdopodobnie w *Shell (xterm.js)*, a nie w *noVNC*.
+W tym trybie Chrome/Opera/Edge **blokują dostęp do wklejania**, dopóki go nie włączysz ręcznie.
+
+Pokażę Ci wszystkie działające metody.
+
+---
+
+# 🔧 **1. Najpewniejszy sposób — wklejanie prawym przyciskiem myszy**
+
+W *xterm.js Console* (typowa konsola Proxmox VM):
+
+👉 **Kliknij PPM → Paste**
+
+To działa nawet gdy wszystkie skróty są zablokowane.
+
+---
+
+# 🔧 **2. Włącz dostęp do schowka w przeglądarce (konieczne!)**
+
+### **W Chrome / Opera / Edge:**
+
+1. **Kliknij małą ikonę kłódki** obok adresu `https://IP-PROXMOX:8006`
+2. Wejdź w **Ustawienia witryny**
+3. Znajdź sekcję **Schowek / Clipboard**
+4. Ustaw na: **Zezwól**
+
+🔄 Odśwież stronę → **CTRL + SHIFT + V powinno zacząć działać**.
+
+---
+
+# 🔧 **3. Użyj zwykłej konsoli noVNC (tam zawsze działa CTRL+SHIFT+V)**
+
+Wejdź tu:
+
+**VM → Console → wybierz z góry "noVNC" zamiast "xterm.js"**
+
+W noVNC:
+
+✔ kopiuje: **CTRL + SHIFT + C**
+✔ wkleja: **CTRL + SHIFT + V**
+
+---
+
+# 🔧 **4. Najwygodniejsza metoda – połącz się przez SSH (działa zawsze)**
+
+Na Windowsie:
+
+```
+ssh root@IP_PROXMOX
+```
+
+W Windows Terminal / PowerShell:
+
+✔ wklejanie: **CTRL + SHIFT + V**
+
+---
+
+# 🔧 **Sprawdź, w jakiej konsoli jesteś**
+
+Napisz mi proszę:
+▶️ Czy jesteś w **Shell** czy **Console → noVNC**?
+
+Mogę wtedy wskazać dokładnie, gdzie kliknąć, żeby działało.
+
+Na Debianie / Proxmox najlepiej użyć jednej z tych komend:
+
+### ✔️ Najprostsza i najczęściej używana:
+
+```
+ip a
+```
+
+lub krócej:
+
+```
+ip addr
+```
+
+Twoje IP znajdziesz przy interfejsie **ens18**, **eth0** albo **vmbr0** (Proxmox).
+
+---
+
+### ✔️ Tylko adres IPv4:
+
+```
+hostname -I
+```
+
+---
+
+### ✔️ Stare polecenie (też działa):
+
+```
+ifconfig
+```
+
+(wymaga pakietu *net-tools*)
+
+---
+
+Jeśli chcesz — powiedz, gdzie sprawdzasz IP (VM, Proxmox host, kontener LXC), a podpowiem która wartość jest właściwa.
+
+
+Żeby wejść do **maszyny wirtualnej (VM) w Proxmox** przez **PuTTY**, musisz wiedzieć dwie rzeczy:
+
+1. **Adres IP maszyny wirtualnej**
+2. **Hasło użytkownika w tej VM** (np. root)
+
+Poniżej masz dokładne kroki od A do Z.
+
+---
+
+# ✅ **KROK 1 – Sprawdź IP maszyny wirtualnej**
+
+Wejdź w Proxmox → wybierz swoją VM → **Console**
+i wpisz:
+
+```
+ip a
+```
+
+Szukasz czegoś takiego:
+
+* **ens18** albo **eth0**
+* linia z `inet` → np. `192.168.1.50/24`
+
+Przykład:
+
+```
+inet 192.168.1.50/24 brd 192.168.1.255 scope global dynamic ens18
+```
+
+Twoje IP to: **192.168.1.50**
+
+---
+
+# ✅ **KROK 2 – Upewnij się, że masz włączone SSH w VM**
+
+Na Debianie SSH instaluje się tak:
+
+```
+apt install openssh-server
+```
+
+Sprawdź, czy działa:
+
+```
+systemctl status ssh
+```
+
+---
+
+# ✅ **KROK 3 – Połącz się przez PuTTY**
+
+1. Otwórz **PuTTY**
+2. W polu *Host Name (or IP address)* wpisz IP VM, np.:
+
+```
+192.168.1.50
+```
+
+3. Port: **22** (domyślny)
+4. Connection type: **SSH**
+5. Kliknij **Open**
+
+---
+
+# ✅ **KROK 4 – Zaloguj się**
+
+Pojawi się okno i zapyta:
+
+```
+login as:
+```
+
+Wpisz **root**
+A potem swoje hasło root VM.
+
+---
+
+# Jeśli nie znasz IP – mogę pomóc
+
+Wpisz w konsoli VM wynik:
+
+```
+ip a
+```
+
+Wklej, a powiem Ci dokładnie które IP wpisać do PuTTY.
+
+---
+
+Chcesz też wiedzieć, jak wejść przez PuTTY na **hosta Proxmoxa**, nie tylko VM?
+
+
+To oznacza, że **Twoja maszyna wirtualna NIE ma żadnego adresu IP w sieci** – tylko `127.0.0.1`, czyli adres lokalny (loopback).
+
+Dlatego **nie da się połączyć PuTTY**, bo VM w ogóle nie jest widoczna w sieci.
+
+---
+
+# 🔥 **Musimy ustawić kartę sieciową w VM**
+
+W Proxmox wykonaj:
+
+## 1️⃣ Wejdź w:
+
+```
+VM → Hardware → Network Device
+```
+
+Powinno być tam coś takiego:
+
+* **virtio (recommended)**
+* podpięte do **vmbr0**
+
+Jeśli nie ma → trzeba dodać.
+
+---
+
+# 2️⃣ Sprawdź w Proxmox, czy mostek sieciowy istnieje:
+
+Wejdź:
+
+```
+Datacenter → Node (Twój serwer) → System → Network
+```
+
+Powinno być:
+
+```
+vmbr0 → ens18 (lub eth0)
+```
+
+Jeśli VM nie jest podłączona do vmbr0 → **nie dostanie IP**.
+
+---
+
+# 3️⃣ Sprawdź w konsoli VM, czy widzisz kartę sieciową:
+
+Wpisz:
+
+```
+ip link
+```
+
+Powinno pokazać coś typu:
+
+* `ens18`
+* `eth0`
+
+Jeśli widać tylko:
+
+```
+lo
+```
+
+to **VM nie ma nawet wirtualnej karty sieciowej**.
+
+---
+
+# 4️⃣ Jeśli karta jest, ale nie ma IP – ustaw DHCP
+
+Wpisz:
+
+```
+dhclient
+```
+
+Jeśli nie masz dhclient:
+
+```
+apt install isc-dhcp-client
+dhclient
+```
+
+---
+
+# ❗ Zrób proszę teraz screen / wynik z:
+
+### ➤ `ip link`
+
+I powiem Ci dokładnie, co dalej zrobić.
+
+
+
+Super — **karta sieciowa jest poprawnie podpięta do vmbr0**, czyli po stronie Proxmoxa wszystko wygląda OK.
+
+To oznacza, że **problem jest wewnątrz systemu Debian** → nie widzi karty sieciowej *virtio*.
+
+Czyli typowy problem: **Debian nie zainstalował sterowników do VirtIO** podczas instalacji.
+
+---
+
+# ✅ KROK 1 — Sprawdź, czy system widzi kartę sieciową
+
+W maszynie (VM) wpisz:
+
+```
+ip link
+```
+
+Jeśli zobaczysz tylko:
+
+```
+lo
+```
+
+to znaczy, że **Debian nie ładuje sterownika virtio_net**.
+
+---
+
+# ✅ KROK 2 — Załaduj sterownik ręcznie
+
+Wpisz:
+
+```
+modprobe virtio
+modprobe virtio_pci
+modprobe virtio_net
+```
+
+Po tym sprawdź:
+
+```
+ip link
+```
+
+Nowy interfejs powinien się pojawić: `ens18` lub `eth0`.
+
+---
+
+# Jeśli już widać interfejs, pobierz IP z DHCP:
+
+```
+dhclient ens18
+```
+
+Lub jeśli będzie to eth0:
+
+```
+dhclient eth0
+```
+
+---
+
+# ❗ Jeśli sterownik NIE działa — zmień model karty sieciowej
+
+Wejdź w Proxmox:
+
+**VM → Hardware → Network Device → Edit**
+
+Zmień **Model** z:
+
+✔ VirtIO
+➡ na np.:
+
+* **Intel E1000** (działa zawsze)
+  albo
+* **RTL8139** (działa zawsze, starszy)
+
+Kliknij **OK**, uruchom VM ponownie.
+
+W Debianie uruchom:
+
+```
+ip a
+```
+
+I karta powinna być widoczna.
+
+---
+
+# 🔥 Najszybsza metoda: ustaw Model = E1000
+
+Intel E1000 zawsze działa, nawet jak Debian nie ma sterowników VirtIO.
+
+---
+
+Chcesz, żebym poprowadziła Cię dokładnie krok po kroku?
+Wklej wynik:
+
+```
+ip link
+```
+
+
+Świetnie — **Twoja karta sieciowa *ens18* istnieje**, ale jest w stanie:
+
+```
+state DOWN
+```
+
+Czyli NIC nie jest do niej przypisane → brak DHCP → brak IP.
+
+To jest łatwe do naprawienia.
+
+---
+
+# ✅ KROK 1 — Włącz interfejs
+
+Wpisz:
+
+```
+ip link set ens18 up
+```
+
+Potem sprawdź stan:
+
+```
+ip a
+```
+
+Powinno być:
+
+```
+state UP
+```
+
+---
+
+# ✅ KROK 2 — Pobierz IP z DHCP
+
+```
+dhclient ens18
+```
+
+Jeśli nie masz dhclient:
+
+```
+apt install isc-dhcp-client
+dhclient ens18
+```
+
+Po chwili:
+
+```
+ip a
+```
+
+Powinno pokazać coś typu:
+
+```
+inet 192.168.x.x/24
+```
+
+---
+
+# Jeśli to nie da IP – wtedy musimy naprawić **/etc/network/interfaces** lub **systemd-networkd**
+
+Ale najpierw zobaczmy, czy DHCP złapie adres.
+
+---
+
+# 🔥 Wykonaj teraz proszę:
+
+1. `ip link set ens18 up`
+2. `dhclient ens18`
+3. Wklej wynik:
+
+```
+ip a
+```
+
+
+
+Super — po wykonaniu:
+
+```
+ip link set ens18 up
+```
+
+musimy teraz pobrać adres IP z DHCP, bo sama karta „UP” nie dostanie adresu automatycznie.
+
+---
+
+# 🔥 **KROK 1 – Pobierz adres IP**
+
+Wpisz:
+
+```
+dhclient ens18
+```
+
+Jeśli pojawi się komunikat w stylu „command not found”, zainstaluj klienta DHCP:
+
+```
+apt install isc-dhcp-client
+dhclient ens18
+```
+
+---
+
+# 🔥 **KROK 2 – Sprawdź, czy pojawiło się IP**
+
+```
+ip a
+```
+
+Szukaj w sekcji `ens18` czegoś takiego:
+
+```
+inet 192.168.x.x/24
+```
+
+---
+
+# Jeśli nie pojawi się IP
+
+→ pokaż mi wynik:
+
+```
+cat /etc/network/interfaces
+```
+
+lub, jeśli używa systemd-networkd:
+
+```
+ls /etc/systemd/network/
+```
+
+Doprowadzimy to w kilka minut do działania.
+
+
+
+OK — czyli sytuacja jest taka:
+
+### ✔ **Proxmox (host) ma internet**
+
+### ❌ **Debian (VM) nie ma, bo instalator Debiana nie skonfigurował sieci**
+
+To jest bardzo częsty błąd przy instalacji Debiana, jeśli:
+
+* DHCP nie odpowiedziało w trakcie instalacji
+* albo instalator nie wykrył karty VirtIO
+* albo nie wygenerował żadnej konfiguracji sieci
+
+**Naprawimy to w 1–2 minuty.**
+
+---
+
+# 🔥 KROK 1 — SPRAWDŹMY, JAKI Proxmox ma adres IP
+
+Na hoście Proxmoxa wpisz:
+
+```
+ip a
+```
+
+Potrzebuję zobaczyć adres przy **vmbr0**.
+
+➡️ Wpisz go tutaj, żebym dobrała właściwą podsieć.
+
+---
+
+# 🔥 KROK 2 — Debian VM ma tylko „ens18: state DOWN”
+
+Wiemy już, że interfejs istnieje, ale:
+
+* nie ma IP
+* nie ma konfiguracji
+* nie jest UP
+* nie działa DHCP
+
+Czyli VM jest w sieci „martwa”.
+
+---
+
+# 🔥 KROK 3 — ZROBIMY PEWNĄ CONFIGURACJĘ (DOPASUJĘ JĄ DO TWOJEJ SIECI)
+
+Muszę wiedzieć:
+
+👉 **Jaki adres ma Proxmox (host)?**
+(np. `192.168.1.100`, `192.168.0.10`, `10.0.0.5` itd.)
+
+Możesz to zobaczyć w przeglądarce — to IP, pod które wchodzisz do panelu Proxmoxa:
+
+```
+https://TU_IP:8006
+```
+
+Napisz je tutaj.
+
+Wtedy ustawię:
+
+* poprawny `address`
+* `gateway`
+* i podam Ci gotową konfigurację dla `/etc/network/interfaces`
+* i Debian dostanie internet natychmiast
+
+---
+
+# 🔥 Przykład — tylko pokazowy (NIE używaj go bez mojego dopasowania):
+
+Jeśli Proxmox ma IP **192.168.1.100**, to Debian dostanie:
+
+```
+auto ens18
+iface ens18 inet static
+    address 192.168.1.50
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    dns-nameservers 1.1.1.1 8.8.8.8
+```
+
+---
+
+# ➤ Podaj proszę tylko jedną informację:
+
+👇
+
+### **Jakie jest IP Proxmoxa, pod które się logujesz do panelu?**
 
 
 
 
+
+
+Dobra, teraz już wszystko jasne 🔥
+
+## ✔ Proxmox host ma IP:
+
+```
+192.168.137.2
+```
+
+na interfejsie **vmbr0**.
+
+To oznacza, że **Proxmox jest połączony z laptopem**, a laptop pełni rolę **routera/DHCP** (Windows udostępnia internet przez Ethernet).
+
+---
+
+# 👉 **Co zatem musimy zrobić?**
+
+Dać Debianowi IP z tej samej sieci:
+
+### **192.168.137.x /24**
+
+i ustawić laptop jako bramę (`gateway`).
+
+Laptop w takich konfiguracjach **ZAWSZE ma IP: 192.168.137.1**
+
+---
+
+# 🔥 KROK 1 — Dodaj statyczne IP w Debianie
+
+Wpisz:
+
+```
+nano /etc/network/interfaces
+```
+
+Wstaw:
+
+```
+auto ens18
+iface ens18 inet static
+    address 192.168.137.50
+    netmask 255.255.255.0
+    gateway 192.168.137.1
+    dns-nameservers 8.8.8.8 1.1.1.1
+```
+
+Zapisz:
+**CTRL+O → Enter → CTRL+X**
+
+---
+
+# 🔥 KROK 2 — Restart sieci
+
+```
+systemctl restart networking
+```
+
+Jeśli pokaże błąd (czasem tak jest na Debian 12/13):
+
+```
+ifdown ens18
+ifup ens18
+```
+
+---
+
+# 🔥 KROK 3 — Sprawdź IP
+
+```
+ip a
+```
+
+Powinno być:
+
+```
+inet 192.168.137.50/24
+```
+
+---
+
+# 🔥 KROK 4 — Test internetu
+
+Ping do routera (laptopa):
+
+```
+ping 192.168.137.1
+```
+
+Ping do internetu:
+
+```
+ping 8.8.8.8
+```
+
+Test DNS:
+
+```
+ping google.com
+```
+
+---
+
+# Jeśli to zadziała (a zadziała na 100%) → APT naprawimy od razu
+
+i zainstalujesz mc, dhclient, ssh itd.
+
+---
+
+# 👉 Daj mi tylko wynik:
+
+```
+ip a
+```
+
+po restarcie sieci — wtedy potwierdzimy, że połączenie żyje.
+
+
+OK — to typowe w **Debian 12/13**, gdzie networking.service potrafi wywalić się przy pierwszej ręcznej konfiguracji.
+
+To nic groźnego — po prostu poprawimy konfigurację i wymusimy restart.
+
+## 🔍 Najpierw sprawdźmy, co jest źle
+
+Wpisz:
+
+```
+systemctl status networking.service
+```
+
+oraz:
+
+```
+journalctl -xeu networking.service
+```
+
+ALE zanim dasz te logi, najpierw zróbmy najczęstszą poprawkę, bo **99% przypadków to błąd w pliku /etc/network/interfaces**.
+
+---
+
+# 🔥 KROK 1 — Pokaż mi plik /etc/network/interfaces
+
+Wpisz:
+
+```
+cat /etc/network/interfaces
+```
+
+I wklej to tutaj.
+
+Często błąd to:
+
+* literówka w `ens18`
+* brak `iface lo inet loopback`
+* złe wcięcia
+* zostawione śmieci po installerze
+
+---
+
+# 🔥 KROK 2 — Awaryjny restart interfejsu (bez systemd)
+
+Zanim będziemy grzebać dalej, spróbuj:
+
+```
+ip link set ens18 down
+ip link set ens18 up
+```
+
+A potem:
+
+```
+ip addr add 192.168.137.50/24 dev ens18
+ip route add default via 192.168.137.1
+```
+
+To powinno tymczasowo włączyć internet **nawet jeśli networking.service się wysypał**.
+
+Test:
+
+```
+ping 192.168.137.1
+ping 8.8.8.8
+```
+
+---
+
+# 👉 Dla pewności — wklej proszę wynik:
+
+```
+cat /etc/network/interfaces
+```
+
+i wtedy powiem Ci dokładnie, co poprawić.
+
+
+
+Na Twoim screenie **interfejs na 100% nazywa się `ens18`**, NIE `ensl8`.
+
+To wygląda tak:
+
+```
+2: ens18: <BROADCAST,MULTICAST> ...
+```
+
+📌 **ens18**
+✔ poprawne
+📌 **ensl8**
+❌ NIE istnieje — to tylko wizualnie wygląda podobnie (mała litera *l* wygląda jak *1* albo *I*).
+
+---
+
+# 👉 Jak być pewnym?
+
+Wpisz:
+
+```
+ip link
+```
+
+I zobaczysz linijkę:
+
+```
+2: ens18: <...>
+```
+
+Czyli:
+
+* **e**
+* **n**
+* **s**
+* **1** **8** (osiemnaście)
+
+To nie jest literka „l” (`l`) — to **cyfra 1** i **8**.
+
+---
+
+# Podsumowanie
+
+✔ Używaj w konfiguracji **ens18**
+np.:
+
+```
+auto ens18
+iface ens18 inet static
+    address 192.168.137.50
+    netmask 255.255.255.0
+    gateway 192.168.137.1
+    dns-nameservers 8.8.8.8 1.1.1.1
+```
+
+---
+
+Chcesz, żebym przygotowała Ci gotowy poprawny plik `/etc/network/interfaces` pod Twoją sieć 192.168.137.x?
+
+
+
+
+
+Super — **teraz widzę już cały plik i problem jest jasny** 🔥
+
+Masz **dwie rzeczy do poprawy**, żeby networking się uruchomił:
+
+---
+
+# ❗ 1. LINIA `gateway` ma błędną składnię
+
+Masz:
+
+```
+gateway 192.168.137.1
+```
+
+A powinno być:
+
+```
+gateway 192.168.137.1
+```
+
+…OK, to akurat jest poprawne — więc tu jest OK.
+
+---
+
+# ❗ 2. GŁÓWNY BŁĄD: brak pustej linii między blokami
+
+W Debianie 12/13, jeśli **nie ma pustej linii** przed:
+
+```
+source /etc/network/interfaces.d/*
+```
+
+to networking.service **wywala błąd**.
+
+Musisz dodać **jedną pustą linię** między konfiguracją ens18 a `source`.
+
+---
+
+# 🔥 POPRAWNY PLIK (skopiuj i wklej dokładnie taki):
+
+```
+auto ens18
+iface ens18 inet static
+    address 192.168.137.50
+    netmask 255.255.255.0
+    gateway 192.168.137.1
+    dns-nameservers 8.8.8.8 1.1.1.1
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+```
+
+Uwaga na **pustą linię nad `source`** — jest obowiązkowa.
+
+---
+
+# 🔥 KROK 2 — restart sieci:
+
+```
+systemctl restart networking
+```
+
+Jeśli dalej błąd (czasem Debian 13 tak ma):
+
+```
+ifdown ens18
+ifup ens18
+```
+
+lub:
+
+```
+ip link set ens18 down
+ip link set ens18 up
+```
+
+---
+
+# 🔥 KROK 3 — sprawdź IP
+
+```
+ip a
+```
+
+Powinno być:
+
+```
+inet 192.168.137.50/24
+```
+
+---
+
+# 🔥 KROK 4 — test połączenia
+
+```
+ping 192.168.137.1
+ping 8.8.8.8
+ping google.com
+```
+
+---
+
+## 👉 Zrób to i wklej mi wynik `ip a`
+
+Jeśli IP działa — skonfigurujemy APT i od razu zainstalujesz mc.
+
+
+
+BŁĄD jest 100% jasny:
+
+### 🔥 „Error: any valid prefix is expected rather than `192.168.137.50/255.255.255.0`”
+
+Oznacza to, że **w pliku pojawiło się połączenie adresu i maski w jednej linii**, czyli coś takiego:
+
+❌ **`address 192.168.137.50/255.255.255.0`**
+
+Zamiast dwóch osobnych linii.
+
+To typowy błąd, gdy wcięcia lub spacje się rozsypią.
+
+---
+
+# 👉 Pokaż mi Twój plik, żeby potwierdzić:
+
+```
+cat /etc/network/interfaces
+```
+
+Ale możesz go od razu skopiować z MOJEJ wersji — jest 100% poprawna.
+
+---
+
+# ✔️ Wstaw TEN PLIK — bez żadnych zmian
+
+(dosłownie skopiuj i wklej):
+
+```
+auto lo
+iface lo inet loopback
+
+auto ens18
+iface ens18 inet static
+    address 192.168.137.50
+    netmask 255.255.255.0
+    gateway 192.168.137.1
+    dns-nameservers 8.8.8.8 1.1.1.1
+
+source /etc/network/interfaces.d/*
+```
+
+Uwaga:
+
+* **Najpierw konfiguracja loopback (`lo`)**
+* potem **ens18**
+* zachowane wcięcia 4 SPACJE (nie tabulatory!)
+* brak ukośnika `/` przy adresie IP
+
+---
+
+# ✔️ Teraz restart:
+
+```
+systemctl restart networking
+```
+
+Jeśli błąd:
+
+```
+ifdown ens18 || true
+ifup ens18
+```
+
+---
+
+# ✔️ Test:
+
+```
+ip a
+ping 192.168.137.1
+ping 8.8.8.8
+```
+
+---
+
+💬 Wklej teraz:
+`cat /etc/network/interfaces`
+– wtedy zobaczę, co dokładnie tam masz i doprowadzimy to do działania w jednej poprawce.
+
+
+
+
+OK, zróbmy to „na czysto”, bo błąd wyraźnie mówi, że gdzieś masz **IP razem z maską** (`192.168.137.50/255.255.255.0`).
+
+## 1️⃣ Nadpisz cały plik poprawną wersją
+
+W konsoli VM wpisz:
+
+```bash
+nano /etc/network/interfaces
+```
+
+Usuń **wszystko** w tym pliku (Ctrl+K kilka razy), a potem wklej dokładnie to:
+
+```text
+auto lo
+iface lo inet loopback
+
+auto ens18
+iface ens18 inet static
+    address 192.168.137.50
+    netmask 255.255.255.0
+    gateway 192.168.137.1
+    dns-nameservers 8.8.8.8 1.1.1.1
+
+source /etc/network/interfaces.d/*
+```
+
+Zwróć uwagę:
+
+* `address` i `netmask` są w **osobnych** liniach
+* nie ma żadnego ukośnika `/` przy adresie
+* przed `address/netmask/gateway/dns-nameservers` są **4 spacje**, nie tab
+
+Zapisz: `Ctrl+O`, Enter, wyjdź `Ctrl+X`.
+
+---
+
+## 2️⃣ Podnieś interfejs ręcznie (bez przejmowania się błędem systemctl)
+
+Wpisz po kolei:
+
+```bash
+ip link set ens18 down
+ip addr flush dev ens18
+ip link set ens18 up
+ip addr add 192.168.137.50/24 dev ens18
+ip route add default via 192.168.137.1
+```
+
+Teraz sprawdź:
+
+```bash
+ip a
+```
+
+Powinna być linia przy `ens18`:
+
+```text
+inet 192.168.137.50/24 ...
+```
+
+---
+
+## 3️⃣ Test połączenia
+
+```bash
+ping -c 3 192.168.137.1
+ping -c 3 8.8.8.8
+ping -c 3 google.com
+```
+
+Jeśli pingi działają → masz internet w VM, możesz od razu:
+
+```bash
+apt update
+apt install mc isc-dhcp-client openssh-server
+```
+
+(`isc-dhcp-client` nie jest konieczny przy statycznym IP, ale się przyda na przyszłość).
+
+---
+
+Jeśli po tych komendach `ip a` nadal nie pokazuje `192.168.137.50/24` przy `ens18`, wklej po prostu **ten jeden wynik**:
+
+```bash
+ip a
+```
+
+
+
+
+
+
+
+
+
+Dziękuję — **widzzę dokładnie, dlaczego Debian wywala błąd**.
+
+Twoje IP jest wpisane tak:
+
+```
+address 192.168.137.50
+netmask 255.255.255.0
+gateway 192.168.137.1
+```
+
+To wygląda OK, ale problem jest INNY:
+
+# 🔥 MASZ BŁĘDNY format pliku — brakuje KLUCZOWEJ pustej linii przed `source`,
+
+a loopback (`auto lo`) MUSI być na początku.
+
+To powoduje:
+
+```
+Error: any valid prefix is expected
+ifup: failed to bring up ens18
+```
+
+Debian *12/13 jest bardzo wrażliwy na kolejność i sekcje.*
+
+---
+
+# ✔️ ZRÓBMY TEN PLIK RAZ JESZCZE — 100% POPRAWNY
+
+Wpisz:
+
+```
+nano /etc/network/interfaces
+```
+
+Usuń cały plik (Ctrl+K wiele razy).
+
+Wklej **DOKŁADNIE TO** (zwróć uwagę na **pustą linię** w środku!):
+
+```text
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Main network interface
+auto ens18
+iface ens18 inet static
+    address 192.168.137.50
+    netmask 255.255.255.0
+    gateway 192.168.137.1
+    dns-nameservers 8.8.8.8 1.1.1.1
+
+source /etc/network/interfaces.d/*
+```
+
+🔹 **2 puste linie w strategicznych miejscach są OBOWIĄZKOWE**
+🔹 Loopback **musi być pierwszy**
+🔹 Potem ens18
+🔹 Potem `source`
+
+Zapisz:
+**Ctrl+O → Enter → Ctrl+X**
+
+---
+
+# ✔️ TERAZ restart sieci (najpewniej zadziała):
+
+```
+ifdown ens18 || true
+ifup ens18
+```
+
+Jeśli nadal błędy:
+
+```
+systemctl restart networking
+```
+
+---
+
+# ✔️ Sprawdź adres:
+
+```
+ip a
+```
+
+Powinieneś zobaczyć:
+
+```
+inet 192.168.137.50/24
+```
+
+---
+
+# ✔️ Ping:
+
+```
+ping -c 3 192.168.137.1
+ping -c 3 8.8.8.8
+```
+
+---
+
+## 🔥 Jeśli dalej błąd → poproszę wynik:
+
+```
+ip a
+```
+
+i
+
+```
+systemctl status networking.service
+```
+
+Naprawimy to do końca — jesteś już 1 krok przed działającą siecią.
+
+
+
+**💥 MAMY TO! ZNALAZŁAM BŁĄD!**
+
+Na Twoim screenie:
+
+```
+source /etc/network/interfaces.d/*
+```
+
+jest wpisane **bez spacji przed slashem**, ale to nie ten problem.
+
+🔥 **KLUCZOWY błąd jest TU:**
+
+```
+netmask 255.2555.255.0
+```
+
+Zobacz dokładnie na swój screen — masz **255.2555.255.0** (dodatkowe „5”)
+Zamiast **255.255.255.0**
+
+To powoduje błąd:
+
+```
+Error: any valid prefix is expected rather than '192.168.137.50/255.2555.255.0'
+```
+
+---
+
+# ✅ Poprawny plik (skopiuj i wklej dosłownie):
+
+```text
+auto lo
+iface lo inet loopback
+
+auto ens18
+iface ens18 inet static
+    address 192.168.137.50
+    netmask 255.255.255.0
+    gateway 192.168.137.1
+    dns-nameservers 8.8.8.8 1.1.1.1
+
+source /etc/network/interfaces.d/*
+```
+
+**Uwaga na maskę: 255.255.255.0 — nie 255.2555.255.0**
+
+---
+
+# 🔥 Teraz restart interfejsu:
+
+```
+ifdown ens18 || true
+ifup ens18
+```
+
+albo:
+
+```
+systemctl restart networking
+```
+
+---
+
+# 🔥 Potem sprawdź:
+
+```
+ip a
+ping 192.168.137.1
+ping 8.8.8.8
+```
+
+---
+
+## Jeśli możesz — wklej screena z poprawioną linią `netmask`, żebym potwierdziła.
+
+
+
+
+
+🎉 Działa! Masz:
+
+```text
+ens18: ... state UP
+inet 192.168.137.50/24 scope global ens18
+```
+
+i ping do `192.168.137.1` – czyli **VM widzi laptopa** ✅
+
+---
+
+## 1. Sprawdź, czy jest internet
+
+W VM:
+
+```bash
+ping -c 3 8.8.8.8
+ping -c 3 google.com
+```
+
+* jeśli pierwszy działa, a drugi nie → brakuje DNS
+* jeśli oba działają → internet jest w pełni OK
+
+DNS mamy w `interfaces`, więc powinno śmigać.
+
+---
+
+## 2. Napraw APT i zainstaluj `mc`
+
+Jeśli internet działa:
+
+```bash
+nano /etc/apt/sources.list
+```
+
+Wklej (dla Debian 13 Trixie):
+
+```text
+deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+```
+
+Zapisz, potem:
+
+```bash
+apt update
+apt install mc
+```
+
+Teraz błąd „Pakiet *mc* nie ma kandydata do instalacji” powinien zniknąć.
+
+---
+
+## 3. Wejście przez PuTTY do tej VM
+
+W PuTTY:
+
+* **Host Name (IP)**: `192.168.137.50`
+* Port: `22`
+* Connection type: `SSH`
+
+W VM doinstaluj serwer SSH (jeśli jeszcze nie):
+
+```bash
+apt install openssh-server
+systemctl enable ssh --now
+```
+
+Logowanie w PuTTY:
+
+* login: `root`
+* hasło: to samo, którego używasz w konsoli Debiana
+
+---
+
+Jak coś się wywali przy `apt update` albo `ping google.com`, wklej dokładny komunikat, ogarniemy dalej.
+
+
+
+
+SSH działa — ale **Debian domyślnie BLOKUJE logowanie jako root przez SSH**, nawet jeśli hasło jest poprawne.
+
+Dlatego w PuTTY dostajesz:
+
+```
+Access denied
+```
+
+To normalne. Musimy włączyć `PermitRootLogin`.
+
+Zrobimy to w 30 sekund.
+
+---
+
+# ✅ KROK 1 — Otwórz SSH config w VM Debian:
+
+W konsoli Proxmox (tej działającej):
+
+```
+nano /etc/ssh/sshd_config
+```
+
+---
+
+# ✅ KROK 2 — Znajdź linię:
+
+```
+#PermitRootLogin prohibit-password
+```
+
+lub:
+
+```
+PermitRootLogin no
+```
+
+i zmień ją na:
+
+```
+PermitRootLogin yes
+```
+
+Jeśli jest zakomentowana (`#`), usuń `#`.
+
+---
+
+# 👉 Ważne: dodaj też to, jeśli brakuje:
+
+```
+PasswordAuthentication yes
+```
+
+---
+
+# ✨ Twoje finalne potrzebne linie mają wyglądać tak:
+
+```
+PermitRootLogin yes
+PasswordAuthentication yes
+```
+
+---
+
+# ✅ KROK 3 — Zapisz i restart SSH
+
+```
+systemctl restart ssh
+```
+
+---
+
+# 🔥 KROK 4 — Połącz się ponownie przez PuTTY
+
+* Host: `192.168.137.50`
+* Login: `root`
+* Hasło: takie samo, jak w konsoli VM
+
+Teraz **zadziała na 100%**.
+
+---
+
+Jeśli chcesz, mogę też ustawić klucze SSH, wyłączyć logowanie hasłem, albo dodać normalnego użytkownika zamiast root.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+W Proxmox możesz **włączyć automatyczne uruchamianie maszyny wirtualnej (VM / CT)** dosłownie w dwóch kliknięciach.
+
+Pokażę Ci **najprostszy sposób przez GUI** i **alternatywnie przez konsolę**.
+
+---
+
+# ✅ **Metoda 1: Przez interfejs Proxmox (najłatwiejsza)**
+
+1. Wejdź do Proxmox → wybierz swoją maszynę (VM albo LXC).
+2. W menu po lewej kliknij **Options**.
+3. Znajdź opcję **Start/Shutdown Order**.
+4. Kliknij **Edit**.
+5. Ustaw:
+
+   * **Start at boot:** `Yes`
+   * **Startup delay:** (opcjonalnie) np. 5 sekund — pozwala Proxmoxowi odpalić VM w kolejności
+   * Reszta może zostać bez zmian.
+
+Zapisz.
+
+Od teraz VM **włączy się automatycznie po starcie hosta Proxmox**.
+
+---
+
+# ✅ **Metoda 2: Przez konsolę**
+
+Możesz to ustawić komendą:
+
+### 🔹 Włączyć auto-start:
+
+```
+qm set <ID_VM> --onboot 1
+```
+
+Przykład:
+
+```
+qm set 100 --onboot 1
+```
+
+Dla kontenerów LXC:
+
+```
+pct set <ID_CT> --onboot 1
+```
+
+---
+
+# 🟢 Sprawdzenie, czy działa
+
+```
+qm config <ID_VM> | grep onboot
+```
+
+Powinno pokazać:
+
+```
+onboot: 1
+```
+
+---
+
+Jeśli chcesz, mogę też podpowiedzieć jak ustawić **kolejność startu kilku maszyn** (order + delay).
+
+
+
+
+
+Cześć Mikołaj. Dobry pomysł — skoro masz już własny komputer i serwer w domu, to przy odrobinie pracy możesz spróbować zrobić **własny hosting**. Poniżej jak to możesz zrobić + co Ci to da + na co uważać 😉
+
+## ✅ Co potrzebujesz, żeby mieć własny hosting (u siebie w domu / na swoim sprzęcie)
+
+Jeśli chcesz hostować stronę samodzielnie, a nie kupować hostingu od firmy, to typowo potrzebujesz:
+
+* Komputer albo serwer, który działa 24/7 (czyli praktycznie cały czas). ([Blog Domena.pl][1])
+* Stałe połączenie z internetem — najlepiej z publicznym albo stałym adresem IP, albo skorzystać z usługi dynamicznego DNS, jeśli Twój IP zmienia się. ([Blog Domena.pl][1])
+* Oprogramowanie serwerowe: np. Apache albo Nginx — czyli coś, co „obsłuży” stronę [WWW](http://WWW). ([Blog Domena.pl][1])
+* Przekierowanie portów w routerze (port 80 dla HTTP i 443 dla HTTPS), jeśli Twój komputer jest za routerem. ([Blog Domena.pl][1])
+* (Opcjonalnie, ale bardzo przydatne) własną domenę — by strona miała ładny adres (np. twojastrona.pl zamiast IP) i skonfigurowane rekordy DNS wskazujące na Twój serwer. ([ankree.com][2])
+* Dbałość o bezpieczeństwo: zapora ogniowa (firewall), aktualizacje serwera, zabezpieczenia — bo wszystko zależy od Ciebie. ([VIZIM][3])
+
+Dla Twojego przypadku — skoro masz już domowy serwer + UPC + router — to to jest możliwe. Trzeba tylko zwrócić uwagę na stabilność łącza (upload internetu), i czy Twój dostawca pozwala na serwowanie stron WWW (czasem operatorzy mają ograniczenia).
+
+## 💡 Jak to skonfigurować — krok po kroku
+
+1. Zainstaluj na swojej maszynie system — np. Linux (popularne dystrybucje jak Debian, Ubuntu).
+2. Zainstaluj serwer WWW (Apache albo Nginx). ([msobocinska.zsl.gda.pl][4])
+3. Przygotuj katalog dla swojej strony — czyli folder, w którym będą pliki (HTML, PHP, itp.) i skonfiguruj „wirtualny host” (virtual host), by serwer wiedział, która domena / adres mapuje na ten katalog. ([msobocinska.zsl.gda.pl][4])
+4. Skonfiguruj router: przekieruj porty 80 (HTTP) i 443 (HTTPS) na lokalne IP maszyny — żeby ruch z internetu docierał do Twojego serwera. ([Blog Domena.pl][1])
+5. Jeśli Twój adres IP jest dynamiczny — załóż usługę dynamicznego DNS albo kup domenę i ustaw odpowiednio rekordy DNS. ([ankree.com][2])
+6. Regularnie dbaj o aktualizacje systemu i zabezpieczenia — bo to Ty odpowiadasz za bezpieczeństwo.
+
+## ✅ Zalety i wady własnego hostingu
+
+**Zalety:**
+
+* Masz pełną kontrolę nad tym, co działa na serwerze — oprogramowanie, wersje, konfiguracje. ([VIZIM][3])
+* Możesz go dostosować dokładnie pod swoje projekty — pliki, back-upy, konfiguracje, co chcesz. ([VIZIM][3])
+* Dla małych projektów lub testów — może być to tanie (bo korzystasz z własnego sprzętu), bez opłat miesięcznych za hosting — poza prądem i internetem. ([VIZIM][3])
+
+**Wady / ryzyka:**
+
+* Musisz sam zadbać o bezpieczeństwo, backupy, aktualizacje — wszystko na własnej głowie. ([VIZIM][3])
+* Jeśli łącze domowe ma słaby upload albo często się rozłącza — strona może działać wolno albo być niedostępna. ([VIZIM][3])
+* Jeśli Twój adres IP się zmienia — musisz kombinować z dynamicznym DNS, co może być niewygodne albo mniej stabilne. ([Blog Domena.pl][1])
+* Przy większym ruchu lub dużych projektach — własny domowy serwer to może być za mało. Wtedy lepszy VPS albo hosting zewnętrzny. ([porady-it.pl][5])
+
+## 📈 Czy to ma sens, czy lepiej VPS / hosting zewnętrzny?
+
+* Jeśli Twoje strony to proste projekty, osobiste — blog, strona z modami do Minecrafta (jak Ty robisz), prosta wizytówka — własny home-server może być OK.
+* Jeśli spodziewasz się większego ruchu, potrzebujesz stabilności, backups, dobrego uptime — profesjonalny hosting/VPS będzie lepszy.
+
+Wiele poradników poleca VPS jako złoty środek — bo daje Ci względną kontrolę i lepszą niezawodność, a nie musisz sam trzymać sprzętu, prądu itp. ([ankree.com][2])
+
+## ✅ Co bym Ci polecał (biorąc pod uwagę, że już masz serwer i robisz modpacki do Minecrafta)
+
+Skoro masz doświadczenie, serwer w domu i jesteś otwarty na naukę — to spróbuj najpierw **ustawić hosting u siebie** jako eksperyment. To da Ci dobrą naukę konfiguracji serwerów, sieci, bezpieczeństwa — co przy Twoim zamiłowaniu do IT będzie wartościowe.
+
+Jeśli zauważysz, że strona chodzi wolno, albo chcesz ją udostępnić światu w stabilny sposób — wtedy rozważ **kupno taniego VPS** albo prostego hostingu.
+
+---
+
+Jeśli chcesz — mogę **pomóc Ci krok po kroku przekonfigurować Twój domowy serwer** (na przykład z UPC, routerem i Twoim komputerem) — opiszę co konkretnie wpisać, jak ustawić Apache/Nginx, router, DNS. Chcesz, żebym to zrobił dla Ciebie?
+
+[1]: https://blog.domena.pl/hosting/czy-mozna-hostowac-strone-na-wlasnym-komputerze-i-czy-to-ma-sens/?utm_source=chatgpt.com "Czy można hostować stronę na własnym komputerze? I czy to ma sens?"
+[2]: https://www.ankree.com/jak-zrobic-wlasny-hosting-i-uruchomic-serwer-vps-w-kilku-krokach/?utm_source=chatgpt.com "Jak zrobić własny hosting i uruchomić serwer VPS w kilku krokach? - ankree.com"
+[3]: https://www.vizim.pl/porady/strona-internetowa-na-wlasnym-serwerze?utm_source=chatgpt.com "Strona internetowa na własnym serwerze – NAS, VPS czy hosting? Poradnik VIZIM"
+[4]: https://msobocinska.zsl.gda.pl/SO_kl2/00_2024/wirtualne%20serwery%20WWW/Konfigurowanie%20wirtualnych%20serwer%C3%B3w%20WWW.pdf?utm_source=chatgpt.com "Konfigurowanie wirtualnych serwerów WWW. (Hosty wirtualne Apache w systemie"
+[5]: https://porady-it.pl/serwery-i-hosting/jak-skonfigurowac-wlasny-serwer-www-krok-po-kroku/?utm_source=chatgpt.com "Jak skonfigurować własny serwer WWW krok po kroku?"
+
+
+
+
+
+
+Cześć Mikołaj. Pokażę Ci **dokładnie i prosto**, jak postawić **swój własny serwer na Debianie 12** – tak, żebyś mógł hostować stronę lub projekt.
+
+Poniżej dostajesz **najprostszy i najlepszy schemat**, który każdy informatyk stosuje przy Debianie.
+
+---
+
+# 🖥️ **Jak zrobić własny serwer na Debian 12 – krok po kroku**
+
+## ✅ 1. Zainstaluj serwer WWW (Apache lub Nginx)
+
+### **Opcja A – Apache (łatwiejszy)**
+
+Wpisz:
+
+```bash
+sudo apt update
+sudo apt install apache2
+```
+
+Po instalacji sprawdź czy działa:
+
+```bash
+systemctl status apache2
+```
+
+I wejdź w przeglądarce:
+
+```
+http://twoje_IP
+```
+
+Powinna być strona „Apache2 Debian Default Page”.
+
+---
+
+### **Opcja B – Nginx (szybszy)**
+
+```bash
+sudo apt update
+sudo apt install nginx
+```
+
+Sprawdź:
+
+```bash
+systemctl status nginx
+```
+
+---
+
+## ✅ 2. Przygotuj katalog pod swoją stronę
+
+W standardzie strona jest tu:
+
+```
+/var/www/html/
+```
+
+Możesz tam wrzucić plik `index.html`, np.:
+
+```bash
+echo "Hello Mikołaj!" | sudo tee /var/www/html/index.html
+```
+
+---
+
+## ✅ 3. Ustaw własny VirtualHost (czyli konfigurację domeny/adresu)
+
+Dla Apache:
+
+```bash
+sudo nano /etc/apache2/sites-available/mikolaj.conf
+```
+
+Wklej:
+
+```
+<VirtualHost *:80>
+    ServerName twojadomena.pl
+    DocumentRoot /var/www/html
+</VirtualHost>
+```
+
+Włącz:
+
+```bash
+sudo a2ensite mikolaj.conf
+sudo systemctl reload apache2
+```
+
+---
+
+## ✅ 4. Przekieruj porty w routerze
+
+To obowiązkowe, jeśli chcesz udostępniać stronę na świat.
+
+W routerze UPC:
+
+* Port **80 → IP twojego Debiana**
+* Port **443 → IP twojego Debiana** (jeśli będziesz używać HTTPS)
+
+---
+
+## Po sprawdzeniu — Twoja strona powinna być widoczna online 🎉
+
+---
+
+# 🔐 (Opcjonalnie) 5. Certyfikat HTTPS (Let’s Encrypt)
+
+Jeśli chcesz, żeby strona miała zamkniętą kłódkę:
+
+```bash
+sudo apt install certbot python3-certbot-apache
+sudo certbot
+```
+
+I gotowe.
+
+---
+
+# ⚙️ 6. Jeśli chcesz hostować Minecraft lub inne usługi
+
+Wtedy tylko instalujesz potrzebny program i tworzysz *systemd service*:
+
+```bash
+sudo nano /etc/systemd/system/minecraft.service
+```
+
+I wpisujesz zależnie od serwera. Mogę to zrobić za Ciebie.
+
+---
+
+# 🧠 Jeśli chcesz — mogę zrobić z Tobą całą konfigurację „na żywo”
+
+Powiedz tylko:
+
+👉 **Czy chcesz serwer Apache, czy Nginx?**
+👉 **Chcesz hostować stronę WWW czy Minecraft/FTP/CS:GO/inna usługa?**
+
+Dopasuję instrukcję dokładnie do Twojego sprzętu i routera UPC.
 
 
 NPC1234

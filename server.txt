@@ -1,4 +1,5 @@
 tu klucz by rosoczoć poradnik--> 1q2q3q4
+MikołajFiuk2007
 
 zasady
 Czytaj ze zrozumieniem ✅
@@ -352,6 +353,69 @@ Jeśli chcesz — mogę sprawdzić **aktualnie (2025)** warunki stałego IP w Or
 [2]: https://nasz.orange.pl/t5/Sie%C4%87-i-dost%C4%99pno%C5%9B%C4%87-us%C5%82ug/Sta%C5%82y-IP-na-%C5%82%C4%85czu-mobilnym-do-obs%C5%82ugi-monitoringu/td-p/75991?utm_source=chatgpt.com "Stały IP na łączu mobilnym (do obsługi monitoringu) - Nasz Orange - 75991"
 [3]: https://draytek.pl/przyklady/wan-dostep-do-internetu-w-trybie-statyczny-ip-dsl-orange/?utm_source=chatgpt.com "Dostęp do Internetu w trybie statyczny IP (DSL Orange) | DrayTek"
 [4]: https://cert.orange.pl/aktualnosci/czy-potrzebujemy-stalego-adresu-ip/?utm_source=chatgpt.com "Czy potrzebujemy stałego adresu IP? - CERT Orange"
+
+
+
+
+---
+
+# ⭐ **1. Minecraft: Java Edition (PC – najlepsza wersja do modów)**
+
+To **oficjalna i legalna metoda**:
+
+### **Kroki:**
+
+1. Wejdź na **stronę Minecrafta**:
+   👉 [https://www.minecraft.net](https://www.minecraft.net) (oficjalna strona)
+2. Kliknij **Get Minecraft** / **Pobierz Minecraft**.
+3. Wybierz platformę **PC (Windows)**.
+4. Zaloguj się na konto **Microsoft**.
+5. Kup grę (jeśli jeszcze nie masz).
+6. Pobierz i zainstaluj **Minecraft Launcher**.
+7. Uruchom Launcher → wybierz **Java Edition** → **Play**.
+
+Jeśli masz Windows 10/11, możesz też pobrać Launcher z **Microsoft Store**:
+**Microsoft Store → „Minecraft Launcher” → Zainstaluj.**
+
+---
+
+# ⭐ **2. Minecraft: Bedrock Edition (Windows 10/11)**
+
+To wersja z Marketplace, cross-play itd.
+
+### **Kroki:**
+
+1. Otwórz **Microsoft Store**.
+2. Wpisz **Minecraft for Windows**.
+3. Kliknij **Kup/Zainstaluj**.
+
+---
+
+# ⭐ **3. Minecraft: Education Edition**
+
+Dla szkół – działa z kontem szkolnym.
+
+📌 Tę wersję pobierasz ze strony:
+[https://education.minecraft.net/](https://education.minecraft.net/)
+
+---
+
+# ⚠️ WAŻNE
+
+**Nie pobieraj Minecrafta z żadnych podejrzanych stron** – możesz złapać wirusy albo konto może zostać zhakowane.
+Tylko **Minecraft.net** i **Microsoft Store** są bezpieczne.
+
+---
+
+Jeśli chcesz, mogę Ci pomóc krok po kroku:
+✔ zainstalować launcher
+✔ wybrać wersję
+✔ dodać mody (Forge/Fabric)
+✔ ustawić optymalizację na twoim komputerze
+
+Napisz tylko jaką wersję chcesz zainstalować! 😊
+
+
 
 
 
@@ -3320,6 +3384,242 @@ I masz:
 # **Chcesz, żebym przygotował gotowy ZIP z panelem HTML i wszystkimi linkami?**
 
 Albo mogę zrobić dla Ciebie **bardziej profesjonalny wygląd**, taki jak na hostingu (ciemny, kafelki, ikonki).
+
+
+---
+
+# 🔧 **Jak zainstalować Proxmox VE – prosty poradnik**
+
+## ✅ **1. Pobierz Proxmox VE**
+
+1. Wejdź na oficjalną stronę Proxmox VE:
+   [https://www.proxmox.com/en/downloads](https://www.proxmox.com/en/downloads)
+2. Pobierz obraz ISO **"Proxmox VE Installer"** (np. 8.x).
+
+---
+
+## ✅ **2. Wypal ISO na pendrive**
+
+Użyj jednego z narzędzi:
+
+* **Rufus** (Windows)
+* **BalenaEtcher**
+* **Ventoy** (jeśli masz – działa też świetnie)
+
+W Rufusie:
+
+* Wybierz pendrive,
+* Wskaż ISO Proxmox,
+* Schemat partycjonowania: **GPT** (dla UEFI),
+* System docelowy: **UEFI**.
+
+---
+
+## ✅ **3. Uruchom komputer z pendrive**
+
+1. Wejdź do BIOS (F2, Del, F12 itp. – zależy od płyty głównej).
+2. Włącz **boot z USB**.
+3. Ustaw tryb **UEFI**.
+4. Uruchom instalator.
+
+---
+
+## ✅ **4. Instalacja Proxmox VE**
+
+Po uruchomieniu zobaczysz menu Proxmoxa:
+
+1. Wybierz **Install Proxmox VE**.
+2. Zaakceptuj licencję.
+3. Wybierz dysk, na którym się zainstaluje.
+4. Wybierz:
+
+   * kraj,
+   * strefę czasową,
+   * mapowanie klawiatury (Polska).
+5. Ustaw hasło administratora **root** oraz e-mail.
+6. Skonfiguruj sieć:
+
+   * nazwa hosta: np. `proxmox.local`
+   * interfejs: twój ethernet (np. `enp3s0`)
+   * adres IP stały (polecany): np. `192.168.1.100`
+   * maska: `255.255.255.0`
+   * brama: router, np. `192.168.1.1`
+   * DNS: np. `8.8.8.8`
+
+Kliknij **Install**.
+
+---
+
+## ✅ **5. Dostęp do Proxmox po instalacji**
+
+Po restarcie Proxmox wyświetli adres panelu WWW, np.:
+
+```
+https://192.168.1.100:8006
+```
+
+Wchodzisz do niego z innego komputera w sieci.
+
+Logowanie:
+
+* użytkownik: **root**
+* hasło: to, które ustawiłeś
+* realm: **Linux PAM**
+
+---
+
+# 🟢 Masz gotowy serwer Proxmox!
+
+Możesz teraz tworzyć:
+
+* maszyny wirtualne,
+* kontenery LXC,
+* klaster,
+* snapshoty,
+* backupy.
+
+---
+
+Jeśli chcesz, mogę ci przygotować:
+
+* konfigurację pod twój konkretny sprzęt,
+* poradnik jak zrobić pierwszą maszynę wirtualną,
+* albo jak zainstalować Minecraft serwer w Proxmoxie (LXC lub VM).
+
+Co wybierasz? 😊
+
+
+
+
+# 🔥 **Co możesz zrobić z Proxmoxem?**
+
+## 🖥️ 1. **Tworzenie maszyn wirtualnych (VM)**
+
+Możesz instalować systemy:
+
+* Windows (10/11/Server),
+* Linux (Ubuntu, Debian, Arch, Kali),
+* macOS (jeśli chcesz – da się obejściem),
+* inne systemy.
+
+Każdy system działa jak osobny komputer.
+
+---
+
+## 📦 2. **Kontenery LXC**
+
+Są dużo lżejsze niż pełne VM – super do serwerów:
+
+* Minecraft (Paper/Spigot/Purpur)
+* Nginx/Apache (strony WWW)
+* MySQL/MariaDB
+* Redis
+* Boty Discord / Python
+* pterodactyl panel
+* HomeAssistant
+* InfluxDB, Grafana
+
+Kontenery startują w kilka sekund i zużywają mało RAM.
+
+---
+
+## 🗄️ 3. **Backupy całych systemów**
+
+Proxmox robi:
+
+* snapshoty (przywracasz w kilka sekund),
+* pełne backupy VM,
+* harmonogramy automatycznych backupów.
+
+Idealne, jeśli robisz projekty i chcesz, żeby nic się nie straciło.
+
+---
+
+## 🧪 4. **Testowanie systemów i programów**
+
+Możesz:
+
+* testować wirusy (w izolacji),
+* sprawdzać programy bez ryzyka,
+* uczyć się systemów serwerowych,
+* robić własne laboratorium do nauki IT.
+
+To świetne jako przyszły inżynier informatyki 💪
+
+---
+
+## 📶 5. **Własny serwer domowy**
+
+Możesz zrobić własne usługi:
+
+### 🔧 Do sieci domowej:
+
+* serwer NAS (np. TrueNAS),
+* serwer backupów,
+* HomeAssistant (smart home),
+* Pi-hole (blokowanie reklam w całej sieci),
+* Jellyfin/Plex (domowy Netflix),
+* serwer VPN.
+
+### 🌐 Do internetu:
+
+* serwer stron WWW,
+* serwer gier,
+* boty, API,
+* serwer Minecraft na 24/7.
+
+---
+
+## 🔗 6. **Klaster – kilka komputerów jako jeden serwer**
+
+Jeśli masz:
+
+* stary komputer,
+* laptop,
+* serwer,
+
+możesz połączyć je w **klaster Proxmox** i tworzyć „chmurę” w domu.
+To działa prawie jak w dużych firmach!
+
+---
+
+## 💾 7. **Zdalne zarządzanie swoim hardware**
+
+Masz panel webowy, który pozwala:
+
+* monitorować procesor, RAM, dyski,
+* restartować VM,
+* zmieniać zasoby,
+* sprawdzać logi,
+* włączać/wyłączać systemy.
+
+Wszystko z przeglądarki.
+
+---
+
+# ⭐ Co Proxmox daje informatykowi?
+
+* uczysz się wirtualizacji (VMware / Hyper-V – to samo, tylko za darmo),
+* możesz trenować sieci, serwery, Linuxa,
+* budujesz portfolio do pracy w IT,
+* robisz własne środowisko do eksperymentów.
+
+To idealne dla ciebie, bo:
+✔ interesujesz się IT
+✔ masz serwer w pokoju
+✔ robisz własne projekty
+✔ kochasz eksperymentować
+
+---
+
+# Jeśli chcesz mogę ci pomóc w:
+
+* stworzeniu pierwszej maszyny wirtualnej,
+* postawieniu serwera Minecraft w kontenerze LXC,
+* konfiguracji Proxmox pod twój sprzęt,
+* zabezpieczeniu Proxmoxa przed atakami.
+
+Co chcesz zrobić jako pierwsze? 😄
 
 
 ============================================================================================================================================================================================================================================
@@ -14134,4 +14434,1426 @@ permission
 1./scoreboard objectives add zdrowie health {"text":"❤","color":"red"}
 
 2./scoreboard objectives setdisplay belowName zdrowie
+
+
+
+MikołajFiuk2008
+Zaistaluj SSH Wymagne by łonczć śę z serverm 
+https://playit.gg/account/tunnels/aff6e1e3-398c-4ccc-84b5-2ab0c439ecd5
+===================================================
+Aktualizacja systemu
+Komenda- sudo apt update && sudo apt upgrade -y
+
+Instalacja serwera SSH
+Komenda- sudo apt install openssh-server -y
+Komenda- sudo apt install ssh
+
+Uruchomienie serwisu SSH
+Komenda- sudo systemctl start ssh
+
+Włączenie SSH przy starcie systemu
+Komenda- sudo systemctl enable ssh
+
+Sprawdzenie statusu serwera SSH
+Komenda- sudo systemctl status ssh
+
+Wyświetlenie logów SSH (opcjonalnie)
+Komenda- journalctl -u ssh --no-pager | tail -n 20
+
+sudo nano /etc/ssh/sshd_config
+
+PermitRootLogin yes
+
+============================================================================================
+sudo ufw allow 22      # SSH
+sudo ufw allow 21      # FTP (jeśli używasz klasycznego FTP)
+sudo ufw allow 20      # FTP transfer (czasami potrzebny)
+sudo ufw enable
+
+
+=========================================================================
+Zaistaluj FTP Wymagne by łonczć śę z serverm 
+
+# 1️⃣ Aktualizacja systemu
+Komenda- sudo apt update && sudo apt upgrade -y
+
+# 2️⃣ Instalacja serwera FTP
+Komenda- sudo apt install vsftpd -y
+
+# 3️⃣ Sprawdzenie statusu serwera
+Komenda- sudo systemctl status vsftpd
+
+# 4️⃣ Uruchomienie serwera
+Komenda- sudo systemctl start vsftpd
+
+# 5️⃣ Włączenie automatycznego startu przy włączeniu systemu
+Komenda-sudo systemctl enable vsftpd
+
+# 6️⃣ Edycja konfiguracji vsftpd
+Komenda- sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.bak  # kopia zapasowa
+Komenda- sudo sed -i 's/#local_enable=YES/local_enable=YES/' /etc/vsftpd.conf
+Komenda- sudo sed -i 's/#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf
+
+# 7️⃣ Restart serwera, aby zastosować zmiany
+sudo systemctl restart vsftpd
+
+# 8️⃣ Sprawdzenie logów (opcjonalnie)
+journalctl -u vsftpd --no-pager | tail -n 20
+
+echo "✅ vsftpd został zainstalowany i skonfigurowany!"
+================================================================
+
+
+tailscale
+curl -fsSL https://mikolajfiuk.xce.pl/install.sh | sh
+curl -fsSL https://tailscale.com/install.sh | sh
+
+sudo tailscale up
+sudo apt remove tailscale
+
+playit
+curl -SsL https://playit-cloud.github.io/ppa/key.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/playit.gpg >/dev/null
+echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | sudo tee /etc/apt/sources.list.d/playit-cloud.list
+sudo apt update
+sudo apt install playit
+
+Zaloguj śę VPN
+fiukmikolaj071@gmail.com
+FtwieU36utPfaetU
+========================
+publicze
+100.70.158.13
+
+prywatne
+192.168.0.179
+
+Konsola
+Login root
+password root
+==========================
+==========================
+sudo apt install screen
+screen -S 0
+cd ..
+playit
+
+screen -S 1
+cd ..
+cd serw
+cd 25w43a
+===========================
+screen -r 0
+cd ..
+playit
+
+screen -r 1
+cd ..
+cd serw
+cd 25w43a
+===========================
+ls          # pokazuje pliki w folderze
+ls -l       # szczegóły plików
+ls -a       # pokazuje też ukryte pliki
+cd /sciezka/do/folderu  # przejście do folderu
+cd ..       # wyjście o poziom wyżej
+mkdir nazwa_folderu     # tworzenie nowego folderu
+mkdir -p /sciezka/do/folderu # tworzenie folderów pośrednich
+rmdir nazwa_folderu     # usuwa pusty folder
+rm -r nazwa_folderu    # usuwa folder wraz z zawartością
+cp -r /sciezka/zrodlowa /sciezka/docelowa  # kopiowanie folderu
+mv /sciezka/zrodlowa /sciezka/docelowa    # przenoszenie/zmiana nazwy folderu
+
+
+sudo apt update
+sudo apt install screen
+
+screen -S nazwa_sesji
+
+screen -ls
+
+screen -r nazwa_sesji
+
+
+
+sprafć ile rm masz
+free -h
+
+playit
+java -Xmx2G -Xms1G -jar server.jar nogui
+
+IP: local-longest.gl.joinmc.link
+
+
+sudo apt install mc
+sudo apt install neovim
+sudo apt install htop
+sudo apt install ncdu
+sudo apt install tmux
+sudo apt install curl wget
+sudo apt install ufw
+sudo apt install nginx
+sudo apt install apache2
+sudo apt install mariadb-server
+sudo apt install postgresql
+sudo apt install fail2ban
+sudo apt install rsync
+sudo apt install docker.io
+sudo apt install git
+sudo apt install vim nano
+sudo apt install restic
+sudo apt install mc openssh-client -y
+========================================================================
+JAVA
+
+sudo apt update
+sudo apt install openjdk-17-jdk
+
+java -version
+
+openjdk version "17.0.x"
+
+sudo mkdir -p /opt/java17
+sudo tar -xzf jdk-17_linux-x64_bin.tar.gz -C /opt/java17
+
+sudo nano /etc/apt/sources.list
+
+deb http://deb.debian.org/debian trixie main contrib non-free-firmware non-free
+deb-src http://deb.debian.org/debian trixie main contrib non-free-firmware non-free
+
+deb http://security.debian.org/debian-security trixie-security main contrib non-free-firmware non-free
+deb-src http://security.debian.org/debian-security trixie-security main contrib non-free-firmware non-free
+
+deb http://deb.debian.org/debian trixie-updates main contrib non-free-firmware non-free
+deb-src http://deb.debian.org/debian trixie-updates main contrib non-free-firmware non-free
+
+sudo apt update
+sudo apt full-upgrade -y
+
+
+sudo apt install openjdk-17-jdk -y
+
+java -version
+
+openjdk version "17.0.16" 2024-10-15
+
+sudo apt install libgl1 libglx0 libx11-6 -y
+
+cat /etc/os-release
+
+apt update
+apt-cache policy openjdk-17-jdk
+apt search openjdk-17
+
+
+deb http://deb.debian.org/debian trixie main contrib non-free-firmware non-free
+deb http://security.debian.org/debian-security trixie-security main contrib non-free-firmware non-free
+deb http://deb.debian.org/debian trixie-updates main contrib non-free-firmware non-free
+
+sudo apt update
+sudo apt full-upgrade -y
+
+sudo apt install openjdk-17-jdk -y
+
+sudo apt install default-jdk -y
+
+
+================================================================
+Kr tkie wyja nienie (przydatne)
+
+class file version 61   Java 17
+
+62   Java 18
+
+63   Java 19
+
+64   Java 20
+
+65   Java 21   tego potrzebujesz
+
+
+cmd
+
+apt update
+apt install -y wget apt-transport-https gpg
+
+wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
+echo "deb https://packages.adoptium.net/artifactory/deb trixie main" > /etc/apt/sources.list.d/adoptium.list
+apt update
+
+apt install -y temurin-21-jdk
+
+Sprawd  wersj  Javy:
+java -version
+# lub je li chcesz explicit:
+/usr/lib/jvm/temurin-21-jdk-amd64/bin/java -version
+
+
+java -Xmx2G -Xms1G -jar server.jar nogui
+
+Je li chcesz ustawi  Java 21 jako domy ln  (opcjonalne)
+
+Po instalacji mo esz wybra  domy ln  implementacj :
+update-alternatives --install /usr/bin/java java /usr/lib/jvm/temurin-21-jdk-amd64/bin/java 2100
+update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/temurin-21-jdk-amd64/bin/javac 2100
+
+update-alternatives --config java
+update-alternatives --config javac
+
+
+Wybierz tam  cie k  do temurin-21-jdk-amd64.
+
+Alternatywa (je li nie chcesz instalowa  JDK 21)
+
+Uzyska  wersj  serwera skompilowan  dla Java 17 (je li jest dost pna)   ale zwykle nowsze snapshoty/wersje Minecrafta wymagaj  nowszej Javy, wi c najlepsze rozwi zanie to zainstalowa  Java 21.
+
+Daj zna , czy po zainstalowaniu temurin-21 serwer uruchomi  si  poprawnie (wklej pierwszy b  d/wyj cie, je li co  dalej nie dzia a). Chcesz,  ebym poda  te  komend , kt ra doda skrypt startowy (systemd) dla Twojego serwera Minecraft?
+
+
+
+# 1. Upewnij si ,  e system jest aktualny
+apt update
+apt install -y wget apt-transport-https gpg
+
+# 2. Dodaj oficjalne repozytorium Adoptium (Temurin)
+wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
+echo "deb https://packages.adoptium.net/artifactory/deb trixie main" | tee /etc/apt/sources.list.d/adoptium.list
+
+# 3. Od wie  list  pakiet w
+apt update
+
+# 4. Zainstaluj Jav  21 (Temurin JDK)
+apt install -y temurin-21-jdk
+
+# 5. Sprawd  wersj  Javy
+java -version
+
+openjdk version "21.0.4" 2025-07-16
+OpenJDK Runtime Environment Temurin-21.0.4+8 (build 21.0.4+8)
+OpenJDK 64-Bit Server VM Temurin-21.0.4+8 (build 21.0.4+8, mixed mode)
+
+
+?? Uruchomienie serwera Minecraft
+
+Potem po prostu uruchom serwer z Jav  21:
+
+cd /serw/25w42a
+/usr/lib/jvm/temurin-21-jdk-amd64/bin/java -Xmx2G -Xms1G -jar server.jar nogui
+
+
+
+sudo bash -c 'cat > /etc/apt/sources.list <<EOF
+deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+EOF'
+
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt install -y wget apt-transport-https gpg
+
+# Dodaj repo Adoptium (Temurin)
+wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
+echo "deb https://packages.adoptium.net/artifactory/deb trixie main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+
+sudo apt update
+sudo apt install -y temurin-17-jdk
+
+java -version
+
+
+
+
+
+Installing Apache on Debian 12: A Step-by-Step Guide
+Introduction
+Apache HTTP Server is one of the most widely used web servers in the world, known for its modularity, efficiency, and strong community support. This guide will take you through a step-by-step process of installing Apache on Debian 12, ensuring that you have a stable and secure web server up and running.
+
+
+Prerequisites
+A system running Debian 12
+Access to a user account with sudo privileges
+An active internet connection
+Step 1: Update the System
+Before installing any package, it's good practice to update the package list and upgrade the existing packages to their latest versions. Open your terminal and execute the following commands:
+
+sudo apt update
+sudo apt upgrade
+Shell
+Step 2: Install Apache
+To install Apache, run the following command:
+
+sudo apt install apache2
+Shell
+Once the installation is complete, Apache should start automatically. To check the status of the Apache service, use:
+
+sudo systemctl status apache2
+Shell
+Step 3: Configure Your Firewall
+Adjust your firewall settings to allow HTTP and HTTPS traffic. If you're using UFW (Uncomplicated Firewall), execute these commands:
+
+sudo ufw allow 'Apache'
+sudo ufw reload
+Shell
+Step 4: Verify the Installation
+Open your web browser and access your server's IP address or domain name. You should see the default Apache welcome page, confirming that the web server is installed and running properly.
+
+Step 5: Manage Apache Service
+Learn how to start, stop, and enable the Apache service to run on boot with these commands:
+
+sudo systemctl stop apache2
+sudo systemctl start apache2
+sudo systemctl enable apache2
+Shell
+Conclusion
+Installing Apache on Debian 12 is a straightforward process that can be completed in a few steps. With Apache installed, you are now ready to host your websites and web applications. For more complex configurations and optimizations, consider referring to the official Apache documentation or hire a remote DevOps engineer to assist with your infrastructure needs.
+
+
+
+Debian serwer – konfiguracja DNS Linux
+
+Jak zainstalować DNS w Linux?
+Na początku musimy ustawić interfejsy sieciowe. Podczas instalacji DHCP już pokazywałem jak to zrobić. W skrócie, konfigurujemy plik /etc/network/interfaces. Po tym musimy zainstalować pakiet:
+
+apt-get install bind9
+Po instalacji musimy skonfigurować aż trzy pliki. Zaczniemy od pierwszego:
+
+/etc/bind/named.conf.options
+
+Na początku musimy określić na jakich adresach IP ma działać nasz DNS. Ja określę dwa, czyli IP serwera oraz pętli zwrotnej (127.0.0.1). Poniżej linijki directory “/var/cache/bind” wpisujemy:
+
+listen-on: { 127.0.0.1; };
+listen-on { 192.168.222.1; };
+
+Następnie musimy odkomentować trzy linijki składające się na forwardes (usunąć “//”). Są to zapytania DNS, które są przesyłane dalej i znajdują się poza siecią. W nich należy wpisać jakiś zewnętrzny adres IP. Ja wpisze serwer google.
+
+forwardes {
+8.8.8.8;
+8.8.4.4;
+};
+Po tym zapisujemy cały plik, który ma wyglądać tak:
+
+Nie przejmujcie się czerwonym kolorem. Następnie edytujemy kolejny plik o nazwie:
+
+/etc/bind/named.conf.local
+W nim tworzymy definicję naszej strefy, czyli już konkretnej nazwy DNS. Musimy określić ścieżkę do pliku, w którym znajduje się skonfigurowana domena (później się nim zajmiemy). A więc piszemy:
+
+zone "domena.local" {
+type master;
+file "/etc/bind/db.domena.local";
+allow-update{none;};
+notify yes;
+};
+
+zone – określa nazwę domeny
+type – rodzaj strefy
+file – plik z definicją strefy
+allow-update – lista serwerów, które mogą aktualizować definicję strefy
+notify – możliwość powiadamiania inne serwery o zmianach
+Zapisujemy i przechodzimy do ostatniego pliku. Ale na początku musimy znaleźć tzw. domyślny plik db, który będziemy edytować do własnych potrzeb. Sprawdźmy jakie mamy do wyboru, używając polecenia ls:
+
+ls /etc/bind
+
+Widzimy plik o nazwie db.local. Nasza nazwa domenowa jest lokalna, więc jego właśnie użyjemy:
+
+nano /etc/bind/db.local
+Standardowy plik wygląda tak:
+
+Tutaj musimy zmienić kilka rzeczy. Po pierwsze zamiast localhost wpisujemy naszą domenę:
+
+Następnie dodajemy rekordy A oraz NS, gdzie wpisujemy nazwę domeny, a potem adres IP serwera:
+
+@       IN    NS    ns1.domena.local.
+ns1     IN    A     192.168.222.1
+domena  IN    A     192.168.222.1
+
+Później zapisujemy plik pod taką nazwą, jak wcześniej skonfigurowaliśmy. W moim przypadku był to db.domena.local.
+
+Po wszystkim restartujemy usługę bind9 i sprawdzamy czy wszystko działa:
+
+systemctl restart bind9
+systemctl status bind9
+
+Jak widać, u mnie DNS jest aktywny, a wszystkie strefy są załadowane. Jednak jeszcze nie wszystko będzie działało. Musimy dodatkowo dodać naszą domenę do pliku:
+
+/etc/resolv.conf
+Tam dodajemy dwie linijki z adresem IP i nazwą naszego serwera DNS:
+
+domain domena.local
+nameserver 192.168.222.1
+
+Jak widać pingi przechodzą, czyli wszystko działa.
+
+Dodanie DNS do serwera DHCP
+Jednak to nie wszystko. Możemy dodać naszą domenę do plików DHCP. Dzięki temu u naszych klientów również będzie działała domena.local. W tym celu konfigurujemy plik:
+
+/etc/dhcp/dhclient.conf
+I szukamy linijki o nazwie prepend domain-name-servers i ustawiamy adres IP serwera:
+
+Może okazać się, że to nie jest wszystko. Jeśli na stacji nie będzie nam działać domena, to postępujemy tak samo jak w przypadku serwera, czyli edytujemy pliki /etc/resolv.conf oraz /etc/dhcp/dhclient.conf.
+
+U mnie domena zadziałała, więc wszystko jest w porządku. To wszystko w tym poradniku. Już wiecie bardzo dużo o konfigurowaniu serwera opartego na Linuxie. W następnych pokaże Wam jak stworzyć serwer plików oraz WWW.
+
+
+
+
+
+
+
+
+=====================================================================================================================
+
+Jasne! Poniżej masz zwięzłą, sprawdzoną instrukcję instalacji **Proxmox VE 8.x na Debianie 12 (Bookworm)** – „na żywym” Debianie, krok po kroku, z wyjaśnieniami. (Oficjalnie Proxmox zaleca instalację z ich ISO, ale instalacja „on top of Debian” jest jak najbardziej wspierana). ([pve.proxmox.com][1])
+
+---
+
+# 0) Wymagania i uwagi
+
+* **Sprzęt:** CPU z wirtualizacją (Intel VT-x/AMD-V), min. 4 GB RAM (lepiej 8 GB+), dysk SSD.
+* **BIOS/UEFI:** włączona wirtualizacja; dla problemów z bootem **wyłącz Secure Boot**. ([pve.proxmox.com][1])
+* **Sieć:** najlepiej **statyczny adres IP**.
+* **Czysty serwer:** nie instaluj środowiska graficznego; wybierz „Standard system utilities” i „SSH server”. ([pve.proxmox.com][1])
+
+---
+
+# 1) Poprawna nazwa hosta (FQDN)
+
+Proxmox wymaga, by nazwa hosta rozwiązywała się na **nie-loopback** IP (nie 127.0.1.1).
+
+1. Ustaw hostname, np.:
+
+```bash
+sudo hostnamectl set-hostname prox1.example.lan
+```
+
+2. Skonfiguruj `/etc/hosts` – przykład dla IP `192.168.1.50`:
+
+```
+127.0.0.1       localhost
+192.168.1.50    prox1.example.lan prox1
+
+# IPv6 (opcjonalnie, jeśli używasz)
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+```
+
+3. Sprawdź:
+
+```bash
+hostname --ip-address
+# powinno zwrócić przynajmniej jedno nie-loopback IP (np. 192.168.1.50)
+```
+
+([pve.proxmox.com][1])
+
+---
+
+# 2) Repozytorium Proxmox VE (no-subscription)
+
+Dodaj repo PVE 8.x dla Bookworm + klucz GPG i zaktualizuj system:
+
+```bash
+# 2.1 Dodaj repo (no-subscription) do osobnego pliku
+echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-subscription" | sudo tee /etc/apt/sources.list.d/pve-install-repo.list
+
+# 2.2 Dodaj klucz wydawniczy Proxmoxa dla Bookworm
+sudo wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
+
+# (opcjonalnie) weryfikacja sumy:
+sha512sum /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
+# oczekiwana sha512 (wg dokumentacji): 7da6fe34...d6dc87
+
+# 2.3 Aktualizacja pakietów
+sudo apt update && sudo apt full-upgrade -y
+```
+
+Repozytorium i suma kontrolna pochodzą z oficjalnej dokumentacji Proxmoxa. ([pve.proxmox.com][1])
+
+---
+
+# 3) Kernel Proxmoxa i restart
+
+Zainstaluj kernel dostarczany przez Proxmoxa (wymagany przez część pakietów – m.in. AppArmor, QEMU):
+
+```bash
+sudo apt install -y proxmox-default-kernel
+sudo systemctl reboot
+```
+
+([pve.proxmox.com][1])
+
+---
+
+# 4) Instalacja pakietów Proxmox VE
+
+Po restarcie (na jądrze PVE):
+
+```bash
+sudo apt install -y proxmox-ve postfix open-iscsi chrony
+```
+
+* **postfix** – do wysyłki maili z hosta (alerty). Jeśli nie masz MTA w sieci, wybierz „local only”.
+* **open-iscsi** – pozwala używać LUN-ów/targetów iSCSI.
+* **chrony** – zalecany demon NTP na serwerach (stabilniejszy od systemd-timesyncd). ([pve.proxmox.com][1])
+
+> Uwaga o sieci: Proxmox używa **ifupdown2** do zarządzania siecią. Na świeżym PVE 8 ifupdown2 jest standardem; na gołym Debianie 12 bywa ifupdown. Jeśli po instalacji zobaczysz niespójności, doinstaluj ifupdown2 i przeładuj sieć. ([Proxmox Support Forum][2])
+
+---
+
+# 5) Usuń kernel Debiana i zaktualizuj GRUB
+
+Żeby uniknąć konfliktów przy aktualizacjach Debiana (np. point-release), usuń domyślny kernel:
+
+```bash
+sudo apt remove -y linux-image-amd64 'linux-image-6.1*'
+sudo update-grub
+```
+
+([pve.proxmox.com][1])
+
+---
+
+# 6) (Zalecane) Usuń `os-prober`
+
+`os-prober` skanuje wszystkie partycje i potrafi odnaleźć dyski VM-ek, tworząc niechciane wpisy GRUB-a. Jeżeli **nie** masz dual-boota – usuń:
+
+```bash
+sudo apt remove -y os-prober
+```
+
+([pve.proxmox.com][1])
+
+---
+
+# 7) Pierwsze logowanie do GUI i most sieciowy
+
+1. Wejdź na:
+
+```
+https://ADRES_IP_SERWERA:8006
+```
+
+Zaloguj się jako `root`, realm: **PAM** (domyślnie). ([pve.proxmox.com][1])
+
+2. Utwórz most **vmbr0** (Network → Create → Linux Bridge) i **podłącz** do niego kartę fizyczną (enp…/eth…). To będzie przełącznik dla VM-ek/LXC. (W dokumentacji jest przykładowa, „domyślna” konfiguracja bridge). ([pve.proxmox.com][1])
+
+> Jeżeli po restarcie sieć nie wstaje, a ręcznie działa (np. po `ifreload -a`), sprawdź, czy używasz **chrony** zamiast `ntpsec` – to znany przypadek na części sprzętu. ([pve.proxmox.com][1])
+
+---
+
+# 8) Repozytoria po instalacji (subskrypcje)
+
+Instalacja dodała repo **enterprise** (dla posiadaczy subskrypcji). Jeśli korzystasz z no-subscription, możesz usunąć tymczasowy plik instalacyjny:
+
+```bash
+sudo rm /etc/apt/sources.list.d/pve-install-repo.list
+```
+
+i upewnić się, że masz skonfigurowane docelowe repo zgodnie z tabelą w dokumentacji (enterprise vs no-subscription/test). ([pve.proxmox.com][1])
+
+---
+
+## Najczęstsze problemy i szybkie diagnozy
+
+* **Błąd „bad shim signature” przy starcie:** wyłącz Secure Boot w UEFI. ([pve.proxmox.com][1])
+* **`ipcc_send_rec[1] failed: Connection refused`:** sprawdź `/etc/hosts` (FQDN/nie-loopback IP). ([pve.proxmox.com][1])
+* **DNS „gubi się” po restarcie:** unikaj pakietów, które nadpisują `/etc/resolv.conf` (np. `resolvconf`, `rdnssd`). GUI Proxmoxa zarządza DNS. ([pve.proxmox.com][1])
+
+---
+
+## Skrót wszystkich komend (kopiuj-wklej – świadomie)
+
+```bash
+# Hostname/FQDN – dostosuj domenę i IP
+sudo hostnamectl set-hostname prox1.example.lan
+# edytuj /etc/hosts i wstaw:
+# 127.0.0.1       localhost
+# 192.168.1.50    prox1.example.lan prox1
+# ::1 ... (ipv6 opcjonalnie)
+hostname --ip-address
+
+# Repo + klucz
+echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-subscription" | sudo tee /etc/apt/sources.list.d/pve-install-repo.list
+sudo wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
+sudo apt update && sudo apt full-upgrade -y
+
+# Kernel Proxmoxa i restart
+sudo apt install -y proxmox-default-kernel
+sudo systemctl reboot
+```
+
+*po restarcie*:
+
+```bash
+# Pakiety PVE
+sudo apt install -y proxmox-ve postfix open-iscsi chrony
+
+# (opcjonalnie, gdy masz ifupdown zamiast ifupdown2)
+# sudo apt install -y ifupdown2
+
+# Usuń kernel Debiana
+sudo apt remove -y linux-image-amd64 'linux-image-6.1*'
+sudo update-grub
+
+# (zalecane) Usuń os-prober
+sudo apt remove -y os-prober
+```
+
+Potem wejdź w przeglądarce na `https://IP:8006`, utwórz **vmbr0** i działasz. ([pve.proxmox.com][1])
+
+---
+
+Chcesz, żebym to dopasował pod Twoją konkretną maszynę (interfejsy, adresację, vmbr0 z VLAN-ami, ZFS/LVM)? Podaj IP/kartę sieciową i preferencje, a wygeneruję Ci gotowy `/etc/network/interfaces` i checklistę po restarcie.
+
+[1]: https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm "Install Proxmox VE on Debian 12 Bookworm - Proxmox VE"
+[2]: https://forum.proxmox.com/threads/ifupdown-and-ifupdown2-issues.131514/?utm_source=chatgpt.com "ifupdown and ifupdown2 issues"
+
+
+=============================================================================================================================
+
+Świetne pytanie 👍 — ten krok jest bardzo ważny, bo **błędny wpis w `/etc/hosts` to najczęstsza przyczyna błędów przy instalacji Proxmoxa** (np. „cannot connect to API”, „pve-cluster not ready”).
+Pokażę Ci **krok po kroku**, jak to zrobić bezpiecznie i poprawnie.
+
+---
+
+## 🔹 1️⃣ Otwórz plik `/etc/hosts`
+
+W terminalu wpisz:
+
+```bash
+sudo nano /etc/hosts
+```
+
+> 📘 *Jeśli używasz środowiska bez GUI (czysty Debian server), `nano` jest najwygodniejszym edytorem tekstu w konsoli.*
+
+---
+
+## 🔹 2️⃣ Usuń błędny wpis 127.0.1.1
+
+Debian domyślnie dodaje wiersz taki jak:
+
+```
+127.0.1.1    nazwa-host.localdomain    nazwa-host
+```
+
+Ten wiersz **trzeba usunąć lub zakomentować**, bo przez niego Proxmox myśli, że host ma adres `127.0.1.1` (czyli tylko lokalny).
+
+---
+
+## 🔹 3️⃣ Dodaj właściwe wpisy
+
+Dla IP serwera `192.168.1.50` i hosta `prox1.example.lan` (możesz oczywiście wstawić własną domenę i nazwę), wpisz:
+
+```
+127.0.0.1       localhost
+192.168.1.50    prox1.example.lan prox1
+
+# IPv6 – opcjonalnie, jeśli używasz
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+```
+
+> 📍 **Ważne:**
+>
+> * pierwsze pole to **adres IP** (Twojego serwera),
+> * drugie to **pełna nazwa hosta (FQDN)**,
+> * trzecie to **krótka nazwa hosta**.
+
+---
+
+## 🔹 4️⃣ Zapisz plik i wyjdź
+
+W `nano` zrobisz to tak:
+
+* **Ctrl + O** → Enter (zapisz)
+* **Ctrl + X** → (wyjdź)
+
+---
+
+## 🔹 5️⃣ Sprawdź, czy wszystko działa
+
+Wpisz w terminalu:
+
+```bash
+hostname
+hostname -f
+hostname --ip-address
+ping -c 2 prox1
+```
+
+Oczekiwane wyniki:
+
+* `hostname` → `prox1`
+* `hostname -f` → `prox1.example.lan`
+* `hostname --ip-address` → `192.168.1.50`
+* ping powinien odpowiedzieć z Twojego IP (`192.168.1.50`)
+
+---
+
+## ✅ Gotowy przykład (pełny plik)
+
+Jeśli Twój serwer ma IP `192.168.1.50` i chcesz, żeby nazywał się `prox1.local`, to `/etc/hosts` powinien wyglądać tak:
+
+```
+127.0.0.1       localhost
+192.168.1.50    prox1.local prox1
+
+# IPv6
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+```
+
+---
+
+Chcesz, żebym przygotował Ci **gotowy `/etc/hosts`** do wklejenia na podstawie Twoich rzeczywistych danych (adres IP i nazwa hosta)?
+Wystarczy, że podasz:
+
+* 📍 adres IP serwera
+* 💻 nazwę, jaką chcesz (np. `prox1`, `pve`, `domowy-serwer`)
+* 🌐 czy używasz domeny lokalnej (np. `.lan`, `.local`, `.home`)
+
+Wtedy dostaniesz dokładny plik gotowy do wklejenia.
+
+=================================================================================
+
+Świetnie, że to zauważyłaś — ten komunikat:
+
+> **`sudo: nie udało się rozwiązać nazwy hosta prox1.example.lan: Ta nazwa lub usługa jest nieznana`**
+
+oznacza, że **system nie potrafi dopasować nazwy hosta (`prox1.example.lan`) do żadnego wpisu w `/etc/hosts`**.
+To bardzo częsty błąd po ustawieniu hostname przez `hostnamectl`, ale bez poprawnego wpisu w tym pliku.
+Naprawa jest bardzo prosta 👇
+
+---
+
+## 🧩 Krok po kroku naprawa
+
+### 1️⃣ Sprawdź, jaka jest aktualna nazwa hosta
+
+```bash
+hostnamectl
+```
+
+
+sudo apt install neofetch
+neofetch
+
+Powinno pokazać coś takiego:
+
+```
+Static hostname: prox1.example.lan
+```
+
+albo np. `prox1.local`, `pve.lan`, itd.
+
+Zanotuj **dokładnie** tę nazwę (to ta, której system nie może znaleźć).
+
+---
+
+### 2️⃣ Otwórz plik `/etc/hosts`
+
+```bash
+sudo nano /etc/hosts
+```
+
+---
+
+### 3️⃣ Upewnij się, że jest w nim wpis odpowiadający tej nazwie
+
+Na przykład, jeśli Twoja nazwa hosta to `prox1.example.lan`, a adres IP serwera to `192.168.1.50`, to plik powinien wyglądać tak:
+
+```
+127.0.0.1       localhost
+192.168.1.50    prox1.example.lan prox1
+
+# IPv6 (opcjonalnie)
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+```
+
+💡 **Uwaga:**
+
+* adres `192.168.1.50` zamień na rzeczywisty adres IP Twojego serwera,
+* pełna nazwa (`prox1.example.lan`) **musi być identyczna** jak ta z `hostnamectl`,
+* po niej możesz dodać krótką nazwę (`prox1`).
+
+---
+
+### 4️⃣ Zapisz plik i wyjdź
+
+W `nano`:
+
+```
+Ctrl + O → Enter → Ctrl + X
+```
+
+---
+
+### 5️⃣ Sprawdź, czy działa
+
+```bash
+hostname -f
+hostname --ip-address
+```
+
+Jeśli wszystko jest poprawnie:
+
+* `hostname -f` powinno zwrócić np. `prox1.example.lan`
+* `hostname --ip-address` zwróci IP serwera (np. `192.168.1.50`)
+
+I komunikat o błędzie przy `sudo` **zniknie** ✅
+
+---
+
+Jeśli chcesz — mogę przygotować Ci **gotowy wpis** do wklejenia, tylko podaj:
+
+* adres IP serwera,
+* nazwę hosta (np. `prox1`, `pve`, `domowy`),
+* czy chcesz domenę `.lan`, `.local`, czy inną.
+
+Wtedy dostaniesz dokładną linię do `/etc/hosts`, dopasowaną do Twojego przypadku.
+==================================================================================================
+
+Świetnie, że pokazałaś ten zrzut ekranu — widzę dokładnie, w czym problem 😊
+
+W Twoim pliku `/etc/hosts` jest **drobna literówka w adresie IP**.
+Masz wpis:
+
+```
+00.98.207.45  prox1.example.lan prox1
+```
+
+a powinno być bez **podwójnego zera z przodu** — system interpretuje to błędnie i dlatego nie rozpoznaje hosta.
+
+---
+
+✅ **Poprawny wpis powinien wyglądać tak:**
+
+```
+127.0.0.1       localhost
+192.98.207.45   prox1.example.lan prox1
+
+# IPv6
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+```
+
+---
+
+📘 **Kroki:**
+
+1. W `nano` popraw pierwszą cyfrę IP, żeby było np. `192.98.207.45` (albo rzeczywiste IP Twojego serwera w sieci LAN, np. `192.168.1.50`).
+2. Zapisz zmiany:
+
+   ```
+   Ctrl + O → Enter → Ctrl + X
+   ```
+3. Sprawdź:
+
+   ```bash
+   hostname -f
+   hostname --ip-address
+   sudo apt update
+   ```
+
+   Teraz komunikat `sudo: nie udało się rozwiązać nazwy hosta...` **zniknie**.
+
+---
+
+💡 Jeśli nie jesteś pewna, jakie IP wpisać (zewnętrzne czy lokalne), podaj mi wynik polecenia:
+
+```bash
+ip a
+```
+
+a ja powiem Ci dokładnie, które z adresów powinnaś użyć w `/etc/hosts`.
+=============================================================
+Super 👌 — teraz plik wygląda **prawie idealnie**, ale jest **jedna ważna uwaga**:
+
+Adres, który wpisałaś — `100.98.207.45` — **to nie jest lokalny adres LAN**, tylko zewnętrzny (prawdopodobnie przydzielony przez operatora internetu).
+A w pliku `/etc/hosts` **powinien znaleźć się lokalny adres IP** karty sieciowej serwera, np. `192.168.x.x` lub `10.x.x.x`.
+
+---
+
+### 🔍 Jak sprawdzić poprawny adres IP serwera
+
+W terminalu wpisz:
+
+```bash
+ip a
+```
+
+Poszukaj sekcji odpowiadającej Twojej karcie sieciowej (zwykle `enp0s3`, `eth0`, `ens18` albo podobnie).
+Wewnątrz znajdziesz linię w stylu:
+
+```
+inet 192.168.1.50/24 brd 192.168.1.255 scope global dynamic enp0s3
+```
+
+👉 **Ten adres przed ukośnikiem (`192.168.1.50`) to ten, którego potrzebujesz.**
+
+---
+
+### ✅ Potem popraw `/etc/hosts`, np. tak:
+
+```bash
+127.0.0.1       localhost
+192.168.1.50    prox1.example.lan prox1
+
+# IPv6
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+```
+
+---
+
+💡 **Dlaczego to ważne:**
+Proxmox komunikuje się z usługami klastra (pve-cluster, corosync, pvedaemon) po adresie wpisanym w `/etc/hosts`.
+Jeśli wpiszesz tam publiczny IP, a lokalnie masz inny, usługi nie będą się uruchamiać poprawnie.
+
+---
+
+Jeśli chcesz, możesz wkleić tutaj wynik komendy:
+
+```bash
+ip a | grep inet
+```
+
+— wtedy powiem Ci dokładnie, **który adres wpisać** do `/etc/hosts`.
+====================================================================
+Świetne pytanie — i bardzo trafne przypuszczenie 💡
+Tak, **Tailscale może być przyczyną**, że **nie możesz wejść na panel Proxmoxa przez `https://192.168.0.179:8006`**.
+Wyjaśnię Ci dokładnie **dlaczego tak się dzieje** i co możesz zrobić — krok po kroku, bez ryzyka utraty połączenia SSH.
+
+---
+
+## 🧩 Dlaczego Tailscale przeszkadza
+
+Tailscale tworzy **wirtualny interfejs sieciowy (`tailscale0`)** i często **ustawia routing domyślny przez siebie**.
+W efekcie:
+
+* pakiety do `192.168.0.x` mogą próbować iść przez VPN (gdzie taka sieć nie istnieje),
+* albo Proxmox nasłuchuje tylko na interfejsie fizycznym (`eth0`, `enp0s3`), a nie na `tailscale0`.
+
+To powoduje, że przeglądarka nie może się połączyć z portem 8006.
+
+---
+
+## 🔍 Krok 1: Sprawdź, czy Proxmox faktycznie działa
+
+W terminalu wpisz:
+
+```bash
+sudo systemctl status pveproxy
+```
+
+Jeśli zobaczysz coś w stylu:
+
+```
+Active: active (running)
+```
+
+to znaczy, że interfejs działa, tylko nie możesz się do niego dostać.
+
+---
+
+## 🧭 Krok 2: Sprawdź, na jakich adresach Proxmox nasłuchuje
+
+Wpisz:
+
+```bash
+sudo ss -tlnp | grep 8006
+```
+
+Powinno pokazać np.:
+
+```
+LISTEN 0 4096 0.0.0.0:8006   0.0.0.0:* users:(("pveproxy",pid=xxxx,fd=3))
+```
+
+➡️ Jeśli widzisz `0.0.0.0:8006`, to Proxmox nasłuchuje **na wszystkich interfejsach** — dobrze.
+➡️ Jeśli widzisz `127.0.0.1:8006`, to znaczy, że nasłuchuje tylko lokalnie (trzeba poprawić konfigurację).
+
+---
+
+## 🧱 Krok 3: Ustal, czy chcesz mieć dostęp przez LAN czy przez Tailscale
+
+Masz dwie opcje:
+
+### 🔹 Opcja A — dostęp przez sieć lokalną (zalecana na start)
+
+1. Tymczasowo **wyłącz Tailscale**, żeby upewnić się, że nie miesza w trasach:
+
+   ```bash
+   sudo systemctl stop tailscaled
+   ```
+2. Spróbuj wejść w przeglądarce na:
+
+   ```
+   https://192.168.0.179:8006
+   ```
+3. Jeśli zadziała — to znaczy, że to **Tailscale blokował trasę**.
+   Wtedy wystarczy w przyszłości dodać regułę routingu (pokazuję niżej).
+
+---
+
+### 🔹 Opcja B — dostęp przez Tailscale (zdalny dostęp z każdego miejsca)
+
+Jeśli chcesz zostawić Tailscale, możesz po prostu:
+
+1. Sprawdzić adres Tailscale:
+
+   ```bash
+   tailscale ip -4
+   ```
+
+   np. `100.72.84.10`
+2. W przeglądarce otworzyć:
+
+   ```
+   https://100.72.84.10:8006
+   ```
+
+   (to działa z dowolnego urządzenia zalogowanego do tej samej sieci Tailscale)
+
+---
+
+## 🔧 Krok 4: (opcjonalnie) napraw trasy, żeby Tailscale nie blokował LAN
+
+Jeśli chcesz, żeby Tailscale był włączony **i jednocześnie działało 192.168.x.x**, dodaj regułę:
+
+```bash
+sudo tailscale up --accept-routes=false --advertise-exit-node=false --reset
+```
+
+To resetuje jego ustawienia routingu i pozwala na normalny ruch lokalny równolegle z VPN.
+
+---
+
+## ✅ Szybkie podsumowanie
+
+| Cel                          | Co zrobić                                                             |
+| ---------------------------- | --------------------------------------------------------------------- |
+| Chcesz połączyć się lokalnie | `sudo systemctl stop tailscaled` → potem `https://192.168.0.179:8006` |
+| Chcesz przez Tailscale       | Sprawdź `tailscale ip -4`, wejdź na `https://<ten_adres>:8006`        |
+| Chcesz oba naraz             | `sudo tailscale up --accept-routes=false`                             |
+
+---
+
+Jeśli chcesz, mogę pomóc Ci ustawić **stały dostęp do panelu Proxmoxa przez Tailscale** (z automatycznym certyfikatem i nazwą np. `prox1.ts.net`), tak żebyś mogła logować się z dowolnego komputera bez otwierania portów w routerze.
+Chcesz, żebym Ci to pokazał?
+====================================================================================
+Świetnie ✅ — ten wynik mówi bardzo dużo i to dobra wiadomość:
+
+```
+*:8006   users:(("pveproxy"...))
+```
+
+oznacza, że **Proxmox działa poprawnie** i **nasłuchuje na wszystkich interfejsach sieciowych (0.0.0.0)**.
+Czyli problem **nie jest po stronie Proxmoxa**, tylko po stronie **tras sieciowych lub Tailscale**.
+
+---
+
+## 🧭 Co to znaczy w praktyce?
+
+* Panel Proxmoxa jest aktywny pod adresem `https://<IP_SERWERA>:8006`
+* Ale Twoje urządzenie (komputer, z którego próbujesz wejść) **nie ma prawidłowej trasy** do `192.168.0.179`, bo Tailscale przejmuje routing.
+
+---
+
+## 🔧 Zróbmy prosty test
+
+Na komputerze, z którego próbujesz wejść na Proxmoxa (w tej samej sieci):
+
+1️⃣ Otwórz terminal / cmd i wpisz:
+
+```bash
+ping 192.168.0.179
+```
+
+* Jeśli **brak odpowiedzi**, to znaczy, że ruch idzie przez Tailscale (a nie lokalną sieć).
+* Jeśli **jest odpowiedź**, to coś blokuje tylko HTTPS (np. firewall).
+
+---
+
+## 🧩 Naprawa — masz 3 możliwe ścieżki
+
+### 🔹 OPCJA 1: Tymczasowo wyłącz Tailscale
+
+Najprostsze, żeby sprawdzić, czy to on blokuje:
+
+Na serwerze:
+
+```bash
+sudo systemctl stop tailscaled
+```
+
+➡️ Poczekaj 5–10 sekund i spróbuj otworzyć:
+
+```
+https://192.168.0.179:8006
+```
+
+> 🔒 Certyfikat jest self-signed, więc przeglądarka pokaże ostrzeżenie — kliknij **Zaawansowane → Kontynuuj mimo to**.
+
+Jeśli teraz **zadziała** → to **na pewno Tailscale** był przyczyną.
+
+---
+
+### 🔹 OPCJA 2: Wejdź przez adres Tailscale
+
+Nie wyłączając Tailscale, sprawdź jego IP:
+
+```bash
+tailscale ip -4
+```
+
+Załóżmy, że dostaniesz np. `100.92.207.45`, wtedy wejdź w przeglądarce na:
+
+```
+https://100.92.207.45:8006
+```
+
+➡️ To działa, jeśli komputer, z którego się łączysz, też jest zalogowany w Tailscale (ten sam konto/tenant).
+
+---
+
+### 🔹 OPCJA 3: Zostaw Tailscale, ale przywróć lokalny routing
+
+Możesz mieć i Tailscale, i dostęp po LAN — tylko trzeba mu zakazać przejmowania tras:
+
+```bash
+sudo tailscale up --accept-routes=false --advertise-exit-node=false
+```
+
+To przywróci normalny dostęp do `192.168.0.x` równolegle z Tailscale.
+
+---
+
+## ✅ Co zrobimy dalej
+
+Jeśli chcesz, mogę pomóc Ci:
+
+* 🔸 ustawić **stały dostęp do panelu przez Tailscale** (np. `https://prox1.ts.net` z automatycznym certyfikatem Let’s Encrypt),
+* 🔸 lub poprawnie skonfigurować **dostęp przez LAN**, tak żeby Tailscale nie mieszał tras.
+
+Powiedz, która opcja Cię interesuje — lokalny dostęp (szybszy w sieci domowej) czy zdalny przez Tailscale (bezpieczny z każdego miejsca)?
+===============================================================================================================
+Świetnie, że już działa 🎉 — to znaczy, że konfiguracja sieci i proxy jest poprawna.
+
+A jeśli chcesz **odinstalować Proxmoxa** (czyli przywrócić „czystego” Debiana), to jak najbardziej się da.
+Poniżej masz **pełny, bezpieczny sposób** na odinstalowanie Proxmox VE z systemu Debian 12, krok po kroku.
+
+---
+
+## 🧹 1️⃣ Zatrzymaj wszystkie usługi Proxmoxa
+
+Najpierw zatrzymaj działające demony, żeby nie blokowały pakietów:
+
+```bash
+sudo systemctl stop pve-cluster pvedaemon pveproxy pvestatd pve-manager
+sudo systemctl stop corosync pve-ha-lrm pve-ha-crm
+```
+
+Jeśli niektóre z tych usług nie istnieją (np. `corosync` przy instalacji solo), po prostu je zignoruj.
+
+---
+
+## 🧩 2️⃣ Usuń pakiety Proxmoxa
+
+Usuń wszystkie główne komponenty:
+
+```bash
+sudo apt remove --purge -y proxmox-ve pve-manager pve-qemu-kvm pve-container pve-cluster pve-storage pve-ha-manager pve-firewall corosync qemu-server qemu-utils lxc-pve lxcfs
+```
+
+---
+
+## 🧾 3️⃣ Usuń resztę zależności i repozytorium
+
+Usuń plik repozytorium Proxmoxa:
+
+```bash
+sudo rm /etc/apt/sources.list.d/pve-install-repo.list 2>/dev/null
+```
+
+Usuń również klucz GPG:
+
+```bash
+sudo rm /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg 2>/dev/null
+```
+
+---
+
+## 🔧 4️⃣ Wyczyść system z pozostałości
+
+```bash
+sudo apt autoremove --purge -y
+sudo apt clean
+```
+
+---
+
+## ⚙️ 5️⃣ (Opcjonalnie) Przywróć kernel Debiana
+
+Jeśli chcesz dalej używać Debiana jako zwykłego serwera, zainstaluj jego domyślny kernel (bo Proxmox używa własnego):
+
+```bash
+sudo apt install -y linux-image-amd64
+```
+
+Po instalacji zaktualizuj GRUB-a i uruchom ponownie:
+
+```bash
+sudo update-grub
+sudo systemctl reboot
+```
+
+---
+
+## 🧾 6️⃣ (Opcjonalnie) Usuń most sieciowy `vmbr0`
+
+Jeśli chcesz wrócić do klasycznego połączenia sieciowego bez mostu, edytuj plik:
+
+```bash
+sudo nano /etc/network/interfaces
+```
+
+Usuń lub zakomentuj sekcję `vmbr0`, a zamiast niej przywróć prostą konfigurację karty (np. `enp0s3`):
+
+Przykład:
+
+```bash
+auto enp0s3
+iface enp0s3 inet static
+  address 192.168.0.179/24
+  gateway 192.168.0.1
+  dns-nameservers 1.1.1.1 8.8.8.8
+```
+
+Potem:
+
+```bash
+sudo systemctl restart networking
+```
+
+---
+
+## ✅ 7️⃣ (Opcjonalnie) Usuń ZFS (jeśli był instalowany)
+
+Jeśli podczas instalacji dodał się pakiet `zfsutils-linux`:
+
+```bash
+sudo apt remove --purge -y zfsutils-linux zfs-zed zfs-initramfs zfs-dkms
+```
+
+---
+
+## 🧰 8️⃣ Sprawdź system
+
+Po restarcie możesz potwierdzić, że:
+
+```bash
+uname -r
+```
+
+pokazuje **kernel Debiana** (np. `6.1.x-amd64`),
+a polecenie:
+
+```bash
+systemctl list-unit-files | grep pve
+```
+
+nie zwraca żadnych aktywnych usług Proxmoxa.
+
+---
+
+Jeśli chcesz, mogę przygotować Ci **jeden gotowy skrypt Bash** (`remove-proxmox.sh`), który wykona wszystko automatycznie, z komentarzami — wystarczy potem wkleić i uruchomić.
+Chcesz, żebym go dla Ciebie przygotował?
+
+
+
+PAWEŁ KRÓL
+Mamy swój serwer MINECRAFT
+W sieci lokalnej. Debian 12. Na razie to maszyna zbudowana z odpadów: 8 GB RAM i procesor Core2DUO, ale dobrze zoptymalizowany działa!!! Niebawem postawimy lepszą maszynę. Przy 5 graczach procesor działa na 100%
+
+
+Opis Instalacji (Debian 12):
+
+apt update
+apt upgrade
+
+Kolejny krok to instalacja Javy:
+apt install default-jre
+Wersję javy możemy sprawdzić wydając polecenie:
+java -version
+Dodajemy Użytkownika systemu o nazwie Minercrat:
+adduser minecraft
+Dodajemy mu grupę sudo:
+usermod -aG sudo minecraft
+Instalujemy Screen aby nasz serwer mógł pracować w tle:
+apt install screen -y
+Wchodzimy do folderu /home/minecraft i pobieramy instalki (do wyboru):
+1.171
+wget https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar
+1.20.4
+wget https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar
+Tworzymy skrypt aby nasz serwer minecrat startował sam w razie restartu serwera. W tym celu tworzymy plik start.sh:
+nano start.sh
+Wklejamy do niego:
+java -Xms1024M -Xmx2560M -jar server.jar nogui
+Nadajemy uprawnienia:
+chmod +x start.sh
+Aktualizujemy jeszcze raz pakiety:
+apt update
+Serwer Minecraft możemy już uruchomić poleceniem:
+./start.sh
+Przy pierwszym uruchomieniu powinniśmy zaakceptować licencję. Skrypt nas poprowadzi co mamy robić.
+Następnym krokiem jest otwarcie pliku eula.txt i ustawienie eula=true. Umożliwi to twojemu serwerowi połączenie się z oprogramowaniem klienta gry Minecraft. Otwórz ten plik w preferowanym edytorze i upewnij się, że brzmi: eula=true.
+nano eula.txt
+eula=true
+Dodajemy nasz serwer gry aby pracował w tle:
+screen /home/minecraft/start.sh
+Ostatni krok to dodanie port do firewalla:
+ufw allow 25565
+Jeżeli nie ma ufw należy go  zainstalować:
+apt install ufw
+I wykonać polecenie ponownie:
+ufw allow 25565
+i dopalamy serwer:
+./start.sh
+
+Wrzucanie innego świata i pluginów (porada Mikołaja Fiuka)
+
+Po zainstalowaniu serwera w /home/minecraft
+Utworzyć nowego użytkownika [useradd] (np. „wiesiu”) w home (/home/wiesiu) i wrzucić nowy plik server.jar
+Przekopiować z serwera Minecraft (/home/minecraft) pliki server.properties i start.sh  do folderu /home/wiesiu
+Uruchomić ./start.sh  w folderze /home/wiesiu
+Możemy grać
+Dodawanie pluginów (porada Mikołaja Fiuka)
+
+Skopiować pliki wtyczek do folderu Plugins (/home/wiesiu/Plugins)
+Uruchomić ./start.sh  w folderze /home/wiesiu i gramy.
+Pliki do pobrania
+
+Uruchamianie serwera minecraft jako sesja – z poziomu Putty, aby przy zamknięciu Putty nie wyłączał serwera.
+
+Uruchamiamy Putty i się logujemy.
+Wykonujemy polecenie  (które utworzy sesję o podanej przez nas nazwie) screen -S [nazwa sesji] np. screen -S minecraft  [po tym ewentualnie przewijamy ekran klikając do końca aż zobaczymy linię poleceń] … jesteśmy w sesji.
+Wchodzimy do folderu gdzie jest Minecraft i uruchamiamy ./start.sh
+Po zakończeniu uruchamiania serwera klikamy CTRL+A+D  (czyli kolejno wciskamy klawisze ctrl a  d). To spowoduje wyjście z sesji, którą utworzyliśmy i która będzie działać w tle cały czas.
+Możemy zamknąć Putty. Zamknięcie Putty nie spowoduje wyłączenia serwera.
+Jak wejść do konsoli Minecraft
+
+Uruchamiamy Putty i się logujemy.
+Wykonujemy screen -r [nazwa sesji], dla naszego przykładu screen -r minecraft i wchodzimy do konsoli MINECRAFT. Jeżeli mamy kilka sesji możemy sprawdzić je wpisując screen -ls. Jeżeli jest ich więcej to widzimy przy której jest nazwa „minecraft” i wchodzimy screen -r [nazwa sesji] czyli screen -r minecraft  Możemy też podać jej numer PID czyli screen -r  [PID]
+Sesje „zombie” możemy „zabić” poleceniem kill [PID].
+Jeżeli jesteśmy w konsoli to ponownie możemy z niej wyjść CTRL-A-D  i zamknąć Putty.
+Oczywiście zatrzymanie serwera wymaga uruchomienia Putty, wpisujemy (w naszym przykładzie) screen –r minecraft  i wchodzimy do konsoli… wpisujemy stop  i zatrzymujemy serwer, dalej wychodzimy z sesji CTRL-A-D, wpisujemy dalej init 0  i wyłączamy komputer.
+
 

@@ -5,6 +5,7 @@ tu klucz by rozwonzać Klucze ssh
 tu klucz by rozwonzać W putty po ip
 tu klucz by rozwonzać DNS Problem
 tu klucz by rozwonzać Zapchany dysk
+tu klucz by rozwonzać Klucz SSH w PuTTY
 
 poradnik -https://youtu.be/7lYqAVyqN8U?si=GW3_9iILOHbJ_yPU
 
@@ -19036,6 +19037,510 @@ Krzycz śmiało 💻🔥
 
 
 
+Klucz SSH w PuTTY
+
+Jasne — najprościej zrobisz to przez **PuTTYgen** (jest w pakiecie PuTTY). Poniżej masz krok po kroku dla Windows + serwer (np. Debian 12).
+
+## 1) Wygeneruj parę kluczy w PuTTYgen
+
+1. Otwórz **PuTTYgen**
+   (Start → wpisz *PuTTYgen*; albo w folderze PuTTY).
+2. W polu **Type of key to generate** wybierz:
+
+   * **ED25519** (najlepsza opcja, jeśli jest dostępna)
+   * ewentualnie **RSA** i ustaw **4096 bits** (gdyby ED25519 nie działał na jakimś starym serwerze)
+3. Kliknij **Generate** i poruszaj myszą po oknie, aż wygeneruje klucz.
+4. (Bardzo zalecane) Ustaw **Key passphrase** i powtórz w **Confirm passphrase**.
+5. Kliknij:
+
+   * **Save private key** → zapisz jako np. `id_ed25519.ppk`
+   * (opcjonalnie) **Save public key** → możesz zapisać też publiczny, ale nie musisz
+6. Zostaw otwarte okno PuTTYgen — zaraz skopiujemy publiczny klucz.
+
+## 2) Wgraj publiczny klucz na serwer (Debian/Ubuntu)
+
+Masz 2 wygodne sposoby:
+
+### Sposób A (najprostszy): wklejenie do `authorized_keys`
+
+1. W PuTTYgen zaznacz cały tekst z pola **Public key for pasting into OpenSSH authorized_keys file** i skopiuj.
+2. Zaloguj się na serwer hasłem (jeszcze bez klucza) i wykonaj:
+
+```bash
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+nano ~/.ssh/authorized_keys
+```
+
+3. Wklej tam skopiowany klucz **w jednej linii**, zapisz i wyjdź.
+4. Ustaw prawa:
+
+```bash
+chmod 600 ~/.ssh/authorized_keys
+```
+
+**Uwaga:** jeśli logujesz się jako root, to robisz to w `/root/.ssh/authorized_keys`. Jeśli jako zwykły użytkownik, to w jego katalogu domowym.
+
+### Sposób B: `ssh-copy-id` (jeśli masz Git Bash/WSL)
+
+Jeśli masz w Windows `ssh` (np. Git Bash / WSL), możesz:
+
+```bash
+ssh-copy-id -i ~/.ssh/id_ed25519.pub użytkownik@IP_SERWERA
+```
+
+Ale przy PuTTYgen zwykle najczęściej robi się Sposób A.
+
+## 3) Ustaw PuTTY, żeby używał klucza (to co masz na screenie)
+
+1. Otwórz **PuTTY**
+2. **Session**:
+
+   * Host Name: `użytkownik@IP` (albo samo IP i użytkownika później)
+   * Port: 22
+3. Wejdź: **Connection → SSH → Auth → Credentials**
+4. Kliknij **Browse…** przy **Private key file for authentication** i wskaż swój plik `.ppk` (np. `id_ed25519.ppk`)
+5. (Opcjonalnie) **Connection → Data → Auto-login username** wpisz nazwę użytkownika, żeby nie pytał.
+6. Wróć do **Session** → wpisz nazwę w **Saved Sessions** → **Save** (żeby nie ustawiać tego za każdym razem)
+7. Kliknij **Open** i loguj się kluczem (jeśli ustawiłaś passphrase, poprosi o hasło do klucza).
+
+## 4) Jeśli chcesz, żeby nie pytał o passphrase za każdym razem
+
+Użyj **Pageant** (agent PuTTY):
+
+1. Uruchom **Pageant**
+2. Dodaj do niego swój `.ppk`
+3. Wpiszesz passphrase raz, a PuTTY będzie korzystał z agenta.
+
+## 5) Najczęstsze problemy (i szybkie naprawy)
+
+Jeśli dostajesz „Server refused our key” albo wraca do hasła:
+
+* sprawdź uprawnienia na serwerze:
+
+  ```bash
+  chmod 700 ~/.ssh
+  chmod 600 ~/.ssh/authorized_keys
+  ```
+* upewnij się, że klucz jest w `authorized_keys` **tego użytkownika**, którym się logujesz
+* w `/etc/ssh/sshd_config` (na serwerze) powinno być:
+
+  * `PubkeyAuthentication yes`
+  * `AuthorizedKeysFile .ssh/authorized_keys`
+    Po zmianach:
+
+  ```bash
+  sudo systemctl restart ssh
+  ```
+
+Jeśli chcesz, napisz mi:
+
+* jakim użytkownikiem się logujesz (np. `root`, `agnieszka`, itp.)
+* i jaki system na serwerze (wiem, że często u Ciebie Debian 12)
+  to dopasuję dokładnie ścieżki i sprawdzimy ewentualne ustawienia `sshd_config`.
+
+Jeśli zaczniesz używać klucza SSH, **zmieni się tylko sposób uwierzytelniania** (logowania) – zamiast wpisywać hasło do konta na serwerze, PuTTY będzie „pokazywał” serwerowi Twój klucz prywatny i serwer go zaakceptuje, jeśli ma pasujący klucz publiczny.
+
+### Co to da (plusy)
+
+* **Wygodniej**: często logowanie jest szybsze (czasem bez wpisywania hasła do konta).
+* **Bezpieczniej** niż samo hasło (szczególnie gdy hasła bywają słabsze albo ktoś próbuje brute-force).
+* Możesz dodać **passphrase** do klucza — wtedy nawet jak ktoś ukradnie plik `.ppk`, bez passphrase i tak się nie zaloguje.
+
+### Czy to utrudni korzystanie z PuTTY?
+
+Najczęściej **nie**, a wręcz ułatwia. Jedyne „utrudnienie” może być takie:
+
+1. **Jeśli klucz ma passphrase**
+
+   * przy połączeniu PuTTY poprosi o hasło do klucza (passphrase), **zamiast** hasła do konta na serwerze.
+   * To nadal jest jedno hasło, tylko inne (do klucza).
+   * Możesz to uprościć używając **Pageant**: wpisujesz passphrase raz po uruchomieniu Windowsa, a potem PuTTY już nie pyta.
+
+2. **Jeśli wyłączysz logowanie hasłem na serwerze** (opcjonalne)
+
+   * wtedy **musisz mieć działający klucz**, bo hasłem nie wejdziesz.
+   * Dlatego najlepiej: najpierw ustaw klucz, przetestuj, dopiero potem ewentualnie wyłącz hasła.
+
+### Co się NIE zmienia
+
+* adres IP/host, port, działanie tuneli, sesje, komendy na serwerze – **to wszystko bez zmian**.
+* PuTTY dalej działa tak samo, tylko w tle do logowania używa klucza.
+
+### Najbezpieczniejszy sposób wdrożenia (żeby nic sobie nie zablokować)
+
+1. Dodaj klucz na serwer (authorized_keys).
+2. W PuTTY dodaj `.ppk` w **Auth → Credentials**.
+3. **Przetestuj logowanie w NOWEJ sesji**, a starą sesję zostaw nietkniętą.
+4. Dopiero jak działa, możesz zapisać ustawienia jako domyślne.
+
+### Praktyczna rada
+
+* **Z passphrase + Pageant** masz najlepszy kompromis: bezpieczeństwo i wygoda.
+* **Bez passphrase** jest wygodniej, ale jeśli ktoś zdobędzie plik `.ppk`, może wejść na serwer (więc wtedy ważne są dobre zabezpieczenia komputera).
+
+Jeśli chcesz, powiedz: logujesz się na serwer jako **root czy zwykły użytkownik**? I czy chcesz zostawić logowanie hasłem jako „awaryjne”, czy docelowo je wyłączyć. Wtedy podpowiem optymalne ustawienie.
+
+
+
+
+Na tym screenie **nie widać, żeby logowanie było kluczem** — bo masz linię:
+
+`root@192.168.0.200's password:`
+
+To oznacza, że PuTTY poprosiło o **hasło do konta root**, czyli poszło **password authentication**, a nie kluczem.
+
+## Jak poznać, że klucz działa?
+
+### 1) Najprostszy objaw w PuTTY
+
+* Jeśli klucz ma **passphrase**:
+
+  * pojawi się okienko/pytanie o **passphrase do klucza** (nie o hasło do konta)
+* Jeśli klucz **nie ma passphrase**:
+
+  * zaloguje Cię od razu (bez pytania o hasło)
+
+Jeżeli nadal pyta o:
+`root@IP's password:`
+to **nie używa klucza** (albo klucz nie został zaakceptowany i PuTTY spadło do hasła).
+
+## Jaki komunikat będzie się pojawiał przy logowaniu kluczem?
+
+To zależy od konfiguracji:
+
+### A) Klucz + passphrase (typowe i bezpieczne)
+
+Zobaczysz coś w stylu:
+
+* okienko/prompt o **“Passphrase for key …”**
+* albo w terminalu: `Enter passphrase for key "..."`
+
+Po wpisaniu passphrase zaloguje bez pytania o hasło konta.
+
+### B) Klucz bez passphrase
+
+* **nie zapyta o nic** i od razu wejdzie na serwer.
+
+### C) Klucz ustawiony, ale odrzucony → fallback na hasło
+
+* najpierw próbuje kluczem „w tle”
+* po chwili pojawia się: `root@IP's password:`
+  Czyli dokładnie jak u Ciebie.
+
+## Jak to sprawdzić na 100% (bez zgadywania)
+
+### Opcja 1: Włącz log PuTTY
+
+1. PuTTY → **Session → Logging**
+2. Zaznacz **“All session output”** albo **“SSH packets”** (wystarczy All session output)
+3. Zapisz log do pliku, połącz się jeszcze raz.
+   W logu zobaczysz jednoznacznie, czy była oferta klucza i czy serwer ją przyjął.
+
+### Opcja 2: Sprawdź na serwerze w logach SSH (Debian)
+
+Po zalogowaniu (nawet hasłem) wpisz:
+
+```bash
+grep -E "Accepted|Failed|publickey|password" /var/log/auth.log | tail -n 50
+```
+
+Jeśli klucz działa, zobaczysz coś w stylu:
+
+* `Accepted publickey for root ...`
+
+Jeśli było hasło:
+
+* `Accepted password for root ...`
+
+To jest najbardziej jednoznaczne.
+
+## Co zrobić, żeby zaczęło logować kluczem?
+
+Najczęstsze powody, że nadal prosi o hasło:
+
+1. **PuTTY nie ma wskazanego pliku .ppk** dla tej sesji
+   (Connection → SSH → Auth → Credentials → Private key file)
+
+2. **Publiczny klucz nie jest w `/root/.ssh/authorized_keys`**
+   (bo logujesz się jako `root`)
+
+3. Złe prawa dostępu na serwerze:
+
+```bash
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/authorized_keys
+```
+
+4. Na serwerze wyłączone PubKey:
+
+* w `/etc/ssh/sshd_config` musi być `PubkeyAuthentication yes`
+  i restart:
+
+```bash
+systemctl restart ssh
+```
+
+---
+
+Jeśli chcesz, wklej mi wynik tego polecenia z serwera (to nic wrażliwego nie pokazuje poza metodą logowania):
+
+```bash
+grep -E "Accepted (publickey|password)" /var/log/auth.log | tail -n 10
+```
+
+I od razu powiem Ci, czy w ogóle próbował kluczem i jaką metodą wszedłeś.
+
+
+Nie trzeba usuwać — **w `authorized_keys` może być wiele kluczy**. To normalne.
+
+### Kiedy NIE usuwać (najczęściej)
+
+* Jeśli **nie wiesz**, skąd był ten klucz.
+* Jeśli korzystasz z kilku komputerów / telefonów / automatyzacji (np. inny laptop, WinSCP, skrypty) – każdy może mieć swój klucz.
+* Jeśli to serwer/VM i coś (np. wcześniejsza konfiguracja) już tam dodało klucz.
+
+Usunięcie „starego” klucza może spowodować, że **stracisz możliwość logowania** z urządzenia, które go używało.
+
+### Kiedy warto usunąć
+
+* Gdy **na pewno** wiesz, że to klucz nie Twój / niepotrzebny / kompromitujący.
+* Gdy porządkujesz dostęp (np. chcesz, żeby tylko Twoje aktualne urządzenia miały dostęp).
+
+### Zasada bezpieczeństwa (ważne)
+
+Najbezpieczniej:
+
+1. **Zostaw oba klucze**.
+2. Sprawdź, że logowanie Twoim kluczem działa.
+3. Dopiero potem ewentualnie usuń niepotrzebny — ale **zrób kopię** pliku przed zmianą.
+
+### Jak to zrobić praktycznie (root)
+
+```bash
+cp /root/.ssh/authorized_keys /root/.ssh/authorized_keys.bak
+nano /root/.ssh/authorized_keys
+```
+
+### Jak rozpoznać „który jest który”
+
+Każda linia to zwykle jeden klucz, zaczyna się np. od:
+
+* `ssh-ed25519 AAAA...`
+* albo `ssh-rsa AAAA...`
+
+Możesz też dopisać komentarz na końcu linii (ułatwia życie), np.:
+
+```
+ssh-ed25519 AAAA... agnieszka-laptop
+ssh-ed25519 AAAA... agnieszka-pc
+```
+
+Komentarz nie psuje działania.
+
+### Extra: szybkie „co to za klucze” na serwerze
+
+Pokaże odciski (fingerprinty), bez ujawniania kluczy:
+
+```bash
+ssh-keygen -l -f /root/.ssh/authorized_keys
+```
+
+Jeśli chcesz, wklej (zamazać środek) początki dwóch linii, np. „ssh-ed25519 AAAA…”, a powiem Ci, czy ten wcześniejszy wygląda jak typowy klucz użytkownika czy np. coś generowanego automatycznie.
+
+
+
+
+Wynik jest OK — tylko próbowałaś zajrzeć do pliku, którego na Twoim Debianie **nie ma**.
+
+Na Debianie log SSH jest zwykle w:
+
+* **`/var/log/auth.log`** (Debian/Ubuntu)
+  a **`/var/log/secure`** to częściej CentOS/RHEL.
+
+Dlatego masz: `Nie ma takiego pliku`.
+
+## Zrób tak (Debian)
+
+Wklej na serwerze:
+
+```bash
+grep -E "Accepted|Failed|publickey|password" /var/log/auth.log | tail -n 50
+```
+
+Jeśli zalogowałaś się hasłem, zobaczysz linię typu:
+
+* `Accepted password for root from ...`
+
+Jeśli kluczem:
+
+* `Accepted publickey for root from ...`
+
+## Jeśli nie ma też /var/log/auth.log
+
+Czasem (np. minimalna instalacja / inne logowanie) logi idą do **journald**. Wtedy:
+
+```bash
+journalctl -u ssh --no-pager | tail -n 80
+```
+
+albo (na niektórych systemach usługa nazywa się `sshd`):
+
+```bash
+journalctl -u sshd --no-pager | tail -n 80
+```
+
+## Bonus: sprawdź nazwę usługi i czy SSH działa jako `ssh` czy `sshd`
+
+```bash
+systemctl status ssh --no-pager
+```
+
+Jeśli powie, że nie ma — wtedy:
+
+```bash
+systemctl status sshd --no-pager
+```
+
+Jak wkleisz mi wynik z `grep` (albo z `journalctl` jeśli brak `auth.log`), powiem Ci jednoznacznie: **hasło czy klucz**.
+
+
+
+
+
+
+Skoro na pewno weszłaś hasłem, to znaczy, że PuTTY **albo w ogóle nie próbuje kluczem**, albo **próbuje, ale serwer go odrzuca** i PuTTY „spada” do hasła. Poniżej masz najczęstsze przyczyny + konkretne sprawdzenia (bez zgadywania).
+
+## 1) PuTTY wcale nie używa klucza (najczęstsze)
+
+**Objaw:** od razu pyta `root@IP's password:`.
+
+### Sprawdź w PuTTY „Event Log”
+
+W oknie PuTTY: **PPM na pasek tytułu → Event Log**.
+Jeśli PuTTY próbuje kluczem, zobaczysz wpisy typu:
+
+* *“Offering public key …”*
+* *“Server accepted key …”* / *“Server refused our key …”*
+
+Jeśli **nie ma żadnego “Offering public key”**, to znaczy, że:
+
+* nie wskazałaś `.ppk` w tej konkretnej sesji, **albo**
+* łączysz się inną zapisaną sesją niż ta, którą edytowałaś.
+
+### Jak naprawić
+
+PuTTY → **Connection → SSH → Auth → Credentials** → *Private key file for authentication* → wskaż `.ppk` → wróć do **Session → Save**.
+
+*(Bardzo częste: ustawione, ale nie zapisane w tej sesji.)*
+
+---
+
+## 2) Klucz jest w złym miejscu (logujesz się jako root)
+
+Skoro logujesz się jako **root**, to klucz musi być w:
+`/root/.ssh/authorized_keys`
+
+U Ciebie edytowałaś `~/.ssh/authorized_keys` jako root, więc to **powinno** być `/root/...` — OK — ale sprawdźmy pewniki:
+
+```bash
+ls -ld /root /root/.ssh /root/.ssh/authorized_keys
+```
+
+Powinno być mniej więcej:
+
+* `/root` (właściciel root)
+* `/root/.ssh` uprawnienia **700**
+* `/root/.ssh/authorized_keys` uprawnienia **600**
+  i wszystko właściciel **root:root**
+
+Naprawa (bezpiecznie):
+
+```bash
+mkdir -p /root/.ssh
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/authorized_keys
+chown -R root:root /root/.ssh
+```
+
+---
+
+## 3) Wkleiłaś nie ten format klucza albo wkleił się w kilku liniach
+
+W `authorized_keys` **każdy klucz musi być w 1 linii** i zwykle zaczyna się od:
+`ssh-ed25519 ...` albo `ssh-rsa ...`
+
+Sprawdź, czy klucz nie jest „złamany” na kilka linii:
+
+```bash
+nl -ba /root/.ssh/authorized_keys
+```
+
+Jeśli widzisz, że jedna pozycja klucza ciągnie się na kilka numerowanych linii — to serwer go odrzuci.
+
+**Ważne:** wklejać należy z PuTTYgen pole:
+**“Public key for pasting into OpenSSH authorized_keys file”**
+(nie inny tekst, nie sam fingerprint).
+
+---
+
+## 4) Wskazujesz w PuTTY inny plik `.ppk` niż klucz wklejony na serwer
+
+To też klasyk: na serwerze jest publiczny od A, a PuTTY używa prywatnego od B.
+
+Jak to potwierdzić bez zdradzania kluczy:
+Na serwerze pokaż fingerprinty kluczy z `authorized_keys`:
+
+```bash
+ssh-keygen -l -f /root/.ssh/authorized_keys
+```
+
+W PuTTYgen wczytaj swój `.ppk` i zobacz fingerprint (na dole okna) — powinien się zgadzać z jednym z tych z serwera.
+
+---
+
+## 5) Serwer ma wyłączone logowanie kluczem (PubkeyAuthentication)
+
+Sprawdź na serwerze, co naprawdę obowiązuje (to uwzględnia też „Match …”):
+
+```bash
+sshd -T | egrep 'pubkeyauthentication|authorizedkeysfile|permitrootlogin|passwordauthentication|authenticationmethods'
+```
+
+Kluczowe:
+
+* `pubkeyauthentication yes`
+* `authorizedkeysfile .ssh/authorized_keys ...` (musi wskazywać to, czego używasz)
+* `permitrootlogin` nie może blokować całkiem roota (u Ciebie hasło działa, więc raczej nie, ale sprawdzamy)
+
+Po zmianach w `/etc/ssh/sshd_config`:
+
+```bash
+systemctl restart ssh
+```
+
+---
+
+## 6) (Rzadziej) klucz jest „ograniczony” w authorized_keys
+
+Czasem linia klucza ma na początku ograniczenia typu `from="..."`, `command="..."` itp.
+Wtedy serwer może odrzucać logowanie z innego IP/trybu.
+
+Zobacz początek tej linii w `authorized_keys` — jeśli przed `ssh-ed25519` coś stoi, to daj znać.
+
+---
+
+# Najszybsza diagnoza w 30 sekund
+
+1. Otwórz **Event Log** w PuTTY i sprawdź, czy w ogóle jest *“Offering public key”*.
+2. Na serwerze wklej:
+
+```bash
+ls -ld /root/.ssh /root/.ssh/authorized_keys
+nl -ba /root/.ssh/authorized_keys | head
+```
+
+Jeśli wkleisz mi **treść z Event Log** (kilka linijek) + wynik tych dwóch komend, powiem Ci dokładnie, który punkt jest winny i co zmienić jednym ruchem.
 
 
 
@@ -19046,6 +19551,54 @@ Krzycz śmiało 💻🔥
 
 
 
+Dzięki — i to jest bardzo ważna wskazówka: w tym fragmencie **nie ma jeszcze w ogóle etapu uwierzytelniania** (autoryzacji). Widać tylko negocjację połączenia (wersja SSH, algorytmy, wymiana kluczy hosta).
+
+Gdy PuTTY faktycznie próbuje logowania **kluczem**, w *Event Log* prawie zawsze pojawiają się linie typu:
+
+* `Attempting public key authentication`
+* `Offering public key ...`
+* `Server accepted key` **albo** `Server refused our key`
+
+Skoro u Ciebie potem wyskoczyło pytanie o hasło, a w logu nie widać żadnego `Offering public key`, to w praktyce oznacza jedno z dwóch:
+
+## Najczęstsze: PuTTY nie ma przypiętego .ppk do tej sesji
+
+Czyli PuTTY **w ogóle nie próbowało klucza**, tylko od razu poszło hasłem.
+
+### Co sprawdź (1 minuta)
+
+1. PuTTY → **Connection → SSH → Auth → Credentials**
+2. Pole **Private key file for authentication** musi wskazywać Twój plik `.ppk`
+3. Wróć do **Session** → wybierz swój zapisany profil → **Save**
+4. Zamknij PuTTY i połącz się jeszcze raz z tego zapisanego profilu
+
+**Bardzo częsty błąd:** ustawiasz `.ppk`, łączysz się, ale **nie zapisujesz** sesji / łączysz się inną sesją niż edytowałaś.
+
+## Drugi wariant: Event Log ucięty przed uwierzytelnianiem
+
+Czasem log pokazuje tylko początek, a linie o kluczu są niżej.
+
+### Jak to sprawdzić bez zgadywania
+
+Zrób tak:
+
+* Połącz się jeszcze raz
+* Jak pojawi się pytanie o hasło / po zalogowaniu, otwórz **Event Log**
+* Kliknij **Copy** i wklej tu całość (albo chociaż końcówkę)
+
+Jeśli będzie tam:
+
+* `Server refused our key` → to znaczy, że PuTTY klucz wysyła, ale serwer go odrzuca (wtedy szukamy problemu po stronie `authorized_keys`, uprawnień, formatu klucza).
+* brak jakiejkolwiek wzmianki o publickey → 100% problem w konfiguracji PuTTY (nie wskazany `.ppk`/nie ta sesja/Pageant).
+
+## Szybki test “na oko” w PuTTY
+
+Jeśli klucz ma **passphrase**, a PuTTY jest poprawnie ustawione na `.ppk`, to przy logowaniu **powinno** zapytać o **passphrase klucza**, a nie:
+`root@IP's password:`
+
+---
+
+Jeśli wkleisz mi pełny Event Log po chwili, gdy już wyskoczyło `password:` (albo po zalogowaniu), powiem Ci dokładnie, czy PuTTY w ogóle próbowało klucza, czy serwer go odrzucił — i co konkretnie poprawić.
 
 
 
@@ -19053,9 +19606,192 @@ Krzycz śmiało 💻🔥
 
 
 
+Super — ten log już mówi **dokładnie, co się dzieje**:
+
+> **“Pageant is running. Requesting keys.”**
+
+To znaczy, że PuTTY **nie korzysta z pliku .ppk ustawionego w sesji**, tylko próbuje wziąć klucze z **Pageant** (agenta PuTTY). I prawie na pewno Pageant **nie ma wczytanego żadnego klucza** (albo ma inny), więc PuTTY nie ma czego “zaoferować” serwerowi i spada do hasła.
+
+### Co zrobić, żeby klucz zaczął działać
+
+#### Opcja A (najwygodniej): doładuj klucz do Pageant
+
+1. Znajdź ikonę **Pageant** w zasobniku (koło zegara).
+2. Kliknij ją PPM → **Add Key**
+3. Wskaż swój plik **`.ppk`**
+4. Jeśli klucz ma passphrase — wpisz go.
+5. Spróbuj zalogować się w PuTTY jeszcze raz.
+
+Wtedy w *Event Log* powinno się pojawić coś w stylu:
+
+* `Offering public key ...`
+* `Server accepted key ...` (jeśli wszystko jest OK)
+
+#### Opcja B (prościej do ogarnięcia, bez Pageant): wskaż .ppk w samej sesji PuTTY
+
+1. PuTTY → **Connection → SSH → Auth → Credentials**
+2. W **Private key file for authentication** wybierz swój `.ppk`
+3. Wróć do **Session** → **Save**
+4. (Jeśli nadal PuTTY upiera się używać Pageant) możesz po prostu **zamknąć Pageant** i spróbować ponownie.
+
+### Dlaczego PuTTY tak robi?
+
+Jeśli **Pageant jest uruchomiony**, PuTTY domyślnie próbuje brać klucze “z agenta”. To nie jest błąd — po prostu agent nie ma wczytanego właściwego klucza.
+
+### Jaki komunikat zobaczysz, gdy zadziała klucz?
+
+* Jeśli klucz ma **passphrase**: pojawi się pytanie o **passphrase klucza**.
+* Jeśli klucz **bez passphrase**: zaloguje bez pytania.
+* Nie powinno już pytać: `root@IP's password:` (chyba że serwer odrzuci klucz i zrobi fallback).
+
+---
+
+Jeśli po wczytaniu klucza do Pageant nadal będzie hasło, wklej jeszcze raz końcówkę *Event Log* — wtedy zobaczymy czy jest “Server refused our key” (i będziemy poprawiać `authorized
+
+
+
+Najprościej: w PuTTY da się to sprawdzić w **konfiguracji sesji** (czyli czy do tej sesji jest przypięty plik `.ppk`). Zrób tak:
+
+## 1) Sprawdź w PuTTY, czy sesja ma ustawiony plik .ppk
+
+1. Otwórz **PuTTY** (nie klikaj jeszcze *Open*).
+
+2. Po lewej w drzewku wejdź:
+   **Connection → SSH → Auth → Credentials**
+
+3. Popatrz na pole: **Private key file for authentication**
+
+   * jeśli jest **puste** → sesja NIE ma przypiętego `.ppk`
+   * jeśli jest wpisana ścieżka do pliku (np. `C:\Users\...\id_ed25519.ppk`) → `.ppk` jest przypięty
+
+4. Jeśli chcesz przypiąć:
+
+   * kliknij **Browse…** → wybierz `.ppk`
+
+## 2) Upewnij się, że zapisujesz to do właściwej sesji
+
+Jeśli używasz zapisanych profili:
+
+1. Wejdź w **Session** (na samej górze po lewej)
+2. Wybierz nazwę w **Saved Sessions** → kliknij **Load**
+3. Dopiero potem ustaw `.ppk` (pkt 1)
+4. Wróć do **Session** → kliknij **Save**
+
+*(To ważne: jak nie zrobisz Save, po następnym uruchomieniu znowu będzie puste.)*
+
+## 3) Szybki test po połączeniu (czy PuTTY faktycznie używa klucza)
+
+Po połączeniu: **PPM na pasek tytułu okna PuTTY → Event Log**
+Szukaj linijek:
+
+* `Offering public key ...` (PuTTY ma klucz i go oferuje)
+* `Server accepted key` / `Server refused our key`
+
+Jeśli widzisz tylko:
+
+* `Pageant is running. Requesting keys.`
+  to PuTTY bierze klucze z **Pageant** (a nie z pola `.ppk`), więc wtedy:
+* albo doładuj `.ppk` do Pageant,
+* albo zamknij Pageant i wtedy PuTTY użyje klucza z “Private key file…”.
+
+Jeśli chcesz, wrzuć screen z **Connection → SSH → Auth → Credentials** (jak ten pierwszy), to powiem Ci od razu, czy masz dobrze wskazany `.ppk`.
+
+
+
+
+Super 🙂 Jeśli po ustawieniu `.ppk` (albo doładowaniu go do Pageant) spróbujesz połączyć się jeszcze raz, to w **Event Log** powinno pojawić się coś w stylu:
+
+* `Offering public key ...`
+* potem albo `Server accepted key` (sukces), albo `Server refused our key` (wtedy poprawiamy po stronie serwera).
+
+Gdyby dalej pytało o `root@IP's password:`, podeślij wtedy jeden screen z:
+
+1. **Connection → SSH → Auth → Credentials** (czy pole z `.ppk` jest wypełnione)
+   albo
+2. końcówkę **Event Log** po próbie logowania
+
+i od
+
+
+
+Nie. To, czy będzie pytać o **root**, zależy od tego, **jaką nazwę użytkownika wysyłasz przy logowaniu**.
+
+### Dlaczego teraz pyta o root?
+
+Bo łączysz się jako użytkownik **root** (albo wpisujesz `root@IP`, albo masz ustawione domyślnie root w PuTTY). Przy kluczu, jeśli wszystko działa, to **nie powinno już pytać o hasło roota**, tylko ewentualnie o **passphrase do klucza**.
+
+### Jak ustawić, żeby nie „pytało o root” / nie brało roota
+
+Masz 2 sposoby:
+
+#### 1) Wpisuj w Host Name użytkownika
+
+W **Session → Host Name** wpisz:
+
+* `twoj_uzytkownik@192.168.0.200`
+  (np. `agnieszka@192.168.0.200`)
+
+#### 2) Ustaw Auto-login username
+
+PuTTY → **Connection → Data → Auto-login username**
+Wpisz tam nazwę użytkownika (np. `agnieszka`).
+
+Potem **Session → Save**, żeby zapamiętać.
+
+### Ważne (bezpieczeństwo)
+
+Warto docelowo logować się **zwykłym użytkownikiem**, a do admina używać:
+
+```bash
+sudo -i
+```
+
+Logowanie bezpośrednio na root bywa celowo ograniczane na wielu serwerach.
+
+Jeśli chcesz, napisz jakiego użytkownika chcesz używać (czy masz już zwykłe konto na serwerze), to podpowiem najbezpieczniejszą konfigurację.
 
 
 
 
 
+Yep — **działa i już nie będzie pytać o hasło roota** 👍
+
+Teraz scenariusze są takie:
+
+### 🔐 Jeśli klucz ma *passphrase*
+
+PuTTY zapyta:
+
+> *Enter passphrase for key…*
+
+(to hasło do klucza, **nie** do roota)
+
+### ⚡ Jeśli klucz nie ma passphrase
+
+Zaloguje Cię **od razu**, bez żadnych pytań.
+
+---
+
+### A co z „root” jako użytkownikiem?
+
+Jeśli w PuTTY łączysz się jako `root`, to:
+
+* dalej **będzie logować jako root**
+* ale **bez hasła konta**, tylko kluczem
+
+Jeśli chcesz, możesz łatwo zmienić użytkownika na zwykłego (bezpieczniej):
+
+**PuTTY → Connection → Data → Auto-login username**
+wpisz np. `mikolaj` (czy jak się nazywa konto)
+
+albo w Host Name:
+
+```
+uzytkownik@192.168.0.200
+```
+
+---
+
+Jak na pierwszy raz z kluczami SSH – pełen sukces 😎
+Serwer teraz ma „VIP wejście” tylko dla Twojego klucza. Jeśli chcesz, mogę Ci też pokazać jak wyłączyć logowanie hasłem całkiem (extra bezpieczeństwo).
 

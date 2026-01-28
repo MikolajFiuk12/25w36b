@@ -6,6 +6,8 @@ tu klucz by rozwonzać W putty po ip
 tu klucz by rozwonzać DNS Problem
 tu klucz by rozwonzać Zapchany dysk
 tu klucz by rozwonzać Klucz SSH w PuTTY
+tu klucz by rozwonzać sh122333
+tu klucz by rozwonzać Skrypt-BACKUPS!
 
 poradnik -https://youtu.be/7lYqAVyqN8U?si=GW3_9iILOHbJ_yPU
 
@@ -19794,4 +19796,1164 @@ uzytkownik@192.168.0.200
 
 Jak na pierwszy raz z kluczami SSH – pełen sukces 😎
 Serwer teraz ma „VIP wejście” tylko dla Twojego klucza. Jeśli chcesz, mogę Ci też pokazać jak wyłączyć logowanie hasłem całkiem (extra bezpieczeństwo).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sh122333
+==========================
+apt install -y dos2unix
+dos2unix backup.sh
+chmod +x backup.sh
+./backup.sh
+================================
+
+
+Spokojnie, to klasyk 😄 Ten błąd oznacza po prostu:
+
+> **w tym katalogu (`/`) nie ma pliku `backup.sh`**
+
+Czyli nie jesteś w tym samym miejscu co skrypt.
+
+Zrób tak krok po kroku:
+
+---
+
+### 1️⃣ Sprawdź gdzie jesteś
+
+```bash
+pwd
+```
+
+Pewnie pokaże:
+
+```
+/
+```
+
+---
+
+### 2️⃣ Znajdź gdzie jest skrypt
+
+Wpisz:
+
+```bash
+find / -name backup.sh 2>/dev/null
+```
+
+Pokaże np:
+
+```
+/root/backup.sh
+```
+
+albo
+
+```
+/home/mikolaj/backup.sh
+```
+
+---
+
+### 3️⃣ Przejdź do tego katalogu
+
+Przykład jeśli jest w `/root`:
+
+```bash
+cd /root
+```
+
+Sprawdź:
+
+```bash
+ls
+```
+
+Czy widać `backup.sh`.
+
+---
+
+### 4️⃣ Nadaj prawa do uruchomienia (jeśli trzeba)
+
+```bash
+chmod +x backup.sh
+```
+
+---
+
+### 5️⃣ Uruchom
+
+```bash
+./backup.sh
+```
+
+---
+
+Jeśli chcesz, możesz wkleić wynik:
+
+```
+pwd
+ls
+```
+
+albo wynik `find`, a powiem Ci dokładnie co wpisać 👍
+Linux czasem udaje trudniejszego niż jest naprawdę 😄
+
+
+Dobra, już widać gdzie jest problem 👍
+
+Twój skrypt jest tutaj:
+
+```
+/home/mikolaj/backup.sh
+```
+
+A Ty jesteś w:
+
+```
+/
+```
+
+Dlatego system go „nie widzi”.
+
+Zrób **dokładnie to**:
+
+---
+
+### 1️⃣ Przejdź do katalogu ze skryptem
+
+```bash
+cd /home/mikolaj
+```
+
+---
+
+### 2️⃣ Sprawdź czy jest
+
+```bash
+ls
+```
+
+Musi być `backup.sh`
+
+---
+
+### 3️⃣ Nadaj prawa (raz)
+
+```bash
+chmod +x backup.sh
+```
+
+---
+
+### 4️⃣ Uruchom
+
+```bash
+./backup.sh
+```
+
+---
+
+### Alternatywa (bez przechodzenia do katalogu)
+
+Możesz też tak:
+
+```bash
+bash /home/mikolaj/backup.sh
+```
+
+albo:
+
+```bash
+/home/mikolaj/backup.sh
+```
+
+---
+
+Jeśli dalej nie działa, wklej **dokładny komunikat błędu**, który wyskoczy po uruchomieniu.
+
+Ogarniesz to, to 100% kwestia ścieżki 💪😄
+
+Jasne — bycie **rootem** niczego tu nie psuje 👍
+Problem nadal jest tylko jeden: **skrypt nie jest w `/` ani w `/root`, tylko w `/home/mikolaj`**.
+
+Jako root możesz go normalnie uruchomić, tylko musisz podać **poprawną ścieżkę**.
+
+Masz 2 najprostsze opcje:
+
+---
+
+## ✅ Opcja 1 – uruchom bez przechodzenia do katalogu
+
+Wpisz dokładnie:
+
+```bash
+bash /home/mikolaj/backup.sh
+```
+
+albo:
+
+```bash
+/home/mikolaj/backup.sh
+```
+
+---
+
+## ✅ Opcja 2 – przejdź do katalogu
+
+```bash
+cd /home/mikolaj
+chmod +x backup.sh
+./backup.sh
+```
+
+---
+
+## Jeśli dalej nie działa
+
+Sprawdź:
+
+```bash
+ls -l /home/mikolaj/backup.sh
+```
+
+I wklej wynik.
+
+---
+
+💡 Mała ciekawostka:
+Linux **zawsze** uruchamia pliki tylko z bieżącego katalogu (`./`) albo z pełnej ścieżki. Root ma większe uprawnienia, ale nie „teleportuje” plików 😄
+
+Jak pokażesz komunikat błędu, rozwiążemy to do końca w minutę 💪
+Okej, to teraz mamy jasność: **ten plik jednak NIE jest w `/home/mikolaj`** 👍
+Czyli wcześniejsza ścieżka była błędna albo plik został przeniesiony/usunięty.
+
+Zróbmy to na 100% pewnie.
+
+---
+
+## 🔍 Krok 1 – znajdźmy skrypt w całym systemie
+
+Jako root wpisz:
+
+```bash
+find / -type f -name "backup.sh" 2>/dev/null
+```
+
+Poczekaj aż skończy (może chwilę trwać).
+
+---
+
+## 🔍 Krok 2 – jeśli nic nie znajdzie
+
+To znaczy że:
+
+* skrypt ma inną nazwę (np. `backup.sh.txt`)
+* albo jest w innym katalogu
+* albo został skasowany
+
+Wtedy sprawdź:
+
+```bash
+find / -type f -iname "*backup*" 2>/dev/null
+```
+
+---
+
+## ⚡ Gdy znajdziesz ścieżkę
+
+Np. pokaże:
+
+```
+/root/scripts/backup.sh
+```
+
+Wtedy uruchamiasz:
+
+```bash
+bash /root/scripts/backup.sh
+```
+
+---
+
+## 🧠 Szybka diagnoza
+
+Komunikat:
+
+> Nie ma takiego pliku ani katalogu
+
+= **plik pod tą ścieżką nie istnieje**
+
+Nie problem z rootem, nie z uprawnieniami — tylko lokalizacja.
+
+---
+
+Jeśli chcesz, wklej **dokładny wynik** komendy `find`, a powiem Ci dokładnie co wpisać dalej 👌
+Zaraz go namierzymy 🕵️‍♂️💻
+
+Super, wkleiłeś pełny wynik – to dużo wyjaśnia 👍
+
+**W systemie NIE MA pliku `backup.sh`.**
+Dlatego każda próba z tą nazwą kończy się błędem.
+
+Ale masz **inne skrypty backupu**:
+
+Najważniejsze z listy:
+
+```
+/backup_myserver.sh
+/backup_26_1.sh
+/backups.sh
+```
+
+---
+
+## ✅ Spróbuj najpierw ten (najbardziej logiczny):
+
+```bash
+bash /backup_myserver.sh
+```
+
+Jeśli nie zadziała:
+
+```bash
+bash /backup_26_1.sh
+```
+
+albo:
+
+```bash
+bash /backups.sh
+```
+
+---
+
+## 🔧 Jeśli chcesz je uruchamiać jako `./`
+
+Nadaj prawa:
+
+```bash
+chmod +x /backup_myserver.sh
+chmod +x /backup_26_1.sh
+chmod +x /backups.sh
+```
+
+Potem:
+
+```bash
+/backup_myserver.sh
+```
+
+---
+
+## 🧠 Co się stało?
+
+Prawdopodobnie:
+
+* skrypt nigdy nie nazywał się `backup.sh`
+* albo został usunięty / zmieniony
+* albo pomyliła się nazwa
+
+Linux jest **100% dokładny co do nazw**.
+
+---
+
+Jeśli chcesz, możesz też sprawdzić **co jest w środku** skryptu:
+
+```bash
+nano /backup_myserver.sh
+```
+
+albo:
+
+```bash
+head -20 /backup_myserver.sh
+```
+
+Jak powiesz, który z tych skryptów jest „tym właściwym”, mogę pomóc go poprawić albo ustawić pod crona 😎💾
+Okej, ten komunikat **„nie znaleziono wymaganego pliku”** jest bardzo charakterystyczny – to prawie na pewno znaczy, że:
+
+👉 **skrypt się uruchamia, ale w środku próbuje użyć pliku / programu, którego nie ma**
+
+Spokojnie, to do naprawy 💪
+
+---
+
+## 🔍 Krok 1 – zobacz dokładny błąd
+
+Uruchom tak:
+
+```bash
+bash -x /backup_myserver.sh
+```
+
+To pokaże linijka po linijce, **na czym dokładnie się wywala**.
+
+---
+
+## 🔍 Krok 2 – sprawdź zawartość skryptu
+
+```bash
+nano /backup_myserver.sh
+```
+
+albo szybciej:
+
+```bash
+head -50 /backup_myserver.sh
+```
+
+---
+
+## Najczęstsze przyczyny tego błędu
+
+1️⃣ Skrypt używa np.:
+
+```bash
+cd /home/mikolaj/server
+```
+
+a katalog nie istnieje
+
+2️⃣ Próbuje uruchomić:
+
+```bash
+./server.jar
+```
+
+a pliku nie ma
+
+3️⃣ Używa programu którego nie masz:
+
+* `zip`
+* `tar`
+* `screen`
+* `rsync`
+* `mysqldump`
+
+---
+
+## ⚡ Szybki test: sprawdź czy to bash
+
+```bash
+file /backup_myserver.sh
+```
+
+Powinno być:
+
+> Bourne-Again shell script
+
+---
+
+## 🧰 Jeśli chcesz – wklej:
+
+* wynik: `bash -x /backup_myserver.sh`
+* albo treść skryptu
+
+i ja Ci dokładnie powiem:
+
+✔ czego brakuje
+✔ jak to zainstalować
+✔ albo jak poprawić ścieżki
+
+To już ostatnia prosta 😎🛠️
+Aaa, okej — czyli **plik nazywa się po prostu `backup` (bez `.sh`)** 👍
+I to się zgadza, bo w wynikach było:
+
+```
+/backup
+```
+
+To jest Twój skrypt.
+
+Zrób tak:
+
+---
+
+## ✅ 1. Sprawdź co to za plik
+
+```bash
+file /backup
+```
+
+Powinno pokazać coś w stylu: `shell script`.
+
+---
+
+## ✅ 2. Nadaj prawa do uruchomienia (na wszelki wypadek)
+
+```bash
+chmod +x /backup
+```
+
+---
+
+## ✅ 3. Uruchom
+
+Jednym z tych dwóch sposobów:
+
+```bash
+/backup
+```
+
+albo:
+
+```bash
+bash /backup
+```
+
+---
+
+## ❗ Jeśli znowu będzie „nie znaleziono wymaganego pliku”
+
+To znaczy, że **wewnątrz skryptu brakuje jakiegoś pliku/programu**.
+
+Wtedy zrób:
+
+```bash
+bash -x /backup
+```
+
+I wklej **pierwsze linijki błędu**, np. 10–20 ostatnich linii.
+
+---
+
+💡 Mała ściąga:
+
+* `backup.sh` ❌ nie istnieje
+* `/backup` ✅ to jest Twój skrypt
+* root może go normalnie uruchomić
+
+Zaraz go doprowadzimy do działania 😄💪
+Spokojnie 😅 to **nie jest** problem z uprawnieniami ani z rootem.
+Ten konkretny błąd:
+
+> nie można uruchomić: nie znaleziono wymaganego pliku
+
+najczęściej oznacza **zepsutą pierwszą linię skryptu (shebang)** albo plik w formacie Windows (CRLF).
+
+Zróbmy szybkie 3 kroki i to naprawimy.
+
+---
+
+## 1️⃣ Sprawdź pierwszą linię skryptu
+
+```bash
+head -1 test.sh
+```
+
+Powinno być:
+
+```
+#!/bin/bash
+```
+
+albo
+
+```
+#!/usr/bin/env bash
+```
+
+Jeśli widzisz coś innego (albo dziwne znaki) → to jest przyczyna.
+
+---
+
+## 2️⃣ Sprawdź typ pliku
+
+```bash
+file test.sh
+```
+
+Jeśli zobaczysz coś w stylu:
+
+```
+with CRLF line terminators
+```
+
+to znaczy, że plik jest w formacie Windows i Linux go źle uruchamia.
+
+---
+
+## 3️⃣ Napraw (najczęściej to wystarczy)
+
+### Opcja A – najszybsza
+
+Uruchom przez bash:
+
+```bash
+bash test.sh
+```
+
+Jeśli to zadziała → problem = format pliku.
+
+---
+
+### Opcja B – napraw na stałe (polecane)
+
+Zainstaluj narzędzie:
+
+```bash
+apt install dos2unix
+```
+
+Potem:
+
+```bash
+dos2unix test.sh
+chmod +x test.sh
+```
+
+I uruchom:
+
+```bash
+./test.sh
+```
+
+---
+
+## 99% przypadków przyczyna to:
+
+* skrypt pobrany z Windowsa
+* złe `#!/bin/bash`
+* albo `#!/bin/bash^M` (niewidoczne)
+
+---
+
+Jeśli chcesz, wklej wynik:
+
+```
+head -1 test.sh
+file test.sh
+```
+
+i powiem dokładnie co tam jest zepsute 👍
+
+Dasz radę, to klasyczna linuxowa mina 💣🐧
+Dzięki za wklejenie skryptu — on jest **w 100% OK** 👍
+Logika, składnia, wszystko gra.
+
+Ten błąd:
+
+> nie można uruchomić: nie znaleziono wymaganego pliku
+
+**nie dotyczy skryptu**, tylko tego, *czym system próbuje go uruchomić*.
+
+Są tylko 2 realne przyczyny:
+
+---
+
+# ✅ 1. Plik jest w formacie Windows (CRLF) – **NAJCZĘSTSZE**
+
+Nawet jeśli tego nie widać.
+
+### Naprawa (30 sekund):
+
+```bash
+apt install -y dos2unix
+dos2unix test.sh
+chmod +x test.sh
+./test.sh
+```
+
+---
+
+# ✅ 2. Bash nie jest tam gdzie skrypt myśli
+
+Sprawdź:
+
+```bash
+ls -l /bin/bash
+```
+
+Jeśli istnieje → OK
+Jeśli nie:
+
+```bash
+apt install -y bash
+```
+
+---
+
+# 🔎 Dla pewności sprawdź typ pliku:
+
+```bash
+file test.sh
+```
+
+Jeśli zobaczysz:
+
+> with CRLF line terminators
+
+→ bingo, to był problem.
+
+---
+
+# ⚡ Szybkie obejście (działa zawsze):
+
+Nawet bez naprawy możesz uruchomić tak:
+
+```bash
+bash test.sh
+```
+
+Jeśli to działa → 100% format Windows.
+
+---
+
+## Podsumowanie po ludzku 😄
+
+Nie zepsułeś skryptu.
+Nie zepsułeś systemu.
+To tylko Linux krzyczy, bo plik ma „windowsowe enterki”.
+
+To jest **klasyczna mina**, każdy na nią kiedyś wchodzi 🐧💣
+
+---
+
+Jak chcesz, wklej wynik:
+
+```bash
+file test.sh
+```
+
+a potwierdzę na 100%.
+
+A jak już ruszy — mogę Ci pomóc dorobić crona żeby backup robił się sam codziennie 😉💾
+Jasne 😄 zmieniamy nazwę z `test.sh` na `backup.sh` i jedziemy dalej.
+
+Zrób dokładnie tak:
+
+---
+
+## 1️⃣ Zmień nazwę pliku
+
+Jeśli jesteś w tym samym katalogu:
+
+```bash
+mv test.sh backup.sh
+```
+
+Jeśli nie, podaj pełną ścieżkę, np.:
+
+```bash
+mv /root/test.sh /root/backup.sh
+```
+
+(albo tam, gdzie faktycznie leży plik)
+
+---
+
+## 2️⃣ Napraw format + prawa (ważne)
+
+```bash
+dos2unix backup.sh
+chmod +x backup.sh
+```
+
+---
+
+## 3️⃣ Uruchom
+
+```bash
+./backup.sh
+```
+
+albo zawsze bezpiecznie:
+
+```bash
+bash backup.sh
+```
+
+---
+
+## 4️⃣ Sprawdź czy system go widzi poprawnie
+
+```bash
+file backup.sh
+```
+
+Powinno być coś w stylu:
+
+> Bourne-Again shell script, ASCII text
+
+---
+
+Jeśli nadal by marudził, wklej:
+
+```
+pwd
+ls -l backup.sh
+file backup.sh
+```
+
+i trafimy w punkt 🎯
+
+PS. Ten skrypt jest całkiem porządny – automatyczne czyszczenie starych backupów to dobra robota 👌💾
+
+Aha, już kumam 😎 Chcesz **wszystko w jednym poleceniu**, żeby przygotować skrypt i od razu go uruchomić.
+W Linuxie wygląda to tak:
+
+```bash
+apt install -y dos2unix
+dos2unix backup.sh
+chmod +x backup.sh
+./backup.sh
+```
+
+Albo, jeśli chcesz pewnie uruchomić przez bash (nie zależy od shebanga):
+
+```bash
+apt install -y dos2unix
+dos2unix backup.sh
+chmod +x backup.sh
+bash backup.sh
+```
+
+---
+
+💡 Wyjaśnienie:
+
+1. `apt install -y dos2unix` → instaluje narzędzie do konwersji Windows → Linux
+2. `dos2unix backup.sh` → usuwa CRLF (Windowsowe enterki)
+3. `chmod +x backup.sh` → nadaje prawa do uruchomienia
+4. `./backup.sh` lub `bash backup.sh` → uruchamia skrypt
+
+Po tym Twój backup powinien działać bez problemów 😎
+
+Chcesz, żebym od razu zrobił wersję **jednolinijkową**, którą możesz wkleić i odpalić jednym strzałem?
+
+
+
+Skrypt-BACKUPS!
+1#
+=============================================================================
+#!/bin/bash
+
+# -----------------------------
+# KONFIGURACJA
+# -----------------------------
+SOURCE="/opt/minecraft/myserver"   # folder do backupu
+DEST="/opt/Backups"            # folder docelowy backupów
+MAX_BACKUPS=20                  # ile backupów przechowywać
+LOG_FILE="$DEST/backup.log"    # plik logów
+
+# -----------------------------
+# SPRAWDZENIE FOLDERU
+# -----------------------------
+if [ ! -d "$SOURCE" ]; then
+    echo "Błąd: folder źródłowy $SOURCE nie istnieje!"
+    exit 1
+fi
+
+mkdir -p "$DEST"
+
+# -----------------------------
+# PRZYGOTOWANIE BACKUPU
+# -----------------------------
+DATE=$(date "+%Y-%m-%d_%H-%M-%S")
+BACKUP_FILE="$DEST/minecraft_backup_$DATE.tar.gz"
+
+echo "Rozpoczynam backup Minecrafta..."
+
+# -----------------------------
+# TWORZENIE BACKUPU
+# -----------------------------
+# Używamy tar jednym poleceniem (działa pewnie)
+tar -czvf "$BACKUP_FILE" -C "$SOURCE" .
+
+echo "Backup zakończony: $BACKUP_FILE"
+
+# -----------------------------
+# LOGOWANIE
+# -----------------------------
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Backup zapisany jako $BACKUP_FILE" >> "$LOG_FILE"
+
+# -----------------------------
+# USUWANIE STARYCH BACKUPÓW
+# -----------------------------
+OLD_BACKUPS=$(ls -1t "$DEST"/minecraft_backup_*.tar.gz 2>/dev/null | tail -n +$((MAX_BACKUPS+1)))
+if [ ! -z "$OLD_BACKUPS" ]; then
+    rm -f $OLD_BACKUPS
+    echo "Usunięto stare backupy:" >> "$LOG_FILE"
+    echo "$OLD_BACKUPS" >> "$LOG_FILE"
+fi
+==============================================================================================================
+
+
+
+2#
+===============================================================================================================================
+#!/bin/bash
+
+# -----------------------------
+# KONFIGURACJA
+# -----------------------------
+SOURCE="/opt/minecraft/myserver"
+DEST="/opt/Backups2.0"
+MAX_BACKUPS=20
+LOG_FILE="$DEST/backup.log"
+INTERVAL=3600  # czas między backupami w sekundach
+STOP_PASSWORD="1122334455"
+
+GREEN="\033[32m"
+RESET="\033[0m"
+
+# -----------------------------
+# SPRAWDZENIE ZIP
+# -----------------------------
+if ! command -v zip &> /dev/null; then
+    echo "Program zip nie jest zainstalowany!"
+    echo "Na Debian/Ubuntu: sudo apt install zip"
+    echo "Na CentOS/RHEL: sudo yum install zip"
+    exit 1
+fi
+
+# -----------------------------
+# FUNKCJA BACKUPU
+# -----------------------------
+do_backup() {
+    if [ ! -d "$SOURCE" ]; then
+        echo "Błąd: folder $SOURCE nie istnieje!" | tee -a "$LOG_FILE"
+        return
+    fi
+
+    mkdir -p "$DEST"
+
+    DATE=$(date "+%Y-%m-%d_%H-%M-%S")
+    BACKUP_FILE="$DEST/minecraft_backup_$DATE.zip"
+
+    echo "Rozpoczynam backup Minecrafta..."
+
+    # Tworzenie ZIP
+    cd "$SOURCE" || return
+    zip -r "$BACKUP_FILE" . > /dev/null
+
+    if [ -f "$BACKUP_FILE" ]; then
+        echo "Backup zakończony: $BACKUP_FILE"
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] Backup zapisany: $BACKUP_FILE" >> "$LOG_FILE"
+    else
+        echo "Błąd: backup się nie powiódł!" | tee -a "$LOG_FILE"
+        return
+    fi
+
+    # Usuwanie starych backupów
+    ls -1t "$DEST"/minecraft_backup_*.zip 2>/dev/null | tail -n +$((MAX_BACKUPS+1)) | xargs -r rm -f
+    for f in $(ls -1t "$DEST"/minecraft_backup_*.zip 2>/dev/null | tail -n +$((MAX_BACKUPS+1))); do
+        echo "Usunięto stary backup: $f" >> "$LOG_FILE"
+    done
+}
+
+# -----------------------------
+# LICZNIK DO BACKUPU
+# -----------------------------
+countdown() {
+    local seconds=$1
+    while [ $seconds -gt 0 ]; do
+        HOURS=$((seconds/3600))
+        MINUTES=$(((seconds%3600)/60))
+        SECONDS=$((seconds%60))
+        printf "\r${GREEN}Następny backup za %02d:%02d:%02d (naciśnij Enter, aby przerwać)${RESET}" "$HOURS" "$MINUTES" "$SECONDS"
+        sleep 1
+        ((seconds--))
+
+        # Jeśli użytkownik wciśnie Enter, wymaga hasła
+        if read -t 0.1 -n 1 key && [ "$key" = "" ]; then
+            echo -e "\nWpisz hasło, aby zakończyć skrypt:"
+            read -s input
+            if [ "$input" = "$STOP_PASSWORD" ]; then
+                echo "Poprawne hasło, kończę skrypt."
+                exit 0
+            else
+                echo "Niepoprawne hasło, kontynuuję backup..."
+            fi
+        fi
+    done
+    echo
+}
+
+# -----------------------------
+# PĘTLA GŁÓWNA
+# -----------------------------
+while true; do
+    echo "Rozpoczynam backup w ciągu 10 sekund..."
+    countdown 10
+
+    do_backup
+
+    echo "Kolejny backup za $INTERVAL sekund..."
+    countdown "$INTERVAL"
+done
+
+=====================================================================================================================================
+
+
+
+3#
+====================================================================================================================
+#!/bin/bash
+set -euo pipefail
+
+SOURCE="/opt/minecraft/myserver"
+DEST="/opt/Backups"
+MAX_BACKUPS=20
+LOG_FILE="$DEST/backup.log"
+
+RCON_HOST="127.0.0.1"
+RCON_PORT="25575"
+RCON_PASS="CHANGE_ME"
+
+MCRCON_BIN="/usr/bin/mcrcon"
+LOCK_FILE="/var/lock/minecraft_backup_26_1.lock"
+
+log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
+
+rcon() { "$MCRCON_BIN" -H "$RCON_HOST" -P "$RCON_PORT" -p "$RCON_PASS" "$@" >/dev/null; }
+
+cleanup() { [ -x "$MCRCON_BIN" ] && rcon "save-on" || true; }
+trap cleanup EXIT
+
+exec 9>"$LOCK_FILE"
+flock -n 9 || exit 0
+
+mkdir -p "$DEST"
+touch "$LOG_FILE"
+
+[ -d "$SOURCE" ] || { log "BŁĄD: brak folderu $SOURCE"; exit 1; }
+[ -x "$MCRCON_BIN" ] || { log "BŁĄD: brak mcrcon pod $MCRCON_BIN"; exit 1; }
+
+DATE=$(date "+%Y-%m-%d_%H-%M-%S")
+BACKUP_FILE="$DEST/minecraft_backup_$DATE.tar.gz"
+
+log "Start backupu -> $BACKUP_FILE"
+log "RCON: save-off"
+rcon "save-off"
+log "RCON: save-all flush"
+rcon "save-all flush"
+sleep 2
+log "Pakowanie tar.gz..."
+tar -czf "$BACKUP_FILE" -C "$SOURCE" . >>"$LOG_FILE" 2>&1
+log "Backup OK: $BACKUP_FILE"
+log "RCON: save-on"
+rcon "save-on"
+
+mapfile -t backups < <(ls -1t "$DEST"/minecraft_backup_*.tar.gz 2>/dev/null || true)
+if ((${#backups[@]} > MAX_BACKUPS)); then
+  for ((i=MAX_BACKUPS; i<${#backups[@]}; i++)); do
+    rm -f -- "${backups[$i]}"
+    log "Usunięto stary backup: ${backups[$i]}"
+  done
+fi
+
+log "Koniec."
+=================================================================================================================
+
+
+4#
+==============================================================================================================================
+#!/bin/bash
+set -euo pipefail
+
+SOURCE="/opt/minecraft/myserver"
+DEST="/opt/Backups2.0"
+MAX_BACKUPS=20
+LOG_FILE="$DEST/backup.log"
+
+RCON_HOST="127.0.0.1"
+RCON_PORT="25576"
+RCON_PASS="CHANGE_ME"
+
+MCRCON_BIN="/usr/bin/mcrcon"
+LOCK_FILE="/var/lock/minecraft_backup_myserver.lock"
+
+log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
+
+rcon() { "$MCRCON_BIN" -H "$RCON_HOST" -P "$RCON_PORT" -p "$RCON_PASS" "$@" >/dev/null; }
+
+cleanup() { [ -x "$MCRCON_BIN" ] && rcon "save-on" || true; }
+trap cleanup EXIT
+
+exec 9>"$LOCK_FILE"
+flock -n 9 || exit 0
+
+mkdir -p "$DEST"
+touch "$LOG_FILE"
+
+[ -d "$SOURCE" ] || { log "BŁĄD: brak folderu $SOURCE"; exit 1; }
+[ -x "$MCRCON_BIN" ] || { log "BŁĄD: brak mcrcon pod $MCRCON_BIN"; exit 1; }
+
+DATE=$(date "+%Y-%m-%d_%H-%M-%S")
+BACKUP_FILE="$DEST/minecraft_backup_$DATE.tar.gz"
+
+log "Start backupu -> $BACKUP_FILE"
+log "RCON: save-off"
+rcon "save-off"
+log "RCON: save-all flush"
+rcon "save-all flush"
+sleep 2
+log "Pakowanie tar.gz..."
+tar -czf "$BACKUP_FILE" -C "$SOURCE" . >>"$LOG_FILE" 2>&1
+log "Backup OK: $BACKUP_FILE"
+log "RCON: save-on"
+rcon "save-on"
+
+mapfile -t backups < <(ls -1t "$DEST"/minecraft_backup_*.tar.gz 2>/dev/null || true)
+if ((${#backups[@]} > MAX_BACKUPS)); then
+  for ((i=MAX_BACKUPS; i<${#backups[@]}; i++)); do
+    rm -f -- "${backups[$i]}"
+    log "Usunięto stary backup: ${backups[$i]}"
+  done
+fi
+
+log "Koniec."
+==================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

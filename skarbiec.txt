@@ -1,0 +1,5 @@
+setblock 19510 72 -231 minecraft:vault
+
+setblock 19510 72 -231 minecraft:air
+
+/give MikiYT1 minecraft:trial_key 3

@@ -4971,17 +4971,137 @@ dźwięki
 
 Mannequin Vanilla Wiki
 
+
+Goldblock-npc
+
+execute as @a at @s if block ~ ~-1 ~ minecraft:gold_block unless entity @e[type=minecraft:mannequin,tag=mirror] run summon minecraft:mannequin -3 68 8 {profile:{name:"MikiYT1"},immovable:true,Tags:["mirror"],pose:"standing"}
+
+
+execute as @a at @s if block ~ ~-1 ~ minecraft:gold_block unless entity @e[type=minecraft:mannequin,tag=mirror] run summon minecraft:mannequin -3 68 8 {immovable:true,Tags:["mirror"],pose:"standing"}
+
+
+PROFIL GRACZA
+=====================================================================================================================================================================
+/summon minecraft:mannequin ~ ~ ~ {Tags:["MikiYT1"], profile:{name:"MikiYT1"}}
+
+/summon minecraft:mannequin ~ ~ ~ {Tags:["Mikolais"], profile:{name:"Mikolais"}}
+
+/execute as @e[type=minecraft:mannequin,tag=MikiYT1] at @s run data merge entity @s {Invulnerable:1b}
+
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
+
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:0b,NoGravity:0b}
+
+
+1# Kopiowanie ekwipunku i przedmiotu w ręku
+# MikiYT1
+/execute as @e[type=minecraft:mannequin,tag=MikiYT1] run data modify entity @s equipment set from entity MikiYT1 equipment
+/execute as @e[type=minecraft:mannequin,tag=MikiYT1] run data modify entity @s equipment.mainhand set from entity MikiYT1 SelectedItem
+
+# Mikolais
+/execute as @e[type=minecraft:mannequin,tag=Mikolais] run data modify entity @s equipment set from entity Mikolais equipment
+/execute as @e[type=minecraft:mannequin,tag=Mikolais] run data modify entity @s equipment.mainhand set from entity Mikolais SelectedItem
+
+
+
+
+
+2# Obracanie manekina w stronę gracza
+# MikiYT1
+/execute as @e[type=minecraft:mannequin,tag=MikiYT1] at @s run tp @s ^ ^ ^ facing entity @p feet
+
+# Mikolais
+/execute as @e[type=minecraft:mannequin,tag=Mikolais] at @s run tp @s ^ ^ ^ facing entity @p feet
+
+
+
+
+
+3# Nadawanie nazwy i opisu manekinowi
+# MikiYT1
+/data modify entity @e[type=minecraft:mannequin,tag=MikiYT1,limit=1,sort=nearest] CustomName set value 'MikiYT1'
+/data modify entity @e[type=minecraft:mannequin,tag=MikiYT1,limit=1,sort=nearest] description set value "Profil Gracza"
+
+# Mikolais
+/data modify entity @e[type=minecraft:mannequin,tag=Mikolais,limit=1,sort=nearest] CustomName set value 'Mikolais'
+/data modify entity @e[type=minecraft:mannequin,tag=Mikolais,limit=1,sort=nearest] description set value "Profil Gracza"
+
+
+
+
+4# Drużyny i zasady kolizji
+
+# Tworzenie i konfiguracja drużyny
+/team add LUSTRO
+/team modify LUSTRO collisionRule never
+/team modify LUSTRO color gold
+
+# Dodawanie manekina do drużyny
+/team join LUSTRO @e[type=minecraft:mannequin,tag=MikiYT1,limit=1,sort=nearest]
+
+# Usuwanie z drużyny
+/team leave @e[type=minecraft:mannequin,tag=MikiYT1]
+
+
+
+Podstawowa komenda wygląda tak:
+
+```minecraft
+/tag <target> add <tag_name>
+```
+
+### Przykłady:
+
+1. Dodanie tagu `npc` do najbliższego manekina:
+
+```minecraft
+/tag @e[type=minecraft:mannequin,limit=1,sort=nearest] add npc
+```
+
+2. Dodanie tagu `MikiYT1` do wszystkich manekinów w świecie:
+
+```minecraft
+/tag @e[type=minecraft:mannequin] add MikiYT1
+```
+
+3. Dodanie tagu tylko do manekina, który ma już inny tag (np. `npc`):
+
+```minecraft
+/tag @e[type=minecraft:mannequin,tag=npc] add MikiYT1
+```
+
+---
+
+💡 Wskazówki:
+
+* Tagów możesz używać do **filtrowania w komendach** – np.
+
+```minecraft
+/execute as @e[type=minecraft:mannequin,tag=MikiYT1] ...
+```
+
+* Tag możesz też usuwać:
+
+```minecraft
+/tag @e[type=minecraft:mannequin,tag=MikiYT1] remove MikiYT1
+```
+
+==================================================================================================================================================================
+
+
+
 TWOJE STATYSTYKI
 /summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:book",Count:1b}}}
 
 /data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
 
 /data modify entity <UUID_manekina> immovable set value true
+
 =======================================================================================================================================================
 
 /summon minecraft:armor_stand ~ ~1.9 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"TWOJE STATYSTYKI","color":"gold"},Small:1b}
 
-/summon minecraft:armor_stand ~ ~1.7 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Peleryny (15)✫","color":"gray"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.7 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Peleryny (16)✫","color":"gray"},Small:1b}
 
 /summon minecraft:armor_stand ~ ~1.5 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Postep: 167865/135566","color":"aqua"},Small:1b}
 
@@ -5001,9 +5121,16 @@ Struż
 
 /execute as @e[type=minecraft:mannequin] at @s facing entity @p feet run tp @s ~ ~ ~ ~ ~
 =====================================================================================================
-modfikacje
+modfikacje2233
 zmień skina 
 /data modify entity 1c2d9794-237c-417a-b460-50199d7405c2 profile set value 'MikiYT1'
+
+/data modify entity 69abc461-96aa-4303-a8c5-6ecdd5166d55 profile set value {name:"MikiYT1"}
+
+/data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] CustomName set value 'MikiYT1'
+
+
+
 
 
 dodaj przedmiot
@@ -5035,6 +5162,8 @@ Struż z Skina dowolnwgo gracza
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "PanZiemniaczekk"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "JulekGeralt"}}
+
+/summon minecraft:mannequin ~ ~ ~ {profile: {name: "Geralt015"}}
 
 /summon minecraft:mannequin ~ ~ ~ {profile: {name: "JurajskiStas"}}
 
@@ -5171,10 +5300,15 @@ Skin
 /summon minecraft:mannequin ~ ~ ~ {profile:"Jorge_Josiah",CustomName:"Powrót na LOBBY ✅"}
 /summon minecraft:mannequin ~ ~ ~ {profile:"Jorge_Josiah",CustomName:"Powrót do Domu ✅"}
 
+
+
 /tag @e[type=mannequin,limit=1,sort=nearest] add npc
 /execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p feet
-lup to z pole widzenia
+
+
 /execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+/execute as @e[type=minecraft:mannequin,tag=npc] at @s run tp @s ~ ~ ~ facing entity MikiYT1 feet
 
 
 Dodaj cmd do npc

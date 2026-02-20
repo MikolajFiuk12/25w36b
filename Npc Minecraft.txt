@@ -4912,39 +4912,28 @@ Jasne, Mikołaj! 😊 Komendy w Minecraft różnią się trochę w zależności 
 💡 W **singleplayerze** możesz też używać **target selectorów** jak `@p` (najbliższy gracz), `@a` (wszyscy gracze, u Ciebie to Ty), `@e` (wszystkie entity) i `@r` (losowy gracz).
 
 
-
-
-
-
-
-
-
 NPC1234
 ===============================================================================================================
 Mannequins
-25w36b
 Added a new type of technical entity called minecraft:mannequin which can only be spawned with summon commands.
 
 A Mannequin is a Player Avatar without a connected Player
-Mannequins always show an "NPC" text where a Player's below_score score would show
-Mannequins function as Living Entities - they can hold and wear equipment, have attributes & effects, take damage, etc
+Mannequins show a description text (by default entity.minecraft.mannequin.label) where a Player's below_score score would show
+Mannequins function as Living Entities - they can hold and wear equipment, have attributes & effects, take damage, etc.
+Mannequins accept the minecraft:profile component from spawner items
 Data Fields:
 
-profile - Which profile to show on the entity. This is either a Player profile (same format as a minecraft:profile component) or a Mannequin profile with the following fields:
-texture - Namespaced ID of the skin texture to use
-The skin is specified relative to the textures folder and with a .png suffix
-e.g. entity/player/wide/steve will use the default wide Steve skin
-cape - Optional namespaced ID of the cape texture to use
-When specified, uses the same format as the texture field
-Omitting this field means the Mannequin has no cape
-elytra - Optional namespaced ID of the elytra texture to use
-When specified, uses the same format as the texture field
-Omitting this field means the Mannequin uses the cape texture, or if that is also omitted, the default Elytra texture when wearing Elytra
-model - Optional model type, one of wide and slim
-If omitted, wide is used
+profile - Which Player profile to show on the entity (same format as a minecraft:profile component), defaults to {} (i.e. static profile with both id and name missing)
 hidden_layers - List of outer skin layers to hide
 Valid entries: cape, jacket, left_sleeve, right_sleeve, left_pants_leg, right_pants_leg, hat
-main_hand - Which hand is the main hand of the Mannequn - one of left and right
+pose - The pose of the mannequin
+Valid entries: standing, crouching, swimming, fall_flying, sleeping
+main_hand - Which hand is the main hand of the Mannequin - one of left and right
+immovable - Optional boolean specifying that the Mannequin cannot be moved (defaults to false)
+description - Optional Text Component shown where a Player's below_score score would show
+The default entity.minecraft.mannequin.label text is shown if omitted
+hide_description - Optional boolean specifying that no description should be shown at all
+A Mannequin with the description hidden displays as if a Player had no below_score display
 =====================================================================================================
 od kudłstyego
 
@@ -4978,6 +4967,135 @@ execute as @a at @s if block ~ ~-1 ~ minecraft:gold_block unless entity @e[type=
 
 
 execute as @a at @s if block ~ ~-1 ~ minecraft:gold_block unless entity @e[type=minecraft:mannequin,tag=mirror] run summon minecraft:mannequin -3 68 8 {immovable:true,Tags:["mirror"],pose:"standing"}
+
+
+
+iterkacja
+---
+
+## 🧱 1. Przywołanie NPC (mannequin)
+
+### 🔹 Podstawowy NPC
+
+```mcfunction
+/summon minecraft:mannequin ~ ~ ~ {Tags:["npc"]}
+```
+
+**Co to robi?**
+
+* Przywołuje **mannequina** w miejscu, gdzie stoisz
+* Nadaje mu tag `npc`
+* Tag pozwala później **łatwo nim zarządzać** (np. usunąć go komendą)
+
+---
+
+### 🔹 NPC z nazwą (profile)
+
+```mcfunction
+/summon minecraft:mannequin ~ ~ ~ {Tags:["npc"], profile:{name:"MikiYT1"}}
+```
+
+**Co to robi?**
+
+* To samo co wyżej, ALE:
+* NPC ma nazwę / profil `MikiYT1`
+* Idealne, gdy chcesz konkretnego NPC (np. YouTuber, sklepikarz, portal)
+
+---
+
+## 🖱️ 2. Dodanie „klikalnego obszaru” (interaction)
+
+```mcfunction
+/summon minecraft:interaction ~ ~ ~ {width:1.0,height:2.0,Tags:["npc_click"]}
+```
+
+**Co to robi?**
+
+* Tworzy **niewidzialny hitbox**
+* `width:1.0` – szerokość
+* `height:2.0` – wysokość (jak postać)
+* Tag `npc_click` pozwala wykryć kliknięcie
+* Gracz **klika w powietrze**, ale Minecraft to rejestruje
+
+👉 Najlepiej postawić interaction **w tym samym miejscu co NPC**
+
+---
+
+## 🚀 3. Reakcja na kliknięcie (teleport)
+
+```mcfunction
+/execute as @e[tag=npc_click] if data entity @s interaction.player run tp @p -12 65 -131
+```
+
+**Co to robi?**
+
+* Sprawdza, czy **ktoś kliknął interaction**
+* Jeśli tak:
+* Teleportuje gracza (`@p`)
+* Na współrzędne **-12 65 -131**
+
+💡 Możesz tu wstawić:
+
+* `/say`
+* `/give`
+* `/title`
+* `/playsound`
+* `/tp` (jak tutaj)
+
+---
+
+## 🧹 4. Czyszczenie kliknięcia (ważne!)
+
+```mcfunction
+/execute as @e[tag=npc_click] run data remove entity @s interaction
+```
+
+**Dlaczego to ważne?**
+
+* Bez tego komenda odpalałaby się **ciągle**
+* Ta linijka:
+
+  * Usuwa dane o kliknięciu
+  * Sprawia, że klik działa **raz na klik**, a nie w pętli
+
+---
+
+## ❌ 5. Usuwanie NPC
+
+```mcfunction
+/kill @e[tag=npc]
+```
+
+**Co to robi?**
+
+* Zabija **wszystkie mannequiny z tagiem `npc`**
+* Szybkie sprzątanie świata
+* Idealne do resetu mapy
+
+---
+
+## ✅ Podsumowanie (TL;DR)
+
+1️⃣ Summon NPC (mannequin)
+2️⃣ Dodaj interaction (klik)
+3️⃣ Wykryj klik → wykonaj akcję
+4️⃣ Wyczyść interaction
+5️⃣ W razie czego usuń NPC
+
+Jasne! Chodzi o to, żeby wyłączyć tryb debugowania, który wyświetla te informacje. Używasz komendy:
+
+To spowoduje, że system nie będzie wyrzucał tych informacji o modyfikacji danych. Po tym komendy z tellraw będą czyściutkie i nie zobaczysz tych szarych powiadomień.
+
+/gamerule send_command_feedback false
+
+
+1️⃣
+/summon minecraft:armor_stand ~ ~-1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
+
+2️⃣
+/summon minecraft:armor_stand ~ ~-1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Statystyki","color":"aqua"},Small:1b}
+
+
 
 
 PROFIL GRACZA
@@ -5091,7 +5209,7 @@ Podstawowa komenda wygląda tak:
 
 
 TWOJE STATYSTYKI
-/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:book",Count:1b}}}
+/summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"}, equipment:{mainhand:{id:"minecraft:paper",Count:1b}}}
 
 /data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
 
@@ -5099,7 +5217,7 @@ TWOJE STATYSTYKI
 
 =======================================================================================================================================================
 
-/summon minecraft:armor_stand ~ ~1.9 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"TWOJE STATYSTYKI","color":"gold"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.9 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"TWOJE STATYSTYKI","color":"gold","bold":true},Small:1b}
 
 /summon minecraft:armor_stand ~ ~1.7 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Peleryny (16)✫","color":"gray"},Small:1b}
 
@@ -5107,8 +5225,10 @@ TWOJE STATYSTYKI
 
 /summon minecraft:armor_stand ~ ~1.3 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"konto od: 2019-07-06","color":""},Small:1b}
 
-/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Jesteś Zajebisty Mikołaj Fiuk","color":"yellow"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.0 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Jesteś Zajebisty Mikołaj Fiuk","color":"yellow","bold":true},Small:1b}
 ========================================================================================================================================================
+
+/kill @e[type=minecraft:armor_stand]
 
 /summon armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,CustomName:'',CustomNameVisible:1b,Tags:["obracajacy"],ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}]}
 
@@ -5457,6 +5577,15 @@ znika
 
 wraca do swojej pozycji
 /execute as @e[type=minecraft:mannequin,tag=npc] at @s unless entity @p[distance=..5] run tp @s ~ ~ ~ facing 219 63 -321
+
+
+
+
+
+
+
+
+
 
 
 jedna komenda wystarczy

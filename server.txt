@@ -6,8 +6,10 @@ tu klucz by rozwonzać W putty po ip
 tu klucz by rozwonzać DNS Problem
 tu klucz by rozwonzać Zapchany dysk
 tu klucz by rozwonzać Klucz SSH w PuTTY
-tu klucz by rozwonzać sh122333
-tu klucz by rozwonzać Skrypt-BACKUPS!
+tu klucz by rozwonzać /etc/ssh/sshd_config
+tu klucz by rozwonzać sftp_users upr
+tu klucz by rozwonzać Permisjek
+tu klucz by rozwonzać 📌 Poradnik: SFTP dla grupy sftp_users z Chroot w Debian 129999
 
 poradnik -https://youtu.be/7lYqAVyqN8U?si=GW3_9iILOHbJ_yPU
 
@@ -19804,1138 +19806,909 @@ Serwer teraz ma „VIP wejście” tylko dla Twojego klucza. Jeśli chcesz, mog�
 
 
 
+Permisjek
 
+Tworzenie użytkownika z dostępem ograniczonym do jednego folderu w systemie Debian 12 można zrealizować na kilka sposobów, zależnie od tego, czy użytkownik ma logować się lokalnie (przez terminal), czy tylko przez SFTP (do przesyłania plików).Najbezpieczniejszą i najczęściej stosowaną metodą "zamknięcia" użytkownika w jednym miejscu jest Chroot. Poniżej znajdziesz instrukcję krok po kroku, jak to skonfigurować dla dostępu SFTP, co jest standardem przy ograniczaniu uprawnień.Metoda: SFTP Chroot (Użytkownik widzi tylko swój folder)Ta metoda sprawi, że użytkownik po zalogowaniu nie będzie mógł wyjść poza wskazany katalog ani przeglądać plików systemowych (takich jak /etc czy /var).Krok 1: Utworzenie nowej grupyZawsze warto trzymać ograniczonych użytkowników w jednej grupie, aby łatwiej nimi zarządzać.Bashsudo groupadd sftp_users
+Krok 2: Utworzenie użytkownikaStworzymy użytkownika bez dostępu do standardowej powłoki (shell), aby nie mógł wykonywać komend w systemie.Bashsudo adduser --ingroup sftp_users --shell /usr/sbin/nologin nazwa_uzytkownika
+(Podaj hasło i opcjonalne dane, gdy system o to poprosi).Krok 3: Przygotowanie struktury folderówW mechanizmie Chroot folder nadrzędny musi należeć do root'a i nikt inny nie może mieć do niego uprawnień zapisu. Użytkownik będzie mógł zapisywać pliki dopiero w podfolderze.Utwórz folder główny (jail):Bashsudo mkdir -p /home/nazwa_uzytkownika/dane
+Ustaw właściciela dla folderu nadrzędnego (musi być root):Bashsudo chown root:root /home/nazwa_uzytkownika
+sudo chmod 755 /home/nazwa_uzytkownika
+Ustaw właściciela dla folderu, w którym użytkownik ma pracować:Bashsudo chown nazwa_uzytkownika:sftp_users /home/nazwa_uzytkownika/dane
+Krok 4: Konfiguracja SSHMusimy poinstruować system, jak ma traktować członków grupy sftp_users. Edytuj plik konfiguracyjny SSH:Bashsudo nano /etc/ssh/sshd_config
+Zjedź na sam dół pliku i dopisz poniższy blok (upewnij się, że nie ma tam innych sprzecznych reguł):PlaintextMatch Group sftp_users
+    ChrootDirectory /home/%u
+    ForceCommand internal-sftp
+    AllowTcpForwarding no
+    X11Forwarding no
+Wyjaśnienie: %u automatycznie podstawi nazwę logującego się użytkownika.Krok 5: Restart usługi i testyZapisz plik (Ctrl+O, Enter) i wyjdź (Ctrl+X), a następnie zrestartuj usługę SSH:Bashsudo systemctl restart ssh
+Jak to wygląda w praktyce?AkcjaWynikLogowanie przez SSHZostanie odrzucone (brak shella).Logowanie przez SFTP (np. FileZilla)Użytkownik zobaczy folder /dane.Próba wyjścia "wyżej"Niemożliwa – dla użytkownika /home/nazwa_uzytkownika jest teraz rootem (/).Alternatywa: Ograniczenie uprawnień (bez Chroot)Jeśli nie chcesz używać Chroot, a jedynie chcesz, aby użytkownik nie mógł wchodzić do folderów innych osób:Zmień uprawnienia folderów domowych innych użytkowników: sudo chmod 700 /home/inny_uzytkownik.Debian 12 domyślnie tworzy foldery domowe z uprawnieniami 750 lub 700, co zazwyczaj wystarcza, by użytkownicy nie podglądali się nawzajem.Ważna uwaga: W standardowym Linuxie użytkownik zawsze będzie mógł czytać pliki w /etc (np. konfiguracje) czy /bin (programy), bo są one niezbędne do działania systemu. Jeśli chcesz to całkowicie zablokować, metoda SFTP Chroot opisana wyżej jest jedynym skutecznym wyjściem.Czy chciałbyś, abym pomógł Ci teraz skonfigurować dostęp dla tego użytkownika również przez przeglądarkę (np. za pomocą serwera WWW)?
 
 
+Tak, możesz to przetestować przez PuTTY, ale wynik zależy od tego, jakiej części pakietu PuTTY użyjesz. Ponieważ w poprzednim kroku skonfigurowaliśmy użytkownika z "zakazem" używania powłoki (shell), standardowe okno PuTTY zachowa się w specyficzny sposób.
 
+Oto jak zinterpretować wyniki testów:
 
+1. Test w standardowym PuTTY (SSH Terminal)
+Jeśli spróbujesz zalogować się tym użytkownikiem przez zwykłe PuTTY:
 
+Co się stanie: Po wpisaniu hasła okno PuTTY prawdopodobnie natychmiast się zamknie lub wyświetli komunikat: This service allows sftp connections only.
 
+Dlaczego: To znak, że konfiguracja działa poprawnie! Użytkownik ma zablokowany dostęp do konsoli (shell), więc system wyrzuca go przy próbie klasycznego logowania.
 
+2. Test w PSFTP (PuTTY SFTP Client)
+W pakiecie PuTTY znajduje się drugie narzędzie o nazwie PSFTP. To jest właściwe narzędzie do testowania tego typu dostępu.
 
+Uruchom program psftp.exe.
 
+Wpisz komendę, aby się połączyć:
 
+Bash
+open nazwa_uzytkownika@adres_IP_serwera
+Podaj hasło.
 
+Po zalogowaniu wpisz ls, aby zobaczyć zawartość.
 
+Spróbuj wyjść "wyżej" komendą: cd .. a potem sprawdź gdzie jesteś przez pwd.
 
+Wynik: Zobaczysz, że mimo komendy cd .., nadal jesteś w katalogu głównym (który dla Ciebie jest teraz /). Nie zobaczysz /etc, /var ani innych użytkowników.
 
+3. Test w WinSCP lub FileZilla (Najwygodniejszy)
+Jeśli masz zainstalowane narzędzia graficzne jak WinSCP, test jest najbardziej przejrzysty:
 
+Ustaw protokół na SFTP.
 
+Zaloguj się na dane użytkownika.
 
+Spróbuj kliknąć ikonę "Folder wyżej" (strzałka w górę). Zauważysz, że program nie pozwala Ci wyjść poza folder domowy użytkownika.
 
+Co jeśli jednak CHCESZ, aby użytkownik miał dostęp do terminala (PuTTY)?
+Jeśli Twoim celem nie było zablokowanie konsoli, a jedynie ograniczenie go do jednego folderu w sensie uprawnień (ale z możliwością pisania komend), musiałbyś:
 
+Zmienić mu shell na /bin/bash zamiast /usr/sbin/nologin.
 
+Usunąć wpis ForceCommand internal-sftp z konfiguracji SSH.
 
+Pamiętaj jednak: Wtedy użytkownik będzie mógł przeglądać (czytać) pliki systemowe w /etc, /bin itp. To standardowe zachowanie Linuxa.
 
-sh122333
-==========================
-apt install -y dos2unix
-dos2unix backup.sh
-chmod +x backup.sh
-./backup.sh
-================================
+Czy chcesz, abym pokazał Ci, jak nadać temu użytkownikowi uprawnienia do zapisu w konkretnym folderze poza jego katalogiem domowym (np. w /var/www/html)?
 
 
-Spokojnie, to klasyk 😄 Ten błąd oznacza po prostu:
+Ten błąd to klasyczny sygnał, że jesteś w połowie drogi. Krótka odpowiedź brzmi: Nie, po samych krokach 1 i 2 nie uda Ci się zalogować poprawnie przez SFTP.
 
-> **w tym katalogu (`/`) nie ma pliku `backup.sh`**
+Oto dlaczego widzisz ten komunikat i jak to naprawić:
 
-Czyli nie jesteś w tym samym miejscu co skrypt.
+Dlaczego pojawia się ten błąd?
+W kroku 2 ustawiliśmy powłokę użytkownika na /usr/sbin/nologin.
 
-Zrób tak krok po kroku:
+Kiedy WinSCP (lub inny klient) próbuje się połączyć, serwer SSH próbuje uruchomić sesję dla tego użytkownika.
 
----
+System widzi /usr/sbin/nologin i wyświetla komunikat tekstowy (zazwyczaj: "This account is currently not available" lub podobny).
 
-### 1️⃣ Sprawdź gdzie jesteś
+Klient SFTP spodziewa się danych binarnych (protokołu SFTP), a dostaje zwykły tekst. Interpretuje ten tekst jako "ogromny pakiet danych" i wyrzuca błąd, który widzisz na obrazku.
 
-```bash
-pwd
-```
+Rozwiązanie
+Musisz dokończyć konfigurację, a konkretnie Krok 4 (Konfiguracja SSH).
 
-Pewnie pokaże:
+To właśnie dopisanie reguły ForceCommand internal-sftp w pliku /etc/ssh/sshd_config sprawi, że serwer SSH:
 
-```
-/
-```
+Przestanie próbować uruchomić powłokę (shell).
 
----
+Od razu przełączy się w tryb przesyłania plików.
 
-### 2️⃣ Znajdź gdzie jest skrypt
+Przestanie wysyłać ten tekstowy komunikat "This...", który psuje połączenie.
 
-Wpisz:
+Co musisz teraz zrobić (Krok po kroku):
+Dokończ Krok 3: Upewnij się, że foldery istnieją i mają odpowiednie uprawnienia (to kluczowe dla bezpieczeństwa).
 
-```bash
-find / -name backup.sh 2>/dev/null
-```
+Wykonaj Krok 4: Edytuj plik konfiguracyjny:
 
-Pokaże np:
+Bash
+sudo nano /etc/ssh/sshd_config
+I dodaj na końcu:
 
-```
-/root/backup.sh
-```
+Plaintext
+Match Group sftp_users
+    ChrootDirectory /home/%u
+    ForceCommand internal-sftp
+    AllowTcpForwarding no
+    X11Forwarding no
+Zrestartuj SSH: To najważniejszy moment, bez tego zmiany nie wejdą w życie:
 
-albo
+Bash
+sudo systemctl restart ssh
+Po wykonaniu tych czynności błąd z "zbyt dużym pakietem" zniknie, a WinSCP połączy się bez problemu prosto do folderu użytkownika.
 
-```
-/home/mikolaj/backup.sh
-```
+Czy chcesz, abym pomógł Ci sprawdzić, czy plik konfiguracyjny SSH został poprawnie zapisany?
 
----
 
-### 3️⃣ Przejdź do tego katalogu
 
-Przykład jeśli jest w `/root`:
+Świetnie! Skoro mamy już zabezpieczonego użytkownika w "więzieniu" (Chroot), zrobimy teraz z Twojego Debiana małą, prywatną chmurę. Aby móc przeglądać pliki przez przeglądarkę, najprostszym i najstabilniejszym rozwiązaniem będzie użycie serwera Nginx z włączoną funkcją listowania plików (Autoindex).
 
-```bash
-cd /root
-```
+Oto jak to skonfigurować krok po kroku:
 
-Sprawdź:
+Krok 1: Instalacja Nginx
+Jeśli jeszcze go nie masz, zainstaluj serwer WWW:
 
-```bash
-ls
-```
+Bash
+sudo apt update
+sudo apt install nginx -y
+Krok 2: Uprawnienia (Kluczowy moment)
+Serwer WWW działa jako użytkownik www-data. Aby mógł on wyświetlać pliki Twojego nowego użytkownika, musi mieć prawo do "wejścia" do jego folderów.
 
-Czy widać `backup.sh`.
+Dodajmy użytkownika serwera do grupy Twojego użytkownika:
 
----
+Bash
+sudo usermod -aG sftp_users www-data
+Następnie upewnij się, że foldery mają odpowiednie uprawnienia (755 dla folderów, by inni mogli je przeglądać):
 
-### 4️⃣ Nadaj prawa do uruchomienia (jeśli trzeba)
+Bash
+sudo chmod 755 /home/nazwa_uzytkownika
+sudo chmod 755 /home/nazwa_uzytkownika/dane
+Krok 3: Konfiguracja strony w Nginx
+Stworzymy nową konfigurację, która będzie "patrzyć" bezpośrednio na folder Twojego użytkownika.
 
-```bash
-chmod +x backup.sh
-```
+Utwórz plik konfiguracyjny:
 
----
+Bash
+sudo nano /etc/nginx/sites-available/moje_pliki
+Wklej poniższą treść (zmień adres_ip_lub_domena na IP swojego serwera):
 
-### 5️⃣ Uruchom
+Nginx
+server {
+    listen 80;
+    server_name adres_ip_lub_domena;
 
-```bash
-./backup.sh
-```
+    root /home/nazwa_uzytkownika/dane;
 
----
-
-Jeśli chcesz, możesz wkleić wynik:
-
-```
-pwd
-ls
-```
-
-albo wynik `find`, a powiem Ci dokładnie co wpisać 👍
-Linux czasem udaje trudniejszego niż jest naprawdę 😄
-
-
-Dobra, już widać gdzie jest problem 👍
-
-Twój skrypt jest tutaj:
-
-```
-/home/mikolaj/backup.sh
-```
-
-A Ty jesteś w:
-
-```
-/
-```
-
-Dlatego system go „nie widzi”.
-
-Zrób **dokładnie to**:
-
----
-
-### 1️⃣ Przejdź do katalogu ze skryptem
-
-```bash
-cd /home/mikolaj
-```
-
----
-
-### 2️⃣ Sprawdź czy jest
-
-```bash
-ls
-```
-
-Musi być `backup.sh`
-
----
-
-### 3️⃣ Nadaj prawa (raz)
-
-```bash
-chmod +x backup.sh
-```
-
----
-
-### 4️⃣ Uruchom
-
-```bash
-./backup.sh
-```
-
----
-
-### Alternatywa (bez przechodzenia do katalogu)
-
-Możesz też tak:
-
-```bash
-bash /home/mikolaj/backup.sh
-```
-
-albo:
-
-```bash
-/home/mikolaj/backup.sh
-```
-
----
-
-Jeśli dalej nie działa, wklej **dokładny komunikat błędu**, który wyskoczy po uruchomieniu.
-
-Ogarniesz to, to 100% kwestia ścieżki 💪😄
-
-Jasne — bycie **rootem** niczego tu nie psuje 👍
-Problem nadal jest tylko jeden: **skrypt nie jest w `/` ani w `/root`, tylko w `/home/mikolaj`**.
-
-Jako root możesz go normalnie uruchomić, tylko musisz podać **poprawną ścieżkę**.
-
-Masz 2 najprostsze opcje:
-
----
-
-## ✅ Opcja 1 – uruchom bez przechodzenia do katalogu
-
-Wpisz dokładnie:
-
-```bash
-bash /home/mikolaj/backup.sh
-```
-
-albo:
-
-```bash
-/home/mikolaj/backup.sh
-```
-
----
-
-## ✅ Opcja 2 – przejdź do katalogu
-
-```bash
-cd /home/mikolaj
-chmod +x backup.sh
-./backup.sh
-```
-
----
-
-## Jeśli dalej nie działa
-
-Sprawdź:
-
-```bash
-ls -l /home/mikolaj/backup.sh
-```
-
-I wklej wynik.
-
----
-
-💡 Mała ciekawostka:
-Linux **zawsze** uruchamia pliki tylko z bieżącego katalogu (`./`) albo z pełnej ścieżki. Root ma większe uprawnienia, ale nie „teleportuje” plików 😄
-
-Jak pokażesz komunikat błędu, rozwiążemy to do końca w minutę 💪
-Okej, to teraz mamy jasność: **ten plik jednak NIE jest w `/home/mikolaj`** 👍
-Czyli wcześniejsza ścieżka była błędna albo plik został przeniesiony/usunięty.
-
-Zróbmy to na 100% pewnie.
-
----
-
-## 🔍 Krok 1 – znajdźmy skrypt w całym systemie
-
-Jako root wpisz:
-
-```bash
-find / -type f -name "backup.sh" 2>/dev/null
-```
-
-Poczekaj aż skończy (może chwilę trwać).
-
----
-
-## 🔍 Krok 2 – jeśli nic nie znajdzie
-
-To znaczy że:
-
-* skrypt ma inną nazwę (np. `backup.sh.txt`)
-* albo jest w innym katalogu
-* albo został skasowany
-
-Wtedy sprawdź:
-
-```bash
-find / -type f -iname "*backup*" 2>/dev/null
-```
-
----
-
-## ⚡ Gdy znajdziesz ścieżkę
-
-Np. pokaże:
-
-```
-/root/scripts/backup.sh
-```
-
-Wtedy uruchamiasz:
-
-```bash
-bash /root/scripts/backup.sh
-```
-
----
-
-## 🧠 Szybka diagnoza
-
-Komunikat:
-
-> Nie ma takiego pliku ani katalogu
-
-= **plik pod tą ścieżką nie istnieje**
-
-Nie problem z rootem, nie z uprawnieniami — tylko lokalizacja.
-
----
-
-Jeśli chcesz, wklej **dokładny wynik** komendy `find`, a powiem Ci dokładnie co wpisać dalej 👌
-Zaraz go namierzymy 🕵️‍♂️💻
-
-Super, wkleiłeś pełny wynik – to dużo wyjaśnia 👍
-
-**W systemie NIE MA pliku `backup.sh`.**
-Dlatego każda próba z tą nazwą kończy się błędem.
-
-Ale masz **inne skrypty backupu**:
-
-Najważniejsze z listy:
-
-```
-/backup_myserver.sh
-/backup_26_1.sh
-/backups.sh
-```
-
----
-
-## ✅ Spróbuj najpierw ten (najbardziej logiczny):
-
-```bash
-bash /backup_myserver.sh
-```
-
-Jeśli nie zadziała:
-
-```bash
-bash /backup_26_1.sh
-```
-
-albo:
-
-```bash
-bash /backups.sh
-```
-
----
-
-## 🔧 Jeśli chcesz je uruchamiać jako `./`
-
-Nadaj prawa:
-
-```bash
-chmod +x /backup_myserver.sh
-chmod +x /backup_26_1.sh
-chmod +x /backups.sh
-```
-
-Potem:
-
-```bash
-/backup_myserver.sh
-```
-
----
-
-## 🧠 Co się stało?
-
-Prawdopodobnie:
-
-* skrypt nigdy nie nazywał się `backup.sh`
-* albo został usunięty / zmieniony
-* albo pomyliła się nazwa
-
-Linux jest **100% dokładny co do nazw**.
-
----
-
-Jeśli chcesz, możesz też sprawdzić **co jest w środku** skryptu:
-
-```bash
-nano /backup_myserver.sh
-```
-
-albo:
-
-```bash
-head -20 /backup_myserver.sh
-```
-
-Jak powiesz, który z tych skryptów jest „tym właściwym”, mogę pomóc go poprawić albo ustawić pod crona 😎💾
-Okej, ten komunikat **„nie znaleziono wymaganego pliku”** jest bardzo charakterystyczny – to prawie na pewno znaczy, że:
-
-👉 **skrypt się uruchamia, ale w środku próbuje użyć pliku / programu, którego nie ma**
-
-Spokojnie, to do naprawy 💪
-
----
-
-## 🔍 Krok 1 – zobacz dokładny błąd
-
-Uruchom tak:
-
-```bash
-bash -x /backup_myserver.sh
-```
-
-To pokaże linijka po linijce, **na czym dokładnie się wywala**.
-
----
-
-## 🔍 Krok 2 – sprawdź zawartość skryptu
-
-```bash
-nano /backup_myserver.sh
-```
-
-albo szybciej:
-
-```bash
-head -50 /backup_myserver.sh
-```
-
----
-
-## Najczęstsze przyczyny tego błędu
-
-1️⃣ Skrypt używa np.:
-
-```bash
-cd /home/mikolaj/server
-```
-
-a katalog nie istnieje
-
-2️⃣ Próbuje uruchomić:
-
-```bash
-./server.jar
-```
-
-a pliku nie ma
-
-3️⃣ Używa programu którego nie masz:
-
-* `zip`
-* `tar`
-* `screen`
-* `rsync`
-* `mysqldump`
-
----
-
-## ⚡ Szybki test: sprawdź czy to bash
-
-```bash
-file /backup_myserver.sh
-```
-
-Powinno być:
-
-> Bourne-Again shell script
-
----
-
-## 🧰 Jeśli chcesz – wklej:
-
-* wynik: `bash -x /backup_myserver.sh`
-* albo treść skryptu
-
-i ja Ci dokładnie powiem:
-
-✔ czego brakuje
-✔ jak to zainstalować
-✔ albo jak poprawić ścieżki
-
-To już ostatnia prosta 😎🛠️
-Aaa, okej — czyli **plik nazywa się po prostu `backup` (bez `.sh`)** 👍
-I to się zgadza, bo w wynikach było:
-
-```
-/backup
-```
-
-To jest Twój skrypt.
-
-Zrób tak:
-
----
-
-## ✅ 1. Sprawdź co to za plik
-
-```bash
-file /backup
-```
-
-Powinno pokazać coś w stylu: `shell script`.
-
----
-
-## ✅ 2. Nadaj prawa do uruchomienia (na wszelki wypadek)
-
-```bash
-chmod +x /backup
-```
-
----
-
-## ✅ 3. Uruchom
-
-Jednym z tych dwóch sposobów:
-
-```bash
-/backup
-```
-
-albo:
-
-```bash
-bash /backup
-```
-
----
-
-## ❗ Jeśli znowu będzie „nie znaleziono wymaganego pliku”
-
-To znaczy, że **wewnątrz skryptu brakuje jakiegoś pliku/programu**.
-
-Wtedy zrób:
-
-```bash
-bash -x /backup
-```
-
-I wklej **pierwsze linijki błędu**, np. 10–20 ostatnich linii.
-
----
-
-💡 Mała ściąga:
-
-* `backup.sh` ❌ nie istnieje
-* `/backup` ✅ to jest Twój skrypt
-* root może go normalnie uruchomić
-
-Zaraz go doprowadzimy do działania 😄💪
-Spokojnie 😅 to **nie jest** problem z uprawnieniami ani z rootem.
-Ten konkretny błąd:
-
-> nie można uruchomić: nie znaleziono wymaganego pliku
-
-najczęściej oznacza **zepsutą pierwszą linię skryptu (shebang)** albo plik w formacie Windows (CRLF).
-
-Zróbmy szybkie 3 kroki i to naprawimy.
-
----
-
-## 1️⃣ Sprawdź pierwszą linię skryptu
-
-```bash
-head -1 test.sh
-```
-
-Powinno być:
-
-```
-#!/bin/bash
-```
-
-albo
-
-```
-#!/usr/bin/env bash
-```
-
-Jeśli widzisz coś innego (albo dziwne znaki) → to jest przyczyna.
-
----
-
-## 2️⃣ Sprawdź typ pliku
-
-```bash
-file test.sh
-```
-
-Jeśli zobaczysz coś w stylu:
-
-```
-with CRLF line terminators
-```
-
-to znaczy, że plik jest w formacie Windows i Linux go źle uruchamia.
-
----
-
-## 3️⃣ Napraw (najczęściej to wystarczy)
-
-### Opcja A – najszybsza
-
-Uruchom przez bash:
-
-```bash
-bash test.sh
-```
-
-Jeśli to zadziała → problem = format pliku.
-
----
-
-### Opcja B – napraw na stałe (polecane)
-
-Zainstaluj narzędzie:
-
-```bash
-apt install dos2unix
-```
-
-Potem:
-
-```bash
-dos2unix test.sh
-chmod +x test.sh
-```
-
-I uruchom:
-
-```bash
-./test.sh
-```
-
----
-
-## 99% przypadków przyczyna to:
-
-* skrypt pobrany z Windowsa
-* złe `#!/bin/bash`
-* albo `#!/bin/bash^M` (niewidoczne)
-
----
-
-Jeśli chcesz, wklej wynik:
-
-```
-head -1 test.sh
-file test.sh
-```
-
-i powiem dokładnie co tam jest zepsute 👍
-
-Dasz radę, to klasyczna linuxowa mina 💣🐧
-Dzięki za wklejenie skryptu — on jest **w 100% OK** 👍
-Logika, składnia, wszystko gra.
-
-Ten błąd:
-
-> nie można uruchomić: nie znaleziono wymaganego pliku
-
-**nie dotyczy skryptu**, tylko tego, *czym system próbuje go uruchomić*.
-
-Są tylko 2 realne przyczyny:
-
----
-
-# ✅ 1. Plik jest w formacie Windows (CRLF) – **NAJCZĘSTSZE**
-
-Nawet jeśli tego nie widać.
-
-### Naprawa (30 sekund):
-
-```bash
-apt install -y dos2unix
-dos2unix test.sh
-chmod +x test.sh
-./test.sh
-```
-
----
-
-# ✅ 2. Bash nie jest tam gdzie skrypt myśli
-
-Sprawdź:
-
-```bash
-ls -l /bin/bash
-```
-
-Jeśli istnieje → OK
-Jeśli nie:
-
-```bash
-apt install -y bash
-```
-
----
-
-# 🔎 Dla pewności sprawdź typ pliku:
-
-```bash
-file test.sh
-```
-
-Jeśli zobaczysz:
-
-> with CRLF line terminators
-
-→ bingo, to był problem.
-
----
-
-# ⚡ Szybkie obejście (działa zawsze):
-
-Nawet bez naprawy możesz uruchomić tak:
-
-```bash
-bash test.sh
-```
-
-Jeśli to działa → 100% format Windows.
-
----
-
-## Podsumowanie po ludzku 😄
-
-Nie zepsułeś skryptu.
-Nie zepsułeś systemu.
-To tylko Linux krzyczy, bo plik ma „windowsowe enterki”.
-
-To jest **klasyczna mina**, każdy na nią kiedyś wchodzi 🐧💣
-
----
-
-Jak chcesz, wklej wynik:
-
-```bash
-file test.sh
-```
-
-a potwierdzę na 100%.
-
-A jak już ruszy — mogę Ci pomóc dorobić crona żeby backup robił się sam codziennie 😉💾
-Jasne 😄 zmieniamy nazwę z `test.sh` na `backup.sh` i jedziemy dalej.
-
-Zrób dokładnie tak:
-
----
-
-## 1️⃣ Zmień nazwę pliku
-
-Jeśli jesteś w tym samym katalogu:
-
-```bash
-mv test.sh backup.sh
-```
-
-Jeśli nie, podaj pełną ścieżkę, np.:
-
-```bash
-mv /root/test.sh /root/backup.sh
-```
-
-(albo tam, gdzie faktycznie leży plik)
-
----
-
-## 2️⃣ Napraw format + prawa (ważne)
-
-```bash
-dos2unix backup.sh
-chmod +x backup.sh
-```
-
----
-
-## 3️⃣ Uruchom
-
-```bash
-./backup.sh
-```
-
-albo zawsze bezpiecznie:
-
-```bash
-bash backup.sh
-```
-
----
-
-## 4️⃣ Sprawdź czy system go widzi poprawnie
-
-```bash
-file backup.sh
-```
-
-Powinno być coś w stylu:
-
-> Bourne-Again shell script, ASCII text
-
----
-
-Jeśli nadal by marudził, wklej:
-
-```
-pwd
-ls -l backup.sh
-file backup.sh
-```
-
-i trafimy w punkt 🎯
-
-PS. Ten skrypt jest całkiem porządny – automatyczne czyszczenie starych backupów to dobra robota 👌💾
-
-Aha, już kumam 😎 Chcesz **wszystko w jednym poleceniu**, żeby przygotować skrypt i od razu go uruchomić.
-W Linuxie wygląda to tak:
-
-```bash
-apt install -y dos2unix
-dos2unix backup.sh
-chmod +x backup.sh
-./backup.sh
-```
-
-Albo, jeśli chcesz pewnie uruchomić przez bash (nie zależy od shebanga):
-
-```bash
-apt install -y dos2unix
-dos2unix backup.sh
-chmod +x backup.sh
-bash backup.sh
-```
-
----
-
-💡 Wyjaśnienie:
-
-1. `apt install -y dos2unix` → instaluje narzędzie do konwersji Windows → Linux
-2. `dos2unix backup.sh` → usuwa CRLF (Windowsowe enterki)
-3. `chmod +x backup.sh` → nadaje prawa do uruchomienia
-4. `./backup.sh` lub `bash backup.sh` → uruchamia skrypt
-
-Po tym Twój backup powinien działać bez problemów 😎
-
-Chcesz, żebym od razu zrobił wersję **jednolinijkową**, którą możesz wkleić i odpalić jednym strzałem?
-
-
-
-Skrypt-BACKUPS!
-1#
-=============================================================================
-#!/bin/bash
-
-# -----------------------------
-# KONFIGURACJA
-# -----------------------------
-SOURCE="/opt/minecraft/myserver"   # folder do backupu
-DEST="/opt/Backups"            # folder docelowy backupów
-MAX_BACKUPS=20                  # ile backupów przechowywać
-LOG_FILE="$DEST/backup.log"    # plik logów
-
-# -----------------------------
-# SPRAWDZENIE FOLDERU
-# -----------------------------
-if [ ! -d "$SOURCE" ]; then
-    echo "Błąd: folder źródłowy $SOURCE nie istnieje!"
-    exit 1
-fi
-
-mkdir -p "$DEST"
-
-# -----------------------------
-# PRZYGOTOWANIE BACKUPU
-# -----------------------------
-DATE=$(date "+%Y-%m-%d_%H-%M-%S")
-BACKUP_FILE="$DEST/minecraft_backup_$DATE.tar.gz"
-
-echo "Rozpoczynam backup Minecrafta..."
-
-# -----------------------------
-# TWORZENIE BACKUPU
-# -----------------------------
-# Używamy tar jednym poleceniem (działa pewnie)
-tar -czvf "$BACKUP_FILE" -C "$SOURCE" .
-
-echo "Backup zakończony: $BACKUP_FILE"
-
-# -----------------------------
-# LOGOWANIE
-# -----------------------------
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] Backup zapisany jako $BACKUP_FILE" >> "$LOG_FILE"
-
-# -----------------------------
-# USUWANIE STARYCH BACKUPÓW
-# -----------------------------
-OLD_BACKUPS=$(ls -1t "$DEST"/minecraft_backup_*.tar.gz 2>/dev/null | tail -n +$((MAX_BACKUPS+1)))
-if [ ! -z "$OLD_BACKUPS" ]; then
-    rm -f $OLD_BACKUPS
-    echo "Usunięto stare backupy:" >> "$LOG_FILE"
-    echo "$OLD_BACKUPS" >> "$LOG_FILE"
-fi
-==============================================================================================================
-
-
-
-2#
-===============================================================================================================================
-#!/bin/bash
-
-# -----------------------------
-# KONFIGURACJA
-# -----------------------------
-SOURCE="/opt/minecraft/myserver"
-DEST="/opt/Backups2.0"
-MAX_BACKUPS=20
-LOG_FILE="$DEST/backup.log"
-INTERVAL=3600  # czas między backupami w sekundach
-STOP_PASSWORD="1122334455"
-
-GREEN="\033[32m"
-RESET="\033[0m"
-
-# -----------------------------
-# SPRAWDZENIE ZIP
-# -----------------------------
-if ! command -v zip &> /dev/null; then
-    echo "Program zip nie jest zainstalowany!"
-    echo "Na Debian/Ubuntu: sudo apt install zip"
-    echo "Na CentOS/RHEL: sudo yum install zip"
-    exit 1
-fi
-
-# -----------------------------
-# FUNKCJA BACKUPU
-# -----------------------------
-do_backup() {
-    if [ ! -d "$SOURCE" ]; then
-        echo "Błąd: folder $SOURCE nie istnieje!" | tee -a "$LOG_FILE"
-        return
-    fi
-
-    mkdir -p "$DEST"
-
-    DATE=$(date "+%Y-%m-%d_%H-%M-%S")
-    BACKUP_FILE="$DEST/minecraft_backup_$DATE.zip"
-
-    echo "Rozpoczynam backup Minecrafta..."
-
-    # Tworzenie ZIP
-    cd "$SOURCE" || return
-    zip -r "$BACKUP_FILE" . > /dev/null
-
-    if [ -f "$BACKUP_FILE" ]; then
-        echo "Backup zakończony: $BACKUP_FILE"
-        echo "[$(date '+%Y-%m-%d %H:%M:%S')] Backup zapisany: $BACKUP_FILE" >> "$LOG_FILE"
-    else
-        echo "Błąd: backup się nie powiódł!" | tee -a "$LOG_FILE"
-        return
-    fi
-
-    # Usuwanie starych backupów
-    ls -1t "$DEST"/minecraft_backup_*.zip 2>/dev/null | tail -n +$((MAX_BACKUPS+1)) | xargs -r rm -f
-    for f in $(ls -1t "$DEST"/minecraft_backup_*.zip 2>/dev/null | tail -n +$((MAX_BACKUPS+1))); do
-        echo "Usunięto stary backup: $f" >> "$LOG_FILE"
-    done
+    location / {
+        autoindex on;             # Włącza listowanie plików
+        autoindex_exact_size off; # Pokazuje rozmiary w KB/MB zamiast w bajtach
+        autoindex_localtime on;   # Pokazuje czas serwera
+        charset utf-8;            # Poprawne wyświetlanie polskich znaków
+    }
 }
+Krok 4: Aktywacja i restart
+Teraz musimy włączyć tę stronę i wyłączyć domyślną powitalną stronę Nginxa:
 
-# -----------------------------
-# LICZNIK DO BACKUPU
-# -----------------------------
-countdown() {
-    local seconds=$1
-    while [ $seconds -gt 0 ]; do
-        HOURS=$((seconds/3600))
-        MINUTES=$(((seconds%3600)/60))
-        SECONDS=$((seconds%60))
-        printf "\r${GREEN}Następny backup za %02d:%02d:%02d (naciśnij Enter, aby przerwać)${RESET}" "$HOURS" "$MINUTES" "$SECONDS"
-        sleep 1
-        ((seconds--))
+Bash
+# Włącz nową stronę
+sudo ln -s /etc/nginx/sites-available/moje_pliki /etc/nginx/sites-enabled/
 
-        # Jeśli użytkownik wciśnie Enter, wymaga hasła
-        if read -t 0.1 -n 1 key && [ "$key" = "" ]; then
-            echo -e "\nWpisz hasło, aby zakończyć skrypt:"
-            read -s input
-            if [ "$input" = "$STOP_PASSWORD" ]; then
-                echo "Poprawne hasło, kończę skrypt."
-                exit 0
-            else
-                echo "Niepoprawne hasło, kontynuuję backup..."
-            fi
-        fi
-    done
-    echo
+# Wyłącz domyślną stronę (opcjonalnie)
+sudo rm /etc/nginx/sites-enabled/default
+
+# Sprawdź czy nie ma błędów w składni
+sudo nginx -t
+
+# Zrestartuj serwer
+sudo systemctl restart nginx
+Wynik
+Teraz po wpisaniu w przeglądarce adresu IP Twojego serwera, zobaczysz prostą listę plików. Wszystko, co użytkownik wrzuci przez SFTP (WinSCP/FileZilla) do folderu /dane, pojawi się natychmiast w przeglądarce.
+
+Ważna uwaga o bezpieczeństwie:
+Obecnie każdy, kto zna adres IP, może zobaczyć te pliki. Jeśli chcesz, aby przeglądarka również pytała o login i hasło, możemy dodać tzw. Basic Auth.
+
+Wskazówka: Jeśli potrzebujesz bardziej nowoczesnego wyglądu (z przyciskami "Upload", miniaturkami zdjęć i ładnym interfejsem), polecam narzędzie o nazwie File Browser – to pojedynczy plik binarny, który robi to samo, ale wygląda jak Google Drive.
+
+Czy chciałbyś, abym pomógł Ci teraz zabezpieczyć tę stronę hasłem, czy wolisz zainstalować wspomniany "ładniejszy" interfejs?
+
+
+Oto dwa rozwiązania: pierwsze to szybkie zabezpieczenie obecnej listy plików hasłem, a drugie to instalacja nowoczesnego menedżera plików, który wygląda jak Google Drive.
+
+Część 1: Zabezpieczenie obecnej strony hasłem (Nginx Basic Auth)
+Jeśli chcesz zostać przy prostym wyglądzie, ale dodać okno logowania w przeglądarce, wykonaj te kroki:
+
+1. Zainstaluj narzędzia pomocnicze:
+
+Bash
+sudo apt install apache2-utils -y
+2. Wygeneruj plik z hasłem:
+Zastąp uzytkownik_www nazwą, której będziesz używać do logowania w przeglądarce (może być inna niż nazwa użytkownika w systemie).
+
+Bash
+sudo htpasswd -c /etc/nginx/.htpasswd uzytkownik_www
+(System poprosi Cię o dwukrotne wpisanie hasła).
+
+3. Edytuj konfigurację Nginx:
+
+Bash
+sudo nano /etc/nginx/sites-available/moje_pliki
+Dodaj dwie linie auth_basic wewnątrz sekcji location /:
+
+Nginx
+        location / {
+            auth_basic "Obszar chroniony";
+            auth_basic_user_file /etc/nginx/.htpasswd;
+
+            autoindex on;
+            autoindex_exact_size off;
+            autoindex_localtime on;
+            charset utf-8;
+        }
+4. Zrestartuj serwer:
+
+Bash
+sudo systemctl restart nginx
+Część 2: "Ładniejszy interfejs" – Instalacja File Browser
+File Browser to genialne narzędzie: ma polski interfejs, pozwala na wgrywanie plików przeciągnięciem myszki, tworzenie folderów i podgląd zdjęć bezpośrednio w przeglądarce.
+
+1. Szybka instalacja:
+Pobierz i uruchom oficjalny skrypt instalacyjny:
+
+Bash
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
+2. Pierwsze uruchomienie i konfiguracja:
+Musimy powiedzieć programowi, gdzie są pliki i na jakim porcie ma działać (użyjemy np. 8080, aby nie gryzło się z Nginxem).
+
+Bash
+filebrowser -d /home/nazwa_uzytkownika/filebrowser.db config init
+filebrowser -d /home/nazwa_uzytkownika/filebrowser.db config set --address 0.0.0.0
+filebrowser -d /home/nazwa_uzytkownika/filebrowser.db config set --port 8080
+filebrowser -d /home/nazwa_uzytkownika/filebrowser.db config set --root /home/nazwa_uzytkownika/dane
+filebrowser -d /home/nazwa_uzytkownika/filebrowser.db users add admin twoje_haslo --perm.admin
+3. Uruchomienie w tle (jako usługa):
+Aby program działał zawsze, nawet po restarcie serwera, utwórz plik usługi:
+
+Bash
+sudo nano /etc/systemd/system/filebrowser.service
+Wklej tam:
+
+Ini, TOML
+[Unit]
+Description=File Browser
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/filebrowser -d /home/nazwa_uzytkownika/filebrowser.db
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+4. Aktywacja usługi:
+
+Bash
+sudo systemctl daemon-reload
+sudo systemctl enable filebrowser
+sudo systemctl start filebrowser
+Jak z tego korzystać?
+Otwórz przeglądarkę i wpisz: http://TWOJE_IP:8080
+
+Zaloguj się danymi: login admin, hasło twoje_haslo (z kroku 2).
+
+W ustawieniach (Settings) możesz zmienić język na Polski.
+
+Co zyskujesz dzięki File Browser?
+
+Ładny UI: Ikony plików, miniatury zdjęć.
+
+Zarządzanie: Możesz usuwać, zmieniać nazwy i przenosić pliki w przeglądarce.
+
+Wgrywanie: Możesz wysyłać pliki na serwer bez używania WinSCP/FileZilla.
+
+Jeśli wybierzesz File Browser, możesz wyłączyć wcześniejszą konfigurację Nginx (sudo rm /etc/nginx/sites-enabled/moje_pliki && sudo systemctl restart nginx), aby nie dublować dostępu.
+
+Które rozwiązanie bardziej Ci odpowiada?
+
+
+
+Ten błąd wynika z małego nieporozumienia przy wpisywaniu komendy. Nazwa www-data, którą podałem w poprzednim kroku, nie jest przykładem do zmiany na własną nazwę – to konkretna, systemowa nazwa użytkownika, pod którą "przedstawia się" serwer Nginx w systemie Debian.
+
+Twój system mówi, że użytkownik www-testowy nie istnieje, ponieważ go nie tworzyliśmy. To serwer Nginx musi otrzymać uprawnienia do Twojej grupy.
+
+Jak to naprawić?
+Wpisz dokładnie tę komendę (nie zmieniając www-data na nic innego):
+
+Bash
+sudo usermod -aG sftp_users www-data
+Dlaczego tak?
+
+Użytkownik, którego stworzyłeś (np. testowy), już jest w grupie sftp_users (zrobiliśmy to w Kroku 2).
+
+Teraz musimy "wpuścić" do tej grupy serwer Nginx (www-data), żeby mógł on wejść do folderu /home/użytkownik/dane i pokazać pliki w przeglądarce.
+
+Co jeśli chcesz zainstalować "File Browser" (ten ładniejszy interfejs)?
+Jeśli zdecydowałeś się na File Browser (Część 2 z poprzedniej wiadomości), to komenda z www-data w ogóle nie będzie Ci potrzebna, ponieważ File Browser uruchamiamy zazwyczaj jako root lub na uprawnieniach właściciela plików, więc problem z uprawnieniami Nginxa znika.
+
+Krótka lista kontrolna, aby wszystko ruszyło:
+
+Dla SFTP (WinSCP): Upewnij się, że dopisałeś blok Match Group do /etc/ssh/sshd_config i zrestartowałeś SSH (systemctl restart ssh). To usunie błąd "zbyt dużego pakietu" z Twojego pierwszego zdjęcia.
+
+Dla przeglądarki (Nginx): Użyj www-data w komendzie usermod.
+
+Dla przeglądarki (File Browser): Po prostu postępuj zgodnie z instrukcją instalacji usługi (systemd) z poprzedniej wiadomości.
+
+Czy udało Ci się już dopisać te ustawienia do pliku sshd_config? To najważniejszy krok, żeby WinSCP zaczął działać.
+
+
+
+
+
+Tak, dobrze rozumiesz! www-data to taki systemowy „pośrednik”. Ponieważ serwer Nginx działa na jego uprawnieniach, musi on mieć prawo wejścia do folderów każdego użytkownika, którego pliki chcesz wyświetlić w przeglądarce.
+
+Twoja "chmura" właśnie zaczyna rosnąć. Jeśli utworzysz drugiego, trzeciego czy dziesiątego użytkownika, sprawa jest bardzo prosta, bo użytkownika www-data dodaje się do grupy tylko raz.
+
+Oto jak to obsłużyć przy kolejnym użytkowniku (np. o nazwie uzytkownik2):
+
+1. Czy muszę znowu wpisywać usermod?
+Nie. Użytkownik www-data jest już członkiem grupy sftp_users. Każdy nowy użytkownik, którego stworzysz i przypiszesz do tej samej grupy (komendą --ingroup sftp_users), będzie automatycznie "widoczny" dla Nginxa.
+
+2. Jak udostępnić folder nowego użytkownika w przeglądarce?
+Masz tutaj dwie drogi, zależnie od tego, co wybrałeś wcześniej:
+
+Opcja A: Jeśli używasz Nginx (prosta lista plików)
+Musisz zdecydować, pod jakim adresem ma być dostępny nowy użytkownik. Najprościej dodać kolejny folder (tzw. location) w tym samym pliku konfiguracyjnym.
+
+Otwórz plik konfiguracyjny:
+
+Bash
+sudo nano /etc/nginx/sites-available/moje_pliki
+Dodaj nową sekcję dla drugiego użytkownika:
+
+Nginx
+server {
+    listen 80;
+    server_name adres_ip;
+
+    # Pliki pierwszego użytkownika pod adresem IP/user1
+    location /user1 {
+        alias /home/uzytkownik1/dane/;
+        autoindex on;
+        auth_basic "Hasło dla User1";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+
+    # Pliki drugiego użytkownika pod adresem IP/user2
+    location /user2 {
+        alias /home/uzytkownik2/dane/;
+        autoindex on;
+        auth_basic "Hasło dla User2";
+        auth_basic_user_file /etc/nginx/.htpasswd_user2;
+    }
 }
+Zrestartuj Nginx: sudo systemctl restart nginx.
 
-# -----------------------------
-# PĘTLA GŁÓWNA
-# -----------------------------
-while true; do
-    echo "Rozpoczynam backup w ciągu 10 sekund..."
-    countdown 10
+Opcja B: Jeśli używasz File Browser (ładny interfejs)
+To rozwiązanie jest znacznie wygodniejsze przy wielu użytkownikach. Nie musisz nic wpisywać w konsoli!
 
-    do_backup
+Zaloguj się do panelu File Browser jako admin.
 
-    echo "Kolejny backup za $INTERVAL sekund..."
-    countdown "$INTERVAL"
+Wejdź w Settings (Ustawienia) -> User Management (Zarządzanie użytkownikami).
+
+Kliknij New (Nowy).
+
+W polu Scope (Zasięg/Ścieżka) wpisz ścieżkę do folderu nowego użytkownika: /home/uzytkownik2/dane.
+
+Gotowe! Każdy użytkownik po zalogowaniu do tego samego panelu będzie widział tylko swój folder.
+
+O czym musisz pamiętać przy każdym nowym użytkowniku?
+Za każdym razem, gdy tworzysz nowego "ograniczonego" użytkownika, musisz powtórzyć operację z nadaniem uprawnień do folderów, aby Nginx/File Browser mógł tam wejść:
+
+Komenda	Cel
+sudo chmod 755 /home/nowy_user	Pozwala Nginxowi "przejść" przez ten folder.
+sudo chmod 755 /home/nowy_user/dane	Pozwala Nginxowi odczytać listę plików.
+Podsumowanie uprawnień
+Właściciel (root): Pilnuje "więzienia" (folder domowy).
+
+Użytkownik (uzytkownik2): Może pisać i czytać w swoim folderze /dane.
+
+Grupa (sftp_users): Pozwala www-data (serwerowi WWW) legalnie zaglądać do środka i pokazywać pliki Tobie w przeglądarce.
+
+Czy chcesz, abym pomógł Ci teraz skonfigurować osobne hasła dla tych użytkowników w Nginx, czy zostajesz przy File Browserze, gdzie wyklikasz to w panelu?
+
+
+
+Rozumiem – wystawianie wszystkiego "na widoku" zaraz po wpisaniu IP faktycznie nie jest najbardziej eleganckim ani najbezpieczniejszym rozwiązaniem.
+
+Możemy to zmienić na dwa sposoby: przenieść stronę na podstronę (np. IP/pliki) albo zmienić port (np. IP:8888). Najwygodniejsza będzie podstrona.
+
+Oto jak to zrobić w Nginx (zarówno dla zwykłej listy plików, jak i dla ładniejszego File Browsera):
+
+Opcja 1: Jeśli używasz Nginx (zwykła lista plików)
+Musimy zmienić regułę location w Twoim pliku konfiguracyjnym.
+
+Edytuj plik:
+
+Bash
+sudo nano /etc/nginx/sites-available/moje_pliki
+Zmień zawartość tak, aby zamiast / użyć Twojej własnej nazwy podstrony (np. /tajny-folder):
+
+Nginx
+server {
+    listen 80;
+    server_name adres_ip;
+
+    # Teraz po wpisaniu samego IP zobaczysz błąd 404 lub stronę domyślną
+    # Twoje pliki będą pod adresem: http://IP/moje-pliki
+    location /moje-pliki {
+        alias /home/testowy/dane/; # Używamy 'alias', aby ścieżka URL pasowała do folderu
+        autoindex on;
+        autoindex_exact_size off;
+        autoindex_localtime on;
+        charset utf-8;
+
+        # Jeśli masz hasło, zostaw te linie:
+        auth_basic "Dostęp tylko dla upoważnionych";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
+Ważne: Przy alias pamiętaj o ukośniku / na końcu ścieżki!
+
+Zrestartuj Nginx:
+
+Bash
+sudo systemctl restart nginx
+Opcja 2: Jeśli używasz File Browser (ten ładny interfejs)
+Jeśli File Browser działa u Ciebie na porcie 8080, możesz go "ukryć" za Nginxem, aby był dostępny pod adresem http://IP/panel. To tzw. Reverse Proxy.
+
+Otwórz tę samą konfigurację Nginx:
+
+Bash
+sudo nano /etc/nginx/sites-available/moje_pliki
+Wklej tam taką konfigurację:
+
+Nginx
+server {
+    listen 80;
+    server_name adres_ip;
+
+    location /panel/ {
+        proxy_pass http://127.0.0.1:8080/; # Przekierowanie do File Browsera
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Pozwala na wgrywanie dużych plików przez przeglądarkę
+        client_max_body_size 1000M;
+    }
+}
+Zrestartuj Nginx:
+
+Bash
+sudo systemctl restart nginx
+Co to zmieniło?
+Wpisujesz http://Twoje_IP: Zobaczysz stronę błędu (404 Not Found) lub domyślną stronę powitalną Debiana. Twoje pliki są niewidoczne dla kogoś, kto po prostu skanuje Twój adres IP.
+
+Wpisujesz http://Twoje_IP/moje-pliki (lub /panel): Dopiero wtedy pojawia się okno logowania i dostęp do Twoich danych.
+
+Dodatkowa wskazówka (Bezpieczeństwo):
+Jeśli chcesz, aby było to jeszcze mniej "wykrywalne", możesz zmienić port, na którym słucha Nginx. W linii listen 80; zmień 80 na np. 8234. Wtedy adres będzie wyglądał tak: http://Twoje_IP:8234/moje-pliki.
+
+Czy chcesz, abym pomógł Ci teraz ustawić jakąś prostą "stronę-przykrywkę" pod samym adresem IP, żeby serwer wyglądał na zwykłą, pustą stronę?
+
+
+
+
+
+
+Ups, wygląda na to, że przy okazji robienia porządków „wylaliśmy dziecko z kąpielą”. Błąd 403 Forbidden oraz zniknięcie starej strony oznaczają, że nowa konfiguracja Nginxa całkowicie nadpisała poprzednią lub po prostu serwer nie ma uprawnień, by wejść do wskazanego folderu.
+
+Naprawimy to tak, aby Twoja stara strona wróciła na swoje miejsce (pod główne IP), a dostęp do plików był jedynie "dodatkiem" na podstronie.
+
+Krok 1: Przywrócenie starej strony
+Jeśli wcześniej Twoja strona działała na domyślnej konfiguracji, musimy przywrócić skrót do niej, który usunęliśmy w poprzednich krokach:
+
+Bash
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+Krok 2: Połączenie starego z nowym (Zalecane)
+Zamiast tworzyć osobny plik moje_pliki, który kłóci się ze starą stroną, dodamy naszą "sekcję plikową" bezpośrednio do głównej konfiguracji.
+
+Usuń ten konfliktowy plik, który stworzyliśmy wcześniej:
+
+Bash
+sudo rm /etc/nginx/sites-enabled/moje_pliki
+Edytuj główny plik konfiguracji (ten, w którym jest Twoja stara strona):
+
+Bash
+sudo nano /etc/nginx/sites-available/default
+Znajdź sekcję server { ... } i wklej kod podstrony wewnątrz niej, pod istniejącymi wpisami:
+
+Nginx
+server {
+    listen 80;
+    # ... tu są Twoje stare ustawienia strony ...
+
+    # DODAJEMY TYLKO TO:
+    location /moje-pliki {
+        alias /home/testowy/dane/;
+        autoindex on;
+        autoindex_exact_size off;
+        autoindex_localtime on;
+        charset utf-8;
+
+        # Opcjonalne hasło:
+        auth_basic "Logowanie do plików";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
+Krok 3: Dlaczego widziałeś "403 Forbidden"? (Naprawa uprawnień)
+Nginx wywala błąd 403, gdy "pocałuje klamkę". Nawet jeśli dany folder ma uprawnienia, Nginx musi mieć prawo wykonania (+x) na każdym folderze "po drodze" (czyli /home oraz /home/testowy).
+
+Wykonaj te komendy, aby upewnić się, że serwer może tam wejść:
+
+Naprawa grupy (pamiętaj: www-data to nazwa systemowa!):
+
+Bash
+sudo usermod -aG sftp_users www-data
+Otwarcie "drzwi" do folderów:
+
+Bash
+sudo chmod 755 /home/testowy
+sudo chmod 755 /home/testowy/dane
+Ważne: Jeśli folder /home/testowy ma uprawnienia 700, to nikt poza właścicielem (nawet Nginx) nie może tam zajrzeć, stąd błąd 403.
+
+Krok 4: Test i restart
+Zawsze sprawdzaj, czy w konfiguracji nie ma literówek przed restartem:
+
+Bash
+sudo nginx -t
+sudo systemctl restart nginx
+Podsumowanie – co teraz powinieneś mieć?
+Wpisujesz http://IP -> Widzisz swoją starą, działającą stronę.
+
+Wpisujesz http://IP/moje-pliki -> Pojawia się prośba o hasło (jeśli ustawione), a potem lista plików użytkownika testowy.
+
+Mała rada na koniec: Jeśli planujesz używać tego na dłuższą metę, warto pomyśleć o certyfikacie SSL (HTTPS) przez certbot, bo przesyłanie hasła przez zwykłe HTTP (port 80) jest jak wysyłanie listu na pocztówce – każdy po drodze może je przeczytać.
+
+Czy Twoja stara strona już „wstała” i czy błąd 403 zniknął po zmianie chmod?
+
+
+
+
+
+
+
+Spokojnie, to pasmo błędów to klasyka przy pierwszej konfiguracji serwera – każdy z nich mówi nam dokładnie, co jest nie tak. Naprawimy to wszystko za jednym zamachem, aby Twoja stara strona wróciła, a nowa funkcja działała poprawnie.
+
+Oto co oznaczają te błędy i jak je naprawić:
+
+1. Błąd WinSCP (Zbyt duży pakiet)
+Ten błąd (widoczny na Twoim pierwszym zdjęciu) potwierdza, że serwer SSH jeszcze nie wie, że ma używać tylko protokołu SFTP dla tego użytkownika. Zamiast tego wysyła tekstowy komunikat "This account is currently not available", którego WinSCP nie rozumie.
+
+Rozwiązanie: Musisz dokończyć edycję /etc/ssh/sshd_config (Krok 4 z pierwszej wiadomości) i zrestartować SSH.
+
+2. Błąd usermod (User does not exist)
+Na drugim zdjęciu widać usermod: user 'www-testowy' does not exist.
+
+Błąd: Próbowałeś dodać użytkownika o nazwie www-testowy. W świecie Debiana serwer Nginx zawsze nazywa się www-data. To nazwa systemowa, której nie zmieniamy.
+
+Rozwiązanie: Wpisz dokładnie:
+
+Bash
+sudo usermod -aG sftp_users www-data
+3. Błąd 403 Forbidden i zniknięcie starej strony
+To oznacza, że Nginx "widzi" Twoją starą konfigurację, ale nie ma uprawnień, by wejść do folderu, lub nowa konfiguracja nadpisała starą.
+
+Zrobimy teraz "Wielkie Sprzątanie", które przywróci Twoją stronę i doda folder z plikami:
+
+Krok A: Naprawa uprawnień (Klucz do błędu 403)
+Nginx (użytkownik www-data) musi mieć prawo "przejścia" przez folder domowy użytkownika.
+
+Bash
+# Zastąp 'testowy' nazwą swojego użytkownika
+sudo chmod 755 /home/testowy
+sudo chmod 755 /home/testowy/dane
+Krok B: Przywrócenie starej strony i dodanie podstrony
+Zamiast tworzyć osobne pliki, połączymy wszystko w jednym, aby stara strona działała pod adresem IP, a pliki pod IP/pliki.
+
+Usuń niedziałające skróty (jeśli system powie, że pliku nie ma – zignoruj to, jak na Twoim 4. zdjęciu):
+
+Bash
+sudo rm /etc/nginx/sites-enabled/pliki
+sudo rm /etc/nginx/sites-enabled/moje_pliki
+Edytuj domyślną konfigurację:
+
+Bash
+sudo nano /etc/nginx/sites-available/default
+Znajdź sekcję server { ... } (tę, która obsługuje Twoją starą stronę) i dopisz w niej blok location /pliki przed kończącym klamrą }:
+
+Nginx
+server {
+    listen 80;
+    root /var/www/html; # Twoja stara strona
+    index index.html;
+
+    # TWOJA STARA STRONA DZIAŁA TUTAJ
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # TWOJE PLIKI BĘDĄ TUTAJ
+    location /pliki {
+        alias /home/testowy/dane/; # Pamiętaj o ukośniku na końcu!
+        autoindex on;
+        charset utf-8;
+        # Opcjonalnie dodaj tutaj auth_basic, jeśli chcesz hasło
+    }
+}
+Zrestartuj Nginx:
+
+Bash
+sudo nginx -t && sudo systemctl restart nginx
+Co teraz powinno działać?
+WinSCP: Po poprawnym ustawieniu sshd_config połączy się bez błędu "zbyt dużego pakietu".
+
+Przeglądarka (IP): Powinna wrócić Twoja stara strona.
+
+Przeglądarka (IP/pliki): Powinieneś zobaczyć listę plików (lub pusty folder, jeśli nic tam nie ma).
+
+Jeśli WinSCP nadal wywala błąd pakietu, wklej mi proszę ostatnie 10 linii ze swojego pliku /etc/ssh/sshd_config – sprawdzę, czy nie ma tam literówki.
+
+Czy chciałbyś, abym pomógł Ci teraz sprawdzić poprawność pliku SSH, żeby WinSCP w końcu ruszył?
+
+
+
+
+
+
+
+
+
+
+sftp_users upr
+
+
+Jasne, zrobię Ci z tego **czytelny poradnik krok po kroku**, żeby wszystko było jasne i działało poprawnie. 💪
+
+---
+
+# Poradnik: Jak dać wszystkim użytkownikom w grupie `sftp_users` prawo do kopiowania plików przez SFTP
+
+Zakładam, że:
+
+* Masz grupę `sftp_users`
+* Każdy użytkownik ma swój katalog domowy w `/home/`
+* Chcesz, żeby mogli kopiować pliki w SFTP **bez łamania chroot**
+
+---
+
+## 1️⃣ Utwórz grupę (jeśli jeszcze jej nie ma)
+
+```bash
+sudo groupadd sftp_users
+```
+
+> Jeśli grupa już istnieje, nic nie trzeba robić.
+
+---
+
+## 2️⃣ Dodaj użytkowników do grupy
+
+Przykład z użytkownikiem `testowy`:
+
+```bash
+sudo usermod -aG sftp_users testowy
+```
+
+* `-aG` → dodaje do grupy, nie usuwając innych grup
+
+---
+
+## 3️⃣ Skrypt, który ustawia uprawnienia dla wszystkich użytkowników w grupie
+
+```bash
+for user in $(getent passwd | grep sftp_users | cut -d: -f1); do
+    echo "Ustawiam prawa dla $user"
+    
+    # katalog chroot — bez zapisu, musi być root:root
+    sudo chown root:root /home/$user
+    sudo chmod 755 /home/$user
+
+    # katalog do kopiowania
+    sudo mkdir -p /home/$user/files
+    sudo chown $user:sftp_users /home/$user/files
+    sudo chmod 775 /home/$user/files
 done
+```
+## Skrypt, który ustawia uprawnienia dla wszystkich użytkowników w grupie
 
-=====================================================================================================================================
+```bash
+for user in $(getent passwd | grep sftp_users | cut -d: -f1); do
+    echo "Ustawiam prawa dla $user"
+    
+    # katalog chroot — bez zapisu, musi być root:root
+    sudo chown root:root /home/$user
+    sudo chmod 755 /home/$user
 
+    # katalog do kopiowania
+    sudo mkdir -p /home/$user/
+    sudo chown $user:sftp_users /home/$user/
+    sudo chmod 775 /home/$user/
+done
+```
+## Skrypt, który ustawia uprawnienia dla wszystkich użytkowników w grupie
 
+```bash
+for user in $(getent passwd | grep sftp_users | cut -d: -f1); do
+    echo "Ustawiam prawa dla $user"
+    
+    # katalog chroot — bez zapisu, musi być root:root
+    sudo chown root:root /home/$user
+    sudo chmod 755 /home/$user
 
-3#
-====================================================================================================================
-#!/bin/bash
-set -euo pipefail
+    # katalog do kopiowania
+    sudo mkdir -p /home/$user/files
+    sudo chown $user:sftp_users /home/$user/dane
+    sudo chmod 775 /home/$user/dane
+done
+```
 
-SOURCE="/opt/minecraft/myserver"
-DEST="/opt/Backups"
-MAX_BACKUPS=20
-LOG_FILE="$DEST/backup.log"
+---
 
-RCON_HOST="127.0.0.1"
-RCON_PORT="25575"
-RCON_PASS="CHANGE_ME"
+### 🔹 Wyjaśnienie
 
-MCRCON_BIN="/usr/bin/mcrcon"
-LOCK_FILE="/var/lock/minecraft_backup_26_1.lock"
+1. **`/home/$user`**
 
-log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
+   * To katalog chroot → **musi być własnością roota i bez zapisu** (`root:root`, 755)
+   * Zapewnia izolację w SFTP, użytkownik nie widzi innych folderów
 
-rcon() { "$MCRCON_BIN" -H "$RCON_HOST" -P "$RCON_PORT" -p "$RCON_PASS" "$@" >/dev/null; }
+2. **`/home/$user/files`**
 
-cleanup() { [ -x "$MCRCON_BIN" ] && rcon "save-on" || true; }
-trap cleanup EXIT
+   * To katalog do kopiowania
+   * Własność: `$user:sftp_users`
+   * Uprawnienia 775 → **właściciel i grupa mogą zapisywać i odczytywać pliki**
 
-exec 9>"$LOCK_FILE"
-flock -n 9 || exit 0
+3. Skrypt automatycznie robi to dla **wszystkich użytkowników w grupie `sftp_users`**, więc nie musisz ustawiać każdego ręcznie.
 
-mkdir -p "$DEST"
-touch "$LOG_FILE"
+---
 
-[ -d "$SOURCE" ] || { log "BŁĄD: brak folderu $SOURCE"; exit 1; }
-[ -x "$MCRCON_BIN" ] || { log "BŁĄD: brak mcrcon pod $MCRCON_BIN"; exit 1; }
+### 4️⃣ Sprawdzenie praw
 
-DATE=$(date "+%Y-%m-%d_%H-%M-%S")
-BACKUP_FILE="$DEST/minecraft_backup_$DATE.tar.gz"
+```bash
+ls -ld /home/testowy /home/testowy/files
+```
 
-log "Start backupu -> $BACKUP_FILE"
-log "RCON: save-off"
-rcon "save-off"
-log "RCON: save-all flush"
-rcon "save-all flush"
-sleep 2
-log "Pakowanie tar.gz..."
-tar -czf "$BACKUP_FILE" -C "$SOURCE" . >>"$LOG_FILE" 2>&1
-log "Backup OK: $BACKUP_FILE"
-log "RCON: save-on"
-rcon "save-on"
+Powinno wyjść:
 
-mapfile -t backups < <(ls -1t "$DEST"/minecraft_backup_*.tar.gz 2>/dev/null || true)
-if ((${#backups[@]} > MAX_BACKUPS)); then
-  for ((i=MAX_BACKUPS; i<${#backups[@]}; i++)); do
-    rm -f -- "${backups[$i]}"
-    log "Usunięto stary backup: ${backups[$i]}"
-  done
-fi
+```text
+drwxr-xr-x 2 root root 4096 Feb 26 12:00 /home/testowy
+drwxrwxr-x 2 testowy sftp_users 4096 Feb 26 12:00 /home/testowy/files
+```
 
-log "Koniec."
-=================================================================================================================
+* Pierwszy katalog → chroot (bez zapisu)
+* Drugi katalog → kopiowanie (użytkownik + grupa mają pełny dostęp)
 
+---
 
-4#
-==============================================================================================================================
-#!/bin/bash
-set -euo pipefail
+💡 **Gotowe!** Teraz każdy w grupie `sftp_users` może kopiować pliki do swojego katalogu `files` przez SFTP, a chroot działa bezpiecznie.
 
-SOURCE="/opt/minecraft/myserver"
-DEST="/opt/Backups2.0"
-MAX_BACKUPS=20
-LOG_FILE="$DEST/backup.log"
+---
 
-RCON_HOST="127.0.0.1"
-RCON_PORT="25576"
-RCON_PASS="CHANGE_ME"
+Jeśli chcesz, mogę też zrobić **wersję „automatyczną”**, żeby każdy nowy użytkownik dodany do grupy od razu miał katalog `files` gotowy do kopiowania.
 
-MCRCON_BIN="/usr/bin/mcrcon"
-LOCK_FILE="/var/lock/minecraft_backup_myserver.lock"
-
-log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
-
-rcon() { "$MCRCON_BIN" -H "$RCON_HOST" -P "$RCON_PORT" -p "$RCON_PASS" "$@" >/dev/null; }
-
-cleanup() { [ -x "$MCRCON_BIN" ] && rcon "save-on" || true; }
-trap cleanup EXIT
-
-exec 9>"$LOCK_FILE"
-flock -n 9 || exit 0
-
-mkdir -p "$DEST"
-touch "$LOG_FILE"
-
-[ -d "$SOURCE" ] || { log "BŁĄD: brak folderu $SOURCE"; exit 1; }
-[ -x "$MCRCON_BIN" ] || { log "BŁĄD: brak mcrcon pod $MCRCON_BIN"; exit 1; }
-
-DATE=$(date "+%Y-%m-%d_%H-%M-%S")
-BACKUP_FILE="$DEST/minecraft_backup_$DATE.tar.gz"
-
-log "Start backupu -> $BACKUP_FILE"
-log "RCON: save-off"
-rcon "save-off"
-log "RCON: save-all flush"
-rcon "save-all flush"
-sleep 2
-log "Pakowanie tar.gz..."
-tar -czf "$BACKUP_FILE" -C "$SOURCE" . >>"$LOG_FILE" 2>&1
-log "Backup OK: $BACKUP_FILE"
-log "RCON: save-on"
-rcon "save-on"
-
-mapfile -t backups < <(ls -1t "$DEST"/minecraft_backup_*.tar.gz 2>/dev/null || true)
-if ((${#backups[@]} > MAX_BACKUPS)); then
-  for ((i=MAX_BACKUPS; i<${#backups[@]}; i++)); do
-    rm -f -- "${backups[$i]}"
-    log "Usunięto stary backup: ${backups[$i]}"
-  done
-fi
-
-log "Koniec."
-==================================================================================================================================
+Chcesz, żebym taką wersję zrobił?
 
 
 
+/etc/ssh/sshd_config
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/local/bin:/usr/bin:/bin:/usr/games
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+Include /etc/ssh/sshd_config.d/*.conf
+
+#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+#HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Ciphers and keying
+#RekeyLimit default none
+
+# Logging
+#SyslogFacility AUTH
+#LogLevel INFO
+
+# Authentication:
+
+#LoginGraceTime 2m
+PermitRootLogin yes
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+#PubkeyAuthentication yes
+
+# Expect .ssh/authorized_keys2 to be disregarded by default in future.
+#AuthorizedKeysFile	.ssh/authorized_keys .ssh/authorized_keys2
+
+#AuthorizedPrincipalsFile none
+
+#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+#HostbasedAuthentication no
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# HostbasedAuthentication
+#IgnoreUserKnownHosts no
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+KbdInteractiveAuthentication no
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the KbdInteractiveAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via KbdInteractiveAuthentication may bypass
+# the setting of "PermitRootLogin prohibit-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and KbdInteractiveAuthentication to 'no'.
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+X11Forwarding yes
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+PrintMotd no
+#PrintLastLog yes
+#TCPKeepAlive yes
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+
+# no default banner path
+#Banner none
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# override default of no subsystems
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#	X11Forwarding no
+#	AllowTcpForwarding no
+#	PermitTTY no
+#	ForceCommand cvs server
+Match Group sftp_users
+    ChrootDirectory /home/%u
+    ForceCommand internal-sftp
+    AllowTcpForwarding no
+    X11Forwarding no	
 
 
 
@@ -20947,13 +20720,118 @@ log "Koniec."
 
 
 
+📌 Poradnik: SFTP dla grupy sftp_users z Chroot w Debian 129999
+Jasne Mikołaj! Zrobię Ci super czytelny poradnik “krok po kroku”, który będzie gotowy do wklejenia do pliku `sshd_config` i dodatkowo ustawi wszystkich użytkowników w grupie `sftp_users` w odpowiednich katalogach. 😎
 
+---
 
+# 📌 Poradnik: SFTP dla grupy `sftp_users` z Chroot w Debian 12
 
+## 1️⃣ Utwórz grupę SFTP (jeśli jej jeszcze nie ma)
 
+```bash
+sudo groupadd sftp_users
+```
 
+> Grupa będzie służyć do łatwego zarządzania wszystkimi ograniczonymi użytkownikami.
 
+---
 
+## 2️⃣ Dodaj użytkownika z dostępem SFTP
 
+Przykład: tworzymy użytkownika `testowy`:
 
+```bash
+sudo adduser --ingroup sftp_users --shell /usr/sbin/nologin testowy
+```
 
+* `--shell /usr/sbin/nologin` → blokuje dostęp do terminala (tylko SFTP)
+* Nadaj hasło i opcjonalnie wypełnij dane użytkownika.
+
+---
+
+## 3️⃣ Przygotuj katalogi
+
+W Chroot katalog główny musi należeć do roota, a użytkownik będzie miał dostęp dopiero do podfolderu.
+
+```bash
+sudo mkdir -p /home/testowy/dane       # folder, w którym użytkownik może pracować
+sudo chown root:root /home/testowy     # katalog nadrzędny musi być root:root
+sudo chmod 755 /home/testowy
+sudo chown testowy:sftp_users /home/testowy/dane
+sudo chmod 775 /home/testowy/dane
+```
+
+---
+
+## 4️⃣ Wklej blok do `sshd_config`
+
+Edytuj plik SSH:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+Na samym dole wklej gotowy blok:
+
+```text
+# 🔹 Konfiguracja SFTP dla grupy sftp_users
+Match Group sftp_users
+    ChrootDirectory /home/%u
+    ForceCommand internal-sftp
+    AllowTcpForwarding no
+    X11Forwarding no
+```
+
+> `%u` automatycznie wstawi nazwę logującego się użytkownika.
+
+---
+
+## 5️⃣ Restart SSH
+
+Po zapisaniu pliku wykonaj:
+
+```bash
+sudo systemctl restart ssh
+```
+
+---
+
+## 6️⃣ Skrypt do ustawienia katalogów dla wszystkich użytkowników grupy `sftp_users`
+
+Jeżeli masz kilku użytkowników, użyj tego skryptu:
+
+```bash
+for user in $(getent passwd | grep sftp_users | cut -d: -f1); do
+    echo "Ustawiam prawa dla $user"
+
+    # katalog chroot — własność root
+    sudo chown root:root /home/$user
+    sudo chmod 755 /home/$user
+
+    # katalog na pliki
+    sudo mkdir -p /home/$user/dane
+    sudo chown $user:sftp_users /home/$user/dane
+    sudo chmod 775 /home/$user/dane
+done
+```
+
+---
+
+## 7️⃣ Testowanie
+
+1. **WinSCP / FileZilla** → logujesz się `testowy` / hasło
+2. Zobaczysz tylko katalog `/dane`
+3. Próba `cd ..` → nie wyjdzie poza katalog domowy (Chroot działa)
+4. **SSH Terminal** → logowanie odrzucone (tylko SFTP)
+
+---
+
+💡 **Wskazówka:**
+Dzięki temu każdy nowy użytkownik dodany do grupy `sftp_users` będzie automatycznie odcięty do swojego folderu. Wystarczy użyć skryptu z kroku 6.
+
+---
+
+Jeżeli chcesz, mogę Ci od razu zrobić **wersję “gotową do wklejenia” w SSH + automatyczne ustawienie wszystkich użytkowników**, żebyś nie musiał nic kombinować ręcznie.
+
+Chcesz, żebym taką wersję przygotował?

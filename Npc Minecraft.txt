@@ -8,6 +8,8 @@ https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2Fl
 klucz-Hologramy-f
 
 klucz-NPC1234
+
+klucz-Zgony
 ============================================================================================================================================================================================================================================
 Dzienkuje za pomoc OpenAI
 https://chatgpt.com
@@ -5093,9 +5095,9 @@ To spowoduje, że system nie będzie wyrzucał tych informacji o modyfikacji dan
 
 
 1️⃣
-/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
+/summon minecraft:armor_stand ~ ~0.77 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
 2️⃣
-/summon minecraft:armor_stand ~ ~1.4 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Statystyki","color":"aqua"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil Gracza","color":"aqua"},Small:1b}
 
 
 
@@ -9460,6 +9462,8 @@ permission
 
 1
 
+Zgony
+
 1./scoreboard objectives add Zgony deathCount
 
 2./scoreboard objectives setdisplay sidebar Zgony
@@ -9473,11 +9477,16 @@ permission
 2./scoreboard objectives setdisplay belowName zdrowie
 
 
+lub xp
+/scoreboard objectives add Exp level
+
+/scoreboard objectives setdisplay sidebar Exp
 
 
 
 
-
+Usuń
+/scoreboard objectives remove Exp
 
 
 
@@ -9509,6 +9518,6 @@ permission
 
 Hologramy-f
 1️⃣
-/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
+/summon minecraft:armor_stand ~ ~0.77 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
 2️⃣
-/summon minecraft:armor_stand ~ ~1.4 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"tekst","color":"aqua"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil Gracza","color":"aqua"},Small:1b}

@@ -10,6 +10,8 @@ klucz-Hologramy-f
 klucz-NPC1234
 
 klucz-Zgony
+
+klucze-Rangi-Vanilla
 ============================================================================================================================================================================================================================================
 Dzienkuje za pomoc OpenAI
 https://chatgpt.com
@@ -6119,7 +6121,7 @@ Usuwanie scoreboarda:
 /scoreboard objectives remove punkty
 =============================================================
 
-
+Rangi-Vanilla
 ==================================================
 /team add Owner
 
@@ -6137,7 +6139,44 @@ Usuwanie scoreboarda:
 
 /team modify Admin prefix "[Admin] "
 
+/team modify Embrii prefix [{"text":"[","color":"green"},{"text":"Embria","color":"green"},{"text":"] ","color":"green"}]
+
 /effect give MikiYT1 minecraft:glowing 999999 0 true
+
+
+Commands & Timestamps::
+0:00 - Intro
+0:12 - Creating Teams
+    /team add (team)
+    /team join (team)
+
+1:14 - Colored Names
+    /team modify (team) color red
+
+2:11 - Other Settings
+
+4:47 - s u b s c r i b e
+
+5:01 - Setting a Default Team
+    /team add default
+    /team modify default gray
+    /team join default @a[team=]
+
+7:31 - Prefixes/Suffixes
+    /team modify (team) prefix {"text":"[ADMIN] "}
+    /team modify (team) prefix {"text":"[ADMIN] ","color":"dark_red"}
+
+9:13 Multiple Colors
+    /team modify (team) prefix [{"text":"[","color":"gray"},{"text":"ADMIN","color":"#ff0000"},{"text":"] ","color":"gray"}]
+
+10:05 - Custom Font
+    /team modify (team) prefix [{"text":"[","color":"gray"},{"text":"ADMIN","color":"#ff0000","font":"uniform"},{"text":"] ","color":"gray"}]
+
+11:00 - Wrap-Up
+
+G A M E R Suffix:
+    /team modify (team) suffix [{"text":" - ","color":"#aaaaaa"},{"text":"G ","color":"#00ffff","font":"uniform"},{"text":"A ","color":"#00ff00","font":"uniform"},{"text":"M ","color":"#ffff00","font":"uniform"},{"text":"E ","color":"#ff0000","font":"uniform"},{"text":"R","color":"#ff00ff","font":"uniform"}]
+
 ==============================================================
 
 

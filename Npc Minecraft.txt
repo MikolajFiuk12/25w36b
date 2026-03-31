@@ -12,6 +12,8 @@ klucz-NPC1234
 klucz-Zgony
 
 klucze-Rangi-Vanilla
+
+klucze-Gornik111q234e312sssa
 ============================================================================================================================================================================================================================================
 Dzienkuje za pomoc OpenAI
 https://chatgpt.com
@@ -5289,7 +5291,100 @@ LEVEL UP
 
 
 
+Gornik111q234e312sssa
+=================================================================================================
+NPC
+/summon minecraft:mannequin ~ ~ ~ {Tags:["kopacz"],profile:{name:"Moyon__"},equipment:{mainhand:{id:"minecraft:golden_pickaxe",Count:1b}}}
 
+/summon minecraft:mannequin ~ ~ ~ {Tags:["kopacz"],profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:golden_pickaxe",Count:1b}}}
+
+
+/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] CustomNameVisible set value 1
+
+/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] CustomName set value 'Górnik'
+
+/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] description set value "Pracownik"
+
+
+/team add kopacz
+
+/team join kopacz @e[tag=kopacz]
+
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
+
+/team modify kopacz collisionRule never
+
+/team modify kopacz color green
+
+/effect give @e[tag=kopacz] minecraft:glowing 999999 0 true
+
+/team join kopacz @e[type=minecraft:mannequin,limit=1,sort=nearest]
+
+/tp @e[tag=kopacz] ~ ~ ~
+
+
+Zmiana itemu
+/execute as @p at @p run data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest,distance=..5] equipment.mainhand set from entity @p SelectedItem
+
+Zmiana Skina
+/data modify entity f5e258c5-692e-461e-a68e-7d3f5f520e5a profile set value 'MikiYT1'
+=================================================================================================
+
+
+
+
+=================================================================================================
+Komendy
+
+/scoreboard objectives add kopanie dummy
+
+/execute as @e[tag=kopacz] at @s run tp @s ~ ~ ~ facing ^ ^ ^1
+
+/execute as @e[tag=kopacz] run data merge entity @s {pose:"standing"}
+
+/execute as @e[tag=kopacz] at @s run setblock ^ ^ ^ air destroy
+
+/scoreboard players add @e[tag=kopacz] kopanie 1
+
+/execute as @e[tag=kopacz,scores={kopanie=20..}] at @s run setblock ^ ^ ^1 air destroy
+
+/scoreboard players set @e[tag=kopacz,scores={kopanie=20..}] kopanie 0
+
+/swing @e[tag=kopacz,type=minecraft:mannequin] mainhand
+
+/execute as @e[tag=kopacz] at @s run particle minecraft:enchant ^ ^ ^1 0.5 0.5 0.5 0.2 50
+
+Komand Blokuf ma być 8
+=================================================================================================
+
+
+
+
+=================================================================================================
+podłonczene
+https://raw.githubusercontent.com/MikolajFiuk12/25w36b/refs/heads/main/2026-03-31_01.02.27.png
+
+
+Blocks
+setblock ~ ~1 ~ minecraft:emerald_ore
+
+setblock ~ ~1 ~ minecraft:lapis_ore
+
+setblock ~ ~1 ~ minecraft:diamond_ore
+
+setblock ~ ~1 ~ minecraft:gold_ore
+
+setblock ~ ~1 ~ minecraft:iron_ore
+
+setblock ~ ~1 ~ minecraft:coal_ore
+
+hologram
+/summon minecraft:armor_stand ~ ~-1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Skała Górnika","color":"gray","bold":true},Small:1b}
+
+/summon minecraft:armor_stand ~ ~-1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Jaskina Górnika","color":"gray","bold":true},Small:1b}
+
+/execute at @p run kill @e[type=armor_stand,limit=1,sort=nearest,distance=..5]
+=================================================================================================
 
 
 

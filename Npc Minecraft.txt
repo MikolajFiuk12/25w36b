@@ -14,6 +14,8 @@ klucz-Zgony
 klucze-Rangi-Vanilla
 
 klucze-Gornik111q234e312sssa
+
+klucze-armorQ234
 ============================================================================================================================================================================================================================================
 Dzienkuje za pomoc OpenAI
 https://chatgpt.com
@@ -5299,11 +5301,11 @@ NPC
 /summon minecraft:mannequin ~ ~ ~ {Tags:["kopacz"],profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:golden_pickaxe",Count:1b}}}
 
 
-/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] CustomNameVisible set value 1
-
 /data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] CustomName set value 'Górnik'
 
 /data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] description set value "Pracownik"
+
+/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] CustomNameVisible set value 1
 
 
 /team add kopacz
@@ -5657,6 +5659,8 @@ zmień skina
 
 dodaj przedmiot
 /data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] equipment.mainhand set value {id:"minecraft:diamond",Count:1b}
+
+/item replace entity @e[type=minecraft:mannequin,limit=1] weapon.mainhand with minecraft:fishing_rod
 
 usuń przedmiot
 /data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] equipment.mainhand set value {id:"minecraft:air",Count:1b}
@@ -6354,6 +6358,29 @@ RTP
 
 /execute at @p run spreadplayers 0 0 2000000 10000 false @p
 =========================================================
+
+
+======================================================================================
+klucze-armorQ234
+
+/execute as @e[type=minecraft:armor_stand,name="MikiYT1"] at @s run summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
+
+
+/execute as @e[type=minecraft:armor_stand,name="MikiYT1"] run kill @s
+
+===========================================================================================================================
+
+
+
+/execute as @e[type=minecraft:mannequin,limit=1,sort=nearest] at @s if entity @e[type=minecraft:item,distance=..1,limit=1,sort=nearest] run item replace entity @s weapon.mainhand with minecraft:diamond_axe
+
+
+tag
+/execute as @e[type=minecraft:mannequin,tag=lp,limit=1,sort=nearest] at @s if entity @e[type=minecraft:item,distance=..1,limit=1,sort=nearest] run item replace entity @s weapon.mainhand with minecraft:diamond_axe
+
+
+/item replace entity @e[type=minecraft:mannequin,limit=1] weapon.mainhand with minecraft:fishing_rod
+
 
 
 

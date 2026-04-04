@@ -8,6 +8,14 @@ https://bugs.mojang.com/browse/MC/issues/MC-301815?fbclid=IwY2xjawMyMAtleHRuA2Fl
 klucz-Hologramy-f
 
 klucz-NPC1234
+
+klucz-Zgony
+
+klucze-Rangi-Vanilla
+
+klucze-Gornik111q234e312sssa
+
+klucze-armorQ234
 ============================================================================================================================================================================================================================================
 Dzienkuje za pomoc OpenAI
 https://chatgpt.com
@@ -5093,9 +5101,9 @@ To spowoduje, że system nie będzie wyrzucał tych informacji o modyfikacji dan
 
 
 1️⃣
-/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
+/summon minecraft:armor_stand ~ ~0.77 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
 2️⃣
-/summon minecraft:armor_stand ~ ~1.4 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Statystyki","color":"aqua"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil Gracza","color":"aqua"},Small:1b}
 
 
 
@@ -5285,7 +5293,100 @@ LEVEL UP
 
 
 
+Gornik111q234e312sssa
+=================================================================================================
+NPC
+/summon minecraft:mannequin ~ ~ ~ {Tags:["kopacz"],profile:{name:"Moyon__"},equipment:{mainhand:{id:"minecraft:golden_pickaxe",Count:1b}}}
 
+/summon minecraft:mannequin ~ ~ ~ {Tags:["kopacz"],profile:{name:"MikiYT1"},equipment:{mainhand:{id:"minecraft:golden_pickaxe",Count:1b}}}
+
+
+/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] CustomName set value 'Górnik'
+
+/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] description set value "Pracownik"
+
+/data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest] CustomNameVisible set value 1
+
+
+/team add kopacz
+
+/team join kopacz @e[tag=kopacz]
+
+/data merge entity @e[type=minecraft:mannequin,limit=1,sort=nearest] {Invulnerable:1b,NoGravity:1b}
+
+/team modify kopacz collisionRule never
+
+/team modify kopacz color green
+
+/effect give @e[tag=kopacz] minecraft:glowing 999999 0 true
+
+/team join kopacz @e[type=minecraft:mannequin,limit=1,sort=nearest]
+
+/tp @e[tag=kopacz] ~ ~ ~
+
+
+Zmiana itemu
+/execute as @p at @p run data modify entity @e[type=minecraft:mannequin,tag=kopacz,limit=1,sort=nearest,distance=..5] equipment.mainhand set from entity @p SelectedItem
+
+Zmiana Skina
+/data modify entity f5e258c5-692e-461e-a68e-7d3f5f520e5a profile set value 'MikiYT1'
+=================================================================================================
+
+
+
+
+=================================================================================================
+Komendy
+
+/scoreboard objectives add kopanie dummy
+
+/execute as @e[tag=kopacz] at @s run tp @s ~ ~ ~ facing ^ ^ ^1
+
+/execute as @e[tag=kopacz] run data merge entity @s {pose:"standing"}
+
+/execute as @e[tag=kopacz] at @s run setblock ^ ^ ^ air destroy
+
+/scoreboard players add @e[tag=kopacz] kopanie 1
+
+/execute as @e[tag=kopacz,scores={kopanie=20..}] at @s run setblock ^ ^ ^1 air destroy
+
+/scoreboard players set @e[tag=kopacz,scores={kopanie=20..}] kopanie 0
+
+/swing @e[tag=kopacz,type=minecraft:mannequin] mainhand
+
+/execute as @e[tag=kopacz] at @s run particle minecraft:enchant ^ ^ ^1 0.5 0.5 0.5 0.2 50
+
+Komand Blokuf ma być 8
+=================================================================================================
+
+
+
+
+=================================================================================================
+podłonczene
+https://raw.githubusercontent.com/MikolajFiuk12/25w36b/refs/heads/main/2026-03-31_01.02.27.png
+
+
+Blocks
+setblock ~ ~1 ~ minecraft:emerald_ore
+
+setblock ~ ~1 ~ minecraft:lapis_ore
+
+setblock ~ ~1 ~ minecraft:diamond_ore
+
+setblock ~ ~1 ~ minecraft:gold_ore
+
+setblock ~ ~1 ~ minecraft:iron_ore
+
+setblock ~ ~1 ~ minecraft:coal_ore
+
+hologram
+/summon minecraft:armor_stand ~ ~-1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Skała Górnika","color":"gray","bold":true},Small:1b}
+
+/summon minecraft:armor_stand ~ ~-1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Jaskina Górnika","color":"gray","bold":true},Small:1b}
+
+/execute at @p run kill @e[type=armor_stand,limit=1,sort=nearest,distance=..5]
+=================================================================================================
 
 
 
@@ -5558,6 +5659,8 @@ zmień skina
 
 dodaj przedmiot
 /data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] equipment.mainhand set value {id:"minecraft:diamond",Count:1b}
+
+/item replace entity @e[type=minecraft:mannequin,limit=1] weapon.mainhand with minecraft:fishing_rod
 
 usuń przedmiot
 /data modify entity @e[type=minecraft:mannequin,limit=1,sort=nearest] equipment.mainhand set value {id:"minecraft:air",Count:1b}
@@ -6117,7 +6220,7 @@ Usuwanie scoreboarda:
 /scoreboard objectives remove punkty
 =============================================================
 
-
+Rangi-Vanilla
 ==================================================
 /team add Owner
 
@@ -6135,7 +6238,44 @@ Usuwanie scoreboarda:
 
 /team modify Admin prefix "[Admin] "
 
+/team modify Embrii prefix [{"text":"[","color":"green"},{"text":"Embria","color":"green"},{"text":"] ","color":"green"}]
+
 /effect give MikiYT1 minecraft:glowing 999999 0 true
+
+
+Commands & Timestamps::
+0:00 - Intro
+0:12 - Creating Teams
+    /team add (team)
+    /team join (team)
+
+1:14 - Colored Names
+    /team modify (team) color red
+
+2:11 - Other Settings
+
+4:47 - s u b s c r i b e
+
+5:01 - Setting a Default Team
+    /team add default
+    /team modify default gray
+    /team join default @a[team=]
+
+7:31 - Prefixes/Suffixes
+    /team modify (team) prefix {"text":"[ADMIN] "}
+    /team modify (team) prefix {"text":"[ADMIN] ","color":"dark_red"}
+
+9:13 Multiple Colors
+    /team modify (team) prefix [{"text":"[","color":"gray"},{"text":"ADMIN","color":"#ff0000"},{"text":"] ","color":"gray"}]
+
+10:05 - Custom Font
+    /team modify (team) prefix [{"text":"[","color":"gray"},{"text":"ADMIN","color":"#ff0000","font":"uniform"},{"text":"] ","color":"gray"}]
+
+11:00 - Wrap-Up
+
+G A M E R Suffix:
+    /team modify (team) suffix [{"text":" - ","color":"#aaaaaa"},{"text":"G ","color":"#00ffff","font":"uniform"},{"text":"A ","color":"#00ff00","font":"uniform"},{"text":"M ","color":"#ffff00","font":"uniform"},{"text":"E ","color":"#ff0000","font":"uniform"},{"text":"R","color":"#ff00ff","font":"uniform"}]
+
 ==============================================================
 
 
@@ -6218,6 +6358,95 @@ RTP
 
 /execute at @p run spreadplayers 0 0 2000000 10000 false @p
 =========================================================
+
+
+======================================================================================
+armorQ234
+
+/execute as @e[type=minecraft:armor_stand,name="MikiYT1"] at @s run summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
+
+
+/execute as @e[type=minecraft:armor_stand,name="MikiYT1"] run kill @s
+
+
+
+
+
+
+
+MikiYT1
+
+1./execute as @e[type=minecraft:armor_stand,name="MikiYT1"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"}, Tags:["NPC-MikiYT1"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="MikiYT1"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-MikiYT1] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-MikiYT1,limit=1,sort=nearest] CustomName set value 'MikiYT1'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-MikiYT1,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-MikiYT1,limit=1,sort=nearest] CustomNameVisible set value 1
+
+
+
+Mikolais
+
+1./execute as @e[type=minecraft:armor_stand,name="Mikolais"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"Mikolais"}, Tags:["NPC-Mikolais"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="Mikolais"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-Mikolais] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-Mikolais,limit=1,sort=nearest] CustomName set value 'Mikolais'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-Mikolais,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-Mikolais,limit=1,sort=nearest] CustomNameVisible set value 1
+
+
+jan1000
+
+1./execute as @e[type=minecraft:armor_stand,name="jan1000"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"jan1000"}, Tags:["NPC-jan1000"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="jan1000"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-jan1000] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-jan1000,limit=1,sort=nearest] CustomName set value 'jan1000'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-jan1000,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-jan1000,limit=1,sort=nearest] CustomNameVisible set value 1
+
+
+Frankoproxdx
+
+1./execute as @e[type=minecraft:armor_stand,name="Frankoproxdx"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"Frankoproxdx"}, Tags:["NPC-Frankoproxdx"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="Frankoproxdx"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx,limit=1,sort=nearest] CustomName set value 'Frankoproxdx'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx,limit=1,sort=nearest] CustomNameVisible set value 1
+
+===========================================================================================================================
+
+
+
+/execute as @e[type=minecraft:mannequin,limit=1,sort=nearest] at @s if entity @e[type=minecraft:item,distance=..1,limit=1,sort=nearest] run item replace entity @s weapon.mainhand with minecraft:diamond_axe
+
+
+tag
+/execute as @e[type=minecraft:mannequin,tag=lp,limit=1,sort=nearest] at @s if entity @e[type=minecraft:item,distance=..1,limit=1,sort=nearest] run item replace entity @s weapon.mainhand with minecraft:diamond_axe
+
+
+/item replace entity @e[type=minecraft:mannequin,limit=1] weapon.mainhand with minecraft:fishing_rod
+
 
 
 
@@ -9460,6 +9689,8 @@ permission
 
 1
 
+Zgony
+
 1./scoreboard objectives add Zgony deathCount
 
 2./scoreboard objectives setdisplay sidebar Zgony
@@ -9473,11 +9704,16 @@ permission
 2./scoreboard objectives setdisplay belowName zdrowie
 
 
+lub xp
+/scoreboard objectives add Exp level
+
+/scoreboard objectives setdisplay sidebar Exp
 
 
 
 
-
+Usuń
+/scoreboard objectives remove Exp
 
 
 
@@ -9509,6 +9745,6 @@ permission
 
 Hologramy-f
 1️⃣
-/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
+/summon minecraft:armor_stand ~ ~0.77 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"PRAWY PRZYCISK","color":"yellow","bold":true},Small:1b}
 2️⃣
-/summon minecraft:armor_stand ~ ~1.4 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"tekst","color":"aqua"},Small:1b}
+/summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{"text":"Profil Gracza","color":"aqua"},Small:1b}

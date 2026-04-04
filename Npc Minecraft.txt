@@ -6361,12 +6361,78 @@ RTP
 
 
 ======================================================================================
-klucze-armorQ234
+armorQ234
 
 /execute as @e[type=minecraft:armor_stand,name="MikiYT1"] at @s run summon minecraft:mannequin ~ ~ ~ {profile: {name: "MikiYT1"}}
 
 
 /execute as @e[type=minecraft:armor_stand,name="MikiYT1"] run kill @s
+
+
+
+
+
+
+
+MikiYT1
+
+1./execute as @e[type=minecraft:armor_stand,name="MikiYT1"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"MikiYT1"}, Tags:["NPC-MikiYT1"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="MikiYT1"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-MikiYT1] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-MikiYT1,limit=1,sort=nearest] CustomName set value 'MikiYT1'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-MikiYT1,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-MikiYT1,limit=1,sort=nearest] CustomNameVisible set value 1
+
+
+
+Mikolais
+
+1./execute as @e[type=minecraft:armor_stand,name="Mikolais"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"Mikolais"}, Tags:["NPC-Mikolais"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="Mikolais"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-Mikolais] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-Mikolais,limit=1,sort=nearest] CustomName set value 'Mikolais'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-Mikolais,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-Mikolais,limit=1,sort=nearest] CustomNameVisible set value 1
+
+
+jan1000
+
+1./execute as @e[type=minecraft:armor_stand,name="jan1000"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"jan1000"}, Tags:["NPC-jan1000"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="jan1000"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-jan1000] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-jan1000,limit=1,sort=nearest] CustomName set value 'jan1000'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-jan1000,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-jan1000,limit=1,sort=nearest] CustomNameVisible set value 1
+
+
+Frankoproxdx
+
+1./execute as @e[type=minecraft:armor_stand,name="Frankoproxdx"] at @s run summon minecraft:mannequin ~ ~ ~ {profile:{name:"Frankoproxdx"}, Tags:["NPC-Frankoproxdx"]}
+
+2./execute as @e[type=minecraft:armor_stand,name="Frankoproxdx"] run kill @s
+
+3./execute as @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx] at @s run tp @s ~ ~ ~ facing entity @p[distance=..5] feet
+
+4./data modify entity @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx,limit=1,sort=nearest] CustomName set value 'Frankoproxdx'
+
+5./data modify entity @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx,limit=1,sort=nearest] description set value "Profil Gracza"
+
+6./data modify entity @e[type=minecraft:mannequin,tag=NPC-Frankoproxdx,limit=1,sort=nearest] CustomNameVisible set value 1
 
 ===========================================================================================================================
 

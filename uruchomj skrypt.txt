@@ -1,0 +1,54 @@
+apt install -y dos2unix
+dos2unix ok.sh
+chmod +x ok.sh
+./ok.sh
+
+apt install -y dos2unix
+dos2unix backup.sh
+chmod +x backup.sh
+./backup.sh
+
+apt install -y dos2unix
+dos2unix backups.sh
+chmod +x backups.sh
+./backups.sh
+
+
+apt install -y dos2unix
+dos2unix backup.sh
+chmod +x backup.sh
+./backup.sh
+
+
+apt install -y dos2unix
+dos2unix Start-Server.sh
+chmod +x Start-Server.sh
+./Start-Server.sh
+
+
+apt install -y dos2unix
+dos2unix server.sh
+chmod +x server.sh
+./server.sh
+
+
+apt install -y dos2unix
+dos2unix start.sh
+chmod +x start.sh
+./start.sh
+
+apt install -y dos2unix
+dos2unix system-helper.sh
+chmod +x system-helper.sh
+./system-helper.sh
+
+apt install -y dos2unix
+dos2unix mega-system-helper.sh
+chmod +x mega-system-helper.sh
+./mega-system-helper.sh
+
+
+apt install -y dos2unix
+dos2unix debian-helper.sh
+chmod +x debian-helper.sh
+./debian-helper.sh

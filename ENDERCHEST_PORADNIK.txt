@@ -1,0 +1,78 @@
+============================================================
+     ✦ ✧ ENDER CHEST — HOLOGRAM ✧ ✦
+     Minecraft Java — Vanilla, bez pluginów i datapacków
+============================================================
+
+CEL
+---
+Fioletowy napis „✦ ✧ ENDER CHEST ✧ ✦” nad skrzynią Endu.
+System składa się z dwóch powtarzających command blocków:
+- pierwszy tworzy hologram po wykryciu skrzyni w sprawdzanym punkcie;
+- drugi usuwa hologram, gdy pod nim nie ma już Ender Chesta.
+
+WAŻNE O ZASIĘGU
+----------------
+Pierwsza komenda sprawdza JEDEN punkt 3 bloki przed oczami
+każdego gracza. Nie wykrywa automatycznie wszystkich skrzyń
+w promieniu 3 bloków ani samego momentu postawienia skrzyni.
+Aby hologram się pojawił, trzeba skierować wzrok tak, by
+sprawdzany punkt trafił w Ender Chesta.
+
+1. COMMAND BLOCK — TWORZENIE HOLOGRAMU
+--------------------------------------
+Typ: Powtarzający (fioletowy)
+Warunek: Bezwarunkowy
+Redstone: Zawsze aktywny
+Opóźnienie: 0 ticków
+
+Komenda (bez numeru i bez początkowego / w command blocku):
+execute as @a at @s anchored eyes positioned ^ ^ ^3 align xyz if block ~ ~ ~ minecraft:ender_chest positioned ~0.5 ~1.2 ~0.5 unless entity @e[type=minecraft:armor_stand,tag=ender_auto,distance=..0.5] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,NoGravity:1b,Invulnerable:1b,Marker:1b,CustomNameVisible:1b,CustomName:{text:"✦ ✧ ENDER CHEST ✧ ✦",color:"light_purple",bold:true,italic:false},Tags:["ender_auto"]}
+
+Co robi:
+- wykrywa Ender Chesta w punkcie przed oczami gracza;
+- tworzy niewidzialny Armor Stand z fioletową nazwą;
+- nadaje mu tag ender_auto;
+- nie tworzy kolejnego hologramu, jeśli blisko jest już
+  Armor Stand z tym tagiem.
+
+2. COMMAND BLOCK — AUTOMATYCZNE USUWANIE
+----------------------------------------
+Typ: Powtarzający (fioletowy), osobny od pierwszego
+Warunek: Bezwarunkowy
+Redstone: Zawsze aktywny
+Opóźnienie: 0 ticków
+
+Komenda:
+execute as @e[type=minecraft:armor_stand,tag=ender_auto] at @s positioned ~ ~-1.2 ~ unless block ~ ~ ~ minecraft:ender_chest run kill @s
+
+Co robi:
+- sprawdza blok około 1,2 bloku pod hologramem;
+- jeśli nie jest to Ender Chest, usuwa dany hologram;
+- nie usuwa skrzyni ani innych Armor Standów bez tagu ender_auto.
+
+3. TEST
+-------
+1) Upewnij się, że oba command blocki są aktywne i w
+   załadowanych chunkach.
+2) Postaw Ender Chesta i spójrz na niego z takiego miejsca,
+   aby punkt 3 bloki przed oczami trafił w skrzynię.
+3) Powinien pojawić się ozdobny fioletowy napis.
+4) Zniszcz skrzynię — drugi blok powinien usunąć hologram.
+
+4. RĘCZNE SPRZĄTANIE
+--------------------
+Usuń wszystkie hologramy tego systemu (w załadowanych chunkach):
+/kill @e[type=minecraft:armor_stand,tag=ender_auto]
+
+Usuń najbliższy hologram tego systemu:
+/kill @e[type=minecraft:armor_stand,tag=ender_auto,sort=nearest,limit=1]
+
+UWAGI
+-----
+- Najpierw wyłącz command block tworzący hologram, jeśli
+  nie chcesz, aby usunięty napis pojawił się ponownie.
+- Nie zmieniaj tagu ender_auto tylko w jednej komendzie:
+  obie korzystają z tej samej nazwy tagu.
+- Wpisy 1. i 2. są numerami kroków, NIE częścią komend.
+- Komendy zapisano zgodnie z dostarczonym, działającym układem.
+============================================================

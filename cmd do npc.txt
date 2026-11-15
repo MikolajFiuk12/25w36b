@@ -1,0 +1,43 @@
+Ooo, teraz możemy zrobić z Twojego manekina **interaktywne NPC z teleportacją!** 😎🔥 I to w Minecraft Java 26.3 Vanilla, bez pluginów!
+
+Czyli klikasz manekina **prawym przyciskiem myszy**, a on teleportuje Cię w wybrane miejsce.
+
+Możemy wykorzystać encję `minecraft:interaction`, która wykrywa kliknięcia.
+
+### **1️⃣ Dodaj interakcję do manekina**
+
+Stań obok manekina i wpisz:
+
+```
+
+/execute at @e[type=minecraft:mannequin,sort=nearest,limit=1,distance=..10] run summon minecraft:interaction ~ ~ ~ {width:0.7f,height:1.8f,response:1b,Tags:["npc_teleport"]}
+
+```
+
+To tworzy niewidzialny obszar interakcji w miejscu manekina.
+
+### **2️⃣ Utwórz Command Block — teleportacja**
+
+Ustaw **Powtarzający / Bezwarunkowy / Zawsze aktywny**.
+
+```
+
+execute as @e[type=minecraft:interaction,tag=npc_teleport,nbt={interaction:{}}] on target run tp @s 100 65 100
+
+```
+
+Współrzędne `100 65 100` zamień na miejsce, do którego chcesz się teleportować.
+
+### **3️⃣ Drugi Command Block — reset kliknięcia**
+
+Ustaw **Łańcuchowy / Bezwarunkowy / Zawsze aktywny** i połącz z pierwszym:
+
+```
+
+execute as @e[type=minecraft:interaction,tag=npc_teleport] run data remove entity @s interaction
+
+```
+
+**Ważne:** W tej wersji `on target` może nie wskazywać gracza, który kliknął interakcję — dlatego przed zastosowaniem na serwerze warto przetestować system na jednym manekinie.
+
+Chcesz, żeby kliknięcie teleportowało Cię na konkretne współrzędne, czy na przykład na spawn serwera?

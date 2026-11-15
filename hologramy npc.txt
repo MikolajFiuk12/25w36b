@@ -1,0 +1,21 @@
+Dobra! 😎 Teraz zachowuję **dokładnie Twoje wysokości** `~0.77` i `~1.1`. Każda komenda tworzy tylko jeden hologram nad manekinem.
+
+### **1️⃣ PRAWY PRZYCISK 🟡**
+
+```
+
+/execute at @e[type=minecraft:mannequin,sort=nearest,limit=1,distance=..10] run summon minecraft:armor_stand ~ ~0.77 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{text:"PRAWY PRZYCISK",color:"yellow",bold:true},Small:1b,Tags:["hologram_przycisk"]}
+
+```
+
+### **2️⃣ Profil Gracza 🩵**
+
+```
+
+/execute at @e[type=minecraft:mannequin,sort=nearest,limit=1,distance=..10] run summon minecraft:armor_stand ~ ~1.1 ~ {NoGravity:1b,Invisible:1b,CustomNameVisible:1b,CustomName:{text:"Profil Gracza",color:"aqua"},Small:1b,Tags:["hologram_profil"]}
+
+```
+
+**Ważne:** Obie komendy wybierają najbliższego manekina w promieniu 10 bloków, niekoniecznie tego, na którego patrzysz.
+
+Nie zmieniają istniejących hologramów ani manekinów. 💜
